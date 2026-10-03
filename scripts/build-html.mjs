@@ -80,6 +80,8 @@ function build() {
     else {
       html = html.replace(/ data-home-link/g, '');
       html = html.replaceAll(`href="${out.base}pages/${name}.html"`, `href="${out.base}pages/${name}.html" aria-current="page"`);
+      // Section pages also mark their mega-menu trigger (a button, so aria-current="true").
+      html = html.replace(`aria-controls="mega-${name}"`, `aria-controls="mega-${name}" aria-current="true"`);
     }
 
     writeFileSync(join(ROOT, out.file), html);

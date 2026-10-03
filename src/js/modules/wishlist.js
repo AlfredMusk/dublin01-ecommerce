@@ -8,6 +8,7 @@ import { qsa } from '../utils/dom.js';
 import { read, write, onExternalChange } from '../utils/storage.js';
 import { pageUrl } from '../utils/paths.js';
 import { toast } from './toast.js';
+import { bump } from './cart.js';
 
 const KEY = 'wishlist';
 
@@ -40,13 +41,17 @@ function render() {
     button.setAttribute('aria-label', saved ? `Remove ${name} from wishlist` : `Save ${name} to wishlist`);
   });
   qsa('[data-wishlist-count]').forEach((el) => {
+    const changed = el.textContent !== String(list.length);
     el.textContent = String(list.length);
     el.hidden = list.length === 0;
+    if (changed && ready) bump(el);
   });
   qsa('[data-wishlist-link]').forEach((el) =>
     el.setAttribute('aria-label', `Wishlist, ${list.length} ${list.length === 1 ? 'item' : 'items'}`),
   );
 }
+
+let ready = false;
 
 export function initWishlist() {
   document.addEventListener('click', (event) => {
@@ -60,4 +65,5 @@ export function initWishlist() {
   document.addEventListener('catalog:rendered', render);
   onExternalChange(KEY, () => document.dispatchEvent(new CustomEvent('wishlist:change')));
   render();
+  ready = true;
 }

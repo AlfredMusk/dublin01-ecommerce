@@ -60,7 +60,7 @@ export function initSearch() {
     status.textContent = results.length ? `${results.length} results for ${q}` : `No results for ${q}`;
     const all = pageUrl('search', { q });
     live.innerHTML = results.length
-      ? `<ul class="search-live-grid" role="list">${results
+      ? `<p class="mega-heading">Products</p><ul class="search-live-grid" role="list">${results
           .slice(0, PREVIEW_LIMIT)
           .map(
             (p) => `<li><a class="search-live-item" href="${productUrl(p.slug)}">

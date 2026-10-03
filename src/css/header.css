@@ -6,13 +6,15 @@
 
 :root {
   --announcement-h: 2.25rem; /* 36px */
-  --nav-h: 3.75rem; /* 60px */
+  --nav-h: 3.75rem; /* 60px at the top of the page */
+  --nav-h-compact: 3.5rem; /* 56px once scrolled */
   --nav-label-size: 0.75rem; /* 12px */
 }
 
 @media (width >= 64rem) {
   :root {
     --nav-h: 4.5rem; /* 72px */
+    --nav-h-compact: 3.75rem; /* 60px */
     --nav-label-size: 0.8125rem; /* 13px */
   }
 }
@@ -20,13 +22,20 @@
 @layer components {
   /* ---------- Shell ---------- */
 
-  /* Sticky with a negative top: the announcement bar scrolls away,
-     the navigation bar stays. No height animation, so no layout shift. */
+  /* Sticky with a negative top: the announcement bar scrolls away, the
+     navigation bar stays. The header keeps a fixed box height, so the bar can
+     compact once scrolled without moving the page (no layout shift). The
+     transparent strip left under the compact bar lets clicks through. */
   .site-header {
     position: sticky;
     top: calc(var(--announcement-h) * -1);
     z-index: 40;
-    background-color: var(--color-white);
+    height: calc(var(--announcement-h) + var(--nav-h));
+    pointer-events: none;
+  }
+
+  .site-header > * {
+    pointer-events: auto;
   }
 
   .announcement {
@@ -38,6 +47,47 @@
     letter-spacing: 0.08em;
     line-height: 1;
     text-transform: uppercase;
+    --focus-ring: var(--color-white);
+  }
+
+  .announcement-link {
+    display: inline-flex;
+    align-items: center;
+    height: var(--announcement-h);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.35em;
+    text-decoration-color: transparent;
+    transition: text-decoration-color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .announcement-link:hover {
+      text-decoration-color: currentColor;
+    }
+  }
+
+  /* Right side: items separated by a short hairline. */
+  .announcement-meta {
+    align-items: center;
+  }
+
+  .announcement-meta > li + li {
+    position: relative;
+    margin-left: 1.25rem;
+    padding-left: 1.25rem;
+    color: var(--color-neutral-200);
+  }
+
+  .announcement-meta > li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 0.75rem;
+    background-color: var(--color-neutral-600);
+    transform: translateY(-50%);
   }
 
   .nav-bar {
@@ -67,6 +117,11 @@
     align-items: center;
     column-gap: var(--grid-gap);
     height: var(--nav-h);
+    transition: height var(--duration-base) var(--ease-premium);
+  }
+
+  .site-header[data-scrolled] .nav-grid {
+    height: var(--nav-h-compact);
   }
 
   /* ---------- Wordmark ---------- */
@@ -83,15 +138,21 @@
     line-height: 1;
     color: var(--color-ink);
     white-space: nowrap;
+    transition: transform var(--duration-base) var(--ease-premium);
   }
 
+  .site-header[data-scrolled] .wordmark {
+    transform: scale(0.94);
+  }
+
+  /* "/01": smaller, technical, set on the cap line of DUBLIN. */
   .wordmark-edition {
-    margin-left: 0.14em;
+    margin-left: 0.16em;
     font-family: var(--font-mono);
-    font-size: 0.5em;
+    font-size: 0.46em;
     font-weight: 500;
-    letter-spacing: 0;
-    vertical-align: 0.76em;
+    letter-spacing: 0.02em;
+    vertical-align: 0.92em;
   }
 
   /* ---------- Actions ---------- */
@@ -121,6 +182,23 @@
     font-weight: 500;
     font-variant-numeric: tabular-nums;
     line-height: 1;
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  /* Empty: quiet. With items: full ink. A change nudges the number once. */
+  .bag-count[data-empty] {
+    color: var(--color-neutral-600);
+  }
+
+  .bag-count[data-bump] {
+    animation: count-bump var(--duration-base) var(--ease-premium);
+  }
+
+  @keyframes count-bump {
+    from {
+      opacity: 0;
+      transform: translateY(0.25rem);
+    }
   }
 
   /* ---------- Desktop navigation & mega menu ---------- */
@@ -143,8 +221,30 @@
     inset: 0 -0.75rem;
   }
 
-  .link-nav[aria-expanded="true"]::after {
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 2.25rem;
+  }
+
+  .nav-bar .link-nav {
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  .link-nav[aria-expanded="true"]::after,
+  .link-nav[aria-current="true"]::after {
     transform: scaleX(1);
+  }
+
+  /* The link in use stays ink; its neighbours step back. */
+  @media (hover: hover) {
+    .nav-list:has(.link-nav:hover) .link-nav:not(:hover):not([aria-expanded="true"]) {
+      color: var(--color-neutral-600);
+    }
+  }
+
+  .nav-list:has([aria-expanded="true"]) .link-nav:not([aria-expanded="true"]):not(:hover) {
+    color: var(--color-neutral-600);
   }
 
   .nav-chevron {
@@ -177,6 +277,76 @@
     opacity: 1;
     visibility: visible;
     transform: none;
+    transition-delay: 0s;
+  }
+
+  /* Four link columns and one featured product on the 12-column grid. */
+  .mega-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gap);
+    padding-block: 3rem 2.5rem;
+  }
+
+  .mega-col {
+    grid-column: span 2;
+  }
+
+  .mega-heading {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--color-neutral-200);
+    color: var(--color-neutral-600);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--text-micro--letter-spacing);
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .mega-feature {
+    grid-column: 9 / -1;
+  }
+
+  .mega-feature-card {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 1.5rem;
+    align-items: end;
+  }
+
+  .mega-feature-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background-color: var(--color-bone);
+  }
+
+  .mega-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: 0.5rem;
+    border-top: 1px solid var(--color-neutral-200);
+  }
+
+  /* Page dims slightly while a mega menu is open. */
+  .nav-scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background-color: rgb(10 10 10 / 0.28);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity var(--duration-base) var(--ease-premium),
+      visibility 0s linear var(--duration-base);
+  }
+
+  .site-header[data-mega-open] + .nav-scrim {
+    opacity: 1;
+    visibility: visible;
     transition-delay: 0s;
   }
 
@@ -347,5 +517,9 @@
 
   .search-input::-webkit-search-cancel-button {
     display: none;
+  }
+
+  .search-popular {
+    margin-top: 2rem;
   }
 }

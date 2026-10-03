@@ -53,8 +53,20 @@ export function cartDetails(products) {
 
 const label = (n) => `Bag, ${n} ${n === 1 ? 'item' : 'items'}`;
 
+/** Replays the short counter transition (CSS: .bag-count[data-bump]). */
+export function bump(el) {
+  el.removeAttribute('data-bump');
+  void el.offsetWidth;
+  el.setAttribute('data-bump', '');
+}
+
 export function setBagCount(count, { announce = true } = {}) {
-  qsa('[data-bag-count]').forEach((el) => (el.textContent = String(count)));
+  qsa('[data-bag-count]').forEach((el) => {
+    const changed = el.textContent !== String(count);
+    el.textContent = String(count);
+    el.toggleAttribute('data-empty', count === 0);
+    if (announce && changed) bump(el);
+  });
   qsa('[data-bag-link]').forEach((el) => el.setAttribute('aria-label', label(count)));
   if (announce) qsa('[data-bag-status]').forEach((el) => (el.textContent = label(count)));
 }
