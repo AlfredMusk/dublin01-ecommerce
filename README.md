@@ -25,11 +25,11 @@ npm install
 npm run dev
 ```
 
-Then open http://localhost:3000.
+Then open http://localhost:3001.
 
 | Script | Description |
 | --- | --- |
-| `npm run dev` | Tailwind watch + local server on port 3000 |
+| `npm run dev` | Tailwind watch + local server on port 3001 |
 | `npm run build` | Minified CSS build to `dist/css/main.css` |
 | `npm run preview` | Build, then serve |
 

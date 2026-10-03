@@ -11,7 +11,7 @@
     "dev": "node_modules/.bin/concurrently -k -n css,server -c gray,blue \"npm:watch:css\" \"npm:serve\"",
     "watch:css": "node_modules/.bin/tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --watch",
     "build": "node_modules/.bin/tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --minify",
-    "serve": "node_modules/.bin/serve . -l 3000",
+    "serve": "node_modules/.bin/serve . -l 3001",
     "preview": "npm run build && npm run serve"
   },
   "license": "UNLICENSED",
