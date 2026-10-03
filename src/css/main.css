@@ -2,4 +2,9 @@
 @source "../../index.html";
 @source "../../pages";
 @source "../js";
-@theme { }
+
+@import "./theme.css";
+@import "./base.css";
+@import "./typography.css";
+@import "./layout.css";
+@import "./components.css";

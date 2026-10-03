@@ -1,0 +1,313 @@
+/*
+ * DUBLIN/01 — Foundational components: buttons, links, icons, skip-link.
+ * Motion animates transform and opacity only; colours swap instantly or
+ * with a short fade so nothing triggers layout.
+ */
+
+@layer components {
+  /* ---------- Buttons ---------- */
+
+  .btn {
+    --btn-bg: transparent;
+    --btn-fg: var(--color-ink);
+    --btn-border: transparent;
+    --btn-fill: var(--color-ink);
+    --btn-fg-hover: var(--color-white);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3rem;
+    padding-inline: 1.5rem;
+    border: 1px solid var(--btn-border);
+    border-radius: 0;
+    background-color: var(--btn-bg);
+    color: var(--btn-fg);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--text-label--letter-spacing);
+    line-height: 1;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      color var(--duration-base) var(--ease-premium),
+      border-color var(--duration-base) var(--ease-premium),
+      transform var(--duration-fast) var(--ease-premium);
+  }
+
+  /* Fill wipes up from the bottom on hover. */
+  .btn::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    background-color: var(--btn-fill);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  .btn .icon {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .btn:not(:disabled, [aria-disabled="true"]):hover {
+      color: var(--btn-fg-hover);
+      border-color: var(--btn-fill);
+    }
+
+    .btn:not(:disabled, [aria-disabled="true"]):hover::before {
+      transform: scaleY(1);
+    }
+
+    .btn:not(:disabled, [aria-disabled="true"]):hover .icon-arrow {
+      transform: translateX(0.25rem);
+    }
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .btn:disabled::before,
+  .btn[aria-disabled="true"]::before {
+    display: none;
+  }
+
+  .btn-primary {
+    --btn-bg: var(--color-ink);
+    --btn-fg: var(--color-white);
+    --btn-border: var(--color-ink);
+    --btn-fill: var(--color-neutral-800);
+    --btn-fg-hover: var(--color-white);
+  }
+
+  .btn-primary:disabled,
+  .btn-primary[aria-disabled="true"] {
+    --btn-bg: var(--color-neutral-200);
+    --btn-fg: var(--color-neutral-600);
+    --btn-border: var(--color-neutral-200);
+  }
+
+  .btn-secondary {
+    --btn-border: var(--color-ink);
+  }
+
+  .btn-secondary:disabled,
+  .btn-secondary[aria-disabled="true"] {
+    --btn-fg: var(--color-neutral-400);
+    --btn-border: var(--color-neutral-200);
+  }
+
+  /* Ghost / text: no box, underline draws in from the left. */
+  .btn-ghost {
+    min-height: 2.75rem;
+    padding-inline: 0;
+    border: 0;
+    overflow: visible;
+    --btn-fg-hover: var(--color-ink);
+  }
+
+  .btn-ghost::before {
+    inset: auto 0 calc(50% - 0.95em) 0;
+    height: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  @media (hover: hover) {
+    .btn-ghost:hover::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .btn-ghost:disabled,
+  .btn-ghost[aria-disabled="true"] {
+    --btn-fg: var(--color-neutral-400);
+  }
+
+  .btn-block {
+    width: 100%;
+  }
+
+  /* ---------- Links ---------- */
+
+  /* Navigation: mono uppercase, underline draws in; aria-current keeps it. */
+  .link-nav {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  .link-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.85em);
+    height: 1px;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .link-nav:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+
+  .link-nav[aria-current="page"]::after {
+    transform: scaleX(1);
+  }
+
+  /* Editorial: inline in running text, wraps across lines. */
+  .link-editorial {
+    color: inherit;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.22em;
+    text-decoration-color: var(--color-neutral-400);
+    transition: text-decoration-color var(--duration-fast) var(--ease-premium);
+  }
+
+  .link-editorial:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* Action: underlined label with an arrow that nudges forward. */
+  .link-action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.75rem;
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  .link-action::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(50% + 0.95em);
+    height: 1px;
+    background-color: currentColor;
+    transform-origin: left;
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  .link-action .icon {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .link-action:hover::after {
+      transform: scaleX(0.35);
+    }
+
+    .link-action:hover .icon {
+      transform: translateX(0.25rem);
+    }
+  }
+
+  /* Subtle: standalone secondary link (footer, utilities), 44px target. */
+  .link-subtle {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-neutral-600);
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  .link-subtle:hover {
+    color: var(--color-ink);
+  }
+
+  /* ---------- Icons ---------- */
+
+  .icon {
+    width: var(--icon-md);
+    height: var(--icon-md);
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--icon-stroke);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .icon-sm {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+  }
+
+  .icon-lg {
+    width: var(--icon-lg);
+    height: var(--icon-lg);
+  }
+
+  /* ---------- Accessibility ---------- */
+
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: 1rem;
+    background-color: var(--color-ink);
+    color: var(--color-white);
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: var(--text-label--letter-spacing);
+    text-transform: uppercase;
+    transform: translateY(calc(-100% - 1rem));
+    transition: transform var(--duration-fast) var(--ease-premium);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  /* Dark surface: inverts text and the focus ring. */
+  .surface-ink {
+    --focus-ring: var(--color-white);
+    background-color: var(--color-ink);
+    color: var(--color-white);
+  }
+}
