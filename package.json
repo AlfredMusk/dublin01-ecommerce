@@ -1,0 +1,24 @@
+{
+  "name": "dublin01-ecommerce",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DUBLIN/01 — premium front-end e-commerce experience for a fictional Dublin-based sneakers & contemporary streetwear brand.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n css,server -c gray,blue \"npm:watch:css\" \"npm:serve\"",
+    "watch:css": "tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --watch",
+    "build": "tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --minify",
+    "serve": "serve . -l 3000",
+    "preview": "npm run build && npm run serve"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "concurrently": "^10.0.5",
+    "serve": "^14.2.6",
+    "tailwindcss": "^4.3.3"
+  }
+}
