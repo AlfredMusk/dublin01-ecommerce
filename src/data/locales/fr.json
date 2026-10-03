@@ -1,1 +1,14 @@
-{}
+{
+  "announcement": {
+    "delivery": "Livraison offerte en Irlande dès 100 €",
+    "returns": "Retours sous 30 jours"
+  },
+  "nav": {
+    "menu": "Menu",
+    "new": "Nouveautés",
+    "sneakers": "Sneakers",
+    "clothing": "Vêtements",
+    "brands": "Marques",
+    "search": "Rechercher"
+  }
+}

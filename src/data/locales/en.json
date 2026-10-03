@@ -1,1 +1,14 @@
-{}
+{
+  "announcement": {
+    "delivery": "Free delivery in Ireland over €100",
+    "returns": "30-day returns"
+  },
+  "nav": {
+    "menu": "Menu",
+    "new": "New",
+    "sneakers": "Sneakers",
+    "clothing": "Clothing",
+    "brands": "Brands",
+    "search": "Search"
+  }
+}

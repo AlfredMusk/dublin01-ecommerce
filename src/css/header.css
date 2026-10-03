@@ -1,0 +1,351 @@
+/*
+ * DUBLIN/01 — Global header: announcement bar, main navigation,
+ * mega menu, mobile menu and search overlay.
+ * Behaviour lives in src/js/modules/{header,menu,search}.js.
+ */
+
+:root {
+  --announcement-h: 2.25rem; /* 36px */
+  --nav-h: 3.75rem; /* 60px */
+}
+
+@media (width >= 64rem) {
+  :root {
+    --nav-h: 4.5rem; /* 72px */
+  }
+}
+
+@layer components {
+  /* ---------- Shell ---------- */
+
+  /* Sticky with a negative top: the announcement bar scrolls away,
+     the navigation bar stays. No height animation, so no layout shift. */
+  .site-header {
+    position: sticky;
+    top: calc(var(--announcement-h) * -1);
+    z-index: 40;
+    background-color: var(--color-white);
+  }
+
+  .announcement {
+    height: var(--announcement-h);
+    background-color: var(--color-ink);
+    color: var(--color-white);
+  }
+
+  .nav-bar {
+    position: relative;
+    background-color: var(--color-white);
+  }
+
+  /* Hairline appears once the page scrolls or a mega menu opens. */
+  .nav-bar::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background-color: var(--color-neutral-200);
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-premium);
+  }
+
+  .site-header[data-scrolled] .nav-bar::after,
+  .site-header[data-mega-open] .nav-bar::after {
+    opacity: 1;
+  }
+
+  .nav-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: var(--grid-gap);
+    height: var(--nav-h);
+  }
+
+  /* ---------- Wordmark ---------- */
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-family: var(--font-sans);
+    font-size: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .wordmark-edition {
+    margin-left: 0.02em;
+    font-family: var(--font-mono);
+    font-size: 0.72em;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-neutral-600);
+  }
+
+  /* ---------- Actions ---------- */
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-ink);
+    transition: color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .icon-btn:hover {
+      color: var(--color-neutral-600);
+    }
+  }
+
+  .bag-count {
+    min-width: 1ch;
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+
+  /* ---------- Desktop navigation & mega menu ---------- */
+
+  /* Wider hit area for short labels such as "New", without moving the layout. */
+  .nav-bar .link-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0 -0.75rem;
+  }
+
+  .link-nav[aria-expanded="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .nav-chevron {
+    width: 0.625rem;
+    height: 0.625rem;
+    margin-left: 0.375rem;
+    stroke-width: 2;
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  [aria-expanded="true"] > .nav-chevron {
+    transform: rotate(180deg);
+  }
+
+  .mega-panel {
+    position: absolute;
+    inset: 100% 0 auto 0;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-neutral-200);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.375rem);
+    transition:
+      opacity var(--duration-fast) var(--ease-premium),
+      transform var(--duration-base) var(--ease-premium),
+      visibility 0s linear var(--duration-base);
+  }
+
+  .mega-panel[data-open] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .link-menu {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    color: var(--color-ink);
+    font-size: var(--text-body);
+    letter-spacing: var(--text-body--letter-spacing);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: transparent;
+    transition: text-decoration-color var(--duration-fast) var(--ease-premium);
+  }
+
+  .link-menu:hover,
+  .link-menu:focus-visible {
+    text-decoration-color: currentColor;
+  }
+
+  /* ---------- Dialogs (mobile menu, search) ---------- */
+
+  .dialog {
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    opacity: 0;
+    transition:
+      opacity var(--duration-base) var(--ease-premium),
+      transform var(--duration-base) var(--ease-premium),
+      overlay var(--duration-base) allow-discrete,
+      display var(--duration-base) allow-discrete;
+  }
+
+  .dialog[open] {
+    opacity: 1;
+    transform: none;
+  }
+
+  @starting-style {
+    .dialog[open] {
+      opacity: 0;
+    }
+  }
+
+  .dialog::backdrop {
+    background-color: rgb(10 10 10 / 0);
+    transition:
+      background-color var(--duration-base) var(--ease-premium),
+      overlay var(--duration-base) allow-discrete,
+      display var(--duration-base) allow-discrete;
+  }
+
+  /* Mobile menu: full screen, content rises slightly. */
+  .menu-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  .menu-dialog .menu-body {
+    transform: translateY(0.75rem);
+    transition: transform var(--duration-slow) var(--ease-premium);
+  }
+
+  .menu-dialog[open] .menu-body {
+    transform: none;
+  }
+
+  @starting-style {
+    .menu-dialog[open] .menu-body {
+      transform: translateY(0.75rem);
+    }
+  }
+
+  .menu-entry {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+    padding-block: 0.5rem;
+    font-size: var(--text-h1);
+    font-weight: 600;
+    letter-spacing: var(--text-h1--letter-spacing);
+    line-height: 1;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .menu-entry-mark {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  details[open] > summary .menu-entry-mark {
+    transform: rotate(45deg);
+  }
+
+  .menu-group > summary {
+    list-style: none;
+  }
+
+  .menu-group > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Search: panel drops from the top over a light scrim. */
+  .search-dialog {
+    position: fixed;
+    inset: 0 0 auto 0;
+    width: 100%;
+    transform: translateY(-0.75rem);
+  }
+
+  @starting-style {
+    .search-dialog[open] {
+      transform: translateY(-0.75rem);
+    }
+  }
+
+  .search-dialog[open]::backdrop {
+    background-color: rgb(10 10 10 / 0.24);
+  }
+
+  @starting-style {
+    .search-dialog[open]::backdrop {
+      background-color: rgb(10 10 10 / 0);
+    }
+  }
+
+  .search-input {
+    width: 100%;
+    min-height: 3.5rem;
+    border: 0;
+    border-bottom: 1px solid var(--color-ink);
+    border-radius: 0;
+    background: transparent;
+    font-size: var(--text-h2);
+    font-weight: 500;
+    letter-spacing: var(--text-h2--letter-spacing);
+    line-height: 1.2;
+    color: var(--color-ink);
+  }
+
+  .search-input::placeholder {
+    color: var(--color-neutral-600);
+    font-weight: 400;
+    opacity: 1;
+  }
+
+  /* The thicker baseline is the focus indicator for the field. */
+  .search-input:focus-visible {
+    outline: none;
+    box-shadow: inset 0 -1px 0 var(--color-ink);
+  }
+
+  .search-input::-webkit-search-cancel-button {
+    display: none;
+  }
+}
+
+/* Desktop search trigger reads as a quiet field (utility so lg: can apply it). */
+@utility search-trigger-field {
+  justify-content: flex-start;
+  gap: 0.625rem;
+  width: 11rem;
+  padding-inline: 0;
+  border-bottom: 1px solid var(--color-neutral-200);
+  color: var(--color-neutral-600);
+  transition:
+    color var(--duration-fast) var(--ease-premium),
+    border-color var(--duration-fast) var(--ease-premium);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-ink);
+      border-color: var(--color-ink);
+    }
+  }
+}

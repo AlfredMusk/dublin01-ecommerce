@@ -4,7 +4,7 @@ Premium front-end e-commerce experience for **DUBLIN/01**, a fictional Dublin-ba
 
 ## Status
 
-🚧 **In Development** — Phase 02: design system. `index.html` is currently a temporary design system playground, not the Home page.
+🚧 **In Development** — Phase 03: global header & navigation. The Home content comes next.
 
 ## Stack
 
@@ -37,8 +37,9 @@ Then open http://localhost:3001.
 
 ```
 dublin01-ecommerce/
-├── index.html
-├── pages/                  # Future pages (shop, product, cart…)
+├── index.html              # Home (header in place, content next)
+├── pages/
+│   └── design-system.html  # Internal design system reference (noindex)
 ├── src/
 │   ├── css/
 │   │   ├── main.css        # Tailwind entry + imports
@@ -46,12 +47,13 @@ dublin01-ecommerce/
 │   │   ├── base.css        # Fonts, base elements, focus, reduced motion
 │   │   ├── typography.css  # type-* roles
 │   │   ├── layout.css      # container-site, grid-site
-│   │   └── components.css  # Buttons, links, icons, skip-link
+│   │   ├── components.css  # Buttons, links, icons, skip-link
+│   │   └── header.css      # Header, mega menu, mobile menu, search
 │   ├── js/
 │   │   ├── main.js         # Entry point
-│   │   ├── playground.js   # Temporary playground script
-│   │   ├── modules/        # cart, wishlist, search, filters, i18n
-│   │   └── utils/          # storage, format, dom
+│   │   ├── playground.js   # Design system page demo
+│   │   ├── modules/        # header, menu, search, cart, wishlist, filters, i18n
+│   │   └── utils/          # dom, dialog, storage, format
 │   └── data/
 │       ├── products.json
 │       └── locales/        # en.json, fr.json
@@ -68,6 +70,23 @@ dublin01-ecommerce/
 - **Controls** — square buttons (primary, secondary, ghost) and four link styles.
 - **Motion** — 180 / 300 / 520ms, one easing curve, transform and opacity only, `prefers-reduced-motion` respected.
 
+## URL architecture
+
+Pages are added progressively; the header already links to their final URLs (404 until they exist).
+
+| Destination | URL |
+| --- | --- |
+| New | `/pages/new.html` |
+| Sneakers | `/pages/sneakers.html` — filters as query params: `?gender=men`, `?style=running`, `?brand=nike`, `?collection=limited` |
+| Clothing | `/pages/clothing.html` — `?type=jackets`, `?gender=women`, `?collection=new` |
+| Brands | `/pages/brands.html` |
+| Search | `/pages/search.html?q=` |
+| Account | `/pages/account.html` |
+| Wishlist | `/pages/wishlist.html` |
+| Bag | `/pages/bag.html` |
+
+Header behaviour is attached through `data-*` hooks (`data-header`, `data-mega-trigger`, `data-menu`, `data-search`, `data-bag-count`), so the same markup works on every page.
+
 ## Portfolio goal
 
 A portfolio project demonstrating advanced UI/UX, responsive design and vanilla JavaScript architecture, built to evolve into a full-stack application and later an AI-powered commerce experience.
@@ -76,8 +95,9 @@ A portfolio project demonstrating advanced UI/UX, responsive design and vanilla 
 
 1. Phase 01 — Project setup ✅
 2. Phase 02 — Design system ✅
-3. Phase 03 — Layout (navbar, hero, footer)
-4. Phase 04 — Catalogue, filters & search
-5. Phase 05 — Product page, cart & wishlist
-6. Phase 06 — EN/FR i18n, accessibility & performance
-7. Later — Full-stack backend, then AI Commerce
+3. Phase 03 — Header & navigation ✅
+4. Phase 04 — Home (hero, editorial sections, footer)
+5. Phase 05 — Catalogue, filters & search
+6. Phase 06 — Product page, cart & wishlist
+7. Phase 07 — EN/FR i18n, accessibility & performance
+8. Later — Full-stack backend, then AI Commerce
