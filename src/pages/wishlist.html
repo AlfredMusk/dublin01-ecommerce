@@ -1,0 +1,19 @@
+<!--
+title: Wishlist — DUBLIN/01
+description: Products you saved at DUBLIN/01. Your wishlist is kept in this browser.
+script: wishlist
+robots: noindex
+-->
+<section class="container-site pb-section-sm pt-10 lg:pt-14">
+  <div class="flex items-baseline justify-between gap-4">
+    <h1 class="type-h1">Wishlist</h1>
+    <p class="type-body-sm text-neutral-600" data-count></p>
+  </div>
+  <p class="type-body-sm mt-3 text-neutral-600">Saved in this browser. Accounts that sync across devices are coming later.</p>
+  <div class="product-grid product-grid-4 mt-10" data-results></div>
+  <div class="mt-10 border border-neutral-200 px-6 py-16 text-center" data-empty hidden>
+    <p class="type-h3">Nothing saved yet.</p>
+    <p class="type-body mt-3 text-neutral-600">Tap the heart on any product to keep it here.</p>
+    <a class="btn btn-primary mt-8" href="{{base}}pages/new.html">Shop new arrivals</a>
+  </div>
+</section>

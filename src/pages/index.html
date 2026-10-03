@@ -1,0 +1,183 @@
+<!--
+title: DUBLIN/01 — Sneakers & Contemporary Streetwear, Dublin
+description: Independent sneaker and streetwear shop in Dublin. Nike, adidas, New Balance, ASICS, Salomon and the DUBLIN/01 label. Free delivery in Ireland over €100, 30-day returns.
+script: home
+-->
+<!-- Hero -->
+<section class="hero" aria-labelledby="hero-title">
+  <picture>
+    <source media="(min-width: 48rem)" srcset="{{base}}public/images/editorial/hero-wide.webp" width="1920" height="1080" />
+    <img class="hero-media" src="{{base}}public/images/editorial/hero-tall.webp" width="1080" height="1350" fetchpriority="high"
+      alt="A white sneaker steps onto a wet manhole cover at night, city lights reflected in the rain." />
+  </picture>
+  <div class="hero-content">
+    <div class="container-site">
+      <p class="type-label">Autumn / Winter 26 — Dublin</p>
+      <h1 class="type-display-xl mt-5 max-w-[11ch]" id="hero-title">Built for wet pavements.</h1>
+      <p class="type-body-lg mt-6 max-w-[38ch] text-neutral-200">New season sneakers and outerwear, picked for a city that knows rain.</p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <a class="btn btn-inverse" href="{{base}}pages/new.html">Shop new arrivals</a>
+        <a class="link-action text-white" href="{{base}}pages/sneakers.html">Shop sneakers
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New arrivals -->
+<section class="container-site py-section" aria-labelledby="new-title">
+  <div class="section-head">
+    <div>
+      <p class="type-label text-neutral-600">Just in</p>
+      <h2 class="type-h1 mt-3" id="new-title">New arrivals</h2>
+    </div>
+    <a class="link-action" href="{{base}}pages/new.html">Shop all new
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+  </div>
+  <div class="product-rail mt-10" data-products="new" aria-live="polite"></div>
+</section>
+
+<!-- Campaign: rain -->
+<section class="container-site pb-section" aria-labelledby="rain-title">
+  <div class="grid-site items-center gap-y-10">
+    <figure class="col-span-full md:col-span-4 lg:col-span-7">
+      <img class="aspect-[4/5] w-full bg-bone object-cover" src="{{base}}public/images/editorial/dublin-rain-tall.webp" width="960" height="1200" loading="lazy"
+        alt="People walking along a rain-soaked Dublin street lined with red-brick buildings." />
+    </figure>
+    <div class="col-span-full md:col-span-4 lg:col-span-4 lg:col-start-9">
+      <p class="type-label text-neutral-600">Field notes · Dublin 2</p>
+      <h2 class="type-display mt-5" id="rain-title">Rain is the dress code.</h2>
+      <p class="type-body-lg mt-6 text-neutral-600">Shells that pack into a pocket, fleece for the walk home and soles that grip wet granite. The AW26 outerwear edit.</p>
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+        <a class="link-action" href="{{base}}pages/clothing.html?type=jackets">Shop jackets
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        <a class="link-action" href="{{base}}pages/product.html?slug=rain-shell-black">The Rain Shell
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="border-t border-neutral-200 bg-paper" aria-labelledby="categories-title">
+  <div class="container-site py-section">
+    <div class="section-head">
+      <h2 class="type-h1" id="categories-title">Shop by category</h2>
+    </div>
+    <ul class="mt-10 grid grid-cols-2 gap-x-gap gap-y-10 lg:grid-cols-4" role="list">
+      <li>
+        <a class="category-tile" href="{{base}}pages/sneakers.html">
+          <img src="{{base}}public/images/editorial/cat-sneakers.webp" width="800" height="1000" loading="lazy" alt="" />
+          <span class="category-tile-label">Sneakers <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="category-tile" href="{{base}}pages/sneakers.html?style=running,trail">
+          <img src="{{base}}public/images/editorial/cat-running.webp" width="800" height="1000" loading="lazy" alt="" />
+          <span class="category-tile-label">Running & trail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="category-tile" href="{{base}}pages/clothing.html">
+          <img src="{{base}}public/images/editorial/cat-clothing.webp" width="800" height="1000" loading="lazy" alt="" />
+          <span class="category-tile-label">Clothing <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </a>
+      </li>
+      <li>
+        <a class="category-tile" href="{{base}}pages/clothing.html?type=accessories">
+          <img src="{{base}}public/images/editorial/cat-accessories.webp" width="800" height="1000" loading="lazy" alt="" />
+          <span class="category-tile-label">Accessories <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Picked by the shop -->
+<section class="container-site py-section" aria-labelledby="picks-title">
+  <div class="section-head">
+    <div>
+      <p class="type-label text-neutral-600">Picked by the shop</p>
+      <h2 class="type-h1 mt-3" id="picks-title">The ones we wear</h2>
+    </div>
+    <a class="link-action" href="{{base}}pages/sneakers.html">All sneakers
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+  </div>
+  <div class="product-grid product-grid-4 mt-10" data-products="featured"></div>
+</section>
+
+<!-- Brands -->
+<section class="container-site pb-section" aria-labelledby="brands-title">
+  <div class="grid-site gap-y-8">
+    <div class="col-span-full lg:col-span-4">
+      <p class="type-label text-neutral-600">Brands</p>
+      <h2 class="type-h1 mt-3" id="brands-title">Six names, chosen carefully.</h2>
+      <a class="link-action mt-8" href="{{base}}pages/brands.html">All brands
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+    </div>
+    <ul class="brand-list col-span-full lg:col-span-7 lg:col-start-6" role="list">
+      <li><a href="{{base}}pages/sneakers.html?brand=nike"><span>Nike</span><span class="brand-count" data-brand-count="nike"></span></a></li>
+      <li><a href="{{base}}pages/sneakers.html?brand=adidas"><span>adidas</span><span class="brand-count" data-brand-count="adidas"></span></a></li>
+      <li><a href="{{base}}pages/sneakers.html?brand=new-balance"><span>New Balance</span><span class="brand-count" data-brand-count="new-balance"></span></a></li>
+      <li><a href="{{base}}pages/sneakers.html?brand=asics"><span>ASICS</span><span class="brand-count" data-brand-count="asics"></span></a></li>
+      <li><a href="{{base}}pages/sneakers.html?brand=salomon"><span>Salomon</span><span class="brand-count" data-brand-count="salomon"></span></a></li>
+      <li><a href="{{base}}pages/clothing.html"><span>DUBLIN/01</span><span class="brand-count" data-brand-count="dublin-01"></span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- Campaign: after dark -->
+<section class="surface-ink" aria-labelledby="night-title">
+  <div class="container-site grid-site items-center gap-y-10 py-section">
+    <div class="col-span-full md:col-span-4 lg:col-span-5">
+      <p class="type-label text-neutral-400">Running · After dark</p>
+      <h2 class="type-display mt-5" id="night-title">After the last tram.</h2>
+      <p class="type-body-lg mt-6 text-neutral-200">Cushioned road shoes and trail soles that hold on wet tracks. Built for 7am miles and the 11pm walk home.</p>
+      <a class="link-action mt-10 text-white" href="{{base}}pages/sneakers.html?style=running,trail">Shop running & trail
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+    </div>
+    <figure class="col-span-full md:col-span-4 lg:col-span-6 lg:col-start-7">
+      <img class="aspect-[4/5] w-full bg-neutral-800 object-cover" src="{{base}}public/images/editorial/dublin-tram-tall.webp" width="960" height="1200" loading="lazy"
+        alt="A tram passes along wet tracks at night, its lights reflected on the street." />
+    </figure>
+  </div>
+</section>
+
+<!-- Recently viewed (only when there is history) -->
+<section class="container-site pt-section" aria-labelledby="recent-title" data-optional hidden>
+  <div class="section-head">
+    <h2 class="type-h2" id="recent-title">Recently viewed</h2>
+  </div>
+  <div class="product-grid product-grid-4 mt-8" data-products="recent"></div>
+</section>
+
+<!-- Service -->
+<section class="container-site py-section" aria-labelledby="service-title">
+  <h2 class="sr-only" id="service-title">Shopping with DUBLIN/01</h2>
+  <ul class="service-grid" role="list">
+    <li>
+      <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" /><circle cx="7" cy="17.5" r="1.5" /><circle cx="17" cy="17.5" r="1.5" /></svg>
+      <h3 class="type-label mt-5">Delivery across Ireland</h3>
+      <p class="type-body-sm mt-2 text-neutral-600">Free over €100, otherwise €4.95. Standard 2–4 working days, express next working day.</p>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/delivery.html">Delivery details</a>
+    </li>
+    <li>
+      <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12a4 4 0 0 1 0 8h-3" /><path d="m8 5-4 4 4 4" /></svg>
+      <h3 class="type-label mt-5">30-day returns</h3>
+      <p class="type-body-sm mt-2 text-neutral-600">Free returns from anywhere in Ireland for unworn items within 30 days of delivery.</p>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/returns.html">Returns policy</a>
+    </li>
+    <li>
+      <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
+      <h3 class="type-label mt-5">Secure checkout</h3>
+      <p class="type-body-sm mt-2 text-neutral-600">Card payments are handled by our payment provider. We never see or store your card details.</p>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/faq.html">Payment FAQ</a>
+    </li>
+    <li>
+      <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" /></svg>
+      <h3 class="type-label mt-5">Real people in Dublin</h3>
+      <p class="type-body-sm mt-2 text-neutral-600">Questions about sizing or an order? We reply within one working day, Monday to Friday.</p>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/contact.html">Contact us</a>
+    </li>
+  </ul>
+</section>

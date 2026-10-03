@@ -1,0 +1,19 @@
+<!--
+title: Search — DUBLIN/01
+description: Search DUBLIN/01 for sneakers, clothing and accessories by name, brand or style.
+script: search
+robots: noindex
+-->
+<section class="container-site pb-section-sm pt-10 lg:pt-14">
+  <form role="search" action="search.html" method="get" class="flex items-center gap-4 border-b border-ink">
+    <label class="sr-only" for="search-page-input">Search DUBLIN/01</label>
+    <svg class="icon icon-lg shrink-0" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
+    <input class="search-input border-0" id="search-page-input" type="search" name="q" placeholder="Search DUBLIN/01" autocomplete="off" enterkeyhint="search" />
+    <button class="btn btn-primary shrink-0" type="submit">Search</button>
+  </form>
+  <div class="mt-10 flex items-baseline justify-between gap-4">
+    <h1 class="type-h2" data-search-heading>Search</h1>
+    <p class="type-body-sm text-neutral-600" data-count aria-live="polite"></p>
+  </div>
+  <div class="product-grid product-grid-4 mt-8" data-results></div>
+</section>

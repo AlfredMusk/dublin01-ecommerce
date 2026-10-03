@@ -1,0 +1,110 @@
+<!--
+title: Checkout — DUBLIN/01
+description: Secure checkout for DUBLIN/01 orders delivered in Ireland.
+script: checkout
+robots: noindex
+-->
+<section class="container-site pb-section-sm pt-10 lg:pt-14">
+  <nav aria-label="Breadcrumb" class="breadcrumb"><ol role="list"><li><a href="{{base}}pages/bag.html">Bag</a></li><li><span aria-current="page">Checkout</span></li></ol></nav>
+  <h1 class="type-h1 mt-6">Checkout</h1>
+  <div class="mt-10 grid-site gap-y-12" data-checkout-layout>
+    <form class="col-span-full lg:col-span-7" novalidate data-checkout>
+      <fieldset class="checkout-step" data-step>
+        <legend class="checkout-step-title"><span>1</span> Contact</legend>
+        <div class="form-grid">
+          <div class="field col-span-full"><label class="field-label" for="email">Email</label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" required data-error="Enter your email so we can send your order updates." /></div>
+          <div class="field col-span-full"><label class="field-label" for="phone">Phone <span class="field-hint">for the courier</span></label>
+            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required data-error="Enter a phone number for the courier." /></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="checkout-step" data-step>
+        <legend class="checkout-step-title"><span>2</span> Delivery address</legend>
+        <div class="form-grid">
+          <div class="field"><label class="field-label" for="first-name">First name</label>
+            <input class="input" id="first-name" name="firstName" autocomplete="given-name" required data-error="Enter your first name." /></div>
+          <div class="field"><label class="field-label" for="last-name">Last name</label>
+            <input class="input" id="last-name" name="lastName" autocomplete="family-name" required data-error="Enter your last name." /></div>
+          <div class="field col-span-full"><label class="field-label" for="address1">Address</label>
+            <input class="input" id="address1" name="address1" autocomplete="address-line1" required data-error="Enter your street address." /></div>
+          <div class="field col-span-full"><label class="field-label" for="address2">Apartment, unit or building <span class="field-hint">optional</span></label>
+            <input class="input" id="address2" name="address2" autocomplete="address-line2" /></div>
+          <div class="field"><label class="field-label" for="city">Town or city</label>
+            <input class="input" id="city" name="city" autocomplete="address-level2" required data-error="Enter your town or city." /></div>
+          <div class="field"><label class="field-label" for="county">County</label>
+            <select class="select select-block" id="county" name="county" autocomplete="address-level1" required data-error="Choose your county.">
+              <option value="">Choose a county</option>
+              <option>Carlow</option>
+              <option>Cavan</option>
+              <option>Clare</option>
+              <option>Cork</option>
+              <option>Donegal</option>
+              <option>Dublin</option>
+              <option>Galway</option>
+              <option>Kerry</option>
+              <option>Kildare</option>
+              <option>Kilkenny</option>
+              <option>Laois</option>
+              <option>Leitrim</option>
+              <option>Limerick</option>
+              <option>Longford</option>
+              <option>Louth</option>
+              <option>Mayo</option>
+              <option>Meath</option>
+              <option>Monaghan</option>
+              <option>Offaly</option>
+              <option>Roscommon</option>
+              <option>Sligo</option>
+              <option>Tipperary</option>
+              <option>Waterford</option>
+              <option>Westmeath</option>
+              <option>Wexford</option>
+              <option>Wicklow</option>
+            </select></div>
+          <div class="field"><label class="field-label" for="eircode">Eircode</label>
+            <input class="input uppercase" id="eircode" name="eircode" autocomplete="postal-code" required maxlength="8" data-error="Enter your Eircode, like D02 X285." /></div>
+          <div class="field"><label class="field-label" for="country">Country</label>
+            <input class="input bg-paper" id="country" name="country" value="Ireland" readonly aria-describedby="country-note" />
+            <p class="field-hint mt-2" id="country-note">We currently deliver within Ireland only.</p></div>
+        </div>
+      </fieldset>
+
+      <fieldset class="checkout-step" data-step>
+        <legend class="checkout-step-title"><span>3</span> Shipping</legend>
+        <div class="space-y-3">
+          <label class="radio-card" for="ship-standard"><input type="radio" id="ship-standard" name="shipping" value="standard" checked />
+            <span class="flex-1"><span class="block font-medium">Standard</span><span class="type-body-sm block text-neutral-600">2–4 working days, tracked</span></span>
+            <span class="tabular-nums" data-standard-price>€4.95</span></label>
+          <label class="radio-card" for="ship-express"><input type="radio" id="ship-express" name="shipping" value="express" />
+            <span class="flex-1"><span class="block font-medium">Express</span><span class="type-body-sm block text-neutral-600">Next working day when ordered before 2pm</span></span>
+            <span class="tabular-nums">€9.95</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="checkout-step" data-step>
+        <legend class="checkout-step-title"><span>4</span> Payment</legend>
+        <div class="border border-neutral-200 bg-paper p-6" data-payment-mount>
+          <p class="type-body font-medium">Card payment isn’t connected in this preview.</p>
+          <p class="type-body-sm mt-2 text-neutral-600">In the live shop, a certified payment provider will collect card details here. Nothing you enter on this page is sent anywhere or charged.</p>
+        </div>
+        <div class="field mt-6"><label class="check" for="terms"><input type="checkbox" id="terms" name="terms" required data-error="Accept the terms to continue." />
+          <span>I accept the <a class="link-editorial" href="{{base}}pages/terms.html">terms of sale</a> and the <a class="link-editorial" href="{{base}}pages/returns.html">returns policy</a>.</span></label></div>
+      </fieldset>
+
+      <button class="btn btn-primary btn-block mt-8" type="submit">Review and continue to payment</button>
+      <div class="notice mt-6" tabindex="-1" role="status" data-payment-status hidden>
+        <p class="type-body font-medium">Your details are complete.</p>
+        <p class="type-body-sm mt-2">This V1 stops before payment: no order has been placed and nothing has been charged. Your bag is still saved.</p>
+        <a class="link-action mt-4" href="{{base}}pages/bag.html">Back to bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+      </div>
+    </form>
+
+    <aside class="order-first col-span-full lg:order-none lg:col-span-4 lg:col-start-9" aria-label="Order summary">
+      <div class="summary lg:sticky lg:top-[calc(var(--nav-h)+2rem)]">
+        <h2 class="type-label">Order summary</h2>
+        <div class="mt-6" data-summary></div>
+      </div>
+    </aside>
+  </div>
+</section>

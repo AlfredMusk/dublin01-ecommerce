@@ -1,0 +1,75 @@
+<!--
+title: Sign in — DUBLIN/01
+description: Sign in to your DUBLIN/01 account or create one.
+script: account
+robots: noindex
+-->
+<section class="container-site pb-section pt-10 lg:pt-14">
+  <div class="grid-site gap-y-12">
+    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-1">
+      <div data-account-panel="signin">
+        <h1 class="type-h1">Sign in</h1>
+        <form class="mt-10 space-y-6" novalidate data-account-form="signin">
+          <div class="field"><label class="field-label" for="signin-email">Email</label>
+            <input class="input" id="signin-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+          <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="signin-password">Password</label>
+            <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="signin-password" aria-pressed="false">Show</button></div>
+            <input class="input" id="signin-password" name="password" type="password" autocomplete="current-password" required data-error="Enter your password." /></div>
+          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
+            <p class="type-body-sm">Accounts aren’t connected in this preview, so we couldn’t check these details. No data was sent or stored.</p>
+          </div>
+          <p class="type-body-sm"><a class="link-editorial" href="#reset" data-show-panel="reset">Forgotten your password?</a></p>
+        </form>
+      </div>
+
+      <div data-account-panel="reset" hidden>
+        <h2 class="type-h1" tabindex="-1">Reset password</h2>
+        <p class="type-body mt-4 text-neutral-600">Enter your email and we’ll send a reset link.</p>
+        <form class="mt-10 space-y-6" novalidate data-account-form="reset">
+          <div class="field"><label class="field-label" for="reset-email">Email</label>
+            <input class="input" id="reset-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+          <button class="btn btn-primary btn-block" type="submit">Send reset link</button>
+          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
+            <p class="type-body-sm">Password reset isn’t available in this preview. No email was sent.</p>
+          </div>
+          <p class="type-body-sm"><a class="link-editorial" href="#signin" data-show-panel="signin">Back to sign in</a></p>
+        </form>
+      </div>
+
+      <div data-account-panel="register" hidden>
+        <h2 class="type-h1" tabindex="-1">Create account</h2>
+        <form class="mt-10 space-y-6" novalidate data-account-form="register">
+          <div class="form-grid">
+            <div class="field"><label class="field-label" for="reg-first">First name</label>
+              <input class="input" id="reg-first" name="firstName" autocomplete="given-name" required data-error="Enter your first name." /></div>
+            <div class="field"><label class="field-label" for="reg-last">Last name</label>
+              <input class="input" id="reg-last" name="lastName" autocomplete="family-name" required data-error="Enter your last name." /></div>
+          </div>
+          <div class="field"><label class="field-label" for="reg-email">Email</label>
+            <input class="input" id="reg-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+          <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="reg-password">Password <span class="field-hint">at least 8 characters</span></label>
+            <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="reg-password" aria-pressed="false">Show</button></div>
+            <input class="input" id="reg-password" name="password" type="password" autocomplete="new-password" required data-error="Choose a password." /></div>
+          <button class="btn btn-primary btn-block" type="submit">Create account</button>
+          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
+            <p class="type-body-sm">Account creation isn’t connected in this preview. No account was created and nothing was stored.</p>
+          </div>
+          <p class="type-body-sm"><a class="link-editorial" href="#signin" data-show-panel="signin">I already have an account</a></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-8">
+      <div class="summary">
+        <h2 class="type-h3">New to DUBLIN/01?</h2>
+        <ul class="type-body mt-6 space-y-3 text-neutral-600" role="list">
+          <li>Track orders and start returns online</li>
+          <li>Save addresses for faster checkout</li>
+          <li>Keep your wishlist on every device</li>
+        </ul>
+        <button class="btn btn-secondary btn-block mt-8" type="button" data-show-panel="register">Create account</button>
+      </div>
+    </div>
+  </div>
+</section>
