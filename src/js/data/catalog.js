@@ -22,6 +22,8 @@ export const getBySlug = async (slug) => (await loadProducts()).find((p) => p.sl
 
 export const isOnSale = (p) => Boolean(p.compareAtPrice && p.compareAtPrice > p.price);
 export const isSoldOut = (p) => p.stock === 'out_of_stock' || p.availableSizes.length === 0;
+export const hasSizes = (p) => p.sizes.length > 1;
+export const sizeLabel = (p, size) => (p.sizeSystem === 'EU' ? `EU ${size}` : size);
 
 export const BRAND_ORDER = ['Nike', 'adidas', 'New Balance', 'ASICS', 'Salomon', 'DUBLIN/01'];
 export const brandSlug = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');

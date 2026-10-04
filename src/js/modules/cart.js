@@ -40,11 +40,11 @@ export function setQuantity(slug, size, qty) {
 
 export const removeFromCart = (slug, size) => setQuantity(slug, size, 0);
 
-/** Joins stored lines with catalogue data; drops lines whose product no longer exists. */
+/** Joins stored lines with catalogue data; drops lines whose product or size no longer exists. */
 export function cartDetails(products) {
   const lines = getCart()
     .map((line) => ({ ...line, product: products.find((p) => p.slug === line.slug) }))
-    .filter((line) => line.product);
+    .filter((line) => line.product?.sizes.includes(line.size));
   const subtotal = lines.reduce((sum, l) => sum + l.product.price * l.qty, 0);
   const count = lines.reduce((sum, l) => sum + l.qty, 0);
   const delivery = subtotal === 0 || subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : STANDARD_DELIVERY;

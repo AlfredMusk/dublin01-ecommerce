@@ -14,7 +14,7 @@ const byNewest = (a, b) => b.createdAt.localeCompare(a.createdAt);
 
 async function init() {
   const rails = qsa('[data-products]');
-  rails.forEach((el) => (el.innerHTML = skeletonCards(4)));
+  rails.forEach((el) => (el.innerHTML = skeletonCards(el.dataset.products === 'new' ? 8 : 4)));
   const products = await loadProducts();
 
   const sets = {
@@ -25,7 +25,7 @@ async function init() {
 
   rails.forEach((el) => {
     const list = sets[el.dataset.products] ?? [];
-    el.innerHTML = list.map((p) => productCard(p)).join('');
+    el.innerHTML = list.map((p) => productCard(p, { quickAdd: el.hasAttribute('data-quick-add') })).join('');
     const section = el.closest('[data-optional]');
     if (section) section.hidden = list.length === 0;
   });

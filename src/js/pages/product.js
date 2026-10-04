@@ -57,10 +57,10 @@ function sizesHtml(p) {
 }
 
 function sizeGuideHtml(p) {
-  if (p.sizeSystem === 'UK') {
-    const rows = [['4', '37', '5', '22.5'], ['5', '38', '6', '23.5'], ['6', '39', '7', '24.5'], ['7', '40.5', '8', '25.5'], ['8', '42', '9', '26.5'], ['9', '43', '10', '27.5'], ['10', '44.5', '11', '28.5'], ['11', '46', '12', '29.5'], ['12', '47', '13', '30.5']];
+  if (p.sizeSystem === 'EU') {
+    const rows = [['37', '4', '5', '22.5'], ['38', '5', '6', '23.5'], ['39', '6', '7', '24.5'], ['40.5', '7', '8', '25.5'], ['42', '8', '9', '26.5'], ['43', '9', '10', '27.5'], ['44.5', '10', '11', '28.5'], ['46', '11', '12', '29.5'], ['47', '12', '13', '30.5']];
     return `<p class="type-body-sm text-neutral-600">Footwear, unisex. Measure your foot heel to toe and pick the closest length.</p>
-      <table class="size-table mt-6"><thead><tr><th scope="col">UK</th><th scope="col">EU</th><th scope="col">US (M)</th><th scope="col">Foot (cm)</th></tr></thead>
+      <table class="size-table mt-6"><thead><tr><th scope="col">EU</th><th scope="col">UK</th><th scope="col">US (M)</th><th scope="col">Foot (cm)</th></tr></thead>
       <tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
   }
   if (p.sizeSystem === 'Waist') {
@@ -123,7 +123,7 @@ async function init() {
         <form class="mt-8" novalidate data-add-form>
           <fieldset ${soldOut ? 'disabled' : ''}>
             <div class="flex items-baseline justify-between">
-              <legend class="type-label">${needsSize ? `Size${p.sizeSystem === 'UK' ? ' (UK)' : ''}` : 'Size'}</legend>
+              <legend class="type-label">${needsSize ? `Size${p.sizeSystem === 'EU' ? ' (EU)' : ''}` : 'Size'}</legend>
               ${needsSize ? '<button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-size-guide-open aria-controls="size-guide">Size guide</button>' : ''}
             </div>
             ${sizesHtml(p)}

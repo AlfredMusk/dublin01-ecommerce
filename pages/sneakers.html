@@ -353,6 +353,19 @@
   </div>
 </dialog>
 
+<!-- ============ QUICK ADD (size picker opened from a product card on touch screens) ============ -->
+<dialog class="dialog drawer-dialog sheet-dialog" id="quick-add" aria-labelledby="quick-add-title" data-quick-add-dialog>
+  <div class="flex h-full flex-col">
+    <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
+      <h2 class="type-label" id="quick-add-title">Quick add</h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close" data-dialog-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto px-6 py-6" data-quick-add-body></div>
+  </div>
+</dialog>
+
 <!-- ============ TOAST ============ -->
 <div class="toast-region" role="status" aria-live="polite" data-toast-region></div>
 
@@ -366,7 +379,7 @@
       <p class="type-label text-neutral-600">Footwear</p>
       <h1 class="type-h1 mt-3">Sneakers</h1>
     </div>
-    <p class="type-body col-span-full max-w-[52ch] text-neutral-600 lg:col-span-5" data-catalog-intro>Runners, terrace classics and trail shoes from the brands we trust. UK sizing, with a size guide on every product.</p>
+    <p class="type-body col-span-full max-w-[52ch] text-neutral-600 lg:col-span-5" data-catalog-intro>Runners, terrace classics and trail shoes from the brands we trust. EU sizing, with a size guide on every product.</p>
   </header>
 
   <div class="catalog-toolbar mt-10">

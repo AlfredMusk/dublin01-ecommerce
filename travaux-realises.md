@@ -398,3 +398,107 @@ Eyebrow, titre, texte et bouton visibles sur les 4 campagnes aux 8 tailles ; bou
 ### Fichiers modifiés
 
 `scripts/build-html.mjs`, `src/js/modules/carousel.js`, `src/css/commerce.css`, `src/data/campaigns.json`, `public/images/editorial/hero-dublin-tall.webp`, `index.html` (généré).
+
+---
+
+**TOP BAR + NAVBAR + HERO = FROZEN V1.0** (validé en lançant la Phase 03, 2026-10-04)
+
+---
+
+## PHASE 03 — NEW ARRIVALS
+
+Date : 4 octobre 2026. Périmètre : la section New Arrivals de l'accueil, première section sous le Hero. La barre d'annonce, la navbar et le Hero n'ont pas changé (captures de l'en-tête identiques au pixel à 1440, 1024 et 390). Les autres sections de l'accueil et le footer sont intacts.
+
+### Architecture
+
+Rien de concurrent n'a été créé : la section s'appuie sur le catalogue (`products.json`), la carte produit, le panier, les favoris, les dialogues et les toasts déjà en place. Un seul module nouveau, `quick-add.js`.
+
+- **Section** : titre « New arrivals », phrase « Fresh drops selected for Dublin. », lien « View all » vers `pages/new.html`. Les 8 produits viennent des données (`isNew`, triés par `createdAt`), jamais d'une liste écrite dans le HTML.
+- **Sélection actuelle** : 4 sneakers (ASICS GEL-Kayano 14, adidas Samba OG, New Balance 990v6 et 2002R) et 4 pièces DUBLIN/01 (veste, hoodie, tee, bonnet).
+
+### ProductCard
+
+Une seule carte, `productCard(product, { eager, quickAdd })` dans `product-card.js`, utilisée par l'accueil, le catalogue, la recherche, les favoris et la fiche produit. L'option `quickAdd` ajoute le bouton Quick add ; elle est activée pour New Arrivals. Contenu : image, badge, cœur, marque, nom, couleur, prix.
+
+### Structure des données produit
+
+Champs lus par la carte et le Quick add : `id`, `slug`, `brand`, `name`, `category`, `color`, `price`, `compareAtPrice`, `currency`, `images`, `sizeSystem`, `sizes`, `availableSizes`, `stock`, `isNew`, `isLimited`, `createdAt`. Le badge (New, Limited, Sold out, remise) et l'état épuisé sont calculés à partir de ces champs.
+
+### Images
+
+Ratio fixe 4:5, `object-fit: cover`, dimensions réservées (aucun décalage de mise en page), variantes `-sm` en `srcset`, chargement différé. Au survol avec une souris, la seconde image apparaît en fondu ; rien d'essentiel ne dépend du survol.
+
+### Favoris
+
+Bouton cœur avec `aria-pressed` et libellé « Save … to wishlist » / « Remove … from wishlist ». Le cœur se remplit, le compteur de la navbar se met à jour, l'état est partagé avec la page Wishlist (`wishlist.js`, localStorage).
+
+### Tailles
+
+- **Sneakers en pointures EU** (`sizeSystem: "EU"`, de 35.5 à 47 selon le modèle, demi-pointures comprises). Elles étaient en UK. La fiche produit, son guide des tailles, le filtre du catalogue (trié par ordre croissant) et la FAQ suivent.
+- Vêtements de XS à XXL, pantalons en tour de taille, accessoires en taille unique.
+- La disponibilité vient de `availableSizes` : une taille absente est affichée barrée, désactivée, et annoncée « unavailable ».
+- Un ancien panier contenant une pointure UK n'est plus affiché (la ligne est ignorée, sans erreur).
+
+### Quick Add
+
+- **Souris, écran large (1280 px et plus)** : au survol ou au focus de la carte, une barre « Quick add » apparaît en bas de l'image. Un clic ouvre le choix de taille dans la carte, puis « Add to bag ». Fermeture par Échap, par un second clic ou en quittant la carte.
+- **Tactile et écrans plus étroits** : un bouton « + » de 44 px, toujours visible sur l'image, ouvre une feuille en bas de l'écran (panneau latéral à partir de 1024 px) : produit, prix, tailles, « Add to bag ». Focus piégé, Échap, retour du focus sur le bouton.
+- Sans taille choisie : message « Select a size first. ». Taille unique : ajout direct.
+- La taille est revérifiée dans le catalogue au moment de l'ajout : une taille indisponible ou un produit épuisé ne peut pas entrer dans le panier, même en forçant le formulaire.
+- Produit épuisé : badge « Sold out », image atténuée, pas de Quick add.
+
+### Panier
+
+Le Quick add appelle `addToCart(slug, size)` du panier existant (`cart.js`, localStorage). Une ligne contient le produit, la taille et la quantité ; nom, prix et image sont toujours relus dans le catalogue. Le compteur de la navbar s'anime et un toast confirme (« Added to bag: ASICS GEL-Kayano 14, EU 40 », avec un lien vers le panier).
+
+### Prix
+
+Format `€160.00`. Quand `compareAtPrice` existe : prix soldé, puis ancien prix barré. Aucune remise ajoutée : seuls les deux produits déjà soldés l'affichent.
+
+### Navigation
+
+Image et nom mènent à la fiche produit par `productUrl(slug)` (`pages/product.html?slug=…`). Le site est statique : des URL propres (`/products/slug`, `/new-arrivals`) viendront avec un serveur, en modifiant uniquement `paths.js`. Aucun lien en dièse.
+
+### Responsive
+
+Vérifié sur captures à 1440, 1280, 1024, 768, 430, 390 et 375 px : 4 colonnes à partir de 1024 px (8 produits), 3 colonnes sur tablette (6 produits), 2 colonnes sur téléphone (8 produits). Même ratio d'image partout, aucun texte ni prix coupé, aucun débordement horizontal.
+
+### Accessibilité
+
+Boutons et liens réels, textes alternatifs décrivant le produit et sa couleur, tailles en boutons radio regroupés (flèches du clavier, état sélectionné et désactivé natifs), anneau de focus visible, parcours complet au clavier testé (ouvrir, choisir, ajouter, Échap).
+
+### Tests réalisés (Chrome, automatisés)
+
+- **Flux A** : survol → seconde image → Quick add → taille → Add to bag → ligne présente dans le panier. OK.
+- **Flux B** : cœur → état rempli, compteur à 1, produit présent sur la page Wishlist. OK.
+- **Flux C** : clic sur le produit → fiche produit correcte, tailles en EU ; « View all » → `pages/new.html`. OK.
+- **Flux D** : taille indisponible non sélectionnable ; envoi forcé refusé (« This size is unavailable. »), panier inchangé. OK.
+- **Flux E** : produit épuisé sans Quick add ; envoi forcé refusé ; bouton désactivé sur la fiche produit. OK.
+- Mobile (390 px) : feuille du bas, ajout, fermeture, retour du focus. OK.
+- Pages catalogue, recherche, favoris, panier et fiche produit : toujours fonctionnelles. Console vide, aucune image cassée. Projet sans React.
+
+### Corrigé pendant les tests
+
+- Un clic sur une taille désactivée refermait le sélecteur (le focus partait sur `main`). Corrigé.
+- À 1024 px, le sélecteur dans la carte dépassait de l'image : il n'est utilisé qu'à partir de 1280 px ; en dessous, le panneau latéral prend le relais.
+
+### Photos corrigées
+
+Trois produits montraient une photo d'un autre article. Règle appliquée : jamais la photo d'un autre modèle.
+
+- **Rain Shell** : la photo 1 montrait une doudoune d'une autre marque, la photo 2 un imperméable clair. Remplacées par deux vestes noires à capuche sans logo (Wildan Ramdani Akbar, twentyonekoalas — Unsplash).
+- **ASICS GEL-Kayano 14** : les trois photos montraient une GEL-Kinsei. Remplacées par une vraie GEL-Kayano 14 (Vlad Ciutacu — Unsplash) ; couleur corrigée en « White / Midnight ». Une seule photo, donc pas de seconde image au survol.
+- **New Balance 2002R** : la photo montrait une 997H. Aucune photo libre de la 2002R : le produit devient « New Balance 997H, Grey » (110 €), avec la photo dont l'auteur indique le modèle ; la seconde photo, de modèle incertain, est retirée.
+- **Heavyweight Hoodie et Boxy Tee** : secondes photos retirées (casquettes avec logos tiers).
+- Crédits mis à jour dans `public/images/CREDITS.md`. Les photos 1 et 2 des 8 produits affichés ont été revues sur une planche.
+- Reste à corriger hors New Arrivals : les photos de la Nike Pegasus 41 (page New) ne montrent pas ce modèle.
+
+### Fonctionne maintenant / prêt pour un backend
+
+- **Maintenant** : tout ce qui précède, côté navigateur (catalogue JSON local, panier et favoris en localStorage).
+- **Prêt pour plus tard** : remplacer `loadProducts()` par un appel d'API qui garde le même schéma ; brancher panier et favoris sur un compte client ; stock en temps réel ; URL propres. La carte et le Quick add n'auront pas à changer.
+
+### Fichiers
+
+- **Créé** : `src/js/modules/quick-add.js`.
+- **Modifiés** : `src/pages/index.html` (section New Arrivals), `src/partials/header.html` (dialogue Quick add, invisible), `src/js/modules/product-card.js`, `src/js/pages/home.js`, `src/js/main.js`, `src/js/modules/cart.js`, `src/js/data/catalog.js`, `src/js/pages/catalog.js`, `src/js/pages/product.js`, `src/css/commerce.css`, `src/data/products.json` (pointures EU), `src/pages/faq.html`, `src/pages/sneakers.html`, et les 21 pages générées.

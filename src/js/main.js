@@ -10,6 +10,7 @@ import { initSearch } from './modules/search.js';
 import { initCart } from './modules/cart.js';
 import { initWishlist } from './modules/wishlist.js';
 import { initNewsletter } from './modules/newsletter.js';
+import { initQuickAdd } from './modules/quick-add.js';
 
 initHeader();
 initMenu();
@@ -17,5 +18,6 @@ initSearch();
 initCart();
 initWishlist();
 initNewsletter();
+initQuickAdd();
 
 console.info('DUBLIN/01 — environment ready.');

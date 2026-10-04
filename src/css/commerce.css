@@ -304,6 +304,20 @@
     }
   }
 
+  /* Home "New arrivals": 8 products as 2, 3 (first 6) or 4 columns. */
+  @media (width >= 48rem) and (width < 64rem) {
+    .product-grid-8 > :nth-child(n + 7) {
+      display: none;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .product-grid-8 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      row-gap: 3.5rem;
+    }
+  }
+
   /* Horizontal rail on small screens, 4-column grid on desktop. */
   .product-rail {
     display: grid;
@@ -355,7 +369,8 @@
   .product-card-media {
     position: relative;
     aspect-ratio: 4 / 5;
-    overflow: hidden;
+    /* clip, not hidden: the box must never become scrollable (Quick add opens inside it). */
+    overflow: clip;
     background-color: var(--color-bone);
   }
 
@@ -433,6 +448,127 @@
 
   .product-card-wish:active {
     transform: scale(0.92);
+  }
+
+  /* ---------- Quick add ---------- */
+
+  /* Touch and small screens: a small "+" button on the photo opens the sheet. */
+  .quick-add {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .quick-add-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--text-micro--letter-spacing);
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .quick-add-toggle .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .quick-add-toggle > span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .quick-add-toggle:focus-visible {
+    outline-offset: -2px;
+  }
+
+  /* Mouse on a wide screen: a full-width bar appears with the card's hover or
+     focus, and the size picker opens inside the card. */
+  @media (hover: hover) and (pointer: fine) and (width >= 80rem) {
+    .quick-add {
+      align-items: stretch;
+      max-height: 100%;
+    }
+
+    .quick-add-toggle {
+      width: 100%;
+      opacity: 0;
+      transform: translateY(0.25rem);
+      transition:
+        opacity var(--duration-fast) var(--ease-premium),
+        transform var(--duration-fast) var(--ease-premium),
+        background-color var(--duration-fast) var(--ease-premium),
+        color var(--duration-fast) var(--ease-premium);
+    }
+
+    .quick-add-toggle > span {
+      position: static;
+      width: auto;
+      height: auto;
+      overflow: visible;
+      clip-path: none;
+    }
+
+    .product-card:hover .quick-add-toggle,
+    .product-card:focus-within .quick-add-toggle,
+    .quick-add-toggle[aria-expanded="true"] {
+      opacity: 1;
+      transform: none;
+    }
+
+    .quick-add-toggle:hover,
+    .quick-add-toggle[aria-expanded="true"] {
+      background-color: var(--color-ink);
+      color: var(--color-white);
+    }
+
+    .quick-add-toggle[aria-expanded="true"] .icon {
+      transform: rotate(45deg);
+    }
+  }
+
+  .quick-add-panel {
+    min-height: 0;
+    padding: 0.75rem;
+    overflow-y: auto;
+    background-color: var(--color-white);
+  }
+
+  .quick-add-form {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .quick-add-legend {
+    margin-bottom: 0.5rem;
+    color: var(--color-neutral-600);
+    font-family: var(--font-mono);
+    font-size: var(--text-micro);
+    letter-spacing: var(--text-micro--letter-spacing);
+    text-transform: uppercase;
+  }
+
+  .quick-add-panel .quick-add-sizes {
+    grid-template-columns: repeat(auto-fill, minmax(2.75rem, 1fr));
+    gap: 0.25rem;
+  }
+
+  .quick-add-panel .size-option {
+    min-height: 2.25rem;
   }
 
   .product-card-info {
@@ -1354,6 +1490,23 @@
   @starting-style {
     .drawer-dialog[open]::backdrop {
       background-color: rgb(10 10 10 / 0);
+    }
+  }
+
+  /* Bottom sheet on phones and tablets; the usual side drawer on wide screens. */
+  @media (width < 64rem) {
+    .sheet-dialog {
+      inset: auto 0 0 0;
+      width: 100%;
+      height: auto;
+      max-height: 85dvh;
+      transform: translateY(1.5rem);
+    }
+
+    @starting-style {
+      .sheet-dialog[open] {
+        transform: translateY(1.5rem);
+      }
     }
   }
 

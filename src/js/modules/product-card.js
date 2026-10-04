@@ -1,5 +1,7 @@
 /**
  * Product card markup shared by the home page, catalogue, search, wishlist and PDP.
+ * productCard(product, { eager, quickAdd }): quickAdd adds the Quick add control
+ * handled by ./quick-add.js (never shown for a sold-out product).
  */
 
 import { asset, productUrl, escapeHtml } from '../utils/paths.js';
@@ -31,7 +33,9 @@ function badge(p) {
   return '';
 }
 
-export function productCard(p, { eager = false } = {}) {
+const plus = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>';
+
+export function productCard(p, { eager = false, quickAdd = false } = {}) {
   const url = productUrl(p.slug);
   const [first, second] = p.images;
   const loading = eager ? 'eager' : 'lazy';
@@ -46,6 +50,14 @@ export function productCard(p, { eager = false } = {}) {
       alt="${escapeHtml(imageAlt(p))}" loading="${loading}" decoding="async" />
     ${second ? `<img class="product-card-alt" src="${asset(smallImage(second))}" width="480" height="600" alt="" loading="lazy" decoding="async" />` : ''}
     ${tag ? `<span class="product-badge">${tag}</span>` : ''}
+    ${
+      quickAdd && !isSoldOut(p)
+        ? `<div class="quick-add">
+      <button class="quick-add-toggle" type="button" data-quick-add="${p.slug}" aria-expanded="false" aria-controls="quick-add-${p.slug}">${plus}<span>Quick add<span class="sr-only">: ${escapeHtml(title)}</span></span></button>
+      <div class="quick-add-panel" id="quick-add-${p.slug}" data-quick-add-panel hidden></div>
+    </div>`
+        : ''
+    }
   </div>
   <button class="product-card-wish" type="button" data-wishlist-toggle="${p.slug}" data-product-name="${escapeHtml(title)}"
     aria-pressed="${saved}" aria-label="${saved ? 'Remove' : 'Save'} ${escapeHtml(title)} ${saved ? 'from' : 'to'} wishlist">${heart}</button>

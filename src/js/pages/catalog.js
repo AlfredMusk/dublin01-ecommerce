@@ -90,8 +90,10 @@ function optionsFor(products, key) {
   let values = [...counts.keys()];
   if (key === 'brand') values = BRAND_ORDER.map(brandSlug).filter((v) => counts.has(v));
   else if (key === 'size') {
+    // Numeric sizes in ascending order, then lettered sizes as the catalogue lists them.
     const all = [...new Set(products.flatMap((p) => p.sizes))];
-    values = all.filter((v) => counts.has(v));
+    const numeric = (v) => /^\d+(\.\d+)?$/.test(v);
+    values = [...all.filter(numeric).sort((a, b) => a - b), ...all.filter((v) => !numeric(v))].filter((v) => counts.has(v));
   } else if (LABELS[key]) values = Object.keys(LABELS[key]).filter((v) => counts.has(v));
   const brandNames = Object.fromEntries(products.map((p) => [brandSlug(p.brand), p.brand]));
   return values.map((value) => ({

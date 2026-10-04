@@ -166,5 +166,18 @@
   </div>
 </dialog>
 
+<!-- ============ QUICK ADD (size picker opened from a product card on touch screens) ============ -->
+<dialog class="dialog drawer-dialog sheet-dialog" id="quick-add" aria-labelledby="quick-add-title" data-quick-add-dialog>
+  <div class="flex h-full flex-col">
+    <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
+      <h2 class="type-label" id="quick-add-title">Quick add</h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close" data-dialog-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto px-6 py-6" data-quick-add-body></div>
+  </div>
+</dialog>
+
 <!-- ============ TOAST ============ -->
 <div class="toast-region" role="status" aria-live="polite" data-toast-region></div>
