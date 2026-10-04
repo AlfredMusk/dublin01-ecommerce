@@ -28,7 +28,7 @@
 
       <!-- Right: search and commerce actions -->
       <div class="-mr-3 flex items-center justify-end xl:gap-1">
-        <form class="nav-search hidden xl:flex" role="search" aria-label="Site search" action="{{base}}pages/search.html" method="get" data-nav-search data-nav-item>
+        <form class="nav-search hidden xl:flex" role="search" aria-label="Site search" action="{{base}}search.html" method="get" data-nav-search data-nav-item>
           <label class="sr-only" for="nav-search-input">Search DUBLIN/01</label>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
           <input class="nav-search-input" id="nav-search-input" type="search" name="q" placeholder="Search brands, products, categories..." autocomplete="off" enterkeyhint="search"
@@ -41,14 +41,14 @@
         <button class="icon-btn xl:hidden" type="button" aria-controls="search-dialog" aria-expanded="false" aria-label="Search" data-search-trigger data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
         </button>
-        <a class="icon-btn hidden md:inline-flex" href="{{base}}pages/account.html" aria-label="Account" data-nav-item>
+        <a class="icon-btn hidden md:inline-flex" href="{{base}}login.html" aria-label="Account" data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
         </a>
-        <a class="icon-btn hidden md:inline-flex" href="{{base}}pages/wishlist.html" aria-label="Wishlist, 0 items" data-wishlist-link data-nav-item>
+        <a class="icon-btn hidden md:inline-flex" href="{{base}}wishlist.html" aria-label="Wishlist, 0 items" data-wishlist-link data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>
           <span class="bag-count" aria-hidden="true" data-wishlist-count hidden>0</span>
         </a>
-        <a class="icon-btn" href="{{base}}pages/bag.html" aria-label="Bag, 0 items" data-bag-link data-nav-item>
+        <a class="icon-btn" href="{{base}}bag.html" aria-label="Bag, 0 items" data-bag-link data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
           <span class="bag-count" aria-hidden="true" data-bag-count>0</span>
         </a>
@@ -89,13 +89,13 @@
             </button>
           </li>
           <li>
-            <a class="link-nav gap-3" href="{{base}}pages/account.html">
+            <a class="link-nav gap-3" href="{{base}}login.html">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
               Account
             </a>
           </li>
           <li>
-            <a class="link-nav gap-3" href="{{base}}pages/wishlist.html">
+            <a class="link-nav gap-3" href="{{base}}wishlist.html">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>
               Wishlist <span class="text-neutral-600" data-wishlist-count hidden>0</span>
             </a>
@@ -115,7 +115,7 @@
 <!-- ============ SEARCH ============ -->
 <dialog class="dialog search-dialog" id="search-dialog" aria-label="Search" data-search>
   <div class="container-site py-6 lg:py-10">
-    <form role="search" aria-label="Search" action="{{base}}pages/search.html" method="get" class="flex items-center gap-3 lg:gap-6">
+    <form role="search" aria-label="Search" action="{{base}}search.html" method="get" class="flex items-center gap-3 lg:gap-6">
       <label class="sr-only" for="search-input">Search DUBLIN/01</label>
       <svg class="icon icon-lg hidden shrink-0 md:block" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
       <input
@@ -135,11 +135,11 @@
     <div class="search-popular" data-search-popular>
       <p class="mega-heading">Popular searches</p>
       <ul class="flex flex-wrap gap-x-8" role="list">
-        <li><a class="link-nav" href="{{base}}pages/search.html?q=samba">Samba</a></li>
-        <li><a class="link-nav" href="{{base}}pages/search.html?q=new+balance">New Balance</a></li>
-        <li><a class="link-nav" href="{{base}}pages/search.html?q=running">Running</a></li>
-        <li><a class="link-nav" href="{{base}}pages/search.html?q=rain+jackets">Rain jackets</a></li>
-        <li><a class="link-nav" href="{{base}}pages/search.html?q=hoodies">Hoodies</a></li>
+        <li><a class="link-nav" href="{{base}}search.html?q=samba">Samba</a></li>
+        <li><a class="link-nav" href="{{base}}search.html?q=new+balance">New Balance</a></li>
+        <li><a class="link-nav" href="{{base}}search.html?q=running">Running</a></li>
+        <li><a class="link-nav" href="{{base}}search.html?q=rain+jackets">Rain jackets</a></li>
+        <li><a class="link-nav" href="{{base}}search.html?q=hoodies">Hoodies</a></li>
       </ul>
     </div>
     <div class="mt-8" data-search-live hidden></div>
@@ -160,8 +160,8 @@
     <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6">
       <div class="flex items-baseline justify-between type-body"><span>Subtotal</span><span class="font-medium tabular-nums" data-bag-drawer-subtotal></span></div>
       <p class="type-body-sm text-neutral-600" data-bag-drawer-note></p>
-      <a class="btn btn-primary btn-block" href="{{base}}pages/checkout.html">Checkout</a>
-      <a class="btn btn-secondary btn-block" href="{{base}}pages/bag.html">View bag</a>
+      <a class="btn btn-primary btn-block" href="{{base}}checkout.html">Checkout</a>
+      <a class="btn btn-secondary btn-block" href="{{base}}bag.html">View bag</a>
     </div>
   </div>
 </dialog>

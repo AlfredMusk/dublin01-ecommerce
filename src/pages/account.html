@@ -1,75 +1,37 @@
 <!--
-title: Sign in — DUBLIN/01
-description: Sign in to your DUBLIN/01 account or create one.
-script: account
+title: Your account — DUBLIN/01
+description: Orders, addresses, profile and wishlist for your DUBLIN/01 account.
 robots: noindex
 -->
 <section class="container-site pb-section pt-10 lg:pt-14">
-  <div class="grid-site gap-y-12">
-    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-1">
-      <div data-account-panel="signin">
-        <h1 class="type-h1">Sign in</h1>
-        <form class="mt-10 space-y-6" novalidate data-account-form="signin">
-          <div class="field"><label class="field-label" for="signin-email">Email</label>
-            <input class="input" id="signin-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
-          <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="signin-password">Password</label>
-            <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="signin-password" aria-pressed="false">Show</button></div>
-            <input class="input" id="signin-password" name="password" type="password" autocomplete="current-password" required data-error="Enter your password." /></div>
-          <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
-            <p class="type-body-sm">Accounts aren’t connected in this preview, so we couldn’t check these details. No data was sent or stored.</p>
-          </div>
-          <p class="type-body-sm"><a class="link-editorial" href="#reset" data-show-panel="reset">Forgotten your password?</a></p>
-        </form>
-      </div>
+  <nav aria-label="Breadcrumb" class="breadcrumb"><ol role="list"><li><a href="{{home}}">Home</a></li><li><span aria-current="page">Account</span></li></ol></nav>
+  <h1 class="type-h1 mt-6">Your account</h1>
+  <div class="notice mt-8 max-w-3xl">
+    <p class="type-body font-medium">You are not signed in.</p>
+    <p class="type-body-sm mt-2">Sign in to see your orders, addresses and profile. Your bag and wishlist work without an account and are kept in this browser.</p>
+    <div class="mt-5 flex flex-wrap gap-3"><a class="btn btn-primary" href="{{base}}login.html">Sign in</a><a class="btn btn-secondary" href="{{base}}register.html">Create account</a></div>
+  </div>
 
-      <div data-account-panel="reset" hidden>
-        <h2 class="type-h1" tabindex="-1">Reset password</h2>
-        <p class="type-body mt-4 text-neutral-600">Enter your email and we’ll send a reset link.</p>
-        <form class="mt-10 space-y-6" novalidate data-account-form="reset">
-          <div class="field"><label class="field-label" for="reset-email">Email</label>
-            <input class="input" id="reset-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
-          <button class="btn btn-primary btn-block" type="submit">Send reset link</button>
-          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
-            <p class="type-body-sm">Password reset isn’t available in this preview. No email was sent.</p>
-          </div>
-          <p class="type-body-sm"><a class="link-editorial" href="#signin" data-show-panel="signin">Back to sign in</a></p>
-        </form>
-      </div>
-
-      <div data-account-panel="register" hidden>
-        <h2 class="type-h1" tabindex="-1">Create account</h2>
-        <form class="mt-10 space-y-6" novalidate data-account-form="register">
-          <div class="form-grid">
-            <div class="field"><label class="field-label" for="reg-first">First name</label>
-              <input class="input" id="reg-first" name="firstName" autocomplete="given-name" required data-error="Enter your first name." /></div>
-            <div class="field"><label class="field-label" for="reg-last">Last name</label>
-              <input class="input" id="reg-last" name="lastName" autocomplete="family-name" required data-error="Enter your last name." /></div>
-          </div>
-          <div class="field"><label class="field-label" for="reg-email">Email</label>
-            <input class="input" id="reg-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
-          <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="reg-password">Password <span class="field-hint">at least 8 characters</span></label>
-            <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="reg-password" aria-pressed="false">Show</button></div>
-            <input class="input" id="reg-password" name="password" type="password" autocomplete="new-password" required data-error="Choose a password." /></div>
-          <button class="btn btn-primary btn-block" type="submit">Create account</button>
-          <div class="notice" tabindex="-1" role="status" data-account-status hidden>
-            <p class="type-body-sm">Account creation isn’t connected in this preview. No account was created and nothing was stored.</p>
-          </div>
-          <p class="type-body-sm"><a class="link-editorial" href="#signin" data-show-panel="signin">I already have an account</a></p>
-        </form>
-      </div>
-    </div>
-
-    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-8">
-      <div class="summary">
-        <h2 class="type-h3">New to DUBLIN/01?</h2>
-        <ul class="type-body mt-6 space-y-3 text-neutral-600" role="list">
-          <li>Track orders and start returns online</li>
-          <li>Save addresses for faster checkout</li>
-          <li>Keep your wishlist on every device</li>
-        </ul>
-        <button class="btn btn-secondary btn-block mt-8" type="button" data-show-panel="register">Create account</button>
-      </div>
-    </div>
+  <div class="account-grid mt-12">
+    <section class="account-panel" aria-labelledby="account-orders">
+      <h2 class="type-h3" id="account-orders">Orders</h2>
+      <p class="type-body-sm mt-3 text-neutral-600">Your orders, their status and tracking will be listed here, with a link to start a return.</p>
+      <p class="account-empty">No orders to show.</p>
+    </section>
+    <section class="account-panel" aria-labelledby="account-addresses">
+      <h2 class="type-h3" id="account-addresses">Addresses</h2>
+      <p class="type-body-sm mt-3 text-neutral-600">Saved delivery addresses for a faster checkout.</p>
+      <p class="account-empty">No saved addresses.</p>
+    </section>
+    <section class="account-panel" aria-labelledby="account-profile">
+      <h2 class="type-h3" id="account-profile">Profile</h2>
+      <p class="type-body-sm mt-3 text-neutral-600">Your name, email address, password and newsletter preference.</p>
+      <p class="account-empty">Sign in to edit your profile.</p>
+    </section>
+    <section class="account-panel" aria-labelledby="account-wishlist">
+      <h2 class="type-h3" id="account-wishlist">Wishlist</h2>
+      <p class="type-body-sm mt-3 text-neutral-600">Saved in this browser today. Once you sign in it will follow you to every device.</p>
+      <a class="link-action mt-4" href="{{base}}wishlist.html">View wishlist <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+    </section>
   </div>
 </section>

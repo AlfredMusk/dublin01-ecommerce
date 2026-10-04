@@ -1,5 +1,5 @@
 /**
- * Search results page: pages/search.html?q=
+ * Search results page: search.html?q=
  */
 
 import { qs } from '../utils/dom.js';
@@ -38,7 +38,7 @@ async function init() {
   }
   count.textContent = pluralize(list.length, 'product');
   results.innerHTML = list.length
-    ? list.map((p, i) => productCard(p, { eager: i < 4 })).join('')
+    ? list.map((p, i) => productCard(p, { eager: i < 4, quickAdd: true })).join('')
     : `<div class="col-span-full border border-neutral-200 px-6 py-16">
         <p class="type-h3">No results for “${escapeHtml(q)}”.</p>
         <p class="type-body mt-3 text-neutral-600">Check the spelling, or try one of these:</p>

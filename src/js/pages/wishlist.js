@@ -18,7 +18,7 @@ async function render() {
   count.textContent = pluralize(list.length, 'item');
   empty.hidden = list.length > 0;
   results.hidden = list.length === 0;
-  results.innerHTML = list.map((p) => productCard(p)).join('');
+  results.innerHTML = list.map((p) => productCard(p, { quickAdd: true })).join('');
   document.dispatchEvent(new CustomEvent('catalog:rendered'));
 }
 

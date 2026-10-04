@@ -13,7 +13,7 @@
     <meta property="og:title" content="{{title}}" />
     <meta property="og:description" content="{{description}}" />
     <meta property="og:url" content="{{canonical}}" />
-    <meta property="og:image" content="{{siteUrl}}/public/images/editorial/hero-wide.webp" />
+    <meta property="og:image" content="{{ogImage}}" />
     <meta property="og:locale" content="en_IE" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#0a0a0a" />
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{base}}dist/css/main.css" />
     <script type="module" src="{{base}}src/js/main.js"></script>
     {{pageScript}}
+    {{structuredData}}
   </head>
   <body data-page="{{page}}">
 {{header}}

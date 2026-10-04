@@ -52,7 +52,7 @@ async function render() {
       <p class="type-h3">Your bag is empty.</p>
       <p class="type-body mt-3 text-neutral-600">Have a look at what came in this week.</p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
-        <a class="btn btn-primary" href="${pageUrl('new')}">Shop new arrivals</a>
+        <a class="btn btn-primary" href="${pageUrl('new-arrivals')}">Shop new arrivals</a>
         <a class="btn btn-secondary" href="${pageUrl('wishlist')}">View wishlist</a>
       </div></div>`;
     return;

@@ -15,7 +15,7 @@
     },
     "titleWidth": "11ch",
     "ctaLabel": "Shop new arrivals",
-    "ctaHref": "pages/new.html"
+    "ctaHref": "new-arrivals.html"
   },
   {
     "id": "footwear-edit",
@@ -33,7 +33,7 @@
     },
     "titleWidth": "8ch",
     "ctaLabel": "Shop sneakers",
-    "ctaHref": "pages/sneakers.html"
+    "ctaHref": "sneakers.html"
   },
   {
     "id": "streetwear-edit",
@@ -51,7 +51,7 @@
     },
     "titleWidth": "12ch",
     "ctaLabel": "Shop the edit",
-    "ctaHref": "pages/clothing.html"
+    "ctaHref": "clothing.html"
   },
   {
     "id": "dublin-essentials-city",
@@ -69,6 +69,6 @@
     },
     "titleWidth": "11ch",
     "ctaLabel": "Explore collection",
-    "ctaHref": "pages/shop.html"
+    "ctaHref": "shop.html"
   }
 ]

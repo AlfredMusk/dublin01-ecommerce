@@ -5,7 +5,7 @@ script: checkout
 robots: noindex
 -->
 <section class="container-site pb-section-sm pt-10 lg:pt-14">
-  <nav aria-label="Breadcrumb" class="breadcrumb"><ol role="list"><li><a href="{{base}}pages/bag.html">Bag</a></li><li><span aria-current="page">Checkout</span></li></ol></nav>
+  <nav aria-label="Breadcrumb" class="breadcrumb"><ol role="list"><li><a href="{{base}}bag.html">Bag</a></li><li><span aria-current="page">Checkout</span></li></ol></nav>
   <h1 class="type-h1 mt-6">Checkout</h1>
   <div class="mt-10 grid-site gap-y-12" data-checkout-layout>
     <form class="col-span-full lg:col-span-7" novalidate data-checkout>
@@ -89,14 +89,14 @@ robots: noindex
           <p class="type-body-sm mt-2 text-neutral-600">In the live shop, a certified payment provider will collect card details here. Nothing you enter on this page is sent anywhere or charged.</p>
         </div>
         <div class="field mt-6"><label class="check" for="terms"><input type="checkbox" id="terms" name="terms" required data-error="Accept the terms to continue." />
-          <span>I accept the <a class="link-editorial" href="{{base}}pages/terms.html">terms of sale</a> and the <a class="link-editorial" href="{{base}}pages/returns.html">returns policy</a>.</span></label></div>
+          <span>I accept the <a class="link-editorial" href="{{base}}terms.html">terms of sale</a> and the <a class="link-editorial" href="{{base}}returns.html">returns policy</a>.</span></label></div>
       </fieldset>
 
       <button class="btn btn-primary btn-block mt-8" type="submit">Review and continue to payment</button>
       <div class="notice mt-6" tabindex="-1" role="status" data-payment-status hidden>
         <p class="type-body font-medium">Your details are complete.</p>
         <p class="type-body-sm mt-2">This V1 stops before payment: no order has been placed and nothing has been charged. Your bag is still saved.</p>
-        <a class="link-action mt-4" href="{{base}}pages/bag.html">Back to bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        <a class="link-action mt-4" href="{{base}}bag.html">Back to bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
       </div>
     </form>
 

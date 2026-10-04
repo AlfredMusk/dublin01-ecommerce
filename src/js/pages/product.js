@@ -1,13 +1,13 @@
 /**
- * Product detail page: pages/product.html?slug=<slug>
+ * Product detail page: products/<slug>.html
  * Gallery, size selection (required before Add to bag), size guide, wishlist,
  * stock messaging, accordions and related products.
  */
 
 import { qs } from '../utils/dom.js';
 import { initDialog, openDialog } from '../utils/dialog.js';
-import { asset, pageUrl, escapeHtml } from '../utils/paths.js';
-import { loadProducts, isSoldOut, isOnSale } from '../data/catalog.js';
+import { asset, pageUrl, brandUrl, homeUrl, escapeHtml } from '../utils/paths.js';
+import { loadProducts, isSoldOut, isOnSale, brandSlug } from '../data/catalog.js';
 import { productCard, productTitle, imageAlt, priceHtml, smallImage } from '../modules/product-card.js';
 import { isWishlisted } from '../modules/wishlist.js';
 import { addToCart } from '../modules/cart.js';
@@ -19,7 +19,7 @@ const root = qs('[data-pdp]');
 const heart =
   '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>';
 
-const CATEGORY_PAGE = { sneakers: ['sneakers', 'Sneakers'], clothing: ['clothing', 'Clothing'], accessories: ['clothing', 'Accessories'] };
+const CATEGORY_PAGE = { sneakers: ['sneakers', 'Sneakers'], clothing: ['clothing', 'Clothing'], accessories: ['accessories', 'Accessories'] };
 
 function stockMessage(p) {
   if (isSoldOut(p)) return 'Sold out in all sizes. Restocks are announced in the newsletter.';
@@ -78,13 +78,13 @@ function notFound() {
     <p class="type-label text-neutral-600">404</p>
     <h1 class="type-h1 mt-4">This product isn’t here.</h1>
     <p class="type-body-lg mt-4 max-w-prose text-neutral-600">It may have sold through or the link may be wrong.</p>
-    <div class="mt-10 flex flex-wrap gap-4"><a class="btn btn-primary" href="${pageUrl('new')}">Shop new arrivals</a><a class="btn btn-secondary" href="${pageUrl('sneakers')}">All sneakers</a></div>
+    <div class="mt-10 flex flex-wrap gap-4"><a class="btn btn-primary" href="${pageUrl('new-arrivals')}">Shop new arrivals</a><a class="btn btn-secondary" href="${pageUrl('sneakers')}">All sneakers</a></div>
   </div>`;
 }
 
 async function init() {
   if (!root) return;
-  const slug = new URLSearchParams(location.search).get('slug');
+  const slug = root.dataset.slug;
   const products = await loadProducts();
   const p = products.find((item) => item.slug === slug);
   if (!p) return notFound();
@@ -102,8 +102,8 @@ async function init() {
   root.innerHTML = `
   <div class="container-site pt-6 lg:pt-8">
     <nav aria-label="Breadcrumb" class="breadcrumb">
-      <ol role="list"><li><a href="${asset('') || './'}">Home</a></li>
-      <li><a href="${pageUrl(pageName, p.category === 'accessories' ? { type: 'accessories' } : undefined)}">${pageLabel}</a></li>
+      <ol role="list"><li><a href="${homeUrl()}">Home</a></li>
+      <li><a href="${pageUrl(pageName)}">${pageLabel}</a></li>
       <li><span aria-current="page">${escapeHtml(p.name)}</span></li></ol>
     </nav>
   </div>
@@ -114,7 +114,7 @@ async function init() {
     </div>
     <div class="col-span-full lg:col-span-5 lg:col-start-8">
       <div class="pdp-info">
-        <p class="type-label text-neutral-600"><a class="link-subtle" href="${pageUrl('search', { q: p.brand })}">${escapeHtml(p.brand)}</a></p>
+        <p class="type-label text-neutral-600"><a class="link-subtle" href="${brandUrl(brandSlug(p.brand))}">${escapeHtml(p.brand)}</a></p>
         <h1 class="type-h2 mt-3">${escapeHtml(p.name)}</h1>
         <p class="type-body mt-2 text-neutral-600">${escapeHtml(p.color)}</p>
         <p class="pdp-price mt-6">${priceHtml(p)}</p>

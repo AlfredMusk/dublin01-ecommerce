@@ -1,0 +1,36 @@
+<!--
+title: Sign in — DUBLIN/01
+description: Sign in to your DUBLIN/01 account.
+script: account
+robots: noindex
+-->
+<section class="container-site pb-section pt-10 lg:pt-14">
+  <div class="grid-site gap-y-12">
+    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-1">
+      <h1 class="type-h1">Sign in</h1>
+      <form class="mt-10 space-y-6" novalidate data-account-form="signin">
+        <div class="field"><label class="field-label" for="signin-email">Email</label>
+          <input class="input" id="signin-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+        <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="signin-password">Password</label>
+          <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="signin-password" aria-pressed="false">Show</button></div>
+          <input class="input" id="signin-password" name="password" type="password" autocomplete="current-password" required data-error="Enter your password." /></div>
+        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+        <div class="notice" tabindex="-1" role="status" data-account-status hidden>
+          <p class="type-body-sm">Customer accounts are not open yet, so we could not sign you in. Nothing you typed was sent or stored.</p>
+        </div>
+        <p class="type-body-sm"><a class="link-editorial" href="{{base}}forgot-password.html">Forgotten your password?</a></p>
+      </form>
+    </div>
+    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-8">
+      <div class="summary">
+        <h2 class="type-h3">New to DUBLIN/01?</h2>
+        <ul class="type-body mt-6 space-y-3 text-neutral-600" role="list">
+          <li>Track orders and start returns online</li>
+          <li>Save addresses for faster checkout</li>
+          <li>Keep your wishlist on every device</li>
+        </ul>
+        <a class="btn btn-secondary btn-block mt-8" href="{{base}}register.html">Create account</a>
+      </div>
+    </div>
+  </div>
+</section>

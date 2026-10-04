@@ -51,7 +51,7 @@ async function init() {
     qs('[data-checkout-layout]').innerHTML = `<div class="col-span-full border border-neutral-200 px-6 py-16 text-center">
       <p class="type-h3">Your bag is empty.</p>
       <p class="type-body mt-3 text-neutral-600">Add something before checking out.</p>
-      <a class="btn btn-primary mt-8" href="${pageUrl('new')}">Shop new arrivals</a></div>`;
+      <a class="btn btn-primary mt-8" href="${pageUrl('new-arrivals')}">Shop new arrivals</a></div>`;
     return;
   }
 

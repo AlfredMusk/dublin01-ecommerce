@@ -13,7 +13,7 @@ script: home
       <h2 class="type-h1" id="new-title">New arrivals</h2>
       <p class="type-body-lg mt-3 text-neutral-600">Fresh drops selected for Dublin.</p>
     </div>
-    <a class="link-action" href="{{base}}pages/new.html">View all<span class="sr-only"> new arrivals</span>
+    <a class="link-action" href="{{base}}new-arrivals.html">View all<span class="sr-only"> new arrivals</span>
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
   </div>
   <div class="product-grid product-grid-8 mt-10" data-products="new" data-quick-add></div>
@@ -35,8 +35,8 @@ script: home
     <h2 class="type-display rain-title" id="rain-title">Rain is the dress code.</h2>
     <p class="type-body-lg rain-copy">Built for Dublin weather. Technical layers, everyday jackets and waterproof essentials selected for the city.</p>
     <div class="rain-actions">
-      <a class="btn btn-primary" href="{{base}}pages/clothing.html?type=jackets">Shop jackets</a>
-      <a class="btn btn-secondary" href="{{base}}pages/product.html?slug=rain-shell-black">Shop rain shells</a>
+      <a class="btn btn-primary" href="{{base}}clothing.html?type=jackets">Shop jackets</a>
+      <a class="btn btn-secondary" href="{{base}}products/rain-shell-black.html">Shop rain shells</a>
     </div>
   </div>
 </section>
@@ -49,25 +49,25 @@ script: home
     </div>
     <ul class="mt-10 grid grid-cols-2 gap-x-gap gap-y-10 lg:grid-cols-4" role="list">
       <li>
-        <a class="category-tile" href="{{base}}pages/sneakers.html">
+        <a class="category-tile" href="{{base}}sneakers.html">
           <img src="{{base}}public/images/editorial/cat-sneakers.webp" width="800" height="1000" loading="lazy" alt="" />
           <span class="category-tile-label">Sneakers <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
-        <a class="category-tile" href="{{base}}pages/sneakers.html?style=running,trail">
+        <a class="category-tile" href="{{base}}running-trail.html">
           <img src="{{base}}public/images/editorial/cat-running.webp" width="800" height="1000" loading="lazy" alt="" />
           <span class="category-tile-label">Running & trail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
-        <a class="category-tile" href="{{base}}pages/clothing.html">
+        <a class="category-tile" href="{{base}}clothing.html">
           <img src="{{base}}public/images/editorial/cat-clothing.webp" width="800" height="1000" loading="lazy" alt="" />
           <span class="category-tile-label">Clothing <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
-        <a class="category-tile" href="{{base}}pages/clothing.html?type=accessories">
+        <a class="category-tile" href="{{base}}accessories.html">
           <img src="{{base}}public/images/editorial/cat-accessories.webp" width="800" height="1000" loading="lazy" alt="" />
           <span class="category-tile-label">Accessories <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
@@ -83,7 +83,7 @@ script: home
       <p class="type-label text-neutral-600">Picked by the shop</p>
       <h2 class="type-h1 mt-3" id="picks-title">The ones we wear</h2>
     </div>
-    <a class="link-action" href="{{base}}pages/sneakers.html">All sneakers
+    <a class="link-action" href="{{base}}sneakers.html">All sneakers
       <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
   </div>
   <div class="product-grid product-grid-4 mt-10" data-products="featured"></div>
@@ -95,16 +95,16 @@ script: home
     <div class="col-span-full lg:col-span-4">
       <p class="type-label text-neutral-600">Brands</p>
       <h2 class="type-h1 mt-3" id="brands-title">Six names, chosen carefully.</h2>
-      <a class="link-action mt-8" href="{{base}}pages/brands.html">All brands
+      <a class="link-action mt-8" href="{{base}}brands.html">All brands
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
     </div>
     <ul class="brand-list col-span-full lg:col-span-7 lg:col-start-6" role="list">
-      <li><a href="{{base}}pages/sneakers.html?brand=nike"><span>Nike</span><span class="brand-count" data-brand-count="nike"></span></a></li>
-      <li><a href="{{base}}pages/sneakers.html?brand=adidas"><span>adidas</span><span class="brand-count" data-brand-count="adidas"></span></a></li>
-      <li><a href="{{base}}pages/sneakers.html?brand=new-balance"><span>New Balance</span><span class="brand-count" data-brand-count="new-balance"></span></a></li>
-      <li><a href="{{base}}pages/sneakers.html?brand=asics"><span>ASICS</span><span class="brand-count" data-brand-count="asics"></span></a></li>
-      <li><a href="{{base}}pages/sneakers.html?brand=salomon"><span>Salomon</span><span class="brand-count" data-brand-count="salomon"></span></a></li>
-      <li><a href="{{base}}pages/clothing.html"><span>DUBLIN/01</span><span class="brand-count" data-brand-count="dublin-01"></span></a></li>
+      <li><a href="{{base}}brands/nike.html"><span>Nike</span><span class="brand-count" data-brand-count="nike"></span></a></li>
+      <li><a href="{{base}}brands/adidas.html"><span>adidas</span><span class="brand-count" data-brand-count="adidas"></span></a></li>
+      <li><a href="{{base}}brands/new-balance.html"><span>New Balance</span><span class="brand-count" data-brand-count="new-balance"></span></a></li>
+      <li><a href="{{base}}brands/asics.html"><span>ASICS</span><span class="brand-count" data-brand-count="asics"></span></a></li>
+      <li><a href="{{base}}brands/salomon.html"><span>Salomon</span><span class="brand-count" data-brand-count="salomon"></span></a></li>
+      <li><a href="{{base}}brands/dublin-01.html"><span>DUBLIN/01</span><span class="brand-count" data-brand-count="dublin-01"></span></a></li>
     </ul>
   </div>
 </section>
@@ -116,7 +116,7 @@ script: home
       <p class="type-label text-neutral-400">Running · After dark</p>
       <h2 class="type-display mt-5" id="night-title">After the last tram.</h2>
       <p class="type-body-lg mt-6 text-neutral-200">Cushioned road shoes and trail soles that hold on wet tracks. Built for 7am miles and the 11pm walk home.</p>
-      <a class="link-action mt-10 text-white" href="{{base}}pages/sneakers.html?style=running,trail">Shop running & trail
+      <a class="link-action mt-10 text-white" href="{{base}}running-trail.html">Shop running & trail
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
     </div>
     <figure class="col-span-full md:col-span-4 lg:col-span-6 lg:col-start-7">
@@ -142,25 +142,25 @@ script: home
       <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7" /><circle cx="7" cy="17.5" r="1.5" /><circle cx="17" cy="17.5" r="1.5" /></svg>
       <h3 class="type-label mt-5">Delivery across Ireland</h3>
       <p class="type-body-sm mt-2 text-neutral-600">Free over €100, otherwise €4.95. Standard 2–4 working days, express next working day.</p>
-      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/delivery.html">Delivery details</a>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}delivery.html">Delivery details</a>
     </li>
     <li>
       <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h12a4 4 0 0 1 0 8h-3" /><path d="m8 5-4 4 4 4" /></svg>
       <h3 class="type-label mt-5">30-day returns</h3>
       <p class="type-body-sm mt-2 text-neutral-600">Free returns from anywhere in Ireland for unworn items within 30 days of delivery.</p>
-      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/returns.html">Returns policy</a>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}returns.html">Returns policy</a>
     </li>
     <li>
       <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg>
       <h3 class="type-label mt-5">Secure checkout</h3>
       <p class="type-body-sm mt-2 text-neutral-600">Card payments are handled by our payment provider. We never see or store your card details.</p>
-      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/faq.html">Payment FAQ</a>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}faq.html">Payment FAQ</a>
     </li>
     <li>
       <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z" /></svg>
       <h3 class="type-label mt-5">Real people in Dublin</h3>
       <p class="type-body-sm mt-2 text-neutral-600">Questions about sizing or an order? We reply within one working day, Monday to Friday.</p>
-      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}pages/contact.html">Contact us</a>
+      <a class="link-subtle type-body-sm underline underline-offset-4" href="{{base}}contact.html">Contact us</a>
     </li>
   </ul>
 </section>

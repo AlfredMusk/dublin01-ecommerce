@@ -551,3 +551,27 @@ Survol et seconde image, Quick add, sélecteur de tailles, taille indisponible (
 ### Fichiers
 
 `src/pages/index.html` (section Rain), `src/css/commerce.css` (bloc Rain, grille une colonne), `src/js/pages/home.js` (apparition du texte), `src/data/products.json` et `src/data/site.json` (Kayano 14), `public/images/editorial/rain-campaign-*.webp` (nouveaux), `dublin-rain-tall.webp` (supprimé), `public/images/products/asics-gel-kayano-14-pure-silver-1*.webp`, `public/images/CREDITS.md`, pages générées.
+
+---
+
+## MASTER BUILD — FRONTEND V1
+
+Démarré le 4 octobre 2026. Avancement par jalons, un commit local par jalon.
+
+### Jalon 1 — Audit, données, configuration
+
+- **Architecture constatée** : site statique sans framework. HTML assemblé par `scripts/build-html.mjs` à partir de `src/pages`, `src/partials` et des données JSON ; Tailwind CSS v4 en ligne de commande ; modules JavaScript natifs (`src/js/modules`, `pages`, `utils`, `data`) ; état en localStorage (panier, favoris). Conservé tel quel : aucune migration de framework, aucune dépendance ajoutée.
+- **Configuration centrale** : `src/js/config.js` (entreprise, règles de commerce, origine de production, fonctionnalités ouvertes). Lue par le navigateur et par le générateur. Tous les champs légaux sont à `null` : ils ne sont affichés nulle part tant qu'ils ne sont pas fournis.
+- **Modèle produit** : ajout de `subcategory`, `colors` (familles de couleur), `inventory` (unités par taille), `material`, `care`, `collection`, `badge`. Le stock n'a plus qu'une source : `availableSizes`, `stock` et `available` sont calculés au chargement à partir de `inventory`.
+- **Module de données unique** : `src/js/data/catalog.js` expose `getProducts`, `getProduct`, `getCategories`, `getBrands` (asynchrones, calquées sur la future API) et un typedef `Product`.
+- **Contrat frontend / backend** : `docs/api-contract.md`.
+
+### Jalon 2 — Routes et SEO
+
+- **Nouvelles adresses**, toutes générées au build : `new-arrivals`, `men`, `women`, `sneakers`, `clothing`, `running-trail`, `accessories`, `sale`, `shop`, `brands`, `brands/<marque>`, `products/<produit>`, plus `login`, `register`, `forgot-password`, `account`. 57 pages au total.
+- **Une page statique par produit et par marque** : titre, description, canonical, image de partage et données structurées propres (Product sans note ni avis, BreadcrumbList ; Organization et WebSite sur l'accueil).
+- **Anciennes adresses** (`pages/*.html`, `?slug=`, filtres en paramètre) : redirigées vers les nouvelles.
+- **Canonical** : relatif tant que le domaine n'est pas configuré ; absolu et sans `.html` dès que `siteUrl` est renseigné, avec génération du `sitemap.xml`.
+- **Pages catalogue** : chaque page fixe son périmètre par un preset (catégorie, genre, style, marque, collection) ; Men et Women sont de vraies pages, plus des filtres sur une page générique.
+- **Comptes** : connexion, inscription et mot de passe oublié séparés en trois pages, validation locale, message clair « comptes pas encore ouverts » ; page compte avec écrans commandes, adresses, profil et favoris en état vide.
+- **Vérifié** : crawl automatique des 57 pages à 1440 et 390 px — aucun lien mort, aucune erreur console, aucune image cassée, un seul `h1` par page, aucun débordement ; 9 redirections testées.

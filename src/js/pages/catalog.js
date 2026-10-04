@@ -1,11 +1,14 @@
 /**
- * Catalogue listing (New, Sneakers, Clothing). Filters and sort live in the URL
- * (?brand=nike,adidas&size=8&sort=price-asc) so mega-menu links, back/forward
- * and shared links all restore the same view.
+ * Catalogue listing, shared by every listing page (new arrivals, men, women,
+ * sneakers, clothing, running & trail, accessories, sale, shop all, brands).
+ * A page fixes its scope with a preset; filters and sort live in the URL
+ * (?brand=nike,adidas&size=42&sort=price-asc) so menu links, back/forward and
+ * shared links all restore the same view without reloading the page.
  *
- * Markup: [data-catalog] with data-preset (JSON: category | isNew), containing
- * [data-filters="desktop"], [data-filters="mobile"] (inside the filter dialog),
- * [data-results], [data-count], [data-sort], [data-active-filters], [data-filter-count].
+ * Markup: [data-catalog] with data-preset (JSON: category, gender[], style[],
+ * brand, collection, isNew), containing [data-filters="desktop"],
+ * [data-filters="mobile"] (inside the filter dialog), [data-results],
+ * [data-count], [data-sort], [data-active-filters], [data-filter-count].
  */
 
 import { qs, qsa } from '../utils/dom.js';
@@ -22,9 +25,10 @@ const LABELS = {
   type: { jackets: 'Jackets', hoodies: 'Hoodies & sweats', 't-shirts': 'T-Shirts', trousers: 'Trousers', accessories: 'Accessories' },
   style: { running: 'Running', lifestyle: 'Lifestyle', skate: 'Skate', trail: 'Trail' },
   gender: { men: 'Men', women: 'Women', unisex: 'Unisex' },
+  color: { black: 'Black', white: 'White', grey: 'Grey', blue: 'Blue', green: 'Green', cream: 'Cream', orange: 'Orange', brown: 'Brown', other: 'Other' },
   price: { 'under-100': 'Under €100', '100-150': '€100–€150', '150-200': '€150–€200', 'over-200': 'Over €200' },
   collection: { new: 'New in', sale: 'Sale', limited: 'Limited' },
-  stock: { in: 'In stock only' },
+  stock: { in: 'In stock', low: 'Low stock' },
 };
 
 const GROUPS = [
@@ -34,6 +38,7 @@ const GROUPS = [
   ['gender', 'Gender'],
   ['brand', 'Brand'],
   ['size', 'Size'],
+  ['color', 'Colour'],
   ['price', 'Price'],
   ['collection', 'Collection'],
   ['stock', 'Availability'],
@@ -61,10 +66,20 @@ const valuesOf = {
   gender: (p) => [p.gender],
   brand: (p) => [brandSlug(p.brand)],
   size: (p) => p.availableSizes,
+  color: (p) => p.colors,
   price: (p) => Object.keys(PRICE_TEST).filter((k) => PRICE_TEST[k](p)),
   collection: (p) => [p.isNew && 'new', isOnSale(p) && 'sale', p.isLimited && 'limited'].filter(Boolean),
-  stock: (p) => (isSoldOut(p) ? [] : ['in']),
+  stock: (p) => (isSoldOut(p) ? [] : p.stock === 'low_stock' ? ['in', 'low'] : ['in']),
 };
+
+/** A page's fixed scope: every preset key present must match. */
+const inScope = (p, preset) =>
+  (!preset.category || [].concat(preset.category).includes(p.category)) &&
+  (!preset.gender || preset.gender.includes(p.gender)) &&
+  (!preset.style || preset.style.includes(p.style)) &&
+  (!preset.brand || brandSlug(p.brand) === preset.brand) &&
+  (!preset.collection || valuesOf.collection(p).includes(preset.collection)) &&
+  (!preset.isNew || p.isNew);
 
 function readState() {
   const params = new URLSearchParams(location.search);
@@ -136,42 +151,9 @@ async function init() {
 
   let state = readState();
 
-  // The generic shop route names itself after its gender or collection filter.
-  // "Men" and "Women" include unisex products, so the name comes from the
-  // non-unisex value. Runs before the catalogue loads to avoid a title flash.
-  const heading = qs('h1', root);
-  const crumb = qs('[data-catalog-crumb]', root);
-  const intro = qs('[data-catalog-intro]', root);
-  const baseHeading = heading?.textContent;
-  const baseCrumb = crumb?.textContent;
-  const baseIntro = intro?.textContent;
-  const baseTitle = document.title;
-  const INTROS = {
-    Men: 'Sneakers, clothing and accessories in men’s and unisex fits.',
-    Women: 'Sneakers, clothing and accessories in women’s and unisex fits.',
-    Unisex: 'Everything cut and sized to be worn by anyone.',
-    Sale: 'Reduced while stock lasts. Same delivery and 30-day returns as everything else.',
-    'New in': 'The latest arrivals across sneakers, clothing and accessories.',
-    Limited: 'Small runs that will not be restocked.',
-  };
-  const retitle = () => {
-    if (preset.category || preset.isNew || !heading) return;
-    const only = (values) => (values.length === 1 ? values[0] : null);
-    const gender = only(state.gender.filter((value) => value !== 'unisex')) ?? only(state.gender);
-    const label = { men: 'Men', women: 'Women', unisex: 'Unisex' }[gender] ?? { sale: 'Sale', new: 'New in', limited: 'Limited' }[only(state.collection)];
-    heading.textContent = label ?? baseHeading;
-    if (crumb) crumb.textContent = label ?? baseCrumb;
-    if (intro) intro.textContent = (label && INTROS[label]) ?? baseIntro;
-    document.title = label ? `${label} — DUBLIN/01` : baseTitle;
-  };
-  retitle();
-
   let products;
   try {
-    products = (await loadProducts()).filter(
-      (p) =>
-        (!preset.category || [].concat(preset.category).includes(p.category)) && (!preset.isNew || p.isNew),
-    );
+    products = (await loadProducts()).filter((p) => inScope(p, preset));
   } catch {
     results.innerHTML = '<p class="type-body text-neutral-600">The catalogue could not be loaded. Refresh the page to try again.</p>';
     return;
@@ -192,10 +174,10 @@ async function init() {
     const list = products.filter((p) => matches(p, state)).sort(SORTS[state.sort]);
     results.removeAttribute('aria-busy');
     results.innerHTML = list.length
-      ? list.map((p, i) => productCard(p, { eager: i < 4 })).join('')
+      ? list.map((p, i) => productCard(p, { eager: i < 4, quickAdd: true })).join('')
       : `<div class="col-span-full border border-neutral-200 px-6 py-16 text-center">
           <p class="type-h3">Nothing matches these filters.</p>
-          <p class="type-body mt-3 text-neutral-600">Try removing a size or brand.</p>
+          <p class="type-body mt-3 text-neutral-600">Try removing a filter, or clear them all.</p>
           <button class="btn btn-secondary mt-8" type="button" data-clear-filters>Clear filters</button>
         </div>`;
     const label = pluralize(list.length, 'product');
@@ -217,7 +199,6 @@ async function init() {
 
   const update = () => {
     writeState(state);
-    retitle();
     render();
   };
 
@@ -259,7 +240,6 @@ async function init() {
   });
 
   renderFilters();
-  retitle();
   render();
 }
 

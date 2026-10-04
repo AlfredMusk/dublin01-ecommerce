@@ -1,7 +1,7 @@
 /**
  * Search UI: the inline field in the navigation bar (desktop) and the overlay
  * (tablet and mobile). Both render instant results from the search source
- * adapter; pressing Enter goes to pages/search.html?q= for the full grid.
+ * adapter; pressing Enter goes to search.html?q= for the full grid.
  *
  * Hooks — field: [data-nav-search], [data-nav-search-panel], [data-nav-search-results],
  * [data-nav-search-status]. Overlay: [data-search], [data-search-trigger],
