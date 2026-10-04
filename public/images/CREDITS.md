@@ -64,7 +64,7 @@ All photographs are from [Unsplash](https://unsplash.com) and used under the [Un
 | `editorial/cat-running.webp` | Vincent Tavernier ([@vincent_tavernier](https://unsplash.com/@vincent_tavernier)) | https://unsplash.com/photos/sKHFsbDegDc |
 | `editorial/hero-layers-wide.webp` | Kyler Boone ([@kylerb](https://unsplash.com/@kylerb)) | https://unsplash.com/photos/WCvi4vCs7qg |
 | `editorial/hero-layers-tall.webp` | Kyler Boone ([@kylerb](https://unsplash.com/@kylerb)) | https://unsplash.com/photos/WCvi4vCs7qg |
-| `editorial/hero-night-wide.webp` | Kamilla Isalieva ([@kamillaisalieva](https://unsplash.com/@kamillaisalieva)) | https://unsplash.com/photos/aPbXHnO0eiY |
-| `editorial/hero-night-tall.webp` | Kamilla Isalieva ([@kamillaisalieva](https://unsplash.com/@kamillaisalieva)) | https://unsplash.com/photos/aPbXHnO0eiY |
+| `editorial/hero-dublin-wide.webp` | Guillaume Henrotte ([@guigui1410](https://unsplash.com/@guigui1410)) | https://unsplash.com/photos/zBDWByAzAM0 |
+| `editorial/hero-dublin-tall.webp` | Guillaume Henrotte ([@guigui1410](https://unsplash.com/@guigui1410)) | https://unsplash.com/photos/zBDWByAzAM0 |
 | `editorial/hero-miles-wide.webp` | Alexander Grey ([@sharonmccutcheon](https://unsplash.com/@sharonmccutcheon)) | https://unsplash.com/photos/ZdFwqTu62Zg |
 | `editorial/hero-miles-tall.webp` | Alexander Grey ([@sharonmccutcheon](https://unsplash.com/@sharonmccutcheon)) | https://unsplash.com/photos/ZdFwqTu62Zg |

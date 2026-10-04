@@ -1,23 +1,20 @@
 /**
  * Editorial carousel ([data-carousel]) — used by the home hero.
- * Cross-fades stacked [data-slide] elements. Autoplay is driven by the CSS
- * progress animation (one "animationend" per slide), so there is a single
- * clock and pausing is just pausing that animation.
+ * Cross-fades stacked [data-slide] elements and moves to the next one every
+ * INTERVAL ms. The clock keeps its remaining time across holds and pauses.
  *
- * Autoplay holds while the pointer is over the carousel or the tab is hidden,
- * and stops until an explicit Play when keyboard focus enters the carousel
- * or the user prefers reduced motion.
+ * Autoplay holds while the pointer is over the carousel, keyboard focus is in
+ * a slide or the tab is hidden, and stops until an explicit Play when keyboard
+ * focus enters the carousel or the user prefers reduced motion.
  *
- * Hooks: [data-carousel-prev], [data-carousel-next], [data-carousel-pause],
- * [data-carousel-goto="<index>"], [data-carousel-current], [data-carousel-status].
+ * Hooks: [data-carousel-pause], [data-carousel-goto="<index>"],
+ * [data-carousel-status].
  */
 
 import { qs, qsa } from '../utils/dom.js';
 
+const INTERVAL = 6000;
 const SWIPE_DISTANCE = 48;
-// A real autoplay cycle lasts seconds. Anything shorter is a neutralised
-// animation (reduced motion) and must never advance the slide.
-const MIN_CYCLE_SECONDS = 1;
 // On a slow connection, autoplay waits this long for the next image before it
 // gives the current slide another cycle; a click waits this long at most.
 const AUTO_WAIT = 4000;
@@ -29,8 +26,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
   if (slides.length < 2) return;
 
   const controls = qs('.hero-controls', root);
-  const bars = qsa('[data-carousel-goto]', root);
-  const current = qs('[data-carousel-current]', root);
+  const dots = qsa('[data-carousel-goto]', root);
   const status = qs('[data-carousel-status]', root);
   const pauseButton = qs('[data-carousel-pause]', root);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -39,7 +35,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
   let index = 0; // slide on screen
   let wanted = 0; // slide asked for; differs from index while its image loads
   let ticket = 0;
-  let autoPending = false; // the bar finished and the next slide is due
+  let autoPending = false; // the clock ran out and the next slide is due
   let userPaused = reducedMotion.matches;
   let started = false; // autoplay waits for the first image
 
@@ -90,31 +86,57 @@ export function initCarousel(root = qs('[data-carousel]')) {
     });
   };
 
-  const syncPlaying = () => root.toggleAttribute('data-playing', started && !userPaused);
-
   const render = ({ announce = false } = {}) => {
     slides.forEach((slide, i) => {
       const active = i === index;
       slide.toggleAttribute('data-active', active);
       slide.toggleAttribute('inert', !active);
     });
-    bars.forEach((bar, i) => {
-      bar.toggleAttribute('data-done', i < index);
-      bar.toggleAttribute('data-current', i === index);
-      if (i === index) bar.setAttribute('aria-current', 'true');
-      else bar.removeAttribute('aria-current');
+    dots.forEach((dot, i) => {
+      dot.toggleAttribute('data-current', i === index);
+      if (i === index) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
     });
-    if (current) current.textContent = String(index + 1).padStart(2, '0');
     if (announce && status) {
       const title = qs('h2', slides[index])?.textContent ?? '';
-      status.textContent = `Slide ${index + 1} of ${slides.length}: ${title}`;
+      status.textContent = `Campaign ${index + 1} of ${slides.length}: ${title}`;
     }
   };
 
-  const restartBar = () => {
-    root.removeAttribute('data-playing');
-    void root.offsetWidth;
-    syncPlaying();
+  // Temporary hold: pointer over the carousel, keyboard focus inside a slide
+  // (rotating would make that slide inert and drop the focus), or tab hidden.
+  let hovering = false;
+  let focusInSlide = false;
+  const held = () => hovering || focusInSlide || document.hidden;
+
+  // Autoplay clock. Stopping it keeps the time left, so a hover or a pause
+  // does not grant the slide a full new cycle.
+  let remaining = INTERVAL;
+  let timer = 0;
+  let since = 0;
+
+  const stopClock = () => {
+    if (!timer) return;
+    clearTimeout(timer);
+    timer = 0;
+    remaining = Math.max(0, remaining - (performance.now() - since));
+  };
+
+  const runClock = () => {
+    if (timer || !started || userPaused || autoPending || held()) return;
+    since = performance.now();
+    timer = setTimeout(() => {
+      timer = 0;
+      remaining = INTERVAL;
+      autoPending = true;
+      advance();
+    }, remaining);
+  };
+
+  const restartClock = () => {
+    stopClock();
+    remaining = INTERVAL;
+    runClock();
   };
 
   const show = (next, options) => {
@@ -123,7 +145,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
     autoPending = false;
     render(options);
     preloadAround();
-    restartBar();
+    restartClock();
   };
 
   /** A click, key or swipe: the outgoing slide stays until the new image is in. */
@@ -134,12 +156,6 @@ export function initCarousel(root = qs('[data-carousel]')) {
     const mine = ticket;
     whenReady(slides[wanted], () => mine === ticket && show(wanted, options), MANUAL_WAIT);
   };
-
-  // Temporary hold: pointer over the carousel, keyboard focus inside a slide
-  // (rotating would make that slide inert and drop the focus), or tab hidden.
-  let hovering = false;
-  let focusInSlide = false;
-  const held = () => hovering || focusInSlide || document.hidden;
 
   /** Autoplay step, retried when a hold lifts. Never moves to a slide without its image. */
   const advance = () => {
@@ -159,7 +175,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
         else {
           // Image still loading: give the current slide another cycle.
           autoPending = false;
-          restartBar();
+          restartClock();
         }
       },
       AUTO_WAIT,
@@ -167,31 +183,22 @@ export function initCarousel(root = qs('[data-carousel]')) {
   };
 
   const syncHold = () => {
-    root.toggleAttribute('data-holding', held());
+    if (held()) return stopClock();
+    runClock();
     advance();
   };
 
   const setPaused = (paused) => {
     userPaused = paused;
-    syncPlaying();
-    if (!pauseButton) return;
-    pauseButton.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow');
-    qs('[data-icon-pause]', pauseButton)?.toggleAttribute('hidden', paused);
-    qs('[data-icon-play]', pauseButton)?.toggleAttribute('hidden', !paused);
+    if (paused) {
+      autoPending = false;
+      stopClock();
+    } else runClock();
+    if (pauseButton) pauseButton.textContent = paused ? 'Play slideshow' : 'Pause slideshow';
   };
 
-  // Autoplay: the progress bar finishing makes the next slide due.
-  root.addEventListener('animationend', (event) => {
-    if (event.animationName !== 'hero-progress' || userPaused) return;
-    if (event.elapsedTime < MIN_CYCLE_SECONDS) return;
-    autoPending = true;
-    advance();
-  });
-
-  qs('[data-carousel-next]', root)?.addEventListener('click', () => goTo(wanted + 1, { announce: true }));
-  qs('[data-carousel-prev]', root)?.addEventListener('click', () => goTo(wanted - 1, { announce: true }));
   pauseButton?.addEventListener('click', () => setPaused(!userPaused));
-  bars.forEach((bar) => bar.addEventListener('click', () => goTo(Number(bar.dataset.carouselGoto), { announce: true })));
+  dots.forEach((dot) => dot.addEventListener('click', () => goTo(Number(dot.dataset.carouselGoto), { announce: true })));
 
   // Arrow keys work from the controls only: from a slide's link they would
   // make that slide inert and drop focus on <body>.
@@ -226,7 +233,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
   });
   document.addEventListener('visibilitychange', syncHold);
 
-  // Swipe (touch and pen only; mouse users have the buttons).
+  // Swipe (touch and pen only; mouse users have the dots).
   let startX = 0;
   let startY = 0;
   root.addEventListener('pointerdown', (event) => {
@@ -252,7 +259,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
     if (started) return;
     started = true;
     preloadAround();
-    syncPlaying();
+    runClock();
   };
   const firstImage = qs('img', slides[0]);
   if (!firstImage || firstImage.complete) start();

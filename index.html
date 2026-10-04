@@ -362,54 +362,27 @@
   <h1 class="sr-only">DUBLIN/01 — sneakers and streetwear, Dublin</h1>
   <div class="hero-controls">
     <div class="container-site hero-controls-row">
-      <div class="hero-progress"><button class="hero-dot" type="button" aria-label="Go to slide 1: Built for wet pavements." data-carousel-goto="0"><span><i></i></span></button><button class="hero-dot" type="button" aria-label="Go to slide 2: City layers. Dublin energy." data-carousel-goto="1"><span><i></i></span></button><button class="hero-dot" type="button" aria-label="Go to slide 3: Made for everyday miles." data-carousel-goto="2"><span><i></i></span></button><button class="hero-dot" type="button" aria-label="Go to slide 4: Fresh pairs. New routes." data-carousel-goto="3"><span><i></i></span></button></div>
-      <p class="hero-counter" aria-hidden="true"><span data-carousel-current>01</span> / 04</p>
-      <div class="hero-buttons">
-        <button class="hero-btn" type="button" aria-label="Pause slideshow" data-carousel-pause>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-icon-pause><path d="M9 6v12M15 6v12" /></svg>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-icon-play hidden><path d="M8 6l10 6-10 6z" /></svg>
-        </button>
-        <button class="hero-btn" type="button" aria-label="Previous slide" data-carousel-prev>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
-        </button>
-        <button class="hero-btn" type="button" aria-label="Next slide" data-carousel-next>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-        </button>
-      </div>
+      <button class="hero-pause" type="button" data-carousel-pause>Pause slideshow</button>
+      <div class="hero-dots"><button class="hero-dot" type="button" aria-label="Show campaign 1 of 4: Built for wet pavements." data-carousel-goto="0"><span></span></button><button class="hero-dot" type="button" aria-label="Show campaign 2 of 4: Made for everyday miles." data-carousel-goto="1"><span></span></button><button class="hero-dot" type="button" aria-label="Show campaign 3 of 4: City layers. Dublin energy." data-carousel-goto="2"><span></span></button><button class="hero-dot" type="button" aria-label="Show campaign 4 of 4: Ready for every route." data-carousel-goto="3"><span></span></button></div>
     </div>
   </div>
   <div class="hero-slides" data-carousel-slides>
     <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="1 of 4" data-slide data-campaign="aw26-wet-pavements" data-active>
-      <picture style="--hero-pos-tall: 65% 60%; --hero-pos-wide: 65% 60%">
+      <picture style="--hero-pos-tall: 50% 0%; --hero-pos-wide: 50% 0%">
         <source media="(min-width: 64rem), (orientation: landscape)" srcset="public/images/editorial/hero-wide.webp" width="1920" height="1080" />
         <img class="hero-media" src="public/images/editorial/hero-tall.webp" width="1080" height="1350"
-          fetchpriority="high" alt="A white sneaker steps onto a wet manhole cover at night, city lights reflected in the rain." />
+          fetchpriority="high" alt="A grey sneaker steps onto a wet manhole cover at night, city lights reflected on the rain-soaked street." />
       </picture>
       <div class="hero-content">
         <div class="container-site">
           <p class="type-label">Autumn / Winter 26 — Dublin</p>
           <h2 class="hero-title" style="max-width: 11ch">Built for wet pavements.</h2>
-          <p class="hero-description">Technical sneakers and everyday footwear selected for city life.</p>
-          <a class="btn btn-inverse hero-cta" href="pages/shop.html">Shop collection<span class="sr-only">: Built for wet pavements.</span></a>
+          <p class="hero-description">New-season sneakers and outerwear selected for city life.</p>
+          <a class="btn btn-inverse hero-cta" href="pages/new.html">Shop new arrivals<span class="sr-only">: Built for wet pavements.</span></a>
         </div>
       </div>
     </article>
-    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" data-slide data-campaign="dublin-essentials" inert>
-      <picture style="--hero-pos-tall: 60% 40%; --hero-pos-wide: 60% 40%">
-        <source media="(min-width: 64rem), (orientation: landscape)" data-srcset="public/images/editorial/hero-layers-wide.webp" width="1920" height="1080" />
-        <img class="hero-media" data-src="public/images/editorial/hero-layers-tall.webp" width="1080" height="1350"
-          decoding="async" alt="Seen from behind, a person in a hooded green rain jacket walks through a busy wet street." />
-      </picture>
-      <div class="hero-content">
-        <div class="container-site">
-          <p class="type-label">Dublin essentials</p>
-          <h2 class="hero-title" style="max-width: 12ch">City layers. Dublin energy.</h2>
-          <p class="hero-description">Streetwear and outerwear designed around modern city life.</p>
-          <a class="btn btn-inverse hero-cta" href="pages/clothing.html">Shop clothing<span class="sr-only">: City layers. Dublin energy.</span></a>
-        </div>
-      </div>
-    </article>
-    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" data-slide data-campaign="footwear-edit" inert>
+    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="2 of 4" data-slide data-campaign="footwear-edit" inert>
       <picture style="--hero-pos-tall: 50% 0%; --hero-pos-wide: 70% 50%">
         <source media="(min-width: 64rem), (orientation: landscape)" data-srcset="public/images/editorial/hero-miles-wide.webp" width="1920" height="1080" />
         <img class="hero-media" data-src="public/images/editorial/hero-miles-tall.webp" width="1080" height="1350"
@@ -424,18 +397,33 @@
         </div>
       </div>
     </article>
-    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" data-slide data-campaign="new-arrivals" inert>
-      <picture style="--hero-pos-tall: 50% 60%; --hero-pos-wide: 50% 60%">
-        <source media="(min-width: 64rem), (orientation: landscape)" data-srcset="public/images/editorial/hero-night-wide.webp" width="1920" height="1080" />
-        <img class="hero-media" data-src="public/images/editorial/hero-night-tall.webp" width="1080" height="1350"
-          decoding="async" alt="Two people cross a rain-wet city square at night under warm street lights." />
+    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="3 of 4" data-slide data-campaign="streetwear-edit" inert>
+      <picture style="--hero-pos-tall: 60% 40%; --hero-pos-wide: 60% 40%">
+        <source media="(min-width: 64rem), (orientation: landscape)" data-srcset="public/images/editorial/hero-layers-wide.webp" width="1920" height="1080" />
+        <img class="hero-media" data-src="public/images/editorial/hero-layers-tall.webp" width="1080" height="1350"
+          decoding="async" alt="Seen from behind, a person in a hooded green rain jacket walks through a busy wet street." />
       </picture>
       <div class="hero-content">
         <div class="container-site">
-          <p class="type-label">New arrivals</p>
-          <h2 class="hero-title" style="max-width: 11ch">Fresh pairs. New routes.</h2>
-          <p class="hero-description">Discover the latest additions to DUBLIN/01.</p>
-          <a class="btn btn-inverse hero-cta" href="pages/new.html">Explore new arrivals<span class="sr-only">: Fresh pairs. New routes.</span></a>
+          <p class="type-label">Streetwear edit</p>
+          <h2 class="hero-title" style="max-width: 12ch">City layers. Dublin energy.</h2>
+          <p class="hero-description">Streetwear and outerwear designed around modern city life.</p>
+          <a class="btn btn-inverse hero-cta" href="pages/clothing.html">Shop the edit<span class="sr-only">: City layers. Dublin energy.</span></a>
+        </div>
+      </div>
+    </article>
+    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="4 of 4" data-slide data-campaign="dublin-essentials-city" inert>
+      <picture style="--hero-pos-tall: 50% 50%; --hero-pos-wide: 50% 60%">
+        <source media="(min-width: 64rem), (orientation: landscape)" data-srcset="public/images/editorial/hero-dublin-wide.webp" width="1920" height="1080" />
+        <img class="hero-media" data-src="public/images/editorial/hero-dublin-tall.webp" width="1080" height="1350"
+          decoding="async" alt="Dublin city centre at dusk after rain, red lights reflected on the wet road." />
+      </picture>
+      <div class="hero-content">
+        <div class="container-site">
+          <p class="type-label">Dublin essentials</p>
+          <h2 class="hero-title" style="max-width: 11ch">Ready for every route.</h2>
+          <p class="hero-description">Sneakers, layers and accessories for every day in the city.</p>
+          <a class="btn btn-inverse hero-cta" href="pages/shop.html">Explore collection<span class="sr-only">: Ready for every route.</span></a>
         </div>
       </div>
     </article>

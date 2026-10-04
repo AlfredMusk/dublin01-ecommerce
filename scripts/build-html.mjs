@@ -141,28 +141,17 @@ function heroHtml(campaigns) {
     })
     .join('\n');
   const dots = campaigns
-    .map((c, i) => `<button class="hero-dot" type="button" aria-label="Go to slide ${i + 1}: ${esc(c.title)}" data-carousel-goto="${i}"><span><i></i></span></button>`)
+    .map((c, i) => `<button class="hero-dot" type="button" aria-label="Show campaign ${i + 1} of ${total}: ${esc(c.title)}" data-carousel-goto="${i}"><span></span></button>`)
     .join('');
   // The page's <h1> stays outside the slides (inactive slides are inert), and
   // the controls come first in the DOM so Pause is reached early by keyboard.
+  // Pause is only shown on keyboard focus; the dots are the only visible control.
   return `<section class="hero" aria-roledescription="carousel" aria-label="Campaigns" data-carousel>
   <h1 class="sr-only">DUBLIN/01 — sneakers and streetwear, Dublin</h1>
   <div class="hero-controls">
     <div class="container-site hero-controls-row">
-      <div class="hero-progress">${dots}</div>
-      <p class="hero-counter" aria-hidden="true"><span data-carousel-current>01</span> / ${String(total).padStart(2, '0')}</p>
-      <div class="hero-buttons">
-        <button class="hero-btn" type="button" aria-label="Pause slideshow" data-carousel-pause>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-icon-pause><path d="M9 6v12M15 6v12" /></svg>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" data-icon-play hidden><path d="M8 6l10 6-10 6z" /></svg>
-        </button>
-        <button class="hero-btn" type="button" aria-label="Previous slide" data-carousel-prev>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" /></svg>
-        </button>
-        <button class="hero-btn" type="button" aria-label="Next slide" data-carousel-next>
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-        </button>
-      </div>
+      <button class="hero-pause" type="button" data-carousel-pause>Pause slideshow</button>
+      <div class="hero-dots">${dots}</div>
     </div>
   </div>
   <div class="hero-slides" data-carousel-slides>

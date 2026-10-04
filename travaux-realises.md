@@ -288,3 +288,54 @@ Rien de ce qui suit n'est branché aujourd'hui ; ce sont les points d'entrée pr
 ### Commit
 
 `feat: build production header and campaign hero` (commit local unique de cette phase).
+
+---
+
+## PHASE 02 — FINALISATION HERO
+
+Date : 4 octobre 2026. Périmètre : Hero uniquement. La barre d'annonce et la navbar sont validées et n'ont pas été modifiées (captures avant et après identiques au pixel à 1440, 1024 et 390 px).
+
+### Changements du Hero
+
+- **Contrôles retirés** : compteur « 01 / 04 », bouton pause visible, flèches précédent et suivant, barres de progression, avec leur CSS et leur JS.
+- **Ce qui reste visible** : quatre points discrets (6 px, zone cliquable 24 × 44 px), en bas à gauche sur mobile et tablette, en bas à droite sur desktop.
+- **Quatre campagnes, un objectif commercial chacune** (`src/data/campaigns.json`) :
+  1. Autumn / Winter 26 — « Built for wet pavements. » → *Shop new arrivals* (`pages/new.html`)
+  2. Footwear edit — « Made for everyday miles. » → *Shop sneakers* (`pages/sneakers.html`)
+  3. Streetwear edit — « City layers. Dublin energy. » → *Shop the edit* (`pages/clothing.html`)
+  4. Dublin essentials — « Ready for every route. » → *Explore collection* (`pages/shop.html`)
+- **Photos** : la slide 1 est recadrée (la basket en haut, le texte sur le bitume sombre, plus aucune lettre sur la chaussure). La slide 4 utilise une vraie photo de Dublin au crépuscule après la pluie (Guillaume Henrotte, Unsplash) à la place de la photo de nuit précédente. Crédits à jour dans `public/images/CREDITS.md`.
+- **Variation éditoriale** : largeur du bloc titre et point focal propres à chaque campagne (titre sur deux ou trois lignes), dans un seul système typographique.
+
+### Comportement du carrousel
+
+- Défilement automatique toutes les 6 secondes, par un minuteur JavaScript qui conserve le temps restant pendant un survol ou une pause (mesuré : 5,8 s, 11,9 s, 17,8 s, 23,8 s).
+- Fondu enchaîné de 900 ms ; la slide sortante reste opaque dessous. Zoom lent de l'image active de 1,06 à 1 (transform seul). Entrée du texte en quatre temps décalés.
+- La slide ne change jamais vers une image non chargée : attente de 4 s au plus, sinon un nouveau cycle sur la slide courante. Images suivantes chargées une par une.
+- Balayage au doigt sur mobile ; flèches gauche et droite du clavier depuis les points.
+- Aucun décalage de mise en page (CLS mesuré : 0).
+
+### Responsive
+
+Vérifié sur captures à 1440×900, 1280×800, 1280×720, 1024×768, 768×1024, 390×844, 375×667 et 844×390 : eyebrow, titre et bouton visibles sur les 4 campagnes, aucune lettre sur les chaussures, aucun débordement horizontal.
+
+- Sous 1024 px en portrait : image portrait dédiée, sujet en haut, texte en bas.
+- Téléphones courts (moins de 704 px de haut) : titre réduit pour laisser le haut de la photo au sujet.
+- Titre plafonné par la hauteur du Hero sur les écrans bas.
+- Limite connue : téléphone en paysage (844×390), le Hero (480 px minimum) dépasse la hauteur de l'écran ; le bouton s'atteint en faisant défiler.
+
+### Accessibilité
+
+- Le bouton Pause / Play existe toujours mais n'apparaît qu'au focus clavier (exigence WCAG 2.2.2 : pouvoir arrêter un contenu qui défile seul).
+- Le défilement se suspend au survol, quand le focus clavier est dans une slide et quand l'onglet est caché ; il s'arrête jusqu'à un Play quand le focus clavier entre dans le Hero.
+- `prefers-reduced-motion` : pas de défilement automatique, ni zoom ni mouvement ; points et balayage restent actifs.
+- Chaque point est un bouton nommé (« Show campaign 2 of 4: … ») ; chaque bouton d'achat est un vrai lien dont le nom commence par le libellé visible.
+
+### Fichiers modifiés
+
+`src/data/campaigns.json`, `scripts/build-html.mjs` (bloc Hero), `src/js/modules/carousel.js`, `src/css/commerce.css` (bloc Hero), `src/css/base.css` (exception d'animation retirée), `public/images/editorial/hero-wide.webp`, `hero-tall.webp`, `hero-miles-tall.webp`, `hero-dublin-wide.webp` et `hero-dublin-tall.webp` (nouveaux), `hero-night-*.webp` (supprimés), `public/images/CREDITS.md`, `index.html` (généré).
+
+### Implémenté maintenant / prêt pour plus tard
+
+- **Maintenant** : tout ce qui précède. Aucune dépendance ajoutée.
+- **Plus tard** : campagnes servies par un CMS (même schéma JSON), dates de début et de fin, mesure des clics. Les sections sous le Hero ne sont pas commencées.

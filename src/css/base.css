@@ -83,12 +83,5 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
-
-    /* The hero progress bar is the carousel's clock, not decoration: it keeps
-       its real duration, otherwise a manual Play would advance a slide on
-       every frame. (Autoplay is off by default under reduced motion.) */
-    .hero-dot i {
-      animation-duration: var(--hero-interval, 6s) !important;
-    }
   }
 }

@@ -3,37 +3,19 @@
     "id": "aw26-wet-pavements",
     "eyebrow": "Autumn / Winter 26 — Dublin",
     "title": "Built for wet pavements.",
-    "description": "Technical sneakers and everyday footwear selected for city life.",
+    "description": "New-season sneakers and outerwear selected for city life.",
     "image": {
       "wide": "public/images/editorial/hero-wide.webp",
       "tall": "public/images/editorial/hero-tall.webp"
     },
-    "imageAlt": "A white sneaker steps onto a wet manhole cover at night, city lights reflected in the rain.",
+    "imageAlt": "A grey sneaker steps onto a wet manhole cover at night, city lights reflected on the rain-soaked street.",
     "objectPosition": {
-      "wide": "65% 60%",
-      "tall": "65% 60%"
+      "wide": "50% 0%",
+      "tall": "50% 0%"
     },
     "titleWidth": "11ch",
-    "ctaLabel": "Shop collection",
-    "ctaHref": "pages/shop.html"
-  },
-  {
-    "id": "dublin-essentials",
-    "eyebrow": "Dublin essentials",
-    "title": "City layers. Dublin energy.",
-    "description": "Streetwear and outerwear designed around modern city life.",
-    "image": {
-      "wide": "public/images/editorial/hero-layers-wide.webp",
-      "tall": "public/images/editorial/hero-layers-tall.webp"
-    },
-    "imageAlt": "Seen from behind, a person in a hooded green rain jacket walks through a busy wet street.",
-    "objectPosition": {
-      "wide": "60% 40%",
-      "tall": "60% 40%"
-    },
-    "titleWidth": "12ch",
-    "ctaLabel": "Shop clothing",
-    "ctaHref": "pages/clothing.html"
+    "ctaLabel": "Shop new arrivals",
+    "ctaHref": "pages/new.html"
   },
   {
     "id": "footwear-edit",
@@ -54,21 +36,39 @@
     "ctaHref": "pages/sneakers.html"
   },
   {
-    "id": "new-arrivals",
-    "eyebrow": "New arrivals",
-    "title": "Fresh pairs. New routes.",
-    "description": "Discover the latest additions to DUBLIN/01.",
+    "id": "streetwear-edit",
+    "eyebrow": "Streetwear edit",
+    "title": "City layers. Dublin energy.",
+    "description": "Streetwear and outerwear designed around modern city life.",
     "image": {
-      "wide": "public/images/editorial/hero-night-wide.webp",
-      "tall": "public/images/editorial/hero-night-tall.webp"
+      "wide": "public/images/editorial/hero-layers-wide.webp",
+      "tall": "public/images/editorial/hero-layers-tall.webp"
     },
-    "imageAlt": "Two people cross a rain-wet city square at night under warm street lights.",
+    "imageAlt": "Seen from behind, a person in a hooded green rain jacket walks through a busy wet street.",
+    "objectPosition": {
+      "wide": "60% 40%",
+      "tall": "60% 40%"
+    },
+    "titleWidth": "12ch",
+    "ctaLabel": "Shop the edit",
+    "ctaHref": "pages/clothing.html"
+  },
+  {
+    "id": "dublin-essentials-city",
+    "eyebrow": "Dublin essentials",
+    "title": "Ready for every route.",
+    "description": "Sneakers, layers and accessories for every day in the city.",
+    "image": {
+      "wide": "public/images/editorial/hero-dublin-wide.webp",
+      "tall": "public/images/editorial/hero-dublin-tall.webp"
+    },
+    "imageAlt": "Dublin city centre at dusk after rain, red lights reflected on the wet road.",
     "objectPosition": {
       "wide": "50% 60%",
-      "tall": "50% 60%"
+      "tall": "50% 50%"
     },
     "titleWidth": "11ch",
-    "ctaLabel": "Explore new arrivals",
-    "ctaHref": "pages/new.html"
+    "ctaLabel": "Explore collection",
+    "ctaHref": "pages/shop.html"
   }
 ]
