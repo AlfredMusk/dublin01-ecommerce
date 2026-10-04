@@ -19,6 +19,37 @@ export function initHeader() {
 
   initStickyState(header);
   initMegaMenus(header);
+  markCurrentLinks();
+  // Catalogue filters rewrite the URL: keep Men, Women and Sale in sync.
+  document.addEventListener('catalog:rendered', markCurrentLinks);
+}
+
+/**
+ * Navigation links that carry a query string (Men, Women, Sale) cannot be
+ * marked at build time: match them against the current URL here.
+ */
+function markCurrentLinks() {
+  // A link with filters names a section: its non-unisex gender, else its
+  // collection, else its type. Sorting or extra filters do not change it.
+  const section = (url) => {
+    const values = (key) => (url.searchParams.get(key) ?? '').split(',').filter(Boolean);
+    const gender = values('gender').filter((value) => value !== 'unisex');
+    if (gender.length === 1) return `gender=${gender[0]}`;
+    for (const key of ['collection', 'type']) {
+      const list = values(key);
+      if (list.length === 1) return `${key}=${list[0]}`;
+    }
+    return '';
+  };
+  const here = new URL(location.href);
+  qsa('[data-nav-id]').forEach((link) => {
+    const href = link.getAttribute('href');
+    if (!href?.includes('?')) return;
+    const url = new URL(href, location.href);
+    const current = url.pathname === here.pathname && section(url) !== '' && section(url) === section(here);
+    if (current) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
 }
 
 /** Adds [data-scrolled] once the announcement bar has left the viewport. */
@@ -83,6 +114,7 @@ function initMegaMenus(header) {
     trigger.setAttribute('aria-expanded', 'true');
     panelFor(trigger)?.setAttribute('data-open', '');
     header.setAttribute('data-mega-open', '');
+    document.dispatchEvent(new CustomEvent('header:mega-open'));
   };
 
   function close({ focusTrigger = false } = {}) {
@@ -142,4 +174,5 @@ function initMegaMenus(header) {
   });
 
   mediaDesktop.addEventListener('change', () => close());
+  document.addEventListener('header:search-open', () => close());
 }

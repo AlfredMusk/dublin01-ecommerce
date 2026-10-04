@@ -52,6 +52,8 @@ dublin01-ecommerce/
 │   │   └── utils/      # dom, dialog, storage, format, paths, forms
 │   └── data/
 │       ├── products.json   # 23 demo products: the single source of product data
+│       ├── site.json       # Announcement bar and navigation (desktop bar, mega menus, mobile menu)
+│       ├── campaigns.json  # Home hero campaigns
 │       └── locales/        # en.json, fr.json (header strings, i18n later)
 ├── public/
 │   ├── images/         # products/ and editorial/ WebP + CREDITS.md
@@ -79,6 +81,7 @@ Pages are static HTML assembled at build time, so the header and footer exist on
 | New arrivals | `/pages/new.html` |
 | Sneakers | `/pages/sneakers.html` — filters in the URL: `?gender=men`, `?style=running,trail`, `?brand=nike`, `?size=8`, `?sort=price-asc` |
 | Clothing & accessories | `/pages/clothing.html?type=jackets` |
+| Men, Women, Sale | `/pages/shop.html?gender=men,unisex`, `?gender=women,unisex`, `?collection=sale` |
 | Brands | `/pages/brands.html` |
 | Search | `/pages/search.html?q=samba` |
 | Product | `/pages/product.html?slug=adidas-samba-og-white-green` |

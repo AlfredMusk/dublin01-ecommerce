@@ -1,13 +1,13 @@
 <section class="container-site pb-section-sm pt-6 lg:pt-8" data-catalog data-preset='{{preset}}'>
   <nav aria-label="Breadcrumb" class="breadcrumb">
-    <ol role="list"><li><a href="{{home}}">Home</a></li><li><span aria-current="page">{{crumb}}</span></li></ol>
+    <ol role="list"><li><a href="{{home}}">Home</a></li><li><span aria-current="page" data-catalog-crumb>{{crumb}}</span></li></ol>
   </nav>
   <header class="mt-8 grid-site items-end gap-y-4 lg:mt-12">
     <div class="col-span-full lg:col-span-7">
       <p class="type-label text-neutral-600">{{eyebrow}}</p>
       <h1 class="type-h1 mt-3">{{heading}}</h1>
     </div>
-    <p class="type-body col-span-full max-w-[52ch] text-neutral-600 lg:col-span-5">{{intro}}</p>
+    <p class="type-body col-span-full max-w-[52ch] text-neutral-600 lg:col-span-5" data-catalog-intro>{{intro}}</p>
   </header>
 
   <div class="catalog-toolbar mt-10">

@@ -1,31 +1,170 @@
 /**
- * Search overlay with live results from the catalogue. Pressing Enter goes to
- * pages/search.html?q= for the full result grid.
- * Markup hooks: [data-search] dialog, [data-search-trigger], [data-search-live],
- * [data-search-popular], [data-search-status].
+ * Search UI: the inline field in the navigation bar (desktop) and the overlay
+ * (tablet and mobile). Both render instant results from the search source
+ * adapter; pressing Enter goes to pages/search.html?q= for the full grid.
+ *
+ * Hooks — field: [data-nav-search], [data-nav-search-panel], [data-nav-search-results],
+ * [data-nav-search-status]. Overlay: [data-search], [data-search-trigger],
+ * [data-search-live], [data-search-popular], [data-search-status].
  */
 
-import { qs, qsa } from '../utils/dom.js';
+import { qs, qsa, mediaDesktop } from '../utils/dom.js';
 import { initDialog, openDialog, closeDialog } from '../utils/dialog.js';
-import { loadProducts, searchProducts } from '../data/catalog.js';
+import { search, prepareSearch } from '../data/search-source.js';
 import { asset, pageUrl, productUrl, escapeHtml } from '../utils/paths.js';
-import { formatPrice } from '../utils/format.js';
-import { smallImage, imageAlt } from './product-card.js';
+import { formatPrice, pluralize } from '../utils/format.js';
+import { smallImage } from './product-card.js';
 
 const PREVIEW_LIMIT = 4;
+const RENDER_DELAY = 120;
+// Screen readers hear the result count once typing settles, not on every key.
+const ANNOUNCE_DELAY = 700;
 
-export function initSearch() {
+const ARROW = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>';
+const UNAVAILABLE = '<p class="type-body text-neutral-600">Search is unavailable right now. Try again in a moment.</p>';
+
+/** Shared markup for instant results (thumbnail, brand, name, price). */
+function resultsHtml({ query, total, results }) {
+  if (!total) {
+    return `<p class="type-body text-neutral-600">No matches for “${escapeHtml(query)}”. Try a brand like <a class="link-editorial" href="${pageUrl('search', { q: 'adidas' })}">adidas</a> or a style like <a class="link-editorial" href="${pageUrl('search', { q: 'running' })}">running</a>.</p>`;
+  }
+  // Thumbnails are decorative here: the product name follows in the same link.
+  return `<p class="mega-heading">Products</p>
+    <ul class="search-live-grid" role="list">${results
+      .map(
+        (p) => `<li><a class="search-live-item" href="${productUrl(p.slug)}">
+          <img src="${asset(smallImage(p.images[0]))}" width="80" height="100" alt="" loading="lazy" />
+          <span class="min-w-0"><span class="type-micro block text-neutral-600">${escapeHtml(p.brand)}</span>
+          <span class="type-body-sm block truncate">${escapeHtml(p.name)}</span>
+          <span class="type-body-sm block truncate text-neutral-600">${escapeHtml(p.color)}</span>
+          <span class="type-body-sm block tabular-nums text-neutral-600">${formatPrice(p.price)}</span></span></a></li>`,
+      )
+      .join('')}</ul>
+    <a class="link-action mt-6" href="${pageUrl('search', { q: query })}">${total === 1 ? 'View 1 result' : `View all ${total} results`} ${ARROW}</a>`;
+}
+
+const statusText = ({ query, total }) => (total ? `${pluralize(total, 'result')} for ${query}` : `No results for ${query}`);
+
+/** Debounced text for a polite live region. */
+function announcer(element) {
+  let timer;
+  return (text) => {
+    clearTimeout(timer);
+    if (!text) element.textContent = '';
+    else timer = setTimeout(() => (element.textContent = text), ANNOUNCE_DELAY);
+  };
+}
+
+const blockEmptySubmit = (form, input) =>
+  form?.addEventListener('submit', (event) => {
+    if (!input.value.trim()) {
+      event.preventDefault();
+      input.focus();
+    }
+  });
+
+/** Inline field in the navigation bar, with a results panel under the header. */
+function initNavSearch() {
+  const form = qs('[data-nav-search]');
+  const panel = qs('[data-nav-search-panel]');
+  if (!form || !panel) return;
+  const header = form.closest('[data-header]');
+  const bar = form.closest('.nav-bar');
+  const input = qs('input', form);
+  const results = qs('[data-nav-search-results]', panel);
+  const announce = announcer(qs('[data-nav-search-status]'));
+  let latest = 0;
+  let timer;
+
+  // Closing also cancels a pending keystroke and any search still in flight,
+  // so the panel cannot reopen by itself.
+  const close = () => {
+    clearTimeout(timer);
+    latest += 1;
+    panel.hidden = true;
+    header.removeAttribute('data-search-open');
+    announce('');
+  };
+
+  const render = async () => {
+    const ticket = ++latest;
+    let html;
+    let found;
+    try {
+      found = await search(input.value, { limit: PREVIEW_LIMIT });
+      html = found.query ? resultsHtml(found) : '';
+    } catch {
+      html = UNAVAILABLE;
+    }
+    // A newer keystroke, a close, or focus leaving the form wins.
+    if (ticket !== latest || !form.contains(document.activeElement)) return;
+    if (!html) return close();
+    results.innerHTML = html;
+    announce(found ? statusText(found) : 'Search is unavailable.');
+    panel.hidden = false;
+    header.setAttribute('data-search-open', '');
+    document.dispatchEvent(new CustomEvent('header:search-open'));
+  };
+
+  const schedule = () => {
+    clearTimeout(timer);
+    timer = setTimeout(render, RENDER_DELAY);
+  };
+
+  // Focusing a field that already holds a query shows its results again,
+  // except when the focus comes straight back from an Escape.
+  let dismissed = false;
+  input.addEventListener('focus', () => {
+    prepareSearch();
+    if (input.value.trim() && panel.hidden && !dismissed) schedule();
+    dismissed = false;
+  });
+  input.addEventListener('input', schedule);
+  input.addEventListener('keydown', (event) => {
+    // Arrow down jumps from the field to the first result.
+    if (event.key === 'ArrowDown' && !panel.hidden) {
+      event.preventDefault();
+      qs('a', results)?.focus();
+    }
+  });
+  // Escape always closes the panel. From the field or a result, focus returns to the field.
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || panel.hidden) return;
+    const inside = form.contains(document.activeElement);
+    close();
+    if (!inside) return;
+    event.preventDefault();
+    dismissed = document.activeElement !== input;
+    input.focus();
+  });
+  blockEmptySubmit(form, input);
+
+  // Any click outside the form closes it, including empty areas of the navigation bar.
+  document.addEventListener('click', (event) => {
+    if (!panel.hidden && !form.contains(event.target)) close();
+  });
+  bar.addEventListener('focusout', (event) => {
+    if (event.relatedTarget && !form.contains(event.relatedTarget)) close();
+  });
+  document.addEventListener('header:mega-open', close);
+  // Below 1280px the field is hidden: never leave its panel behind.
+  mediaDesktop.addEventListener('change', close);
+}
+
+/** Overlay opened from the search icon (tablet, mobile) or the mobile menu. */
+function initSearchOverlay() {
   const dialog = qs('[data-search]');
   if (!dialog) return;
   initDialog(dialog);
 
   const input = qs('input[type="search"]', dialog);
-  const form = qs('form', dialog);
   const live = qs('[data-search-live]', dialog);
   const popular = qs('[data-search-popular]', dialog);
-  const status = qs('[data-search-status]', dialog);
+  const announce = announcer(qs('[data-search-status]', dialog));
   const menu = qs('[data-menu]');
   const menuTrigger = qs('[data-menu-trigger]');
+  let latest = 0;
+  let timer;
 
   qsa('[data-search-trigger]').forEach((trigger) => {
     trigger.addEventListener('click', () => {
@@ -36,50 +175,36 @@ export function initSearch() {
         returnFocus = menuTrigger;
       }
       openDialog(dialog, { returnFocus, initialFocus: input });
-      loadProducts(); // warm the catalogue
+      prepareSearch();
     });
   });
 
-  let timer;
+  const render = async () => {
+    const ticket = ++latest;
+    let html;
+    let found;
+    try {
+      found = await search(input.value, { limit: PREVIEW_LIMIT });
+      html = found.query ? resultsHtml(found) : '';
+    } catch {
+      html = UNAVAILABLE;
+    }
+    if (ticket !== latest) return;
+    live.hidden = !html;
+    popular.hidden = Boolean(html);
+    live.innerHTML = html;
+    announce(!html ? '' : found ? statusText(found) : 'Search is unavailable.');
+  };
+
   input?.addEventListener('input', () => {
     clearTimeout(timer);
-    timer = setTimeout(() => renderLive(input.value), 120);
+    timer = setTimeout(render, RENDER_DELAY);
   });
 
-  async function renderLive(query) {
-    const q = query.trim();
-    if (!q) {
-      live.hidden = true;
-      popular.hidden = false;
-      status.textContent = '';
-      return;
-    }
-    const results = searchProducts(await loadProducts(), q);
-    popular.hidden = true;
-    live.hidden = false;
-    status.textContent = results.length ? `${results.length} results for ${q}` : `No results for ${q}`;
-    const all = pageUrl('search', { q });
-    live.innerHTML = results.length
-      ? `<p class="mega-heading">Products</p><ul class="search-live-grid" role="list">${results
-          .slice(0, PREVIEW_LIMIT)
-          .map(
-            (p) => `<li><a class="search-live-item" href="${productUrl(p.slug)}">
-              <img src="${asset(smallImage(p.images[0]))}" width="80" height="100" alt="${escapeHtml(imageAlt(p))}" loading="lazy" />
-              <span class="min-w-0"><span class="type-micro block text-neutral-600">${escapeHtml(p.brand)}</span>
-              <span class="type-body-sm block truncate">${escapeHtml(p.name)}</span>
-              <span class="type-body-sm block tabular-nums text-neutral-600">${formatPrice(p.price)}</span></span></a></li>`,
-          )
-          .join('')}</ul>
-        <a class="link-action mt-6" href="${all}">View all ${results.length} results
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>`
-      : `<p class="type-body text-neutral-600">No matches for “${escapeHtml(q)}”. Try a brand like <a class="link-editorial" href="${pageUrl('search', { q: 'adidas' })}">adidas</a> or a style like <a class="link-editorial" href="${pageUrl('search', { q: 'running' })}">running</a>.</p>`;
-  }
+  blockEmptySubmit(qs('form', dialog), input);
+}
 
-  // Empty queries stay on the page.
-  form?.addEventListener('submit', (event) => {
-    if (!input.value.trim()) {
-      event.preventDefault();
-      input.focus();
-    }
-  });
+export function initSearch() {
+  initNavSearch();
+  initSearchOverlay();
 }

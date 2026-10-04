@@ -8,6 +8,7 @@ import { loadProducts, brandSlug } from '../data/catalog.js';
 import { productCard, skeletonCards } from '../modules/product-card.js';
 import { getRecentlyViewed } from '../modules/recently-viewed.js';
 import { pluralize } from '../utils/format.js';
+import { initCarousel } from '../modules/carousel.js';
 
 const byNewest = (a, b) => b.createdAt.localeCompare(a.createdAt);
 
@@ -37,4 +38,5 @@ async function init() {
   document.dispatchEvent(new CustomEvent('catalog:rendered'));
 }
 
+initCarousel();
 init();

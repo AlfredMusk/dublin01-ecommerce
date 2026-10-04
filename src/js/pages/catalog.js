@@ -132,6 +132,38 @@ async function init() {
   results.innerHTML = skeletonCards(6);
   results.setAttribute('aria-busy', 'true');
 
+  let state = readState();
+
+  // The generic shop route names itself after its gender or collection filter.
+  // "Men" and "Women" include unisex products, so the name comes from the
+  // non-unisex value. Runs before the catalogue loads to avoid a title flash.
+  const heading = qs('h1', root);
+  const crumb = qs('[data-catalog-crumb]', root);
+  const intro = qs('[data-catalog-intro]', root);
+  const baseHeading = heading?.textContent;
+  const baseCrumb = crumb?.textContent;
+  const baseIntro = intro?.textContent;
+  const baseTitle = document.title;
+  const INTROS = {
+    Men: 'Sneakers, clothing and accessories in men’s and unisex fits.',
+    Women: 'Sneakers, clothing and accessories in women’s and unisex fits.',
+    Unisex: 'Everything cut and sized to be worn by anyone.',
+    Sale: 'Reduced while stock lasts. Same delivery and 30-day returns as everything else.',
+    'New in': 'The latest arrivals across sneakers, clothing and accessories.',
+    Limited: 'Small runs that will not be restocked.',
+  };
+  const retitle = () => {
+    if (preset.category || preset.isNew || !heading) return;
+    const only = (values) => (values.length === 1 ? values[0] : null);
+    const gender = only(state.gender.filter((value) => value !== 'unisex')) ?? only(state.gender);
+    const label = { men: 'Men', women: 'Women', unisex: 'Unisex' }[gender] ?? { sale: 'Sale', new: 'New in', limited: 'Limited' }[only(state.collection)];
+    heading.textContent = label ?? baseHeading;
+    if (crumb) crumb.textContent = label ?? baseCrumb;
+    if (intro) intro.textContent = (label && INTROS[label]) ?? baseIntro;
+    document.title = label ? `${label} — DUBLIN/01` : baseTitle;
+  };
+  retitle();
+
   let products;
   try {
     products = (await loadProducts()).filter(
@@ -143,7 +175,6 @@ async function init() {
     return;
   }
 
-  let state = readState();
   const desktop = qs('[data-filters="desktop"]', root);
   const mobile = qs('[data-filters="mobile"]');
   const dialog = qs('[data-filter-dialog]');
@@ -184,6 +215,7 @@ async function init() {
 
   const update = () => {
     writeState(state);
+    retitle();
     render();
   };
 
@@ -225,6 +257,7 @@ async function init() {
   });
 
   renderFilters();
+  retitle();
   render();
 }
 

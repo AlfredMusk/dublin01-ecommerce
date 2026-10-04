@@ -27,149 +27,114 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ GLOBAL HEADER ============ -->
+<!-- Announcement, navigation and mobile menu content come from src/data/site.json
+     (rendered by scripts/build-html.mjs). Edit the data, not the markup. -->
 <header class="site-header" data-header>
-  <!-- Announcement -->
   <div class="announcement" data-announcement>
-    <div class="container-site flex h-full items-center justify-center md:justify-between">
-      <a class="announcement-link" href="../pages/delivery.html" aria-current="page" data-i18n="announcement.delivery">Free delivery in Ireland over €100</a>
-      <ul class="announcement-meta hidden md:flex" role="list">
-        <li><a class="announcement-link" href="../pages/returns.html" data-i18n="announcement.returns">30-day returns</a></li>
-        <li class="hidden lg:block"><span class="sr-only">Language English, currency euro: </span><span aria-hidden="true">EN / EUR €</span></li>
-      </ul>
+    <div class="container-site announcement-grid">
+      <a class="announcement-link announcement-side" href="../pages/returns.html">30-day returns</a>
+      <a class="announcement-link announcement-main" href="../pages/delivery.html" aria-current="page" data-announcement-message="delivery">Free delivery in Ireland over €100</a>
+      <p class="announcement-side announcement-locale"><span class="sr-only">Language English, currency euro: </span><span aria-hidden="true">EN / EUR €</span></p>
     </div>
   </div>
 
-  <!-- Navigation -->
   <div class="nav-bar">
     <div class="container-site nav-grid">
-      <!-- Left: mobile menu trigger / desktop navigation -->
+      <!-- Left: menu trigger (below 1280px) / category navigation -->
       <div class="flex items-center">
-        <button
-          class="icon-btn -ml-3 lg:hidden"
-          type="button"
-          aria-controls="mobile-menu"
-          aria-expanded="false"
-          aria-label="Open menu"
-          data-menu-trigger
-        >
+        <button class="icon-btn -ml-3 xl:hidden" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu" data-menu-trigger>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg>
-          <span class="nav-label hidden md:inline" aria-hidden="true" data-i18n="nav.menu">Menu</span>
+          <span class="nav-label hidden md:inline" aria-hidden="true">Menu</span>
         </button>
-
-        <nav class="hidden lg:block" aria-label="Main">
-          <ul class="nav-list" role="list">
-            <li><a class="link-nav" href="../pages/new.html" data-nav-item data-i18n="nav.new">New</a></li>
-            <li>
-              <button class="link-nav" type="button" aria-expanded="false" aria-controls="mega-sneakers" data-mega-trigger data-nav-item>
-                <span data-i18n="nav.sneakers">Sneakers</span>
-                <svg class="icon nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" /></svg>
-              </button>
-              <div class="mega-panel" id="mega-sneakers">
-                <div class="container-site">
-                  <div class="mega-grid">
-                    <div class="mega-col">
-                      <p class="mega-heading">Shop</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/sneakers.html?collection=new">New arrivals</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html">All sneakers</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?collection=limited">Limited</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?collection=sale">Sale</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">By style</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/sneakers.html?style=lifestyle">Lifestyle</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?style=running">Running</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?style=trail">Trail</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?style=skate">Skate</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">Brands</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/sneakers.html?brand=nike">Nike</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?brand=adidas">adidas</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?brand=new-balance">New Balance</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?brand=asics">ASICS</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?brand=salomon">Salomon</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">Fit</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/sneakers.html?gender=men">Men</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?gender=women">Women</a></li>
-                        <li><a class="link-menu" href="../pages/sneakers.html?gender=unisex">Unisex</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-feature" data-mega-featured="asics-gel-kayano-14-white-blue">
-                      <p class="mega-heading">Featured</p>
-                      <p class="type-h3 max-w-[18ch]">Built for wet pavements and long days.</p>
-                    </div>
-                  </div>
-                  <div class="mega-foot">
-                    <a class="link-action" href="../pages/sneakers.html">All sneakers <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-                    <p class="type-micro text-neutral-600">Free delivery in Ireland over €100 · 30-day returns</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <button class="link-nav" type="button" aria-expanded="false" aria-controls="mega-clothing" data-mega-trigger data-nav-item>
-                <span data-i18n="nav.clothing">Clothing</span>
-                <svg class="icon nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" /></svg>
-              </button>
-              <div class="mega-panel" id="mega-clothing">
-                <div class="container-site">
-                  <div class="mega-grid">
-                    <div class="mega-col">
-                      <p class="mega-heading">Shop</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/clothing.html?collection=new">New in</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html">All clothing</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html?collection=sale">Sale</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">Categories</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/clothing.html?type=jackets">Jackets</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html?type=hoodies">Hoodies</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html?type=t-shirts">T-Shirts</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html?type=trousers">Trousers</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">Accessories</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/clothing.html?type=accessories">All accessories</a></li>
-                        <li><a class="link-menu" href="../pages/product.html?slug=wool-beanie-black">Merino Beanie</a></li>
-                        <li><a class="link-menu" href="../pages/product.html?slug=crossbody-bag-black">Crossbody Bag</a></li>
-                        <li><a class="link-menu" href="../pages/product.html?slug=crew-socks-3-pack-white">Crew Socks</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-col">
-                      <p class="mega-heading">Fit</p>
-                      <ul role="list">
-                        <li><a class="link-menu" href="../pages/clothing.html?gender=men">Men</a></li>
-                        <li><a class="link-menu" href="../pages/clothing.html?gender=unisex">Unisex</a></li>
-                      </ul>
-                    </div>
-                    <div class="mega-feature" data-mega-featured="rain-shell-black">
-                      <p class="mega-heading">Featured</p>
-                      <p class="type-h3 max-w-[18ch]">Heavyweight cotton, quiet colours, honest cuts.</p>
-                    </div>
-                  </div>
-                  <div class="mega-foot">
-                    <a class="link-action" href="../pages/clothing.html">All clothing <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-                    <p class="type-micro text-neutral-600">Free delivery in Ireland over €100 · 30-day returns</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li><a class="link-nav" href="../pages/brands.html" data-nav-item data-i18n="nav.brands">Brands</a></li>
-          </ul>
+        <nav class="hidden xl:block" aria-label="Main">
+<ul class="nav-list" role="list">
+<li><a class="link-nav" href="../pages/new.html" data-nav-item data-nav-id="new">New</a></li>
+<li><a class="link-nav" href="../pages/shop.html?gender=men,unisex" data-nav-item data-nav-id="men">Men</a></li>
+<li><a class="link-nav" href="../pages/shop.html?gender=women,unisex" data-nav-item data-nav-id="women">Women</a></li>
+<li>
+  <button class="link-nav" type="button" aria-expanded="false" aria-controls="mega-sneakers" data-mega-trigger data-nav-item data-nav-id="sneakers">
+    <span>Sneakers</span><svg class="icon nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" /></svg>
+  </button>
+<div class="mega-panel" id="mega-sneakers">
+  <div class="container-site">
+    <div class="mega-grid">
+<div class="mega-col"><p class="mega-heading">Shop</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?collection=new">New arrivals</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?collection=limited">Limited</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?collection=sale">Sale</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">By style</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?style=lifestyle">Lifestyle</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=running">Running</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=trail">Trail</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=skate">Skate</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">Brands</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?brand=nike">Nike</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=adidas">adidas</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=new-balance">New Balance</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=asics">ASICS</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=salomon">Salomon</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">Fit</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?gender=men,unisex">Men</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?gender=women,unisex">Women</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?gender=unisex">Unisex</a></li>
+</ul></div>
+      <div class="mega-feature" data-mega-featured="asics-gel-kayano-14-white-blue">
+        <p class="mega-heading">Featured</p>
+        <p class="type-h3 max-w-[18ch]">Built for wet pavements and long days.</p>
+      </div>
+    </div>
+    <div class="mega-foot">
+      <a class="link-action" href="../pages/sneakers.html">All sneakers <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+      <p class="type-micro text-neutral-600">Free delivery in Ireland over €100 · 30-day returns</p>
+    </div>
+  </div>
+</div>
+</li>
+<li>
+  <button class="link-nav" type="button" aria-expanded="false" aria-controls="mega-clothing" data-mega-trigger data-nav-item data-nav-id="clothing">
+    <span>Clothing</span><svg class="icon nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" /></svg>
+  </button>
+<div class="mega-panel" id="mega-clothing">
+  <div class="container-site">
+    <div class="mega-grid">
+<div class="mega-col"><p class="mega-heading">Shop</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?collection=new">New in</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?collection=sale">Sale</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">Categories</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?type=jackets">Jackets</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=hoodies">Hoodies</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=t-shirts">T-Shirts</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=trousers">Trousers</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">Accessories</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?type=accessories">All accessories</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=wool-beanie-black">Merino Beanie</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=crossbody-bag-black">Crossbody Bag</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=crew-socks-3-pack-white">Crew Socks</a></li>
+</ul></div>
+<div class="mega-col"><p class="mega-heading">Fit</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?gender=men,unisex">Men</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?gender=unisex">Unisex</a></li>
+</ul></div>
+      <div class="mega-feature" data-mega-featured="rain-shell-black">
+        <p class="mega-heading">Featured</p>
+        <p class="type-h3 max-w-[18ch]">Heavyweight cotton, quiet colours, honest cuts.</p>
+      </div>
+    </div>
+    <div class="mega-foot">
+      <a class="link-action" href="../pages/clothing.html">All clothing <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+      <p class="type-micro text-neutral-600">Free delivery in Ireland over €100 · 30-day returns</p>
+    </div>
+  </div>
+</div>
+</li>
+<li><a class="link-nav" href="../pages/brands.html" data-nav-item data-nav-id="brands">Brands</a></li>
+<li><a class="link-nav" href="../pages/shop.html?collection=sale" data-nav-item data-nav-id="sale">Sale</a></li>
+</ul>
         </nav>
       </div>
 
@@ -178,19 +143,20 @@
         <span>DUBLIN<span class="wordmark-edition">/01</span></span>
       </a>
 
-      <!-- Right: commerce actions -->
-      <div class="-mr-3 flex items-center justify-end lg:gap-1">
-        <button
-          class="icon-btn"
-          type="button"
-          aria-controls="search-dialog"
-          aria-expanded="false"
-          aria-label="Search"
-          data-search-trigger
-          data-nav-item
-        >
+      <!-- Right: search and commerce actions -->
+      <div class="-mr-3 flex items-center justify-end xl:gap-1">
+        <form class="nav-search hidden xl:flex" role="search" aria-label="Site search" action="../pages/search.html" method="get" data-nav-search data-nav-item>
+          <label class="sr-only" for="nav-search-input">Search DUBLIN/01</label>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
-          <span class="nav-label hidden lg:inline" aria-hidden="true" data-i18n="nav.search">Search</span>
+          <input class="nav-search-input" id="nav-search-input" type="search" name="q" placeholder="Search brands, products, categories..." autocomplete="off" enterkeyhint="search"
+            aria-controls="nav-search-panel" />
+          <!-- Results come right after the field in the DOM, so Tab reaches them first. -->
+          <div class="nav-search-panel" id="nav-search-panel" data-nav-search-panel hidden>
+            <div class="container-site py-8" data-nav-search-results></div>
+          </div>
+        </form>
+        <button class="icon-btn xl:hidden" type="button" aria-controls="search-dialog" aria-expanded="false" aria-label="Search" data-search-trigger data-nav-item>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
         </button>
         <a class="icon-btn hidden md:inline-flex" href="../pages/account.html" aria-label="Account" data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
@@ -206,6 +172,8 @@
         <span class="sr-only" role="status" aria-live="polite" data-bag-status></span>
       </div>
     </div>
+
+    <p class="sr-only" role="status" aria-live="polite" data-nav-search-status></p>
   </div>
 </header>
 <div class="nav-scrim" data-nav-scrim aria-hidden="true"></div>
@@ -227,65 +195,77 @@
     <div class="menu-body flex-1 overflow-y-auto overscroll-contain">
       <div class="container-site flex min-h-full flex-col">
         <nav class="pt-4" aria-label="Mobile">
-          <ul class="divide-y divide-neutral-200 border-b border-neutral-200" role="list">
-            <li>
-              <a class="menu-entry" href="../pages/new.html">
-                New
-                <svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </li>
-            <li>
-              <details class="menu-group">
-                <summary class="menu-entry">
-                  Sneakers
-                  <svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-                </summary>
-                <div class="grid grid-cols-2 gap-x-gap pb-6">
-                  <ul role="list">
-                    <li><a class="link-menu" href="../pages/sneakers.html">All sneakers</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?collection=new">New arrivals</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?gender=men">Men</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?gender=women">Women</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?gender=unisex">Unisex</a></li>
-                  </ul>
-                  <ul role="list">
-                    <li><a class="link-menu" href="../pages/sneakers.html?style=running">Running</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?style=lifestyle">Lifestyle</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?style=trail">Trail</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?style=skate">Skate</a></li>
-                    <li><a class="link-menu" href="../pages/sneakers.html?collection=sale">Sale</a></li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-            <li>
-              <details class="menu-group">
-                <summary class="menu-entry">
-                  Clothing
-                  <svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-                </summary>
-                <div class="grid grid-cols-2 gap-x-gap pb-6">
-                  <ul role="list">
-                    <li><a class="link-menu" href="../pages/clothing.html">All clothing</a></li>
-                    <li><a class="link-menu" href="../pages/clothing.html?type=jackets">Jackets</a></li>
-                    <li><a class="link-menu" href="../pages/clothing.html?type=hoodies">Hoodies</a></li>
-                    <li><a class="link-menu" href="../pages/clothing.html?type=t-shirts">T-Shirts</a></li>
-                  </ul>
-                  <ul role="list">
-                    <li><a class="link-menu" href="../pages/clothing.html?type=trousers">Trousers</a></li>
-                    <li><a class="link-menu" href="../pages/clothing.html?type=accessories">Accessories</a></li>
-                    <li><a class="link-menu" href="../pages/clothing.html?collection=new">New in</a></li>
-                  </ul>
-                </div>
-              </details>
-            </li>
-            <li>
-              <a class="menu-entry" href="../pages/brands.html">
-                Brands
-                <svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-              </a>
-            </li>
-          </ul>
+<ul class="menu-list" role="list">
+<li><a class="menu-entry" href="../pages/new.html" data-nav-id="new">New<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+<li><a class="menu-entry" href="../pages/shop.html?gender=men,unisex" data-nav-id="men">Men<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+<li><a class="menu-entry" href="../pages/shop.html?gender=women,unisex" data-nav-id="women">Women<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+<li>
+  <details class="menu-group">
+    <summary class="menu-entry">Sneakers<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg></summary>
+    <div class="menu-group-body">
+      <div class="menu-group-grid">
+<div><p class="mega-heading">Shop</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?collection=new">New arrivals</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html">All sneakers</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?collection=limited">Limited</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?collection=sale">Sale</a></li>
+</ul></div>
+<div><p class="mega-heading">By style</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?style=lifestyle">Lifestyle</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=running">Running</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=trail">Trail</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?style=skate">Skate</a></li>
+</ul></div>
+<div><p class="mega-heading">Brands</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?brand=nike">Nike</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=adidas">adidas</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=new-balance">New Balance</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=asics">ASICS</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?brand=salomon">Salomon</a></li>
+</ul></div>
+<div><p class="mega-heading">Fit</p><ul role="list">
+<li><a class="link-menu" href="../pages/sneakers.html?gender=men,unisex">Men</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?gender=women,unisex">Women</a></li>
+<li><a class="link-menu" href="../pages/sneakers.html?gender=unisex">Unisex</a></li>
+</ul></div>
+      </div>
+    </div>
+  </details>
+</li>
+<li>
+  <details class="menu-group">
+    <summary class="menu-entry">Clothing<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg></summary>
+    <div class="menu-group-body">
+      <div class="menu-group-grid">
+<div><p class="mega-heading">Shop</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?collection=new">New in</a></li>
+<li><a class="link-menu" href="../pages/clothing.html">All clothing</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?collection=sale">Sale</a></li>
+</ul></div>
+<div><p class="mega-heading">Categories</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?type=jackets">Jackets</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=hoodies">Hoodies</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=t-shirts">T-Shirts</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?type=trousers">Trousers</a></li>
+</ul></div>
+<div><p class="mega-heading">Accessories</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?type=accessories">All accessories</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=wool-beanie-black">Merino Beanie</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=crossbody-bag-black">Crossbody Bag</a></li>
+<li><a class="link-menu" href="../pages/product.html?slug=crew-socks-3-pack-white">Crew Socks</a></li>
+</ul></div>
+<div><p class="mega-heading">Fit</p><ul role="list">
+<li><a class="link-menu" href="../pages/clothing.html?gender=men,unisex">Men</a></li>
+<li><a class="link-menu" href="../pages/clothing.html?gender=unisex">Unisex</a></li>
+</ul></div>
+      </div>
+    </div>
+  </details>
+</li>
+<li><a class="menu-entry" href="../pages/clothing.html?type=accessories" data-nav-id="accessories">Accessories<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+<li><a class="menu-entry" href="../pages/brands.html" data-nav-id="brands">Brands<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+<li><a class="menu-entry" href="../pages/shop.html?collection=sale" data-nav-id="sale">Sale<svg class="icon menu-entry-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a></li>
+</ul>
         </nav>
 
         <ul class="mt-8 grid gap-1" role="list">
@@ -322,7 +302,7 @@
 <!-- ============ SEARCH ============ -->
 <dialog class="dialog search-dialog" id="search-dialog" aria-label="Search" data-search>
   <div class="container-site py-6 lg:py-10">
-    <form role="search" action="../pages/search.html" method="get" class="flex items-center gap-3 lg:gap-6">
+    <form role="search" aria-label="Search" action="../pages/search.html" method="get" class="flex items-center gap-3 lg:gap-6">
       <label class="sr-only" for="search-input">Search DUBLIN/01</label>
       <svg class="icon icon-lg hidden shrink-0 md:block" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
       <input

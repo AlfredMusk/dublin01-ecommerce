@@ -10,6 +10,10 @@ export function loadProducts() {
     .then((response) => {
       if (!response.ok) throw new Error(`Catalogue unavailable (${response.status})`);
       return response.json();
+    })
+    .catch((error) => {
+      cache = undefined; // a failed load must not be remembered: the next call retries
+      throw error;
     });
   return cache;
 }

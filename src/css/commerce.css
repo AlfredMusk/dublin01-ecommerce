@@ -40,49 +40,290 @@
     gap: 1.5rem 2rem;
   }
 
-  /* ---------- Hero ---------- */
+  /* ---------- Hero: editorial carousel ---------- */
 
+  /* Fills most of the first screen but stops short of it, so the next
+     section is hinted at below. Slides are stacked; only opacity and
+     transform change, so nothing shifts while they cross-fade. */
   .hero {
+    --hero-peek: 3rem;
     position: relative;
     display: grid;
-    min-height: min(calc(100svh - var(--announcement-h) - var(--nav-h)), 56rem);
-    min-height: max(32rem, min(calc(100svh - var(--announcement-h) - var(--nav-h)), 56rem));
+    --hero-h: clamp(30rem, calc(100svh - var(--announcement-h) - var(--nav-h) - var(--hero-peek)), 54rem);
+    /* Room taken by everything in a slide except its title. */
+    --hero-chrome: 19.5rem;
+    height: var(--hero-h);
     overflow: hidden;
     background-color: var(--color-ink);
     color: var(--color-white);
+    touch-action: pan-y pinch-zoom;
     --focus-ring: var(--color-white);
   }
 
-  .hero picture,
+  @media (width >= 64rem) {
+    .hero {
+      --hero-peek: 4rem;
+      --hero-chrome: 21rem;
+    }
+  }
+
+  .hero-slides,
+  .hero-slide,
+  .hero-slide picture,
   .hero-content {
     grid-area: 1 / 1;
+    min-height: 0;
+  }
+
+  .hero,
+  .hero-slides,
+  .hero-slide {
+    grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  }
+
+  .hero-slides,
+  .hero-slide {
+    display: grid;
+  }
+
+  /* The outgoing slide stays opaque underneath until the incoming one has
+     finished fading in, so the cross-fade never dips through the background. */
+  .hero-slide {
+    --hero-fade: 900ms;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0s linear var(--hero-fade),
+      visibility 0s linear var(--hero-fade);
+  }
+
+  .hero-slide[data-active] {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity var(--hero-fade) var(--ease-premium),
+      visibility 0s;
   }
 
   .hero-media {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 65% 60%;
+    object-position: var(--hero-pos-tall, 50% 50%);
+    transform: scale(1.04);
+    transition: transform 1400ms var(--ease-premium);
   }
 
-  /* Legibility scrim behind the copy: bottom and left only. */
+  .hero-slide[data-active] .hero-media {
+    transform: none;
+  }
+
+  /* Same condition as the <source> that serves the wide image. */
+  @media (width >= 64rem), (orientation: landscape) {
+    .hero-media {
+      object-position: var(--hero-pos-wide, 50% 50%);
+    }
+  }
+
+  /* Legibility scrim behind the copy: bottom on mobile, left on desktop. */
   .hero-content {
     position: relative;
     display: flex;
     align-items: flex-end;
-    padding-block: 3rem;
-    background: linear-gradient(to top, rgb(10 10 10 / 0.72), rgb(10 10 10 / 0.25) 55%, rgb(10 10 10 / 0) 80%);
+    padding-block: 3rem 5.5rem;
+    background: linear-gradient(to bottom, rgb(10 10 10 / 0) 10%, rgb(10 10 10 / 0.45) 38%, rgb(10 10 10 / 0.82));
   }
 
+  /* Desktop: a left scrim for the copy and a low one for the controls on the right. */
   @media (width >= 64rem) {
     .hero-content {
       padding-block: 5rem;
-      background: linear-gradient(to right, rgb(10 10 10 / 0.65), rgb(10 10 10 / 0.2) 50%, rgb(10 10 10 / 0) 70%);
+      background:
+        linear-gradient(to top, rgb(10 10 10 / 0.75), rgb(10 10 10 / 0.55) 12%, rgb(10 10 10 / 0) 32%),
+        linear-gradient(to right, rgb(10 10 10 / 0.62), rgb(10 10 10 / 0.2) 50%, rgb(10 10 10 / 0) 72%);
     }
   }
 
   .hero-content > * {
     width: 100%;
+  }
+
+  .hero-content .container-site > * {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition:
+      opacity var(--duration-slow) var(--ease-premium),
+      transform var(--duration-slow) var(--ease-premium);
+  }
+
+  .hero-slide[data-active] .hero-content .container-site > * {
+    opacity: 1;
+    transform: none;
+    transition-delay: 200ms;
+  }
+
+  .hero-slide[data-active] .hero-content .container-site > :nth-child(2) {
+    transition-delay: 280ms;
+  }
+
+  .hero-slide[data-active] .hero-content .container-site > :nth-child(3) {
+    transition-delay: 360ms;
+  }
+
+  .hero-slide[data-active] .hero-content .container-site > :nth-child(4) {
+    transition-delay: 440ms;
+  }
+
+  /* Small text gets a soft dark halo so it stays readable on bright parts
+     of a photo without darkening the photo itself. */
+  .hero-content .type-label,
+  .hero-description,
+  .hero-counter {
+    text-shadow:
+      0 0 2px rgb(10 10 10 / 0.55),
+      0 0 18px rgb(10 10 10 / 0.6);
+  }
+
+  /* On short screens the title shrinks so three lines always fit above the
+     fold of the hero, with the eyebrow visible. */
+  .hero-title {
+    margin-top: 1.25rem;
+    font-family: var(--font-sans);
+    font-weight: var(--text-display-xl--font-weight);
+    line-height: var(--text-display-xl--line-height);
+    letter-spacing: var(--text-display-xl--letter-spacing);
+    font-size: min(var(--text-display-xl), max(2.25rem, calc((var(--hero-h) - var(--hero-chrome)) / 3)));
+  }
+
+  .hero-description {
+    max-width: 38ch;
+    margin-top: 1.25rem;
+    color: var(--color-white);
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-lg--line-height);
+  }
+
+  .hero-cta {
+    margin-top: 2rem;
+  }
+
+  /* Controls: progress, counter, pause, previous, next. */
+  .hero-controls {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 2;
+    padding-bottom: 1rem;
+    pointer-events: none;
+  }
+
+  /* Desktop: the 44px control row shares the centre line of the 48px CTA. */
+  @media (width >= 64rem) {
+    .hero-controls {
+      padding-bottom: calc(5rem + 2px);
+    }
+  }
+
+  .hero-controls-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-controls-row > * {
+    pointer-events: auto;
+  }
+
+  @media (width >= 64rem) {
+    .hero-controls-row {
+      justify-content: flex-end;
+    }
+  }
+
+  /* Pagination: one button per campaign; the bar inside fills during autoplay. */
+  .hero-progress {
+    display: flex;
+    flex: 1;
+    gap: 0.375rem;
+    max-width: 12rem;
+  }
+
+  .hero-dot {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 2.75rem;
+  }
+
+  .hero-dot span {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255 255 255 / 0.5);
+    /* Thin dark edge: keeps the track visible on bright reflections. */
+    box-shadow: 0 0 0 1px rgb(10 10 10 / 0.35);
+    overflow: hidden;
+  }
+
+  .hero-dot i {
+    display: block;
+    height: 100%;
+    background-color: var(--color-white);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  .hero-dot[data-done] i,
+  .hero:not([data-playing]) .hero-dot[data-current] i {
+    transform: scaleX(1);
+  }
+
+  .hero[data-playing] .hero-dot[data-current] i {
+    animation: hero-progress var(--hero-interval, 6s) linear forwards;
+  }
+
+  /* Hovering or focusing the hero, or a hidden tab, holds the current slide. */
+  .hero[data-playing][data-holding] .hero-dot[data-current] i {
+    animation-play-state: paused;
+  }
+
+  @keyframes hero-progress {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  .hero-counter {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: var(--text-label--letter-spacing);
+  }
+
+  .hero-buttons {
+    display: flex;
+    margin-left: auto;
+  }
+
+  @media (width >= 64rem) {
+    .hero-buttons {
+      margin-left: 0.5rem;
+    }
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    color: var(--color-white);
+    transition: opacity var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .hero-btn:hover {
+      opacity: 0.7;
+    }
   }
 
   /* ---------- Product grid & rail ---------- */

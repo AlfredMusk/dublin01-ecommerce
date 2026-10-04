@@ -1,0 +1,74 @@
+[
+  {
+    "id": "aw26-wet-pavements",
+    "eyebrow": "Autumn / Winter 26 — Dublin",
+    "title": "Built for wet pavements.",
+    "description": "Technical sneakers and everyday footwear selected for city life.",
+    "image": {
+      "wide": "public/images/editorial/hero-wide.webp",
+      "tall": "public/images/editorial/hero-tall.webp"
+    },
+    "imageAlt": "A white sneaker steps onto a wet manhole cover at night, city lights reflected in the rain.",
+    "objectPosition": {
+      "wide": "65% 60%",
+      "tall": "65% 60%"
+    },
+    "titleWidth": "11ch",
+    "ctaLabel": "Shop collection",
+    "ctaHref": "pages/shop.html"
+  },
+  {
+    "id": "dublin-essentials",
+    "eyebrow": "Dublin essentials",
+    "title": "City layers. Dublin energy.",
+    "description": "Streetwear and outerwear designed around modern city life.",
+    "image": {
+      "wide": "public/images/editorial/hero-layers-wide.webp",
+      "tall": "public/images/editorial/hero-layers-tall.webp"
+    },
+    "imageAlt": "Seen from behind, a person in a hooded green rain jacket walks through a busy wet street.",
+    "objectPosition": {
+      "wide": "60% 40%",
+      "tall": "60% 40%"
+    },
+    "titleWidth": "12ch",
+    "ctaLabel": "Shop clothing",
+    "ctaHref": "pages/clothing.html"
+  },
+  {
+    "id": "footwear-edit",
+    "eyebrow": "Footwear edit",
+    "title": "Made for everyday miles.",
+    "description": "Performance meets everyday movement.",
+    "image": {
+      "wide": "public/images/editorial/hero-miles-wide.webp",
+      "tall": "public/images/editorial/hero-miles-tall.webp"
+    },
+    "imageAlt": "A person in white sneakers stands on wet asphalt marked with yellow road paint.",
+    "objectPosition": {
+      "wide": "70% 50%",
+      "tall": "50% 0%"
+    },
+    "titleWidth": "8ch",
+    "ctaLabel": "Shop sneakers",
+    "ctaHref": "pages/sneakers.html"
+  },
+  {
+    "id": "new-arrivals",
+    "eyebrow": "New arrivals",
+    "title": "Fresh pairs. New routes.",
+    "description": "Discover the latest additions to DUBLIN/01.",
+    "image": {
+      "wide": "public/images/editorial/hero-night-wide.webp",
+      "tall": "public/images/editorial/hero-night-tall.webp"
+    },
+    "imageAlt": "Two people cross a rain-wet city square at night under warm street lights.",
+    "objectPosition": {
+      "wide": "50% 60%",
+      "tall": "50% 60%"
+    },
+    "titleWidth": "11ch",
+    "ctaLabel": "Explore new arrivals",
+    "ctaHref": "pages/new.html"
+  }
+]

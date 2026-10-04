@@ -3,7 +3,7 @@
  */
 
 import { qs } from '../utils/dom.js';
-import { loadProducts, searchProducts } from '../data/catalog.js';
+import { search } from '../data/search-source.js';
 import { productCard, skeletonCards } from '../modules/product-card.js';
 import { pageUrl, escapeHtml } from '../utils/paths.js';
 import { pluralize } from '../utils/format.js';
@@ -28,7 +28,14 @@ async function init() {
   document.title = `“${q}” — Search — DUBLIN/01`;
   heading.textContent = `Results for “${q}”`;
   results.innerHTML = skeletonCards(4);
-  const list = searchProducts(await loadProducts(), q);
+  let list;
+  try {
+    ({ results: list } = await search(q));
+  } catch {
+    count.textContent = '';
+    results.innerHTML = '<p class="type-body col-span-full text-neutral-600">Search is unavailable right now. Refresh the page to try again.</p>';
+    return;
+  }
   count.textContent = pluralize(list.length, 'product');
   results.innerHTML = list.length
     ? list.map((p, i) => productCard(p, { eager: i < 4 })).join('')

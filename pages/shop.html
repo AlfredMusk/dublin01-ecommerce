@@ -4,15 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Your bag — DUBLIN/01</title>
-    <meta name="description" content="Review the items in your DUBLIN/01 bag, update quantities and see delivery costs before checkout." />
-    <meta name="robots" content="noindex" />
-    <link rel="canonical" href="https://dublin01.example/pages/bag.html" />
+    <title>Shop all — DUBLIN/01</title>
+    <meta name="description" content="Every sneaker, piece of clothing and accessory at DUBLIN/01. Filter by gender, brand, size or price. Free delivery in Ireland over €100." />
+    
+    <link rel="canonical" href="https://dublin01.example/pages/shop.html" />
     <meta property="og:site_name" content="DUBLIN/01" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Your bag — DUBLIN/01" />
-    <meta property="og:description" content="Review the items in your DUBLIN/01 bag, update quantities and see delivery costs before checkout." />
-    <meta property="og:url" content="https://dublin01.example/pages/bag.html" />
+    <meta property="og:title" content="Shop all — DUBLIN/01" />
+    <meta property="og:description" content="Every sneaker, piece of clothing and accessory at DUBLIN/01. Filter by gender, brand, size or price. Free delivery in Ireland over €100." />
+    <meta property="og:url" content="https://dublin01.example/pages/shop.html" />
     <meta property="og:image" content="https://dublin01.example/public/images/editorial/hero-wide.webp" />
     <meta property="og:locale" content="en_IE" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -21,9 +21,9 @@
     <link rel="preload" href="../public/fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="../dist/css/main.css" />
     <script type="module" src="../src/js/main.js"></script>
-    <script type="module" src="../src/js/pages/bag.js"></script>
+    <script type="module" src="../src/js/pages/catalog.js"></script>
   </head>
-  <body data-page="bag">
+  <body data-page="shop">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ GLOBAL HEADER ============ -->
@@ -165,7 +165,7 @@
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z" /></svg>
           <span class="bag-count" aria-hidden="true" data-wishlist-count hidden>0</span>
         </a>
-        <a class="icon-btn" href="../pages/bag.html" aria-current="page" aria-label="Bag, 0 items" data-bag-link data-nav-item>
+        <a class="icon-btn" href="../pages/bag.html" aria-label="Bag, 0 items" data-bag-link data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z" /><path d="M9 8V6a3 3 0 0 1 6 0v2" /></svg>
           <span class="bag-count" aria-hidden="true" data-bag-count>0</span>
         </a>
@@ -348,7 +348,7 @@
       <div class="flex items-baseline justify-between type-body"><span>Subtotal</span><span class="font-medium tabular-nums" data-bag-drawer-subtotal></span></div>
       <p class="type-body-sm text-neutral-600" data-bag-drawer-note></p>
       <a class="btn btn-primary btn-block" href="../pages/checkout.html">Checkout</a>
-      <a class="btn btn-secondary btn-block" href="../pages/bag.html" aria-current="page">View bag</a>
+      <a class="btn btn-secondary btn-block" href="../pages/bag.html">View bag</a>
     </div>
   </div>
 </dialog>
@@ -357,15 +357,61 @@
 <div class="toast-region" role="status" aria-live="polite" data-toast-region></div>
 
     <main id="main" tabindex="-1">
-<section class="container-site pb-section-sm pt-10 lg:pt-14">
-  <div class="flex items-baseline justify-between gap-4">
-    <h1 class="type-h1" tabindex="-1">Bag</h1>
-    <p class="type-body-sm text-neutral-600" data-count></p>
+<section class="container-site pb-section-sm pt-6 lg:pt-8" data-catalog data-preset='{}'>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol role="list"><li><a href="../">Home</a></li><li><span aria-current="page" data-catalog-crumb>Shop</span></li></ol>
+  </nav>
+  <header class="mt-8 grid-site items-end gap-y-4 lg:mt-12">
+    <div class="col-span-full lg:col-span-7">
+      <p class="type-label text-neutral-600">DUBLIN/01</p>
+      <h1 class="type-h1 mt-3">Shop all</h1>
+    </div>
+    <p class="type-body col-span-full max-w-[52ch] text-neutral-600 lg:col-span-5" data-catalog-intro>Everything in the shop: sneakers, clothing and accessories. Use the filters to narrow it down by fit, brand, size or price.</p>
+  </header>
+
+  <div class="catalog-toolbar mt-10">
+    <button class="btn btn-secondary lg:hidden" type="button" data-filter-open aria-controls="filter-dialog" aria-expanded="false">
+      <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" /><circle cx="16" cy="7" r="2" /><circle cx="10" cy="17" r="2" /></svg>
+      Filter <span data-filter-count></span>
+    </button>
+    <p class="type-body-sm text-neutral-600" aria-live="polite"><span data-count>Loading products</span></p>
+    <div class="flex items-center gap-3 lg:ml-auto">
+      <label class="type-label hidden text-neutral-600 sm:block" for="sort">Sort</label>
+      <select class="select" id="sort" data-sort>
+        <option value="featured">Featured</option>
+        <option value="newest">Newest</option>
+        <option value="price-asc">Price, low to high</option>
+        <option value="price-desc">Price, high to low</option>
+      </select>
+    </div>
   </div>
-  <div class="mt-10" data-bag>
-    <div class="h-64 bg-paper" aria-busy="true"></div>
+  <div class="mt-4 flex flex-wrap items-center gap-2" data-active-filters hidden></div>
+
+  <div class="mt-8 grid-site gap-y-10">
+    <aside class="hidden lg:col-span-3 lg:block" aria-label="Filters">
+      <form class="filters-sticky" data-filters="desktop" onsubmit="return false"></form>
+    </aside>
+    <div class="col-span-full lg:col-span-9">
+      <div class="product-grid" data-results aria-live="polite"></div>
+    </div>
   </div>
 </section>
+
+<dialog class="dialog drawer-dialog drawer-left" id="filter-dialog" aria-labelledby="filter-dialog-title" data-filter-dialog>
+  <div class="flex h-full flex-col">
+    <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
+      <h2 class="type-label" id="filter-dialog-title">Filter</h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close filters" data-dialog-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <form class="flex-1 overflow-y-auto px-6" data-filters="mobile" onsubmit="return false"></form>
+    <div class="flex shrink-0 gap-3 border-t border-neutral-200 px-6 py-5">
+      <button class="btn btn-secondary flex-1" type="button" data-clear-filters>Clear all</button>
+      <button class="btn btn-primary flex-1" type="button" data-filter-apply>Show <span class="ml-1" data-count></span></button>
+    </div>
+  </div>
+</dialog>
     </main>
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer surface-ink">

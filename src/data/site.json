@@ -1,0 +1,82 @@
+{
+  "announcement": {
+    "messages": [
+      { "id": "delivery", "text": "Free delivery in Ireland over €100", "href": "pages/delivery.html" }
+    ],
+    "left": { "text": "30-day returns", "href": "pages/returns.html" },
+    "right": { "text": "EN / EUR €", "label": "Language English, currency euro" }
+  },
+  "navigation": [
+    { "id": "new", "label": "New", "href": "pages/new.html" },
+    { "id": "men", "label": "Men", "href": "pages/shop.html?gender=men,unisex" },
+    { "id": "women", "label": "Women", "href": "pages/shop.html?gender=women,unisex" },
+    {
+      "id": "sneakers",
+      "label": "Sneakers",
+      "href": "pages/sneakers.html",
+      "allLabel": "All sneakers",
+      "featured": "asics-gel-kayano-14-white-blue",
+      "fallback": "Built for wet pavements and long days.",
+      "groups": [
+        { "title": "Shop", "links": [
+          { "label": "New arrivals", "href": "pages/sneakers.html?collection=new" },
+          { "label": "All sneakers", "href": "pages/sneakers.html" },
+          { "label": "Limited", "href": "pages/sneakers.html?collection=limited" },
+          { "label": "Sale", "href": "pages/sneakers.html?collection=sale" }
+        ] },
+        { "title": "By style", "links": [
+          { "label": "Lifestyle", "href": "pages/sneakers.html?style=lifestyle" },
+          { "label": "Running", "href": "pages/sneakers.html?style=running" },
+          { "label": "Trail", "href": "pages/sneakers.html?style=trail" },
+          { "label": "Skate", "href": "pages/sneakers.html?style=skate" }
+        ] },
+        { "title": "Brands", "links": [
+          { "label": "Nike", "href": "pages/sneakers.html?brand=nike" },
+          { "label": "adidas", "href": "pages/sneakers.html?brand=adidas" },
+          { "label": "New Balance", "href": "pages/sneakers.html?brand=new-balance" },
+          { "label": "ASICS", "href": "pages/sneakers.html?brand=asics" },
+          { "label": "Salomon", "href": "pages/sneakers.html?brand=salomon" }
+        ] },
+        { "title": "Fit", "links": [
+          { "label": "Men", "href": "pages/sneakers.html?gender=men,unisex" },
+          { "label": "Women", "href": "pages/sneakers.html?gender=women,unisex" },
+          { "label": "Unisex", "href": "pages/sneakers.html?gender=unisex" }
+        ] }
+      ]
+    },
+    {
+      "id": "clothing",
+      "label": "Clothing",
+      "href": "pages/clothing.html",
+      "allLabel": "All clothing",
+      "featured": "rain-shell-black",
+      "fallback": "Heavyweight cotton, quiet colours, honest cuts.",
+      "groups": [
+        { "title": "Shop", "links": [
+          { "label": "New in", "href": "pages/clothing.html?collection=new" },
+          { "label": "All clothing", "href": "pages/clothing.html" },
+          { "label": "Sale", "href": "pages/clothing.html?collection=sale" }
+        ] },
+        { "title": "Categories", "links": [
+          { "label": "Jackets", "href": "pages/clothing.html?type=jackets" },
+          { "label": "Hoodies", "href": "pages/clothing.html?type=hoodies" },
+          { "label": "T-Shirts", "href": "pages/clothing.html?type=t-shirts" },
+          { "label": "Trousers", "href": "pages/clothing.html?type=trousers" }
+        ] },
+        { "title": "Accessories", "links": [
+          { "label": "All accessories", "href": "pages/clothing.html?type=accessories" },
+          { "label": "Merino Beanie", "href": "pages/product.html?slug=wool-beanie-black" },
+          { "label": "Crossbody Bag", "href": "pages/product.html?slug=crossbody-bag-black" },
+          { "label": "Crew Socks", "href": "pages/product.html?slug=crew-socks-3-pack-white" }
+        ] },
+        { "title": "Fit", "links": [
+          { "label": "Men", "href": "pages/clothing.html?gender=men,unisex" },
+          { "label": "Unisex", "href": "pages/clothing.html?gender=unisex" }
+        ] }
+      ]
+    },
+    { "id": "accessories", "label": "Accessories", "href": "pages/clothing.html?type=accessories", "bar": false },
+    { "id": "brands", "label": "Brands", "href": "pages/brands.html" },
+    { "id": "sale", "label": "Sale", "href": "pages/shop.html?collection=sale" }
+  ]
+}

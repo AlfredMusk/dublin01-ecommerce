@@ -57,4 +57,5 @@ export function unlockScroll() {
   root.style.paddingRight = '';
 }
 
-export const mediaDesktop = window.matchMedia('(width >= 64rem)');
+// The category bar and the inline search field appear from 1280px.
+export const mediaDesktop = window.matchMedia('(width >= 80rem)');

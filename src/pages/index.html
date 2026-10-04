@@ -3,26 +3,8 @@ title: DUBLIN/01 — Sneakers & Contemporary Streetwear, Dublin
 description: Independent sneaker and streetwear shop in Dublin. Nike, adidas, New Balance, ASICS, Salomon and the DUBLIN/01 label. Free delivery in Ireland over €100, 30-day returns.
 script: home
 -->
-<!-- Hero -->
-<section class="hero" aria-labelledby="hero-title">
-  <picture>
-    <source media="(min-width: 48rem)" srcset="{{base}}public/images/editorial/hero-wide.webp" width="1920" height="1080" />
-    <img class="hero-media" src="{{base}}public/images/editorial/hero-tall.webp" width="1080" height="1350" fetchpriority="high"
-      alt="A white sneaker steps onto a wet manhole cover at night, city lights reflected in the rain." />
-  </picture>
-  <div class="hero-content">
-    <div class="container-site">
-      <p class="type-label">Autumn / Winter 26 — Dublin</p>
-      <h1 class="type-display-xl mt-5 max-w-[11ch]" id="hero-title">Built for wet pavements.</h1>
-      <p class="type-body-lg mt-6 max-w-[38ch] text-neutral-200">New season sneakers and outerwear, picked for a city that knows rain.</p>
-      <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-        <a class="btn btn-inverse" href="{{base}}pages/new.html">Shop new arrivals</a>
-        <a class="link-action text-white" href="{{base}}pages/sneakers.html">Shop sneakers
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Hero: campaigns from src/data/campaigns.json, behaviour in src/js/modules/carousel.js -->
+<!-- @hero -->
 
 <!-- New arrivals -->
 <section class="container-site py-section" aria-labelledby="new-title">
