@@ -19,23 +19,24 @@ script: home
   <div class="product-grid product-grid-8 mt-10" data-products="new" data-quick-add></div>
 </section>
 
-<!-- Campaign: rain -->
-<section class="container-site pb-section" aria-labelledby="rain-title">
-  <div class="grid-site items-center gap-y-10">
-    <figure class="col-span-full md:col-span-4 lg:col-span-7">
-      <img class="aspect-[4/5] w-full bg-bone object-cover" src="{{base}}public/images/editorial/dublin-rain-tall.webp" width="960" height="1200" loading="lazy"
-        alt="People walking along a rain-soaked Dublin street lined with red-brick buildings." />
-    </figure>
-    <div class="col-span-full md:col-span-4 lg:col-span-4 lg:col-start-9">
-      <p class="type-label text-neutral-600">Field notes · Dublin 2</p>
-      <h2 class="type-display mt-5" id="rain-title">Rain is the dress code.</h2>
-      <p class="type-body-lg mt-6 text-neutral-600">Shells that pack into a pocket, fleece for the walk home and soles that grip wet granite. The AW26 outerwear edit.</p>
-      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
-        <a class="link-action" href="{{base}}pages/clothing.html?type=jackets">Shop jackets
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-        <a class="link-action" href="{{base}}pages/product.html?slug=rain-shell-black">The Rain Shell
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-      </div>
+<!-- Campaign: rain. Asymmetric editorial block: the photograph runs to the left edge, the copy sits beside it. -->
+<section class="rain pb-section" aria-labelledby="rain-title" data-rain>
+  <figure class="rain-figure">
+    <picture>
+      <source media="(min-width: 48rem) and (max-width: 63.999rem)" srcset="{{base}}public/images/editorial/rain-campaign-wide.webp" width="1920" height="1080" />
+      <img class="rain-media" src="{{base}}public/images/editorial/rain-campaign-tall.webp"
+        srcset="{{base}}public/images/editorial/rain-campaign-tall.webp 1080w, {{base}}public/images/editorial/rain-campaign-tall-lg.webp 1600w"
+        sizes="(min-width: 64rem) 58vw, 100vw" width="1080" height="1350" loading="lazy" decoding="async"
+        alt="A person in a hooded jacket walks along a rain-soaked Dublin pavement, past tram stops and people sheltering under umbrellas." />
+    </picture>
+  </figure>
+  <div class="rain-content">
+    <p class="type-label text-neutral-600">Autumn / Winter 26 — Outerwear</p>
+    <h2 class="type-display rain-title" id="rain-title">Rain is the dress code.</h2>
+    <p class="type-body-lg rain-copy">Built for Dublin weather. Technical layers, everyday jackets and waterproof essentials selected for the city.</p>
+    <div class="rain-actions">
+      <a class="btn btn-primary" href="{{base}}pages/clothing.html?type=jackets">Shop jackets</a>
+      <a class="btn btn-secondary" href="{{base}}pages/product.html?slug=rain-shell-black">Shop rain shells</a>
     </div>
   </div>
 </section>

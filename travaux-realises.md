@@ -502,3 +502,52 @@ Trois produits montraient une photo d'un autre article. Règle appliquée : jama
 
 - **Créé** : `src/js/modules/quick-add.js`.
 - **Modifiés** : `src/pages/index.html` (section New Arrivals), `src/partials/header.html` (dialogue Quick add, invisible), `src/js/modules/product-card.js`, `src/js/pages/home.js`, `src/js/main.js`, `src/js/modules/cart.js`, `src/js/data/catalog.js`, `src/js/pages/catalog.js`, `src/js/pages/product.js`, `src/css/commerce.css`, `src/data/products.json` (pointures EU), `src/pages/faq.html`, `src/pages/sneakers.html`, et les 21 pages générées.
+
+---
+
+## PHASE 03 — NEW ARRIVALS + RAIN EDITORIAL
+
+Date : 4 octobre 2026. Périmètre : la section New Arrivals et la section « Rain is the dress code » de l'accueil. Barre d'annonce, navbar et Hero inchangés (captures de l'en-tête identiques au pixel à 1440, 1024 et 390 ; rotation du Hero revérifiée). « Shop by category » n'est pas commencé.
+
+### Composants modifiés
+
+- **New Arrivals** : pas de nouvelle carte ni de nouvel état ; la carte partagée (`product-card.js`), le Quick add (`quick-add.js`), le panier (`cart.js`) et les favoris (`wishlist.js`) de la Phase 03 sont conservés.
+  - ASICS GEL-Kayano 14 : la photo sur fond bleu saturé jurait dans la grille. Remplacée par une vraie GEL-Kayano 14 argent sur fond gris (Tanaphong Toochinda, Unsplash) ; la couleur devient « Pure Silver » et l'identifiant du produit suit (`asics-gel-kayano-14-pure-silver`).
+  - Grille : une colonne sous 360 px de large, deux colonnes au-dessus, trois sur tablette (rangées complètes), quatre sur desktop.
+- **Rain is the dress code** : section refaite en composition asymétrique.
+  - Photo : rue de Dublin sous une averse, passant en capuche, trottoir mouillé et reflets (E Vos, Unsplash, lieu indiqué : Dublin). Recadrée depuis l'original haute définition pour retirer le bord de parapluie et le chapeau coupé.
+  - Desktop : la photo va jusqu'au bord gauche de l'écran (58 % de la largeur), le texte est à côté sur fond blanc, aligné sur la marge de la page. Tablette et téléphone : photo bord à bord, texte dessous. Aucun voile sombre sur la photo.
+  - Texte : « Rain is the dress code. », puis « Built for Dublin weather. Technical layers, everyday jackets and waterproof essentials selected for the city. »
+  - Deux boutons : « Shop jackets » → `pages/clothing.html?type=jackets` ; « Shop rain shells » → fiche de la Rain Shell.
+
+### Fonctionnalités réellement actives
+
+- Quick add : sélecteur de tailles dans la carte (souris, 1280 px et plus) ou feuille / panneau (tactile et écrans plus étroits), tailles indisponibles désactivées, « Add to bag » qui met à jour le vrai panier et le compteur.
+- Favori : bascule avec `aria-pressed`, cœur rempli, compteur, sans navigation ni saut de page.
+- Image et nom : lien vers `pages/product.html?slug=…`. Aucun lien en dièse dans ces deux sections.
+- Section Rain : léger zoom de la photo au survol (1,02), entrée du texte en quatre temps à la première apparition, transitions des boutons. Rien de tout cela avec `prefers-reduced-motion`.
+
+### Responsive
+
+Testé dans Chrome à 1440, 1024, 768 et 390 px (et 340 px pour la grille en une colonne) : alignement de la grille, ratio 4:5 identique partout, aucune image cassée, aucun texte ni prix coupé, aucun débordement horizontal ; section Rain en deux colonnes à partir de 1024 px, empilée en dessous.
+
+### Interactions testées
+
+Survol et seconde image, Quick add, sélecteur de tailles, taille indisponible (clic et envoi forcé refusés), ajout au sac et compteur, favori et page Wishlist, navigation vers la fiche produit, parcours clavier, feuille mobile, les deux boutons de la section Rain (clic et focus clavier), mouvement réduit. Console vide.
+
+### Bugs corrigés
+
+- Photo du produit Kayano 14 incohérente avec la grille (voir ci-dessus).
+- Ancien recadrage de la photo de pluie : bord noir en haut, chapeau coupé à droite.
+
+### Limites
+
+- « Shop rain shells » mène à une fiche produit : le catalogue ne compte qu'une veste de pluie aujourd'hui.
+- Le badge NEW reste sur l'image (demande « keep NEW badges ») ; il n'a pas été déplacé dans le bloc d'informations.
+- La photo de pluie montre des enseignes de la rue, petites et en arrière-plan.
+- Quatre produits de la grille n'ont qu'une photo (Kayano 14, 997H, Heavyweight Hoodie, Boxy Tee : pas de seconde image au survol). La photo du hoodie est très sombre. Pas de point focal par image dans les données : les photos sont déjà recadrées en 4:5.
+- Les photos de la Nike Pegasus 41 (page New, hors accueil) ne montrent pas ce modèle.
+
+### Fichiers
+
+`src/pages/index.html` (section Rain), `src/css/commerce.css` (bloc Rain, grille une colonne), `src/js/pages/home.js` (apparition du texte), `src/data/products.json` et `src/data/site.json` (Kayano 14), `public/images/editorial/rain-campaign-*.webp` (nouveaux), `dublin-rain-tall.webp` (supprimé), `public/images/products/asics-gel-kayano-14-pure-silver-1*.webp`, `public/images/CREDITS.md`, pages générées.

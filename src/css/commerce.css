@@ -286,6 +286,13 @@
     gap: 2.5rem var(--grid-gap);
   }
 
+  /* Very narrow phones: one column keeps names and prices readable. */
+  @media (width < 22.5rem) {
+    .product-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
   @media (width >= 48rem) {
     .product-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -636,6 +643,106 @@
 
   .product-skeleton > span + span {
     width: 35%;
+  }
+
+  /* ---------- Rain campaign ---------- */
+
+  /* Asymmetric editorial block. Phones and tablets: photograph edge to edge,
+     copy underneath. Desktop: the photograph runs to the left edge of the
+     screen and the copy sits beside it, aligned with the page margin. */
+  .rain {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .rain-figure {
+    overflow: clip;
+    background-color: var(--color-bone);
+  }
+
+  .rain-media {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 60%;
+    transition: transform 1600ms var(--ease-premium);
+  }
+
+  @media (width >= 48rem) {
+    .rain-media {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  @media (hover: hover) {
+    .rain:hover .rain-media {
+      transform: scale(1.02);
+    }
+  }
+
+  .rain-content {
+    padding-inline: var(--page-margin);
+  }
+
+  .rain-title {
+    max-width: 11ch;
+    margin-top: 1.25rem;
+  }
+
+  .rain-copy {
+    max-width: 40ch;
+    margin-top: 1.5rem;
+    color: var(--color-neutral-600);
+  }
+
+  .rain-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (width >= 64rem) {
+    .rain {
+      grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+      align-items: center;
+      gap: 0;
+    }
+
+    .rain-media {
+      aspect-ratio: 4 / 5;
+      max-height: 52rem;
+    }
+
+    .rain-content {
+      padding-inline: clamp(3rem, 6vw, 7rem) var(--page-margin);
+    }
+  }
+
+  /* The copy rises once when the section scrolls into view (set by home.js). */
+  .rain[data-reveal] .rain-content > * {
+    opacity: 0;
+    transform: translateY(0.75rem);
+    transition:
+      opacity var(--duration-slow) var(--ease-premium),
+      transform var(--duration-slow) var(--ease-premium);
+  }
+
+  .rain[data-reveal][data-inview] .rain-content > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .rain[data-inview] .rain-content > :nth-child(2) {
+    transition-delay: 80ms;
+  }
+
+  .rain[data-inview] .rain-content > :nth-child(3) {
+    transition-delay: 160ms;
+  }
+
+  .rain[data-inview] .rain-content > :nth-child(4) {
+    transition-delay: 240ms;
   }
 
   /* ---------- Category tiles & brands ---------- */
