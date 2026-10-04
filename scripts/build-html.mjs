@@ -140,18 +140,14 @@ function heroHtml(campaigns) {
     </article>`;
     })
     .join('\n');
-  const dots = campaigns
-    .map((c, i) => `<button class="hero-dot" type="button" aria-label="Show campaign ${i + 1} of ${total}: ${esc(c.title)}" data-carousel-goto="${i}"><span></span></button>`)
-    .join('');
   // The page's <h1> stays outside the slides (inactive slides are inert), and
   // the controls come first in the DOM so Pause is reached early by keyboard.
-  // Pause is only shown on keyboard focus; the dots are the only visible control.
+  // Pause is only shown on keyboard focus: the carousel has no visible control.
   return `<section class="hero" aria-roledescription="carousel" aria-label="Campaigns" data-carousel>
   <h1 class="sr-only">DUBLIN/01 — sneakers and streetwear, Dublin</h1>
   <div class="hero-controls">
-    <div class="container-site hero-controls-row">
+    <div class="container-site">
       <button class="hero-pause" type="button" data-carousel-pause>Pause slideshow</button>
-      <div class="hero-dots">${dots}</div>
     </div>
   </div>
   <div class="hero-slides" data-carousel-slides>

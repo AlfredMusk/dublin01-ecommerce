@@ -339,3 +339,62 @@ Vérifié sur captures à 1440×900, 1280×800, 1280×720, 1024×768, 768×1024,
 
 - **Maintenant** : tout ce qui précède. Aucune dépendance ajoutée.
 - **Plus tard** : campagnes servies par un CMS (même schéma JSON), dates de début et de fin, mesure des clics. Les sections sous le Hero ne sont pas commencées.
+
+---
+
+## PHASE 02 — TOP BAR + NAVBAR + HERO
+
+**STATUS: PRODUCTION READY / VISUAL REVIEW**
+
+Date : 4 octobre 2026. Passe finale de contrôle, corrections et vérification. Aucune nouvelle section, aucune refonte. En attente de la validation visuelle avant le gel.
+
+### Vérifié
+
+- **Barre d'annonce** : hauteur 32 px, message centré sur l'axe de la page (écart mesuré : 0 px), « 30-day returns » à gauche et « EN / EUR € » à droite à partir de 1024 px, message seul en dessous. Aucun défaut trouvé, rien modifié.
+- **Navbar** : New, Men, Women, Sneakers, Clothing, Brands, Sale ; logo centré sur la page à toutes les largeurs (écart 0 px) ; aucun chevauchement entre navigation, logo et actions, y compris à 1280 px ; recherche réelle sur le catalogue local (résultats, Échap, clic extérieur) ; compte, favoris et panier ; menus déroulants et menu mobile. Aucun défaut trouvé, rien modifié.
+- **Hero** : 4 campagnes, un cycle complet observé sur desktop et sur mobile (changement toutes les 6 s), boutons, cadrages, hauteur, contraste, clavier, mouvement réduit.
+- **Bande blanche sous le Hero** : c'est le padding supérieur de la section suivante (144 px à 1440, 64 px à 390). Le Hero n'a ni marge ni padding en bas, et aucun conteneur vide ne le suit. Non modifié.
+- **Largeurs** : 1440, 1280, 1024, 768, 430, 390 et 375 px, plus un téléphone couché (844×390). Aucun débordement horizontal.
+
+### Corrigé
+
+- **Points du carrousel retirés**, avec leur CSS et leur JS. Le mécanisme n'a plus aucun élément visible à la souris ni au tactile.
+- **Slide 4 sur téléphone** : image portrait recadrée, les immeubles et la rue restent visibles au-dessus du texte (avant : surtout du ciel).
+- **Téléphone couché** : le Hero tient dans l'écran sous l'en-tête et le bloc texte se resserre ; le bouton est visible sans faire défiler.
+- **Téléphones courts (375×667)** : titre réduit pour que l'eyebrow ne recouvre plus les chaussures.
+- **Lisibilité** : dégradé gauche légèrement renforcé derrière le texte sur desktop et halo discret sous le titre. Contraste mesuré sur les 4 photos aux 8 tailles, halo compris : au moins 6,2:1 pour l'eyebrow et la description, au moins 3,1:1 pour le titre.
+- **Espace bas du bloc texte sur mobile** réduit (il était réservé aux points).
+
+### Responsive
+
+Eyebrow, titre, texte et bouton visibles sur les 4 campagnes aux 8 tailles ; bouton de 48 px de haut ; même marge gauche que la navbar (40, 24 ou 16 px selon la largeur) ; titre sur la même échelle typographique, avec une largeur propre à chaque campagne.
+
+### Accessibilité
+
+- Un bouton Pause / Play reste dans la page, visible uniquement au focus clavier : il permet d'arrêter le défilement (WCAG 2.2.2). Invisible à la souris et au tactile.
+- Le défilement se suspend au survol, quand le focus clavier est dans une slide et quand l'onglet est caché. Avec `prefers-reduced-motion`, pas de défilement automatique, ni zoom ni mouvement.
+- Balayage au doigt pour changer de campagne ; changement annoncé aux lecteurs d'écran.
+- Chaque bouton est un lien réel avec anneau de focus visible ; textes alternatifs sur les 4 photos ; un seul `h1` dans la page.
+
+### Console et technique
+
+- Aucune erreur de console, aucune image cassée, aucune requête en échec. Un avis de Chrome sur le préchargement de la police apparaît parfois après un rechargement ; ce n'est pas une erreur.
+- Un seul minuteur : après des survols répétés, puis Play, Pause, Play, le rythme reste de 6 s par campagne.
+- Aucun décalage de mise en page (CLS mesuré : 0).
+- Projet en JavaScript natif : pas de React, donc ni avertissement React ni hydratation.
+- Aucune dépendance ajoutée, pas de CSS ni de JS mort lié aux anciens contrôles.
+
+### Performance
+
+- Première image du Hero chargée en priorité (`fetchpriority="high"`) ; les trois autres sont demandées une par une après son affichage.
+- Images WebP : 1920×1080 pour le format large (142 à 193 Ko), 1080×1350 pour le portrait (117 à 161 Ko).
+- `carousel.js` : 8,6 Ko non minifié. Animations en `opacity` et `transform` uniquement.
+
+### Limites connues
+
+- Sur les slides 3 et 4, le titre passe devant la veste et les immeubles (aucun visage ni chaussure couverts).
+- Le lien de la barre d'annonce mesure 32 px de haut sur mobile (la hauteur de la barre).
+
+### Fichiers modifiés
+
+`scripts/build-html.mjs`, `src/js/modules/carousel.js`, `src/css/commerce.css`, `src/data/campaigns.json`, `public/images/editorial/hero-dublin-tall.webp`, `index.html` (généré).

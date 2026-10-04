@@ -7,8 +7,9 @@
  * a slide or the tab is hidden, and stops until an explicit Play when keyboard
  * focus enters the carousel or the user prefers reduced motion.
  *
- * Hooks: [data-carousel-pause], [data-carousel-goto="<index>"],
- * [data-carousel-status].
+ * No visible control: swipe on touch screens, and a Pause / Play button
+ * ([data-carousel-pause]) that only shows on keyboard focus.
+ * Slide changes made by hand are announced in [data-carousel-status].
  */
 
 import { qs, qsa } from '../utils/dom.js';
@@ -16,7 +17,7 @@ import { qs, qsa } from '../utils/dom.js';
 const INTERVAL = 6000;
 const SWIPE_DISTANCE = 48;
 // On a slow connection, autoplay waits this long for the next image before it
-// gives the current slide another cycle; a click waits this long at most.
+// gives the current slide another cycle; a swipe waits this long at most.
 const AUTO_WAIT = 4000;
 const MANUAL_WAIT = 1500;
 
@@ -25,8 +26,6 @@ export function initCarousel(root = qs('[data-carousel]')) {
   const slides = qsa('[data-slide]', root);
   if (slides.length < 2) return;
 
-  const controls = qs('.hero-controls', root);
-  const dots = qsa('[data-carousel-goto]', root);
   const status = qs('[data-carousel-status]', root);
   const pauseButton = qs('[data-carousel-pause]', root);
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -92,11 +91,6 @@ export function initCarousel(root = qs('[data-carousel]')) {
       slide.toggleAttribute('data-active', active);
       slide.toggleAttribute('inert', !active);
     });
-    dots.forEach((dot, i) => {
-      dot.toggleAttribute('data-current', i === index);
-      if (i === index) dot.setAttribute('aria-current', 'true');
-      else dot.removeAttribute('aria-current');
-    });
     if (announce && status) {
       const title = qs('h2', slides[index])?.textContent ?? '';
       status.textContent = `Campaign ${index + 1} of ${slides.length}: ${title}`;
@@ -148,7 +142,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
     restartClock();
   };
 
-  /** A click, key or swipe: the outgoing slide stays until the new image is in. */
+  /** A swipe: the outgoing slide stays until the new image is in. */
   const goTo = (next, options) => {
     wanted = (next + slides.length) % slides.length;
     autoPending = false;
@@ -198,14 +192,6 @@ export function initCarousel(root = qs('[data-carousel]')) {
   };
 
   pauseButton?.addEventListener('click', () => setPaused(!userPaused));
-  dots.forEach((dot) => dot.addEventListener('click', () => goTo(Number(dot.dataset.carouselGoto), { announce: true })));
-
-  // Arrow keys work from the controls only: from a slide's link they would
-  // make that slide inert and drop focus on <body>.
-  controls?.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight') goTo(wanted + 1, { announce: true });
-    else if (event.key === 'ArrowLeft') goTo(wanted - 1, { announce: true });
-  });
 
   // Keyboard focus entering the carousel stops autoplay until an explicit Play.
   root.addEventListener('focusin', (event) => {
@@ -233,7 +219,7 @@ export function initCarousel(root = qs('[data-carousel]')) {
   });
   document.addEventListener('visibilitychange', syncHold);
 
-  // Swipe (touch and pen only; mouse users have the dots).
+  // Swipe (touch and pen only).
   let startX = 0;
   let startY = 0;
   root.addEventListener('pointerdown', (event) => {
