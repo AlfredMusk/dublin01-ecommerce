@@ -12,6 +12,11 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const raw = JSON.parse(readFileSync(new URL('../src/data/products.json', import.meta.url), 'utf8'));
 const products = raw.map(normalise);
 
+test('the catalogue file stays small: it is downloaded by every page', () => {
+  const bytes = readFileSync(new URL('../src/data/products.json', import.meta.url)).length;
+  assert.ok(bytes < 150_000, `products.json is ${bytes} bytes`);
+});
+
 test('catalogue has about 32 products with unique ids and slugs', () => {
   assert.ok(products.length >= 30 && products.length <= 36, `got ${products.length}`);
   assert.equal(new Set(products.map((p) => p.slug)).size, products.length);
