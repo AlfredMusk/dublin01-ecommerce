@@ -23,13 +23,21 @@ const ANNOUNCE_DELAY = 700;
 const ARROW = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>';
 const UNAVAILABLE = '<p class="type-body text-neutral-600">Search is unavailable right now. Try again in a moment.</p>';
 
-/** Shared markup for instant results (thumbnail, brand, name, price). */
-function resultsHtml({ query, total, results }) {
+const shortcutsHtml = (shortcuts) =>
+  shortcuts.length
+    ? `<p class="mega-heading">Brands and categories</p>
+    <ul class="mb-6 flex flex-wrap gap-2" role="list">${shortcuts
+      .map((s) => `<li><a class="chip" href="${asset(s.href)}"><span class="text-neutral-600">${s.kind}</span> ${escapeHtml(s.label)}</a></li>`)
+      .join('')}</ul>`
+    : '';
+
+/** Shared markup for instant results: matching brands and categories, then products. */
+function resultsHtml({ query, total, results, shortcuts }) {
   if (!total) {
-    return `<p class="type-body text-neutral-600">No matches for “${escapeHtml(query)}”. Try a brand like <a class="link-editorial" href="${pageUrl('search', { q: 'adidas' })}">adidas</a> or a style like <a class="link-editorial" href="${pageUrl('search', { q: 'running' })}">running</a>.</p>`;
+    return `${shortcutsHtml(shortcuts)}<p class="type-body text-neutral-600">No products match “${escapeHtml(query)}”. Check the spelling, or try a brand like <a class="link-editorial" href="${pageUrl('search', { q: 'adidas' })}">adidas</a> or a style like <a class="link-editorial" href="${pageUrl('search', { q: 'running' })}">running</a>.</p>`;
   }
   // Thumbnails are decorative here: the product name follows in the same link.
-  return `<p class="mega-heading">Products</p>
+  return `${shortcutsHtml(shortcuts)}<p class="mega-heading">Products</p>
     <ul class="search-live-grid" role="list">${results
       .map(
         (p) => `<li><a class="search-live-item" href="${productUrl(p.slug)}">
@@ -41,6 +49,20 @@ function resultsHtml({ query, total, results }) {
       )
       .join('')}</ul>
     <a class="link-action mt-6" href="${pageUrl('search', { q: query })}">${total === 1 ? 'View 1 result' : `View all ${total} results`} ${ARROW}</a>`;
+}
+
+/** Up and down arrows move through the suggestions; up from the first returns to the field. */
+function arrowNavigation(container, input) {
+  container.addEventListener('keydown', (event) => {
+    if (event.key !== 'ArrowDown' && event.key !== 'ArrowUp') return;
+    const links = qsa('a', container);
+    const i = links.indexOf(document.activeElement);
+    if (i < 0) return;
+    event.preventDefault();
+    const next = links[i + (event.key === 'ArrowDown' ? 1 : -1)];
+    if (next) next.focus();
+    else if (event.key === 'ArrowUp') input.focus();
+  });
 }
 
 const statusText = ({ query, total }) => (total ? `${pluralize(total, 'result')} for ${query}` : `No results for ${query}`);
@@ -138,6 +160,7 @@ function initNavSearch() {
     input.focus();
   });
   blockEmptySubmit(form, input);
+  arrowNavigation(results, input);
 
   // Any click outside the form closes it, including empty areas of the navigation bar.
   document.addEventListener('click', (event) => {
@@ -200,6 +223,13 @@ function initSearchOverlay() {
     clearTimeout(timer);
     timer = setTimeout(render, RENDER_DELAY);
   });
+  input?.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' && !live.hidden) {
+      event.preventDefault();
+      qs('a', live)?.focus();
+    }
+  });
+  arrowNavigation(live, input);
 
   blockEmptySubmit(qs('form', dialog), input);
 }

@@ -1,8 +1,23 @@
 <!--
-title: Privacy notice — DUBLIN/01
-description: How DUBLIN/01 handles personal data.
+title: Privacy — DUBLIN/01
+description: How DUBLIN/01 handles personal data: what this site stores in your browser, what an order will require, and your rights under the GDPR.
+breadcrumb: Privacy
 -->
 <section class="container-site pb-section pt-6 lg:pt-8">
-  <!-- @include info-head crumb='Privacy' eyebrow='Legal' heading='Privacy notice' intro='Last updated October 2026.' -->
-  <div class="prose-d01 mt-12 max-w-3xl"><h2>What this preview stores</h2><p>This site is a portfolio preview. It does not send forms anywhere and has no analytics or advertising trackers. Your bag, wishlist and recently viewed products are stored only in your browser (localStorage) and never leave your device.</p><h2>In the live shop</h2><p>A full privacy notice will cover the data needed to deliver orders, your rights under the GDPR and how to contact us about them.</p></div>
+  <!-- @include info-head crumb='Privacy' eyebrow='Legal' heading='Privacy notice' intro='What we know about you, and what we do with it.' -->
+  <div class="prose-d01 mt-12 max-w-3xl">
+    <h2>Who we are</h2>
+    <p>DUBLIN/01 is an online shop based in Dublin, Ireland.{{#if company.legalName}} It is operated by {{company.legalName}}{{#if company.registeredAddress}}, {{company.registeredAddress}}{{/if}}.{{/if}}{{#if company.croNumber}} Company registration number: {{company.croNumber}}.{{/if}}{{#if company.vatNumber}} VAT number: {{company.vatNumber}}.{{/if}}</p>
+    <p>{{#if company.email}}Email: <a href="mailto:{{company.email}}">{{company.email}}</a>. {{/if}}{{#if company.phone}}Phone: {{company.phone}}. {{/if}}You can also reach us through the <a href="{{base}}contact.html">contact page</a>.</p>
+    <h2>What this site stores today</h2>
+    <p>Your bag, your wishlist, the products you viewed recently and your cookie choice are kept in your own browser (local storage). They are not sent to us. Clearing your browser data removes them.</p>
+    <p>Forms on this site (checkout, account, newsletter, contact) are not connected to any service yet: what you type in them is not sent or stored.</p>
+    <h2>When ordering opens</h2>
+    <p>To deliver an order we will need your name, delivery address, email address and phone number. Card details will be entered directly with our payment provider and will not pass through or be stored by us. This notice will be updated, before ordering opens, with the providers we use, how long data is kept and the legal basis for each use.</p>
+    <h2>Analytics and marketing</h2>
+    <p>No analytics or advertising trackers run on this site. If that changes they will only run after you agree, and you can change your mind at any time in the <button class="link-editorial" type="button" data-consent-open>cookie settings</button>.</p>
+    <h2>Your rights</h2>
+    <p>Under the GDPR you can ask for a copy of your personal data, have it corrected or erased, object to or restrict its use, and take it elsewhere. You can also complain to the Data Protection Commission (<a href="https://www.dataprotection.ie" rel="noopener">dataprotection.ie</a>).</p>
+    <p class="text-neutral-600">Last updated October 2026.</p>
+  </div>
 </section>

@@ -1,25 +1,28 @@
 <!--
 title: Delivery — DUBLIN/01
-description: Delivery options and costs for DUBLIN/01 orders in Ireland. Free standard delivery over €100.
+description: Delivery options and charges for DUBLIN/01 orders in Ireland. Free standard delivery on orders over €100.
+breadcrumb: Delivery
 -->
 <section class="container-site pb-section pt-6 lg:pt-8">
-  <!-- @include info-head crumb='Delivery' eyebrow='Help' heading='Delivery' intro='We deliver to every county in Ireland. Orders are packed in Dublin and sent with tracking.' -->
+  <!-- @include info-head crumb='Delivery' eyebrow='Help' heading='Delivery' intro='We deliver to every county in Ireland. Parcels are sent with tracking.' -->
   <div class="table-scroll mt-12 max-w-3xl">
     <table class="data-table">
       <caption class="sr-only">Delivery options</caption>
-      <thead><tr><th scope="col">Option</th><th scope="col">Time</th><th scope="col">Cost</th></tr></thead>
+      <thead><tr><th scope="col">Option</th><th scope="col">Service</th><th scope="col">Cost</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Standard</th><td>2–4 working days</td><td>€4.95, free over €100</td></tr>
-        <tr><th scope="row">Express</th><td>Next working day, order before 2pm</td><td>€9.95</td></tr>
+        <tr><th scope="row">Standard</th><td>Tracked delivery</td><td>{{commerce.standardDelivery}}, free on orders over {{commerce.freeDeliveryThreshold}}</td></tr>
+        <tr><th scope="row">Express</th><td>Priority tracked delivery</td><td>{{commerce.expressDelivery}}</td></tr>
       </tbody>
     </table>
   </div>
   <div class="prose-d01 mt-12 max-w-3xl">
-    <h2>Dispatch</h2>
-    <p>Orders placed before 2pm on a working day leave the same day. Orders placed later, at weekends or on bank holidays leave the next working day.</p>
+    <h2>What you pay</h2>
+    <p>The delivery charge is added in the bag and shown again before you pay. Prices include VAT, so the total at checkout is the total you pay.</p>
     <h2>Tracking</h2>
-    <p>You get a tracking link by email as soon as your parcel leaves us.</p>
+    <p>You receive a tracking link by email when your parcel leaves us.</p>
+    <h2>If a delivery is late</h2>
+    <p>If your order has not arrived within 30 days, or by the date we agreed with you, you can cancel it and be refunded in full.</p>
     <h2>Outside Ireland</h2>
-    <p>We currently ship within Ireland only. Northern Ireland and the UK are not yet available.</p>
+    <p>We currently deliver within Ireland only.</p>
   </div>
 </section>

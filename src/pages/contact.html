@@ -4,7 +4,7 @@ description: Contact DUBLIN/01 customer support about sizing, orders, delivery o
 script: contact
 -->
 <section class="container-site pb-section pt-6 lg:pt-8">
-  <!-- @include info-head crumb='Contact' eyebrow='Help' heading='Talk to us' intro='Questions about sizing, an order or a return. We reply within one working day, Monday to Friday, 9am to 5pm.' -->
+  <!-- @include info-head crumb='Contact' eyebrow='Help' heading='Talk to us' intro='Questions about sizing, an order or a return.' -->
   <div class="mt-12 grid-site gap-y-12">
     <form class="col-span-full space-y-6 lg:col-span-6" novalidate data-contact>
       <div class="form-grid">
@@ -23,12 +23,14 @@ script: contact
         <textarea class="input min-h-40 py-3" id="contact-message" name="message" required data-error="Write a short message."></textarea></div>
       <button class="btn btn-primary" type="submit">Send message</button>
       <div class="notice" tabindex="-1" role="status" data-contact-status hidden>
-        <p class="type-body-sm">Messaging isn’t connected in this preview, so this message was not sent. Nothing was stored.</p>
+        <p class="type-body-sm">Our message service is not connected yet, so this message was not sent and nothing was stored.{{#if company.email}} Please write to <a class="link-editorial" href="mailto:{{company.email}}">{{company.email}}</a> instead.{{/if}}</p>
       </div>
     </form>
     <aside class="col-span-full lg:col-span-4 lg:col-start-9">
       <dl class="space-y-8">
-        <div><dt class="type-label text-neutral-600">Hours</dt><dd class="type-body mt-2">Monday to Friday, 9am–5pm</dd></div>
+        {{#if company.email}}<div><dt class="type-label text-neutral-600">Email</dt><dd class="type-body mt-2"><a class="link-editorial" href="mailto:{{company.email}}">{{company.email}}</a></dd></div>{{/if}}
+        {{#if company.phone}}<div><dt class="type-label text-neutral-600">Phone</dt><dd class="type-body mt-2">{{company.phone}}</dd></div>{{/if}}
+        {{#if company.supportHours}}<div><dt class="type-label text-neutral-600">Hours</dt><dd class="type-body mt-2">{{company.supportHours}}</dd></div>{{/if}}
         <div><dt class="type-label text-neutral-600">Based in</dt><dd class="type-body mt-2">Dublin, Ireland. Online only for now.</dd></div>
         <div><dt class="type-label text-neutral-600">Before you write</dt><dd class="type-body mt-2"><a class="link-editorial" href="{{base}}faq.html">FAQ</a> · <a class="link-editorial" href="{{base}}delivery.html">Delivery</a> · <a class="link-editorial" href="{{base}}returns.html">Returns</a></dd></div>
       </dl>

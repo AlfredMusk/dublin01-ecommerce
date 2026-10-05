@@ -25,7 +25,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, watch } from 'node
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const { company, siteUrl } = await import('../src/js/config.js');
+const { company, commerce, siteUrl } = await import('../src/js/config.js');
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (path) => readFileSync(join(ROOT, path), 'utf8');
@@ -265,6 +265,27 @@ const BRAND_BLURBS = {
 };
 const brandSlug = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+const euro = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR' });
+
+/**
+ * Company and commerce values from src/js/config.js.
+ *   {{company.email}}                      value, HTML-escaped
+ *   {{commerce.standardDelivery}}          amounts are formatted as euro
+ *   {{#if company.email}} … {{/if}}        kept only when the value is set
+ * A company detail that is not configured never reaches the page.
+ */
+function fillConfig(html) {
+  const scope = { company: { ...company, footerName: company.legalName ?? company.tradingName }, commerce };
+  const lookup = (path) => path.split('.').reduce((value, key) => value?.[key], scope);
+  const block = /\{\{#if ([\w.]+)\}\}((?:(?!\{\{#if )[\s\S])*?)\{\{\/if\}\}/g;
+  while (block.test(html)) html = html.replace(block, (_, path, inner) => (lookup(path) ? inner : ''));
+  return html.replace(/\{\{((?:company|commerce)\.[\w.]+)\}\}/g, (_, path) => {
+    const value = lookup(path);
+    const money = /Delivery|Threshold/.test(path) && typeof value === 'number';
+    return esc(money ? euro.format(value).replace(/\.00$/, '') : value ?? '');
+  });
+}
+
 /** Old addresses (pages/*.html, with ?slug= or filter queries) forward to the new ones. */
 const LEGACY_PAGES = ['about', 'account', 'bag', 'brands', 'checkout', 'clothing', 'contact', 'cookies', 'delivery', 'faq', 'new', 'privacy', 'product', 'returns', 'search', 'shop', 'sneakers', 'terms', 'wishlist'];
 const LEGACY_SLUGS = { 'new-balance-2002r-rain-cloud': 'new-balance-997h-grey', 'asics-gel-kayano-14-white-blue': 'asics-gel-kayano-14-pure-silver' };
@@ -348,6 +369,7 @@ function build() {
       .replaceAll('{{year}}', String(new Date().getFullYear()))
       .replaceAll('{{base}}', out.base)
       .replaceAll('{{home}}', home);
+    html = fillConfig(html);
 
     // Mark links to the current page for assistive tech and styling.
     if (path === 'index.html') html = html.replace(/data-home-link/g, 'aria-current="page"');

@@ -110,7 +110,9 @@ export const brandSlug = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, '
 const fold = (text) =>
   String(text).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
 
-/** Ranked full-text search over name, brand, category, type, style, colour and keywords. */
+/** Ranked full-text search over name, brand, category, subcategory, style, gender, colour, collection, material and keywords. */
+export const foldText = (text) => fold(text);
+
 export function searchProducts(products, query) {
   const terms = fold(query).split(' ').filter(Boolean);
   if (!terms.length) return [];
@@ -119,8 +121,8 @@ export function searchProducts(products, query) {
       const fields = [
         [fold(`${p.brand} ${p.name}`), 4],
         [fold(p.brand), 3],
-        [fold([p.category, p.type, p.style, p.gender].join(' ')), 2],
-        [fold([p.color, ...p.keywords].join(' ')), 1],
+        [fold([p.category, p.type, p.subcategory, p.style, p.gender].join(' ')), 2],
+        [fold([p.color, ...p.colors, p.collection, p.material, ...p.keywords].join(' ')), 1],
       ];
       let score = 0;
       for (const term of terms) {

@@ -3,44 +3,14 @@
  */
 
 import { qs } from '../utils/dom.js';
-import { asset, productUrl, pageUrl, escapeHtml } from '../utils/paths.js';
+import { pageUrl } from '../utils/paths.js';
 import { formatPrice, pluralize } from '../utils/format.js';
 import { loadProducts } from '../data/catalog.js';
-import { cartDetails, setQuantity, removeFromCart, MAX_QTY, FREE_DELIVERY_THRESHOLD } from '../modules/cart.js';
-import { imageAlt, smallImage } from '../modules/product-card.js';
+import { cartDetails, FREE_DELIVERY_THRESHOLD } from '../modules/cart.js';
+import { lineHtml, bindLines, keepLineFocus } from '../modules/bag-lines.js';
 import { toast } from '../modules/toast.js';
 
 const root = qs('[data-bag]');
-const minus = '<svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14" /></svg>';
-const plus = '<svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>';
-
-function lineHtml({ product: p, size, qty }) {
-  const name = escapeHtml(p.brand === 'DUBLIN/01' ? p.name : `${p.brand} ${p.name}`);
-  const sizeLabel = size === 'One size' ? 'One size' : `Size ${escapeHtml(size)}`;
-  return `<li class="bag-line" data-line data-slug="${p.slug}" data-size="${escapeHtml(size)}">
-    <a class="bag-line-media" href="${productUrl(p.slug)}" tabindex="-1" aria-hidden="true">
-      <img src="${asset(smallImage(p.images[0]))}" width="480" height="600" alt="${escapeHtml(imageAlt(p))}" loading="lazy" />
-    </a>
-    <div class="min-w-0 flex-1">
-      <div class="flex items-start justify-between gap-4">
-        <div class="min-w-0">
-          <p class="type-micro text-neutral-600">${escapeHtml(p.brand)}</p>
-          <h3 class="type-body mt-1 font-medium"><a class="link-editorial" href="${productUrl(p.slug)}">${escapeHtml(p.name)}</a></h3>
-          <p class="type-body-sm mt-1 text-neutral-600">${escapeHtml(p.color)} · ${sizeLabel}</p>
-        </div>
-        <p class="type-body shrink-0 tabular-nums">${formatPrice(p.price * qty)}</p>
-      </div>
-      <div class="mt-4 flex items-center justify-between gap-4">
-        <div class="stepper" role="group" aria-label="Quantity for ${name}, ${sizeLabel}">
-          <button type="button" data-qty="-1" aria-label="Decrease quantity">${minus}</button>
-          <output aria-live="polite">${qty}</output>
-          <button type="button" data-qty="1" aria-label="Increase quantity"${qty >= MAX_QTY ? ' disabled' : ''}>${plus}</button>
-        </div>
-        <button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-remove>Remove<span class="sr-only"> ${name}, ${sizeLabel}</span></button>
-      </div>
-    </div>
-  </li>`;
-}
 
 async function render() {
   const products = await loadProducts();
@@ -79,42 +49,16 @@ async function render() {
         <p class="type-body-sm mt-2 text-neutral-600">Including VAT. Express delivery is chosen at checkout.</p>
         <a class="btn btn-primary btn-block mt-6" href="${pageUrl('checkout')}">Checkout</a>
         <ul class="type-body-sm mt-6 space-y-2 text-neutral-600" role="list">
-          <li>Free returns within 30 days</li>
-          <li>Secure checkout</li>
+          <li>30-day returns</li>
+          <li>14-day legal right to cancel</li>
         </ul>
       </div>
     </aside>
   </div>`;
 }
 
-root?.addEventListener('click', (event) => {
-  const line = event.target.closest('[data-line]');
-  if (!line) return;
-  const { slug, size } = line.dataset;
-  const qtyButton = event.target.closest('[data-qty]');
-  if (qtyButton) {
-    const current = Number(qs('output', line).textContent);
-    const next = current + Number(qtyButton.dataset.qty);
-    setQuantity(slug, size, next);
-    if (next === 0) toast('Removed from bag');
-  }
-  if (event.target.closest('[data-remove]')) {
-    removeFromCart(slug, size);
-    toast('Removed from bag');
-  }
-});
-
-// Keep focus on the stepper after a re-render.
-document.addEventListener('cart:change', async () => {
-  const focused = document.activeElement?.closest('[data-line]');
-  const key = focused && `${focused.dataset.slug}|${focused.dataset.size}`;
-  const action = document.activeElement?.dataset.qty;
-  await render();
-  if (key) {
-    const line = [...root.querySelectorAll('[data-line]')].find((el) => `${el.dataset.slug}|${el.dataset.size}` === key);
-    const target = line && (action ? line.querySelector(`[data-qty="${action}"]`) : null);
-    (target && !target.disabled ? target : line?.querySelector('[data-qty="1"]') ?? qs('h1'))?.focus();
-  }
-});
-
-render();
+if (root) {
+  bindLines(root, { onRemove: () => toast('Removed from bag') });
+  document.addEventListener('cart:change', keepLineFocus(root, render, () => qs('h1')));
+  render();
+}

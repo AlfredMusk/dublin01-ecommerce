@@ -6,7 +6,9 @@
 
 import { qs } from '../utils/dom.js';
 import { initDialog, openDialog } from '../utils/dialog.js';
-import { asset, pageUrl, brandUrl, homeUrl, escapeHtml } from '../utils/paths.js';
+import { asset, pageUrl, productUrl, brandUrl, homeUrl, escapeHtml } from '../utils/paths.js';
+import { formatPrice } from '../utils/format.js';
+import { commerce } from '../config.js';
 import { loadProducts, isSoldOut, isOnSale, brandSlug } from '../data/catalog.js';
 import { productCard, productTitle, imageAlt, priceHtml, smallImage } from '../modules/product-card.js';
 import { isWishlisted } from '../modules/wishlist.js';
@@ -22,9 +24,9 @@ const heart =
 const CATEGORY_PAGE = { sneakers: ['sneakers', 'Sneakers'], clothing: ['clothing', 'Clothing'], accessories: ['accessories', 'Accessories'] };
 
 function stockMessage(p) {
-  if (isSoldOut(p)) return 'Sold out in all sizes. Restocks are announced in the newsletter.';
-  if (p.stock === 'low_stock') return 'Low stock: only a few pairs or pieces left.';
-  return 'In stock. Dispatched from Dublin within 1–2 working days.';
+  if (isSoldOut(p)) return 'Sold out in all sizes.';
+  if (p.stock === 'low_stock') return 'Low stock: only a few left.';
+  return 'In stock.';
 }
 
 function galleryHtml(p) {
@@ -72,6 +74,22 @@ function sizeGuideHtml(p) {
     <tbody>${[['XS', '84–89', '66'], ['S', '89–96', '68'], ['M', '96–104', '70'], ['L', '104–112', '72'], ['XL', '112–120', '74'], ['XXL', '120–128', '76']].map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 }
 
+/** Other colourways of the same model, as links to their own pages. */
+function variantsHtml(p, products) {
+  const siblings = products.filter((x) => x.brand === p.brand && x.name === p.name);
+  if (siblings.length < 2) return '';
+  return `<div class="mt-6">
+    <p class="type-label">Colour</p>
+    <ul class="mt-3 flex flex-wrap gap-2" role="list">${siblings
+      .map((x) =>
+        x.slug === p.slug
+          ? `<li><span class="chip" aria-current="true">${escapeHtml(x.color)}</span></li>`
+          : `<li><a class="chip" href="${productUrl(x.slug)}">${escapeHtml(x.color)}</a></li>`,
+      )
+      .join('')}</ul>
+  </div>`;
+}
+
 function notFound() {
   document.title = 'Product not found — DUBLIN/01';
   root.innerHTML = `<div class="container-site py-section">
@@ -117,6 +135,7 @@ async function init() {
         <p class="type-label text-neutral-600"><a class="link-subtle" href="${brandUrl(brandSlug(p.brand))}">${escapeHtml(p.brand)}</a></p>
         <h1 class="type-h2 mt-3">${escapeHtml(p.name)}</h1>
         <p class="type-body mt-2 text-neutral-600">${escapeHtml(p.color)}</p>
+        ${variantsHtml(p, products)}
         <p class="pdp-price mt-6">${priceHtml(p)}</p>
         <p class="type-body-sm mt-1 text-neutral-600">Price includes VAT.${isOnSale(p) ? ' Sale price while stock lasts.' : ''}</p>
 
@@ -140,8 +159,8 @@ async function init() {
         </form>
 
         <ul class="type-body-sm mt-8 space-y-2 text-neutral-600" role="list">
-          <li>Free delivery in Ireland on orders over €100</li>
-          <li>Free returns within 30 days</li>
+          <li>Free delivery in Ireland on orders over ${formatPrice(commerce.freeDeliveryThreshold)}</li>
+          <li>${commerce.returnsDays}-day returns</li>
         </ul>
 
         <div class="mt-10 border-t border-neutral-200">
@@ -155,13 +174,18 @@ async function init() {
               <p class="mt-3 text-neutral-600">Product code ${escapeHtml(p.id)}</p></div>
           </details>
           <details class="accordion">
+            <summary class="accordion-summary">Materials and care</summary>
+            <div class="accordion-body"><p>${escapeHtml(p.material)}.</p>
+              ${p.care?.length ? `<ul class="mt-3 list-disc space-y-1 pl-5">${p.care.map((line) => `<li>${escapeHtml(line)}</li>`).join('')}</ul>` : ''}</div>
+          </details>
+          <details class="accordion">
             <summary class="accordion-summary">Delivery</summary>
-            <div class="accordion-body"><p>Standard delivery across Ireland in 2–4 working days, €4.95 or free over €100. Express next working day, €9.95, when ordered before 2pm.</p>
+            <div class="accordion-body"><p>Standard delivery across Ireland: ${formatPrice(commerce.standardDelivery)}, free on orders over ${formatPrice(commerce.freeDeliveryThreshold)}. Express delivery: ${formatPrice(commerce.expressDelivery)}. The delivery charge is shown before you pay.</p>
               <a class="link-editorial mt-2 inline-block" href="${pageUrl('delivery')}">Delivery information</a></div>
           </details>
           <details class="accordion">
             <summary class="accordion-summary">Returns</summary>
-            <div class="accordion-body"><p>Return unworn items within 30 days of delivery. Free returns from anywhere in Ireland.</p>
+            <div class="accordion-body"><p>Return unworn items within ${commerce.returnsDays} days of delivery. This is in addition to your legal right to cancel an online order within ${commerce.statutoryCancellationDays} days.</p>
               <a class="link-editorial mt-2 inline-block" href="${pageUrl('returns')}">Returns policy</a></div>
           </details>
         </div>
@@ -175,7 +199,7 @@ async function init() {
     .sort((a, b) => Number(b.category === p.category) - Number(a.category === p.category) || Number(b.brand === p.brand) - Number(a.brand === p.brand))
     .slice(0, 4);
   const relatedRoot = qs('[data-related]');
-  if (relatedRoot) relatedRoot.innerHTML = related.map((x) => productCard(x)).join('');
+  if (relatedRoot) relatedRoot.innerHTML = related.map((x) => productCard(x, { quickAdd: true })).join('');
 
   // Size guide
   const guide = qs('#size-guide');
@@ -202,8 +226,13 @@ async function init() {
       qs('input[name="size"]:not(:disabled)', form)?.focus();
       return;
     }
-    addToCart(p.slug, size, 1);
-    openBagDrawer(p, size, qs('button[type="submit"]', form));
+    const { added } = addToCart(p, size, 1);
+    if (!added) {
+      error.textContent = 'You already have every unit we hold in this size in your bag.';
+      error.hidden = false;
+      return;
+    }
+    openBagDrawer({ returnFocus: qs('button[type="submit"]', form) });
   });
 
   // Mobile gallery position

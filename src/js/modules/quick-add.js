@@ -5,16 +5,17 @@
  *
  * With a mouse on a wide screen (80rem and up) the size picker opens inside
  * the card; everywhere else it opens in the #quick-add sheet.
- * Sizes and availability always come from the catalogue.
+ * Sizes and availability always come from the catalogue. A successful add
+ * opens the bag drawer.
  */
 
 import { qs, qsa } from '../utils/dom.js';
 import { openDialog, closeDialog, initDialog } from '../utils/dialog.js';
-import { asset, pageUrl, productUrl, escapeHtml } from '../utils/paths.js';
-import { getBySlug, hasSizes, isSoldOut, sizeLabel } from '../data/catalog.js';
+import { asset, productUrl, escapeHtml } from '../utils/paths.js';
+import { getBySlug, hasSizes, isSoldOut } from '../data/catalog.js';
 import { addToCart } from './cart.js';
-import { toast } from './toast.js';
-import { imageAlt, priceHtml, productTitle, smallImage } from './product-card.js';
+import { openBagDrawer } from './bag-drawer.js';
+import { imageAlt, priceHtml, smallImage } from './product-card.js';
 
 // Same condition as the CSS that turns the button into a hover bar: below it
 // a card is too narrow to hold the size picker.
@@ -65,6 +66,8 @@ function closeInCard(toggle, { focus = false } = {}) {
   if (focus) toggle.focus();
 }
 
+let sheetOpener = null; // card button that opened the sheet, to return focus there
+
 const openToggles = () => qsa('[data-quick-add][aria-expanded="true"]');
 
 async function open(toggle, byKeyboard) {
@@ -85,6 +88,7 @@ async function open(toggle, byKeyboard) {
   if (!sheet) return;
   initDialog(sheet);
   qs('[data-quick-add-body]', sheet).innerHTML = sheetHtml(product);
+  sheetOpener = toggle;
   openDialog(sheet, { returnFocus: toggle });
 }
 
@@ -100,14 +104,12 @@ async function submit(form) {
   // Availability is checked against the catalogue, never trusted from the markup.
   if (!product || isSoldOut(product) || !product.availableSizes.includes(size)) return fail('This size is unavailable.');
 
-  addToCart(product.slug, size, 1);
+  const { added } = addToCart(product, size, 1);
+  if (!added) return fail('You already have every unit we hold in this size in your bag.');
   const toggle = form.closest('.product-card')?.querySelector('[data-quick-add]');
   if (toggle) closeInCard(toggle);
-  else closeDialog(qs('[data-quick-add-dialog]'));
-  toast(`Added to bag: ${productTitle(product)}${hasSizes(product) ? `, ${sizeLabel(product, size)}` : ''}`, {
-    href: pageUrl('bag'),
-    linkLabel: 'View bag',
-  });
+  else closeDialog(qs('[data-quick-add-dialog]'), { restoreFocus: false });
+  openBagDrawer({ returnFocus: toggle ?? sheetOpener });
 }
 
 export function initQuickAdd() {

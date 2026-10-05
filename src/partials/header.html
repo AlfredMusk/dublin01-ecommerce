@@ -147,22 +147,23 @@
   </div>
 </dialog>
 
-<!-- ============ BAG DRAWER (after Add to bag) ============ -->
+<!-- ============ BAG DRAWER (after Add to bag, and from the bag icon) ============ -->
 <dialog class="dialog drawer-dialog" id="bag-drawer" aria-labelledby="bag-drawer-title" data-bag-drawer>
   <div class="flex h-full flex-col">
     <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
-      <h2 class="type-label" id="bag-drawer-title">Added to bag</h2>
-      <button class="icon-btn -mr-3" type="button" aria-label="Close" data-dialog-close>
+      <h2 class="type-label" id="bag-drawer-title">Your bag <span class="text-neutral-600" data-bag-drawer-count></span></h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close bag" data-dialog-close>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
       </button>
     </div>
-    <div class="flex-1 overflow-y-auto px-6 py-6" data-bag-drawer-body></div>
-    <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6">
+    <div class="flex-1 overflow-y-auto px-6" data-bag-drawer-body></div>
+    <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6" data-bag-drawer-foot>
       <div class="flex items-baseline justify-between type-body"><span>Subtotal</span><span class="font-medium tabular-nums" data-bag-drawer-subtotal></span></div>
       <p class="type-body-sm text-neutral-600" data-bag-drawer-note></p>
       <a class="btn btn-primary btn-block" href="{{base}}checkout.html">Checkout</a>
       <a class="btn btn-secondary btn-block" href="{{base}}bag.html">View bag</a>
     </div>
+    <p class="sr-only" role="status" aria-live="polite" data-bag-drawer-status></p>
   </div>
 </dialog>
 

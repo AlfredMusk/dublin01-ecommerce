@@ -11,6 +11,8 @@ import { initCart } from './modules/cart.js';
 import { initWishlist } from './modules/wishlist.js';
 import { initNewsletter } from './modules/newsletter.js';
 import { initQuickAdd } from './modules/quick-add.js';
+import { initBagDrawer } from './modules/bag-drawer.js';
+import { initConsent } from './modules/consent.js';
 
 initHeader();
 initMenu();
@@ -19,5 +21,7 @@ initCart();
 initWishlist();
 initNewsletter();
 initQuickAdd();
+initBagDrawer();
+initConsent();
 
 console.info('DUBLIN/01 — environment ready.');

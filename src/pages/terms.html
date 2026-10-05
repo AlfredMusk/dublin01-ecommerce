@@ -1,8 +1,26 @@
 <!--
 title: Terms of sale — DUBLIN/01
-description: Terms of sale for DUBLIN/01 orders.
+description: The terms that apply to orders placed with DUBLIN/01: prices, delivery, cancellation, returns and your rights as a consumer in Ireland.
+breadcrumb: Terms
 -->
 <section class="container-site pb-section pt-6 lg:pt-8">
-  <!-- @include info-head crumb='Terms' eyebrow='Legal' heading='Terms of sale' intro='Last updated October 2026.' -->
-  <div class="prose-d01 mt-12 max-w-3xl"><h2>Preview status</h2><p>DUBLIN/01 is a fictional shop built as a portfolio project. Products, prices and stock are demo data, no contract of sale can be formed and no payments are taken.</p><h2>In the live shop</h2><p>Terms will cover pricing (including VAT), delivery within Ireland, the 30-day returns policy and your statutory rights as a consumer in Ireland.</p></div>
+  <!-- @include info-head crumb='Terms' eyebrow='Legal' heading='Terms of sale' intro='How ordering from DUBLIN/01 works, and what you can expect from us.' -->
+  <div class="prose-d01 mt-12 max-w-3xl">
+    <h2>Who we are</h2>
+    <p>DUBLIN/01 is an online shop based in Dublin, Ireland.{{#if company.legalName}} It is operated by {{company.legalName}}{{#if company.registeredAddress}}, {{company.registeredAddress}}{{/if}}.{{/if}}{{#if company.croNumber}} Company registration number: {{company.croNumber}}.{{/if}}{{#if company.vatNumber}} VAT number: {{company.vatNumber}}.{{/if}}</p>
+    <p>{{#if company.email}}Email: <a href="mailto:{{company.email}}">{{company.email}}</a>. {{/if}}{{#if company.phone}}Phone: {{company.phone}}. {{/if}}You can also reach us through the <a href="{{base}}contact.html">contact page</a>.</p>
+    <h2>Ordering</h2>
+    <p>Online ordering is not open yet. When it opens, a contract of sale is formed when we confirm your order by email, not when you place it. We will send that confirmation, with a copy of these terms, to the email address you give at checkout.</p>
+    <h2>Prices</h2>
+    <p>Prices are in euro and include VAT. The delivery charge is shown before you pay and is included in the order total. When a product is shown with a reduced price, the earlier price shown is the lowest price we charged for it in the 30 days before the reduction.</p>
+    <h2>Delivery</h2>
+    <p>We deliver within Ireland. Options and charges are on the <a href="{{base}}delivery.html">delivery page</a>. If we cannot deliver within 30 days of your order, or by the date we agreed with you, you may cancel and be refunded.</p>
+    <h2>Your right to cancel</h2>
+    <p>You can cancel an online order, without giving a reason, within 14 days of the day you receive the goods. This legal right is separate from, and in addition to, our own 30-day returns policy. Both are explained on the <a href="{{base}}consumer-rights.html">consumer rights page</a> and the <a href="{{base}}returns.html">returns page</a>.</p>
+    <h2>Faulty goods</h2>
+    <p>Goods must match their description, be fit for purpose and be of the quality you are entitled to expect. If they are not, you have legal remedies against us as the seller, set out on the <a href="{{base}}consumer-rights.html">consumer rights page</a>. Nothing in these terms limits those rights.</p>
+    <h2>Governing law</h2>
+    <p>These terms are governed by Irish law. If you live in another EU country, you also keep the protection of the mandatory consumer law of that country.</p>
+    <p class="text-neutral-600">Last updated October 2026.</p>
+  </div>
 </section>

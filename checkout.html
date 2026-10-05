@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Checkout — DUBLIN/01</title>
-    <meta name="description" content="Secure checkout for DUBLIN/01 orders delivered in Ireland." />
+    <meta name="description" content="Checkout for DUBLIN/01 orders delivered in Ireland." />
     <meta name="robots" content="noindex" />
     <link rel="canonical" href="checkout.html" aria-current="page" />
     <meta property="og:site_name" content="DUBLIN/01" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Checkout — DUBLIN/01" />
-    <meta property="og:description" content="Secure checkout for DUBLIN/01 orders delivered in Ireland." />
+    <meta property="og:description" content="Checkout for DUBLIN/01 orders delivered in Ireland." />
     <meta property="og:url" content="checkout.html" />
     <meta property="og:image" content="public/images/editorial/hero-wide.webp" />
     <meta property="og:locale" content="en_IE" />
@@ -337,22 +337,23 @@
   </div>
 </dialog>
 
-<!-- ============ BAG DRAWER (after Add to bag) ============ -->
+<!-- ============ BAG DRAWER (after Add to bag, and from the bag icon) ============ -->
 <dialog class="dialog drawer-dialog" id="bag-drawer" aria-labelledby="bag-drawer-title" data-bag-drawer>
   <div class="flex h-full flex-col">
     <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
-      <h2 class="type-label" id="bag-drawer-title">Added to bag</h2>
-      <button class="icon-btn -mr-3" type="button" aria-label="Close" data-dialog-close>
+      <h2 class="type-label" id="bag-drawer-title">Your bag <span class="text-neutral-600" data-bag-drawer-count></span></h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close bag" data-dialog-close>
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
       </button>
     </div>
-    <div class="flex-1 overflow-y-auto px-6 py-6" data-bag-drawer-body></div>
-    <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6">
+    <div class="flex-1 overflow-y-auto px-6" data-bag-drawer-body></div>
+    <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6" data-bag-drawer-foot>
       <div class="flex items-baseline justify-between type-body"><span>Subtotal</span><span class="font-medium tabular-nums" data-bag-drawer-subtotal></span></div>
       <p class="type-body-sm text-neutral-600" data-bag-drawer-note></p>
       <a class="btn btn-primary btn-block" href="checkout.html" aria-current="page">Checkout</a>
       <a class="btn btn-secondary btn-block" href="bag.html">View bag</a>
     </div>
+    <p class="sr-only" role="status" aria-live="polite" data-bag-drawer-status></p>
   </div>
 </dialog>
 
@@ -378,31 +379,61 @@
   <h1 class="type-h1 mt-6">Checkout</h1>
   <div class="mt-10 grid-site gap-y-12" data-checkout-layout>
     <form class="col-span-full lg:col-span-7" novalidate data-checkout>
-      <fieldset class="checkout-step" data-step>
-        <legend class="checkout-step-title"><span>1</span> Contact</legend>
-        <div class="form-grid">
-          <div class="field col-span-full"><label class="field-label" for="email">Email</label>
-            <input class="input" id="email" name="email" type="email" autocomplete="email" required data-error="Enter your email so we can send your order updates." /></div>
-          <div class="field col-span-full"><label class="field-label" for="phone">Phone <span class="field-hint">for the courier</span></label>
-            <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required data-error="Enter a phone number for the courier." /></div>
-        </div>
-      </fieldset>
+      <p class="sr-only" role="status" aria-live="polite" data-step-status></p>
 
-      <fieldset class="checkout-step" data-step>
-        <legend class="checkout-step-title"><span>2</span> Delivery address</legend>
-        <div class="form-grid">
-          <div class="field"><label class="field-label" for="first-name">First name</label>
-            <input class="input" id="first-name" name="firstName" autocomplete="given-name" required data-error="Enter your first name." /></div>
-          <div class="field"><label class="field-label" for="last-name">Last name</label>
-            <input class="input" id="last-name" name="lastName" autocomplete="family-name" required data-error="Enter your last name." /></div>
-          <div class="field col-span-full"><label class="field-label" for="address1">Address</label>
-            <input class="input" id="address1" name="address1" autocomplete="address-line1" required data-error="Enter your street address." /></div>
-          <div class="field col-span-full"><label class="field-label" for="address2">Apartment, unit or building <span class="field-hint">optional</span></label>
-            <input class="input" id="address2" name="address2" autocomplete="address-line2" /></div>
-          <div class="field"><label class="field-label" for="city">Town or city</label>
-            <input class="input" id="city" name="city" autocomplete="address-level2" required data-error="Enter your town or city." /></div>
-          <div class="field"><label class="field-label" for="county">County</label>
-            <select class="select select-block" id="county" name="county" autocomplete="address-level1" required data-error="Choose your county.">
+      <section class="checkout-step" data-step="contact" aria-labelledby="step-contact">
+        <div class="checkout-step-head"><h2 class="checkout-step-title" id="step-contact"><span>1</span> Contact</h2>
+          <button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-step-edit hidden>Edit<span class="sr-only"> contact</span></button></div>
+        <p class="checkout-step-summary" data-step-summary hidden></p>
+        <div class="checkout-step-body" data-step-body>
+          <div class="form-grid">
+            <div class="field col-span-full"><label class="field-label" for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" required data-error="Enter your email so we can send your order confirmation." /></div>
+            <div class="field col-span-full"><label class="field-label" for="phone">Phone <span class="field-hint">for the courier</span></label>
+              <input class="input" id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required data-error="Enter a phone number for the courier." /></div>
+          </div>
+          <button class="btn btn-primary mt-6" type="button" data-step-next>Continue to delivery</button>
+        </div>
+      </section>
+
+      <section class="checkout-step" data-step="delivery" aria-labelledby="step-delivery">
+        <div class="checkout-step-head"><h2 class="checkout-step-title" id="step-delivery"><span>2</span> Delivery</h2>
+          <button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-step-edit hidden>Edit<span class="sr-only"> delivery</span></button></div>
+        <p class="checkout-step-summary" data-step-summary hidden></p>
+        <div class="checkout-step-body" data-step-body hidden>
+          <fieldset>
+            <legend class="sr-only">Delivery method</legend>
+            <div class="space-y-3">
+              <label class="radio-card" for="ship-standard"><input type="radio" id="ship-standard" name="shipping" value="standard" checked />
+                <span class="flex-1"><span class="block font-medium">Standard</span><span class="type-body-sm block text-neutral-600">Tracked delivery to any address in Ireland</span></span>
+                <span class="tabular-nums" data-standard-price></span></label>
+              <label class="radio-card" for="ship-express"><input type="radio" id="ship-express" name="shipping" value="express" />
+                <span class="flex-1"><span class="block font-medium">Express</span><span class="type-body-sm block text-neutral-600">Priority tracked delivery</span></span>
+                <span class="tabular-nums" data-express-price></span></label>
+            </div>
+          </fieldset>
+          <button class="btn btn-primary mt-6" type="button" data-step-next>Continue to address</button>
+        </div>
+      </section>
+
+      <section class="checkout-step" data-step="address" aria-labelledby="step-address">
+        <div class="checkout-step-head"><h2 class="checkout-step-title" id="step-address"><span>3</span> Address</h2>
+          <button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-step-edit hidden>Edit<span class="sr-only"> address</span></button></div>
+        <p class="checkout-step-summary" data-step-summary hidden></p>
+        <div class="checkout-step-body" data-step-body hidden>
+          <div class="form-grid">
+            <div class="field"><label class="field-label" for="first-name">First name</label>
+              <input class="input" id="first-name" name="firstName" autocomplete="given-name" required data-error="Enter your first name." /></div>
+            <div class="field"><label class="field-label" for="last-name">Last name</label>
+              <input class="input" id="last-name" name="lastName" autocomplete="family-name" required data-error="Enter your last name." /></div>
+            <div class="field col-span-full"><label class="field-label" for="address1">Address</label>
+              <input class="input" id="address1" name="address1" autocomplete="address-line1" required data-error="Enter your street address." /></div>
+            <div class="field col-span-full"><label class="field-label" for="address2">Apartment, unit or building <span class="field-hint">optional</span></label>
+              <input class="input" id="address2" name="address2" autocomplete="address-line2" /></div>
+            <div class="field"><label class="field-label" for="city">Town or city</label>
+              <input class="input" id="city" name="city" autocomplete="address-level2" required data-error="Enter your town or city." /></div>
+            <div class="field"><label class="field-label" for="county">County</label>
+              <select class="select select-block" id="county" name="county" autocomplete="address-level1" required data-error="Choose your county.">
               <option value="">Choose a county</option>
               <option>Carlow</option>
               <option>Cavan</option>
@@ -431,42 +462,40 @@
               <option>Wexford</option>
               <option>Wicklow</option>
             </select></div>
-          <div class="field"><label class="field-label" for="eircode">Eircode</label>
-            <input class="input uppercase" id="eircode" name="eircode" autocomplete="postal-code" required maxlength="8" data-error="Enter your Eircode, like D02 X285." /></div>
-          <div class="field"><label class="field-label" for="country">Country</label>
-            <input class="input bg-paper" id="country" name="country" value="Ireland" readonly aria-describedby="country-note" />
-            <p class="field-hint mt-2" id="country-note">We currently deliver within Ireland only.</p></div>
+            <div class="field"><label class="field-label" for="eircode">Eircode</label>
+              <input class="input uppercase" id="eircode" name="eircode" autocomplete="postal-code" required maxlength="8" data-error="Enter your Eircode, like D02 X285." /></div>
+            <div class="field"><label class="field-label" for="country">Country</label>
+              <select class="select select-block" id="country" name="country" autocomplete="country" aria-describedby="country-note"><option value="IE" selected>Ireland</option></select>
+              <p class="field-hint mt-2" id="country-note">We currently deliver within Ireland only.</p></div>
+          </div>
+          <button class="btn btn-primary mt-6" type="button" data-step-next>Continue to payment</button>
         </div>
-      </fieldset>
+      </section>
 
-      <fieldset class="checkout-step" data-step>
-        <legend class="checkout-step-title"><span>3</span> Shipping</legend>
-        <div class="space-y-3">
-          <label class="radio-card" for="ship-standard"><input type="radio" id="ship-standard" name="shipping" value="standard" checked />
-            <span class="flex-1"><span class="block font-medium">Standard</span><span class="type-body-sm block text-neutral-600">2–4 working days, tracked</span></span>
-            <span class="tabular-nums" data-standard-price>€4.95</span></label>
-          <label class="radio-card" for="ship-express"><input type="radio" id="ship-express" name="shipping" value="express" />
-            <span class="flex-1"><span class="block font-medium">Express</span><span class="type-body-sm block text-neutral-600">Next working day when ordered before 2pm</span></span>
-            <span class="tabular-nums">€9.95</span></label>
+      <section class="checkout-step" data-step="payment" aria-labelledby="step-payment">
+        <div class="checkout-step-head"><h2 class="checkout-step-title" id="step-payment"><span>4</span> Payment</h2>
+          <button class="link-subtle type-body-sm underline underline-offset-4" type="button" data-step-edit hidden>Edit<span class="sr-only"> payment</span></button></div>
+        <p class="checkout-step-summary" data-step-summary hidden></p>
+        <div class="checkout-step-body" data-step-body hidden>
+          <!-- Payment boundary: the provider's hosted card fields mount here. This page never handles card data. -->
+          <div class="border border-neutral-200 bg-paper p-6" data-payment-mount>
+            <p class="type-body font-medium">Card payment is not available yet.</p>
+            <p class="type-body-sm mt-2 text-neutral-600">Card details will be entered here, in fields provided by our payment provider. We never see or store them. Nothing on this page is charged.</p>
+          </div>
+          <button class="btn btn-primary mt-6" type="button" data-step-next>Review order</button>
         </div>
-      </fieldset>
+      </section>
 
-      <fieldset class="checkout-step" data-step>
-        <legend class="checkout-step-title"><span>4</span> Payment</legend>
-        <div class="border border-neutral-200 bg-paper p-6" data-payment-mount>
-          <p class="type-body font-medium">Card payment isn’t connected in this preview.</p>
-          <p class="type-body-sm mt-2 text-neutral-600">In the live shop, a certified payment provider will collect card details here. Nothing you enter on this page is sent anywhere or charged.</p>
+      <section class="checkout-step" data-step="review" aria-labelledby="step-review">
+        <div class="checkout-step-head"><h2 class="checkout-step-title" id="step-review"><span>5</span> Review</h2></div>
+        <div class="checkout-step-body" data-step-body hidden>
+          <dl class="review-list" data-review></dl>
+          <div class="field mt-6"><label class="check" for="terms"><input type="checkbox" id="terms" name="terms" required data-error="Accept the terms to continue." />
+            <span>I accept the <a class="link-editorial" href="terms.html">terms of sale</a> and have read the <a class="link-editorial" href="returns.html">returns policy</a> and my <a class="link-editorial" href="consumer-rights.html">right to cancel</a>.</span></label></div>
+          <button class="btn btn-primary btn-block mt-6" type="submit" aria-disabled="true" aria-describedby="order-note" data-place-order>Place order and pay</button>
+          <p class="type-body-sm mt-3 text-neutral-600" id="order-note">Online ordering is not open yet: no order can be placed and nothing will be charged. Your bag stays saved in this browser.</p>
         </div>
-        <div class="field mt-6"><label class="check" for="terms"><input type="checkbox" id="terms" name="terms" required data-error="Accept the terms to continue." />
-          <span>I accept the <a class="link-editorial" href="terms.html">terms of sale</a> and the <a class="link-editorial" href="returns.html">returns policy</a>.</span></label></div>
-      </fieldset>
-
-      <button class="btn btn-primary btn-block mt-8" type="submit">Review and continue to payment</button>
-      <div class="notice mt-6" tabindex="-1" role="status" data-payment-status hidden>
-        <p class="type-body font-medium">Your details are complete.</p>
-        <p class="type-body-sm mt-2">This V1 stops before payment: no order has been placed and nothing has been charged. Your bag is still saved.</p>
-        <a class="link-action mt-4" href="bag.html">Back to bag <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
-      </div>
+      </section>
     </form>
 
     <aside class="order-first col-span-full lg:order-none lg:col-span-4 lg:col-start-9" aria-label="Order summary">
@@ -484,7 +513,7 @@
     <div class="grid-site gap-y-12 pb-16 pt-20 lg:pb-24 lg:pt-28">
       <div class="col-span-full lg:col-span-6">
         <p class="footer-mark" aria-hidden="true">DUBLIN<span class="wordmark-edition">/01</span></p>
-        <p class="type-body-lg mt-6 max-w-[34ch] text-neutral-200">Sneakers and contemporary streetwear, picked in Dublin and shipped across Ireland.</p>
+        <p class="type-body-lg mt-6 max-w-[34ch] text-neutral-200">Sneakers and contemporary streetwear, picked in Dublin and delivered across Ireland.</p>
       </div>
       <div class="col-span-full md:col-span-6 lg:col-span-5 lg:col-start-8">
         <h2 class="type-label text-neutral-400">Newsletter</h2>
@@ -492,10 +521,10 @@
         <form class="mt-6" novalidate data-newsletter>
           <label class="sr-only" for="newsletter-email">Email address</label>
           <div class="flex gap-2">
-            <input class="input input-inverse min-w-0 flex-1" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Email address" required />
+            <input class="input input-inverse min-w-0 flex-1" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="Email address" required aria-describedby="newsletter-status" />
             <button class="btn btn-inverse shrink-0" type="submit">Sign up</button>
           </div>
-          <p class="type-body-sm mt-3 min-h-[1.5em] text-neutral-200" role="status" data-newsletter-status></p>
+          <p class="type-body-sm mt-3 min-h-[1.5em] text-neutral-200" id="newsletter-status" role="status" data-newsletter-status></p>
         </form>
       </div>
     </div>
@@ -509,6 +538,7 @@
           <li><a class="footer-link" href="clothing.html">Clothing</a></li>
           <li><a class="footer-link" href="accessories.html">Accessories</a></li>
           <li><a class="footer-link" href="brands.html">Brands</a></li>
+          <li><a class="footer-link" href="sale.html">Sale</a></li>
         </ul>
       </div>
       <div>
@@ -518,12 +548,14 @@
           <li><a class="footer-link" href="returns.html">Returns</a></li>
           <li><a class="footer-link" href="faq.html">FAQ</a></li>
           <li><a class="footer-link" href="contact.html">Contact</a></li>
+          <li><a class="footer-link" href="size-guide.html">Size guide</a></li>
         </ul>
       </div>
       <div>
         <h2 class="type-label text-neutral-400">About</h2>
         <ul class="mt-4 space-y-1" role="list">
           <li><a class="footer-link" href="about.html">Our story</a></li>
+          <li><a class="footer-link" href="brands/dublin-01.html">DUBLIN/01 label</a></li>
           <li><a class="footer-link" href="account.html">Account</a></li>
           <li><a class="footer-link" href="wishlist.html">Wishlist</a></li>
         </ul>
@@ -534,17 +566,66 @@
           <li><a class="footer-link" href="privacy.html">Privacy</a></li>
           <li><a class="footer-link" href="terms.html">Terms</a></li>
           <li><a class="footer-link" href="cookies.html">Cookies</a></li>
+          <li><a class="footer-link" href="accessibility.html">Accessibility</a></li>
+          <li><a class="footer-link" href="consumer-rights.html">Consumer rights</a></li>
+          <li><button class="footer-link" type="button" data-consent-open>Cookie settings</button></li>
         </ul>
       </div>
     </nav>
 
     <div class="flex flex-col gap-3 border-t border-neutral-800 py-8 type-micro text-neutral-400 md:flex-row md:items-center md:justify-between">
       <p><span class="text-white">Ireland · EUR €</span> &nbsp;·&nbsp; English</p>
-      <p>Portfolio project — products, prices and orders are fictional.</p>
-      <p>© 2026 DUBLIN/01</p>
+      <p>© 2026 DUBLIN/01 · Prices include VAT</p>
     </div>
   </div>
 </footer>
+
+<!-- ============ COOKIE CONSENT ============ -->
+<section class="consent-banner" aria-labelledby="consent-title" data-consent-banner hidden>
+  <div class="container-site consent-banner-inner">
+    <div>
+      <h2 class="type-label" id="consent-title">Cookies</h2>
+      <p class="type-body-sm mt-2 max-w-[70ch]">We keep what the shop needs to work, like your bag. With your permission we would also use analytics and marketing cookies. They stay off unless you accept. <a class="link-editorial" href="cookies.html">Cookie policy</a></p>
+    </div>
+    <div class="consent-actions">
+      <button class="btn btn-primary" type="button" data-consent-accept>Accept all</button>
+      <button class="btn btn-secondary" type="button" data-consent-reject>Reject non-essential</button>
+      <button class="link-action" type="button" data-consent-open>Manage preferences</button>
+    </div>
+  </div>
+</section>
+
+<dialog class="dialog drawer-dialog sheet-dialog" id="consent-dialog" aria-labelledby="consent-dialog-title" data-consent-dialog>
+  <form class="flex h-full flex-col" method="dialog" data-consent-form>
+    <div class="flex h-(--nav-h) shrink-0 items-center justify-between border-b border-neutral-200 px-6">
+      <h2 class="type-label" id="consent-dialog-title">Cookie settings</h2>
+      <button class="icon-btn -mr-3" type="button" aria-label="Close cookie settings" data-dialog-close>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg>
+      </button>
+    </div>
+    <div class="flex-1 space-y-6 overflow-y-auto px-6 py-6">
+      <div class="consent-option">
+        <label class="check" for="consent-necessary"><input type="checkbox" id="consent-necessary" checked disabled aria-describedby="consent-necessary-note" /><span class="font-medium">Necessary</span></label>
+        <p class="type-body-sm mt-2 text-neutral-600" id="consent-necessary-note">Your bag, wishlist and this choice. Always on: the shop cannot work without them.</p>
+      </div>
+      <div class="consent-option">
+        <label class="check" for="consent-analytics"><input type="checkbox" id="consent-analytics" name="analytics" aria-describedby="consent-analytics-note" /><span class="font-medium">Analytics</span></label>
+        <p class="type-body-sm mt-2 text-neutral-600" id="consent-analytics-note">Helps us understand how the shop is used. Off unless you switch it on.</p>
+      </div>
+      <div class="consent-option">
+        <label class="check" for="consent-marketing"><input type="checkbox" id="consent-marketing" name="marketing" aria-describedby="consent-marketing-note" /><span class="font-medium">Marketing</span></label>
+        <p class="type-body-sm mt-2 text-neutral-600" id="consent-marketing-note">Lets us measure and personalise advertising. Off unless you switch it on.</p>
+      </div>
+    </div>
+    <div class="shrink-0 space-y-3 border-t border-neutral-200 px-6 py-6">
+      <button class="btn btn-primary btn-block" type="submit" data-consent-save>Save preferences</button>
+      <div class="flex gap-3">
+        <button class="btn btn-secondary flex-1" type="button" data-consent-accept>Accept all</button>
+        <button class="btn btn-secondary flex-1" type="button" data-consent-reject>Reject non-essential</button>
+      </div>
+    </div>
+  </form>
+</dialog>
 
   </body>
 </html>

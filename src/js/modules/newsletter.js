@@ -1,6 +1,7 @@
 /**
- * Newsletter forms ([data-newsletter]). V1 has no mailing backend, so a valid
- * address gets an honest confirmation that nothing was stored.
+ * Newsletter forms ([data-newsletter]). No mailing provider is connected
+ * yet (features.newsletterSignup), so a valid address gets a clear message
+ * that it was not saved. Never confirm a subscription that did not happen.
  */
 
 import { qsa, qs } from '../utils/dom.js';
@@ -20,7 +21,7 @@ export function initNewsletter() {
         return;
       }
       input.removeAttribute('aria-invalid');
-      status.textContent = 'Thanks. Sign-ups open with the full launch; this preview did not store your address.';
+      status.textContent = 'The newsletter is not open yet, so your address was not saved. Please try again soon.';
       form.reset();
     });
     input.addEventListener('input', () => input.removeAttribute('aria-invalid'));

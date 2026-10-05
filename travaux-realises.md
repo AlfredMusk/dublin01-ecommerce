@@ -575,3 +575,22 @@ Démarré le 4 octobre 2026. Avancement par jalons, un commit local par jalon.
 - **Pages catalogue** : chaque page fixe son périmètre par un preset (catégorie, genre, style, marque, collection) ; Men et Women sont de vraies pages, plus des filtres sur une page générique.
 - **Comptes** : connexion, inscription et mot de passe oublié séparés en trois pages, validation locale, message clair « comptes pas encore ouverts » ; page compte avec écrans commandes, adresses, profil et favoris en état vide.
 - **Vérifié** : crawl automatique des 57 pages à 1440 et 390 px — aucun lien mort, aucune erreur console, aucune image cassée, un seul `h1` par page, aucun débordement ; 9 redirections testées.
+
+### Jalons 3 à 5 — Recherche, panier, checkout, comptes, cookies, pages légales (5 octobre 2026)
+
+- **Catalogue** : filtres marque, catégorie, type, style, genre, taille, couleur, prix, collection et disponibilité ; tri ; chips actives ; tout effacer ; tiroir mobile. Quick add activé sur toutes les grilles.
+- **Recherche** : suggestions de marques et de catégories en plus des produits, recherche étendue (sous-catégorie, couleur, collection, matière), flèches haut et bas dans les suggestions, Échap.
+- **Panier** : tiroir « Your bag » (lignes, quantité, retrait, sous-total, View bag, Checkout) ouvert après chaque ajout et depuis l'icône du sac ; page panier conservée. Quantité plafonnée par le stock de la taille ; lignes partagées entre tiroir et page (`bag-lines.js`).
+- **Fiche produit** : matières et entretien, autres coloris du même modèle, livraison et retours tirés de la configuration.
+- **Checkout** : cinq étapes (contact, livraison, adresse, paiement, revue), une seule ouverte à la fois, résumé et bouton Edit par étape. Aucun champ de carte. Bouton « Place order and pay » désactivé avec la raison affichée ; rien n'est stocké.
+- **Cookies** : bandeau (tout accepter, refuser le non essentiel, gérer), dialogue de préférences réouvrable depuis le footer, choix en localStorage, événement `consent:change`, aucun script de suivi.
+- **Pages** : Terms, Privacy, Cookies, Returns, Delivery réécrites ; Consumer rights, Accessibility et Size guide créées. Le retour sous 30 jours est présenté comme une politique commerciale, distincte du droit légal de rétractation de 14 jours. Les coordonnées de l'entreprise ne s'affichent que si elles sont renseignées dans la configuration.
+- **Footer** : groupes Shop, Help, About, Legal complets, réglages cookies, mention « Portfolio project » supprimée. Mentions « preview » et « fictional » retirées de l'interface.
+- **Testé** : crawl de 60 pages à 1440 et 390 (0 lien mort, 0 erreur console) ; tiroir panier, plafond de stock, persistance ; checkout pas à pas ; formulaires de compte ; consentement cookies ; newsletter.
+
+### Reste à faire (interrompu par la limite d'usage)
+
+- Passer le catalogue à environ 32 produits avec prix vérifiés et photos exactes ; corriger les photos de la Nike Pegasus 41.
+- Jalon 6 : polissage de l'accueil, navigation mobile, normalisation des tokens.
+- Jalon 7 : QA aux largeurs du brief, 5 scénarios client, tests `node:test`, rapport en 17 points.
+- Intégrer les prix et la note juridique attendus du coordinateur ; republier l'aperçu (encore à la version des jalons 1-2).
