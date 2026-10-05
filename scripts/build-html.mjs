@@ -297,8 +297,9 @@ function legacyStub(name) {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Moved — DUBLIN/01</title>
+    <title>Redirecting — DUBLIN/01</title>
     <meta name="robots" content="noindex" />
+    <link rel="canonical" href="${siteUrl ? `${siteUrl}/${fallback === 'index' ? '' : fallback}` : `../${fallback}.html`}" />
     <script>
       (function () {
         var q = new URLSearchParams(location.search), name = ${JSON.stringify(name)}, renamed = ${JSON.stringify(LEGACY_SLUGS)}, target;
