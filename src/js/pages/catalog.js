@@ -13,7 +13,7 @@
 
 import { qs, qsa } from '../utils/dom.js';
 import { initDialog, openDialog, closeDialog } from '../utils/dialog.js';
-import { escapeHtml } from '../utils/paths.js';
+import { escapeHtml, pageUrl } from '../utils/paths.js';
 import { pluralize } from '../utils/format.js';
 import { loadProducts, isOnSale, isSoldOut, brandSlug, BRAND_ORDER } from '../data/catalog.js';
 import { productCard, skeletonCards } from '../modules/product-card.js';
@@ -175,7 +175,13 @@ async function init() {
     results.removeAttribute('aria-busy');
     results.innerHTML = list.length
       ? list.map((p, i) => productCard(p, { eager: i < 4, quickAdd: true })).join('')
-      : `<div class="col-span-full border border-neutral-200 px-6 py-16 text-center">
+      : !products.length
+        ? `<div class="col-span-full border border-neutral-200 px-6 py-16 text-center">
+          <p class="type-h3">Nothing here right now.</p>
+          <p class="type-body mt-3 text-neutral-600">${preset.collection === 'sale' ? 'There are no reductions at the moment.' : 'This section is empty for now.'}</p>
+          <a class="btn btn-primary mt-8" href="${pageUrl('new-arrivals')}">Shop new arrivals</a>
+        </div>`
+        : `<div class="col-span-full border border-neutral-200 px-6 py-16 text-center">
           <p class="type-h3">Nothing matches these filters.</p>
           <p class="type-body mt-3 text-neutral-600">Try removing a filter, or clear them all.</p>
           <button class="btn btn-secondary mt-8" type="button" data-clear-filters>Clear filters</button>

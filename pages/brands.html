@@ -7,7 +7,7 @@
     <meta name="robots" content="noindex" />
     <script>
       (function () {
-        var q = new URLSearchParams(location.search), name = "brands", renamed = {"new-balance-2002r-rain-cloud":"new-balance-997h-grey","asics-gel-kayano-14-white-blue":"asics-gel-kayano-14-pure-silver"}, target;
+        var q = new URLSearchParams(location.search), name = "brands", renamed = {"new-balance-2002r-rain-cloud":"new-balance-997h-grey","asics-gel-kayano-14-white-blue":"asics-gel-kayano-14-pure-silver","salomon-xt-6-black":"salomon-xa-pro-3d-gtx-black"}, target;
         var has = function (key, value) { return (q.get(key) || '').split(',').indexOf(value) > -1; };
         if (name === 'product' && q.get('slug')) target = 'products/' + encodeURIComponent(renamed[q.get('slug')] || q.get('slug')) + '.html';
         else if (name === 'shop' && has('gender', 'men')) target = 'men.html';

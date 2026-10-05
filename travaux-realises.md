@@ -594,3 +594,14 @@ Démarré le 4 octobre 2026. Avancement par jalons, un commit local par jalon.
 - Jalon 6 : polissage de l'accueil, navigation mobile, normalisation des tokens.
 - Jalon 7 : QA aux largeurs du brief, 5 scénarios client, tests `node:test`, rapport en 17 points.
 - Intégrer les prix et la note juridique attendus du coordinateur ; republier l'aperçu (encore à la version des jalons 1-2).
+
+### Catalogue — 33 produits, prix sourcés, photos exactes (5 octobre 2026)
+
+- **Règle appliquée** : une photo doit montrer exactement le modèle vendu. Chaque photo de marque a été recoupée avec la description de son auteur ou un marquage lisible sur le produit.
+- **Retirés** (aucune photo libre du bon modèle) : Nike Air Max 1, Nike Pegasus 41, adidas Ultraboost 1.0, ASICS GEL-1130 (ses deux photos montraient une Kayano 14).
+- **Corrigé** : la « Salomon XT-6 » était en réalité une XA PRO 3D GORE-TEX (marquage « 3D Chassis » lisible) : produit renommé. Dunk Low : photo douteuse retirée, coloris nommé « White / Black ».
+- **Ajoutés** : ASICS GEL-Kayano 14 White / Midnight (second coloris, relié au premier sur la fiche produit), Nike Cortez Leather, Nike Air Max 90 Iron Grey, Nike Pegasus Trail 5 GORE-TEX, adidas Samba OG Clay Strata, adidas Handball Spezial, New Balance 327, Fresh Foam X More v4 et Fresh Foam Garoé Midcut ; label DUBLIN/01 : Canvas Tote, Six-Panel Cap, Overshirt, Running Tee, Running Short.
+- **Répartition** : 17 sneakers, 11 vêtements, 5 accessoires ; 7 produits Running & trail ; hommes, femmes et unisexe.
+- **Prix** : corrigés d'après les boutiques officielles irlandaises (990v6 à 250 €, Kayano 14 à 170 €), source et date conservées dans `priceSource` (jamais affiché) et dans `docs/pricing-sources.md`. Quatre modèles sans source vérifiée sont marqués « valeur de développement ».
+- **Remises** : plus aucun `compareAtPrice`. Aucune réduction n'est affichée sans historique de prix réel ; la page Sale montre un état vide soigné.
+- **Limites** : les photos de la 990v6 ne portent pas de description nommant le modèle ; le pantalon de la photo Overshirt montre un petit logo tiers.

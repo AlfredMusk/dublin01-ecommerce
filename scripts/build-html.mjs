@@ -256,10 +256,10 @@ function productLd(p, out) {
 }
 
 const BRAND_BLURBS = {
-  Nike: 'Air Max, Air Force 1, Dunk and running shoes.',
-  adidas: 'Samba, Gazelle and Ultraboost.',
-  'New Balance': 'The 990 and 997H, in grey as they should be.',
-  ASICS: 'GEL-Kayano 14 and GEL-1130.',
+  Nike: 'Air Force 1, Dunk, Cortez, Air Max 90 and trail running.',
+  adidas: 'Samba, Gazelle and Handball Spezial.',
+  'New Balance': 'The 990v6 and 997H in grey, the 327, and Fresh Foam for the road and the trail.',
+  ASICS: 'The GEL-Kayano 14, in two colourways.',
   Salomon: 'Trail shoes that work as well in the city.',
   'DUBLIN/01': 'Our own label: hoodies, tees, outerwear and accessories designed in Dublin.',
 };
@@ -288,7 +288,7 @@ function fillConfig(html) {
 
 /** Old addresses (pages/*.html, with ?slug= or filter queries) forward to the new ones. */
 const LEGACY_PAGES = ['about', 'account', 'bag', 'brands', 'checkout', 'clothing', 'contact', 'cookies', 'delivery', 'faq', 'new', 'privacy', 'product', 'returns', 'search', 'shop', 'sneakers', 'terms', 'wishlist'];
-const LEGACY_SLUGS = { 'new-balance-2002r-rain-cloud': 'new-balance-997h-grey', 'asics-gel-kayano-14-white-blue': 'asics-gel-kayano-14-pure-silver' };
+const LEGACY_SLUGS = { 'new-balance-2002r-rain-cloud': 'new-balance-997h-grey', 'asics-gel-kayano-14-white-blue': 'asics-gel-kayano-14-pure-silver', 'salomon-xt-6-black': 'salomon-xa-pro-3d-gtx-black' };
 
 function legacyStub(name) {
   const fallback = { new: 'new-arrivals', product: 'new-arrivals', account: 'login' }[name] ?? name;
