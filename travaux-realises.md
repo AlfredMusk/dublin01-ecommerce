@@ -622,3 +622,13 @@ Fonctionne aujourd'hui dans le navigateur : catalogue, filtres, tri, recherche, 
 ### Informations à fournir par l'entreprise
 
 Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de TVA, e-mail et téléphone du service client, horaires, nom de domaine. À confirmer : frais et seuil de livraison, durée et frais des retours, prix du label, prix des quatre modèles marqués « valeur de développement ». Les pages légales sont un résumé prudent à faire relire par un juriste avant ouverture.
+
+### Mise en conformité Irlande / UE du frontend (5 octobre 2026)
+
+- **« Cancel contract here »** : lien dans le footer, sur Returns et Consumer rights, vers un formulaire de rétractation (validation locale, aucun envoi tant qu'il n'y a pas de backend).
+- **Garantie légale de conformité** affichée sur Returns et Consumer rights, avec le délai irlandais de six ans.
+- **Cookies** : « Accept all » et « Reject all » de même importance, tout désactivé par défaut, choix daté et redemandé après six mois, réouvrable depuis le footer.
+- **Fiche produit** : composition des fibres en pourcentage pour les vêtements et accessoires ; tige, doublure et semelle pour les chaussures.
+- **Allégations environnementales** : aucune mention générique ; la mention « recycled » a été retirée faute de justificatif.
+- **Pas de lien ODR** (plateforme européenne supprimée).
+- `docs/legal-readiness.md` : tableau exigence / emplacement / état, liste des informations à fournir et des textes à faire relire par un solicitor. Les textes du site sont un résumé prudent, pas un avis juridique.

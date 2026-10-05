@@ -1,0 +1,32 @@
+<!--
+title: Cancel contract — DUBLIN/01
+description: Cancel an online order placed with DUBLIN/01 within 14 days of receiving it.
+breadcrumb: Cancel contract
+script: contact
+-->
+<section class="container-site pb-section pt-6 lg:pt-8">
+  <!-- @include info-head crumb='Cancel contract' eyebrow='Legal' heading='Cancel contract here' intro='You can cancel an online order within 14 days of the day you receive it, without giving a reason. Use this form to tell us.' -->
+  <div class="mt-12 grid-site gap-y-12">
+    <form class="col-span-full space-y-6 lg:col-span-6" novalidate data-contact>
+      <div class="field"><label class="field-label" for="cancel-name">Name</label>
+        <input class="input" id="cancel-name" name="name" autocomplete="name" required data-error="Enter your name." /></div>
+      <div class="field"><label class="field-label" for="cancel-email">Email <span class="field-hint">where we confirm receipt</span></label>
+        <input class="input" id="cancel-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+      <div class="field"><label class="field-label" for="cancel-order">Order number</label>
+        <input class="input" id="cancel-order" name="order" required data-error="Enter the order number from your confirmation email." /></div>
+      <div class="field"><label class="field-label" for="cancel-items">What you are cancelling <span class="field-hint">optional: leave empty to cancel the whole order</span></label>
+        <textarea class="input min-h-28 py-3" id="cancel-items" name="items"></textarea></div>
+      <button class="btn btn-primary" type="submit">Confirm cancellation</button>
+      <div class="notice" tabindex="-1" role="status" data-contact-status hidden>
+        <p class="type-body-sm">Online ordering is not open yet, so there is no order to cancel and this statement was not sent or stored.{{#if company.email}} For anything else, write to <a class="link-editorial" href="mailto:{{company.email}}">{{company.email}}</a>.{{/if}}</p>
+      </div>
+    </form>
+    <aside class="col-span-full lg:col-span-4 lg:col-start-9">
+      <div class="prose-d01">
+        <h2>What happens next</h2>
+        <p>We confirm by email that we received your cancellation. You then have 14 days to send the goods back, and we refund what you paid, including standard delivery, within 14 days of your cancellation. We may wait until we have the goods or proof that you sent them.</p>
+        <p><a href="{{base}}consumer-rights.html">Your consumer rights</a> · <a href="{{base}}returns.html">30-day returns policy</a></p>
+      </div>
+    </aside>
+  </div>
+</section>

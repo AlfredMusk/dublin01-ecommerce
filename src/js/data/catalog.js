@@ -29,7 +29,8 @@
  * @property {string[]} colors      Colour families, used by the colour filter
  * @property {string} description
  * @property {string[]} details
- * @property {string} material
+ * @property {string} material      Fibre composition for clothing and accessories
+ * @property {{upper: string, lining: string, sole: string}} [materials]  Footwear only
  * @property {string[]|null} care
  * @property {string|null} sizeSystem  "EU" | "Apparel" | "Waist" | null
  * @property {string[]} sizes

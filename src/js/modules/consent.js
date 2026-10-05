@@ -3,8 +3,9 @@
  * can be reopened at any time from [data-consent-open] (footer, cookie page).
  *
  * Categories: necessary (always on), analytics and marketing (off until the
- * visitor accepts). The choice is stored in LocalStorage ("dublin01:consent")
- * and announced with a "consent:change" event on document.
+ * visitor accepts). The choice is stored with its date in LocalStorage
+ * ("dublin01:consent"), expires after six months, and is announced with a
+ * "consent:change" event on document. A backend should also log it.
  *
  * No analytics or marketing script ships with the site. One added later must
  * be loaded only after `hasConsent('analytics' | 'marketing')` is true, and
@@ -17,9 +18,15 @@ import { initDialog, openDialog, closeDialog } from '../utils/dialog.js';
 
 const KEY = 'consent';
 const OPTIONAL = ['analytics', 'marketing'];
+// A choice is asked again after six months.
+const MAX_AGE = 1000 * 60 * 60 * 24 * 182;
 
 /** @returns {{ necessary: true, analytics: boolean, marketing: boolean, decidedAt: string } | null} */
-export const getConsent = () => read(KEY, null);
+export function getConsent() {
+  const consent = read(KEY, null);
+  if (!consent?.decidedAt || Date.now() - Date.parse(consent.decidedAt) > MAX_AGE) return null;
+  return consent;
+}
 export const hasConsent = (category) => category === 'necessary' || getConsent()?.[category] === true;
 
 function decide(choice) {

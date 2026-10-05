@@ -4,15 +4,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign in — DUBLIN/01</title>
-    <meta name="description" content="Sign in to your DUBLIN/01 account." />
-    <meta name="robots" content="noindex" />
-    <link rel="canonical" href="login.html" aria-current="page" />
+    <title>Cancel contract — DUBLIN/01</title>
+    <meta name="description" content="Cancel an online order placed with DUBLIN/01 within 14 days of receiving it." />
+    
+    <link rel="canonical" href="cancel-contract.html" aria-current="page" />
     <meta property="og:site_name" content="DUBLIN/01" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sign in — DUBLIN/01" />
-    <meta property="og:description" content="Sign in to your DUBLIN/01 account." />
-    <meta property="og:url" content="login.html" />
+    <meta property="og:title" content="Cancel contract — DUBLIN/01" />
+    <meta property="og:description" content="Cancel an online order placed with DUBLIN/01 within 14 days of receiving it." />
+    <meta property="og:url" content="cancel-contract.html" />
     <meta property="og:image" content="public/images/editorial/hero-wide.webp" />
     <meta property="og:locale" content="en_IE" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -21,10 +21,10 @@
     <link rel="preload" href="public/fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="dist/css/main.css" />
     <script type="module" src="src/js/main.js"></script>
-    <script type="module" src="src/js/pages/account.js"></script>
-    
+    <script type="module" src="src/js/pages/contact.js"></script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"./"},{"@type":"ListItem","position":2,"name":"Cancel contract","item":"cancel-contract.html"}]}</script>
   </head>
-  <body data-page="login">
+  <body data-page="cancel-contract">
 <a class="skip-link" href="#main">Skip to content</a>
 
 <!-- ============ GLOBAL HEADER ============ -->
@@ -160,7 +160,7 @@
         <button class="icon-btn xl:hidden" type="button" aria-controls="search-dialog" aria-expanded="false" aria-label="Search" data-search-trigger data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" /><path d="m20 20-4.4-4.4" /></svg>
         </button>
-        <a class="icon-btn hidden md:inline-flex" href="login.html" aria-current="page" aria-label="Account" data-nav-item>
+        <a class="icon-btn hidden md:inline-flex" href="login.html" aria-label="Account" data-nav-item>
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
         </a>
         <a class="icon-btn hidden md:inline-flex" href="wishlist.html" aria-label="Wishlist, 0 items" data-wishlist-link data-nav-item>
@@ -279,7 +279,7 @@
             </button>
           </li>
           <li>
-            <a class="link-nav gap-3" href="login.html" aria-current="page">
+            <a class="link-nav gap-3" href="login.html">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4.5 20a7.5 7.5 0 0 1 15 0" /></svg>
               Account
             </a>
@@ -374,34 +374,36 @@
 <div class="toast-region" role="status" aria-live="polite" data-toast-region></div>
 
     <main id="main" tabindex="-1">
-<section class="container-site pb-section pt-10 lg:pt-14">
-  <div class="grid-site gap-y-12">
-    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-1">
-      <h1 class="type-h1">Sign in</h1>
-      <form class="mt-10 space-y-6" novalidate data-account-form="signin">
-        <div class="field"><label class="field-label" for="signin-email">Email</label>
-          <input class="input" id="signin-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
-        <div class="field"><div class="flex items-baseline justify-between"><label class="field-label" for="signin-password">Password</label>
-          <button class="link-subtle type-body-sm" type="button" data-toggle-password aria-controls="signin-password" aria-pressed="false">Show</button></div>
-          <input class="input" id="signin-password" name="password" type="password" autocomplete="current-password" required data-error="Enter your password." /></div>
-        <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-        <div class="notice" tabindex="-1" role="status" data-account-status hidden>
-          <p class="type-body-sm">Customer accounts are not open yet, so we could not sign you in. Nothing you typed was sent or stored.</p>
-        </div>
-        <p class="type-body-sm"><a class="link-editorial" href="forgot-password.html">Forgotten your password?</a></p>
-      </form>
-    </div>
-    <div class="col-span-full md:col-span-6 md:col-start-2 lg:col-span-5 lg:col-start-8">
-      <div class="summary">
-        <h2 class="type-h3">New to DUBLIN/01?</h2>
-        <ul class="type-body mt-6 space-y-3 text-neutral-600" role="list">
-          <li>Track orders and start returns online</li>
-          <li>Save addresses for faster checkout</li>
-          <li>Keep your wishlist on every device</li>
-        </ul>
-        <a class="btn btn-secondary btn-block mt-8" href="register.html">Create account</a>
+<section class="container-site pb-section pt-6 lg:pt-8">
+  <nav aria-label="Breadcrumb" class="breadcrumb"><ol role="list"><li><a href="./">Home</a></li><li><span aria-current="page">Cancel contract</span></li></ol></nav>
+<header class="mt-8 max-w-3xl lg:mt-12">
+  <p class="type-label text-neutral-600">Legal</p>
+  <h1 class="type-h1 mt-3">Cancel contract here</h1>
+  <p class="type-body-lg mt-6 text-neutral-600">You can cancel an online order within 14 days of the day you receive it, without giving a reason. Use this form to tell us.</p>
+</header>
+
+  <div class="mt-12 grid-site gap-y-12">
+    <form class="col-span-full space-y-6 lg:col-span-6" novalidate data-contact>
+      <div class="field"><label class="field-label" for="cancel-name">Name</label>
+        <input class="input" id="cancel-name" name="name" autocomplete="name" required data-error="Enter your name." /></div>
+      <div class="field"><label class="field-label" for="cancel-email">Email <span class="field-hint">where we confirm receipt</span></label>
+        <input class="input" id="cancel-email" name="email" type="email" autocomplete="email" required data-error="Enter your email address." /></div>
+      <div class="field"><label class="field-label" for="cancel-order">Order number</label>
+        <input class="input" id="cancel-order" name="order" required data-error="Enter the order number from your confirmation email." /></div>
+      <div class="field"><label class="field-label" for="cancel-items">What you are cancelling <span class="field-hint">optional: leave empty to cancel the whole order</span></label>
+        <textarea class="input min-h-28 py-3" id="cancel-items" name="items"></textarea></div>
+      <button class="btn btn-primary" type="submit">Confirm cancellation</button>
+      <div class="notice" tabindex="-1" role="status" data-contact-status hidden>
+        <p class="type-body-sm">Online ordering is not open yet, so there is no order to cancel and this statement was not sent or stored.</p>
       </div>
-    </div>
+    </form>
+    <aside class="col-span-full lg:col-span-4 lg:col-start-9">
+      <div class="prose-d01">
+        <h2>What happens next</h2>
+        <p>We confirm by email that we received your cancellation. You then have 14 days to send the goods back, and we refund what you paid, including standard delivery, within 14 days of your cancellation. We may wait until we have the goods or proof that you sent them.</p>
+        <p><a href="consumer-rights.html">Your consumer rights</a> · <a href="returns.html">30-day returns policy</a></p>
+      </div>
+    </aside>
   </div>
 </section>
     </main>
@@ -466,7 +468,7 @@
           <li><a class="footer-link" href="cookies.html">Cookies</a></li>
           <li><a class="footer-link" href="accessibility.html">Accessibility</a></li>
           <li><a class="footer-link" href="consumer-rights.html">Consumer rights</a></li>
-          <li><a class="footer-link" href="cancel-contract.html">Cancel contract here</a></li>
+          <li><a class="footer-link" href="cancel-contract.html" aria-current="page">Cancel contract here</a></li>
           <li><button class="footer-link" type="button" data-consent-open>Cookie settings</button></li>
         </ul>
       </div>
