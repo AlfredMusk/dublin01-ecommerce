@@ -31,17 +31,18 @@ const LABELS = {
   stock: { in: 'In stock', low: 'Low stock' },
 };
 
+// Most used first: the first four groups with options start open.
 const GROUPS = [
-  ['category', 'Category'],
-  ['type', 'Type'],
-  ['style', 'Style'],
-  ['gender', 'Gender'],
   ['brand', 'Brand'],
   ['size', 'Size'],
+  ['category', 'Category'],
+  ['gender', 'Gender'],
   ['color', 'Colour'],
   ['price', 'Price'],
-  ['collection', 'Collection'],
+  ['type', 'Type'],
+  ['style', 'Style'],
   ['stock', 'Availability'],
+  ['collection', 'Collection'],
 ];
 
 const SORTS = {

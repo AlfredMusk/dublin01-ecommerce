@@ -19,7 +19,7 @@ be confirmed before launch.
 | adidas | Samba OG | Clay Strata | 120.00 | https://www.adidas.ie/samba-og-shoes/HP3941.html | 2026-10-04 | official Irish storefront |
 | Nike | Pegasus Trail 5 GORE-TEX | White / Bright Crimson | 169.99 | — | — | development value, not verified |
 | New Balance | 997H | Grey | 110.00 | https://www.newbalance.ie/en/pd/997h/CM997HV1-25848.html | 2026-10-04 | official Irish storefront |
-| Salomon | XA PRO 3D GORE-TEX | Black | 160.00 | — | — | development value, not verified |
+| Salomon | XA PRO 3D GORE-TEX | Black | 150.00 | — | — | development value, not verified |
 | New Balance | Fresh Foam X More v4 | Navy | 160.00 | — | — | development value, not verified |
 | New Balance | Fresh Foam Garoé Midcut | Black | 130.00 | — | — | development value, not verified |
 | adidas | Handball Spezial | Core Navy / Gum | 110.00 | https://www.adidas.ie/handball-spezial-shoes/BD7633.html | 2026-10-04 | official Irish storefront |
@@ -46,8 +46,19 @@ The Sale page shows an empty state until then.
 
 ## DUBLIN/01 label
 
-Own-label prices are set by the business. Current values are working prices for
-development.
+Own-label prices are set by the business. Working prices, reviewed on 2026-10-05
+against comparable independent labels: Heavyweight Hoodie 95, Boxy Tee 45, Coach
+Jacket 129, Rain Shell 195, Half-Zip Fleece 115, Wide Cargo Trouser 120, Loopback
+Sweatpant 85, Merino Beanie 35, Crossbody Bag 65, Crew Socks 3-pack 25, Canvas
+Tote 35, Six-Panel Cap 39, Overshirt 135, Running Tee 55, Running Short 60.
+
+## Salomon (checked 2026-10-05, Salomon EU, cross-checked with Irish retailers)
+
+XT-6 180 · Speedcross 6 150 · XA Pro 3D V9 150 · XT-Whisper 150. The catalogue's
+XA PRO 3D GORE-TEX is priced at 150 on that basis; the photographed pair is an
+earlier generation, so the price stays flagged as a development value. Full
+research file: `research/dublin01/salomon-and-house-pricing.md` in the project's
+shared folder.
 
 ## Full reference table (candidates included)
 

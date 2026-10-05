@@ -605,3 +605,20 @@ Démarré le 4 octobre 2026. Avancement par jalons, un commit local par jalon.
 - **Prix** : corrigés d'après les boutiques officielles irlandaises (990v6 à 250 €, Kayano 14 à 170 €), source et date conservées dans `priceSource` (jamais affiché) et dans `docs/pricing-sources.md`. Quatre modèles sans source vérifiée sont marqués « valeur de développement ».
 - **Remises** : plus aucun `compareAtPrice`. Aucune réduction n'est affichée sans historique de prix réel ; la page Sale montre un état vide soigné.
 - **Limites** : les photos de la 990v6 ne portent pas de description nommant le modèle ; le pantalon de la photo Overshirt montre un petit logo tiers.
+
+### Jalons 6 et 7 — Accueil, QA finale, tests (5 octobre 2026)
+
+- **Accueil** : hiérarchie Hero → New arrivals → Rain is the dress code → Shop by category → The ones we wear → Brands → After the last tram → services → footer. En-têtes de section harmonisés (titre puis phrase), bouton réel sur la campagne « After the last tram », léger mouvement d'image au survol des catégories, DUBLIN/01 présenté comme label maison dans les marques. Les compteurs de marques sont calculés depuis les données.
+- **Filtres** : Marque et Taille passent en tête et sont ouverts par défaut.
+- **Prix du label et Salomon** ajustés (Rain Shell 195, Half-Zip Fleece 115, Crew Socks 25, Six-Panel Cap 39, XA PRO 3D 150).
+- **Tests automatisés** (`npm test`, `node:test`, aucune dépendance) : 19 tests — intégrité du catalogue (champs, tailles, stock dérivé, images présentes et non partagées, pas de remise inventée, sources de prix), recherche, formatage des prix, panier (plafond de stock, totaux, lignes périmées), favoris. `npm run check` = build + tests.
+- **QA** : crawl automatique des 70 pages aux 10 largeurs du brief (320, 375, 390, 430, 768, 820, 1024, 1280, 1440, 1728) : aucun lien mort, aucune erreur console, aucune image cassée, un `h1` par page, aucun débordement horizontal.
+- **Scénarios client** (Chrome) : 1. accueil → New arrivals → produit → taille → sac → panier → checkout ; 2. recherche « New Balance » → produit → favori → page Wishlist → ajout au sac ; 3. Women → filtre taille → filtre marque → tri → produit, retour arrière qui restaure les filtres ; 4. Brands → adidas → produit → produits liés et coloris ; 5. mobile → menu → Sneakers → filtre → produit → erreur de taille → sac. Les cinq passent.
+
+### Frontière frontend / backend
+
+Fonctionne aujourd'hui dans le navigateur : catalogue, filtres, tri, recherche, fiche produit, sac, favoris, consentement cookies. En attente d'un backend, sans rien simuler : authentification et comptes, stock réel, commandes, paiement, e-mails, newsletter, formulaire de contact, tarifs de livraison, TVA, administration, mesure d'audience. Détail par point d'entrée dans `docs/api-contract.md`.
+
+### Informations à fournir par l'entreprise
+
+Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de TVA, e-mail et téléphone du service client, horaires, nom de domaine. À confirmer : frais et seuil de livraison, durée et frais des retours, prix du label, prix des quatre modèles marqués « valeur de développement ». Les pages légales sont un résumé prudent à faire relire par un juriste avant ouverture.

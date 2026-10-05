@@ -836,7 +836,15 @@
     overflow: hidden;
   }
 
+  @media (hover: hover) {
+    .category-tile:hover img {
+      transform: scale(1.03);
+    }
+  }
+
   .category-tile-label {
+    position: relative;
+    background-color: var(--color-paper);
     display: flex;
     align-items: center;
     justify-content: space-between;

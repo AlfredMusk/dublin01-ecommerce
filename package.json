@@ -2,7 +2,7 @@
   "name": "dublin01-ecommerce",
   "version": "0.1.0",
   "private": true,
-  "description": "DUBLIN/01 \u2014 storefront for a Dublin sneaker and contemporary streetwear retailer.",
+  "description": "DUBLIN/01 — storefront for a Dublin sneaker and contemporary streetwear retailer.",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -14,7 +14,9 @@
     "watch:css": "node_modules/.bin/tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --watch",
     "build": "npm run build:html && node_modules/.bin/tailwindcss -i ./src/css/main.css -o ./dist/css/main.css --minify",
     "serve": "node_modules/.bin/serve . -l 3001",
-    "preview": "npm run build && npm run serve"
+    "preview": "npm run build && npm run serve",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test"
   },
   "license": "UNLICENSED",
   "devDependencies": {
