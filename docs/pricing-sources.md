@@ -37,6 +37,31 @@ Notes:
 - Nike Pegasus Trail 5 GORE-TEX, New Balance Fresh Foam X More v4, New Balance Fresh Foam Garoé Midcut and Salomon XA PRO 3D GORE-TEX were chosen because licence-free photographs of exactly these models exist. Their prices are development values.
 - Removed from the catalogue because no licence-free photograph showed the exact model: Nike Air Max 1, Nike Pegasus 41, adidas Ultraboost 1.0, ASICS GEL-1130, Salomon XT-6.
 
+## Unsourced prices: second pass (2026-10-05)
+
+A second search for licence-free photographs showing exactly the sourced
+alternatives found none: New Balance 530, 574, 9060, 1080v15 and 2002R, Nike ACG
+Pegasus Trail, Salomon XT-6, Speedcross 6 and XT-Whisper. Photographs were only
+accepted when the photographer names the model or the model name is legible on
+the product. Because the catalogue never shows a photograph of another model,
+the four models below stay, with their status stated plainly:
+
+| Model | Price in catalogue | Status |
+|---|---|---|
+| Nike Pegasus Trail 5 GORE-TEX | 169.99 | No longer sold in adult sizes on nike.com/ie (replaced by ACG Pegasus Trail, 149.99; GORE-TEX 169.99). Previous-season model; development value aligned on the current GORE-TEX price. |
+| Salomon XA PRO 3D GORE-TEX | 150.00 | Official price of the current XA Pro 3D V9 is 150 (classic "sneaker" version 140). The photographed pair is an earlier GORE-TEX generation; development value. |
+| New Balance Fresh Foam X More v4 | 160.00 | No official Irish price recorded. Development value. |
+| New Balance Fresh Foam Garoé Midcut | 130.00 | No official Irish price recorded. Development value. |
+
+Before launch, either confirm these four with the supplier's price list or
+replace them with sourced models once real product photography is available
+(sourced candidates: New Balance 1080v15 180, 9060 190, 574 120, 530 120;
+Salomon XT-6 180, Speedcross 6 150, XT-Whisper 150).
+
+New Balance Made in USA 990v6: the price (250) is sourced, but neither
+photograph is captioned with the model by its author. Keep under review and
+replace with supplier photography.
+
 ## Reductions
 
 No product carries a `compareAtPrice`. The sale mechanism is kept in the code, but

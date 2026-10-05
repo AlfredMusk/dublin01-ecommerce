@@ -632,3 +632,10 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 - **Allégations environnementales** : aucune mention générique ; la mention « recycled » a été retirée faute de justificatif.
 - **Pas de lien ODR** (plateforme européenne supprimée).
 - `docs/legal-readiness.md` : tableau exigence / emplacement / état, liste des informations à fournir et des textes à faire relire par un solicitor. Les textes du site sont un résumé prudent, pas un avis juridique.
+
+### Prix non sourcés — seconde passe (5 octobre 2026)
+
+- Nouvelle recherche de photos libres pour les modèles au prix officiel connu (New Balance 530, 574, 9060, 1080v15, 2002R ; Nike ACG Pegasus Trail ; Salomon XT-6, Speedcross 6, XT-Whisper) : aucune photo ne montre exactement ces modèles.
+- Décision : aucun produit remplacé, car le catalogue n'affiche jamais la photo d'un autre modèle. Les quatre modèles concernés restent avec un prix marqué « valeur de développement » : Pegasus Trail 5 GORE-TEX (169,99 €, modèle de la saison précédente), XA PRO 3D GORE-TEX (150 €), Fresh Foam X More v4 (160 €), Fresh Foam Garoé Midcut (130 €).
+- `docs/pricing-sources.md` détaille le statut de chacun, les modèles de remplacement sourcés et la réserve sur les photos de la 990v6.
+- À faire avant ouverture : confirmer ces quatre prix sur le tarif fournisseur, ou les remplacer quand de vraies photos produit existeront.
