@@ -590,3 +590,19 @@ The owner approved a final classification that **supersedes the proposals above 
 - New Balance 327, Salomon XA PRO 3D GORE-TEX: this study's proposals (120, 160) are **not applied**; they stay at 130 and 150 in manual review.
 
 **Still open:** 9 products in REQUIRES MANUAL REVIEW and 1 in INSUFFICIENT DATA keep their current price. The pricing audit is not closed.
+
+## Approved decision of 6 October 2026 (second integration)
+
+Approved in writing by the owner ("Approuver", in answer to "PRICING APPROVED : A, B, C").
+
+| | Product | Before | After |
+|---|---|---|---|
+| A | DUBLIN/01 Half-Zip Fleece | 115 | 100 |
+| B | DUBLIN/01 Overshirt | 135 | 125 |
+| C | New Balance Fresh Foam Garoé Midcut | 130 | removed from the catalogue (INSUFFICIENT DATA) |
+
+- A and B come from the owner's decision, not from this study, which had proposed keeping 115 and 135. The benchmarks quoted for them (Patagonia 100, ARKET 99, Carhartt WIP 109) were not read during this study.
+- The catalogue now holds 32 products. The former Garoé address forwards to the New Balance brand page.
+- New Balance Fresh Foam X More v4 and Nike Pegasus Trail 5 GORE-TEX stay: no licence-free photograph of a current replacement model (More v6, ACG Pegasus Trail GORE-TEX) was found.
+
+**Still open:** Salomon XA PRO 3D GORE-TEX (150), New Balance 327 (130), Crossbody Bag (material: leather or nylon) and Rain Shell (construction) are unchanged and wait for the owner. The pricing audit is not closed.

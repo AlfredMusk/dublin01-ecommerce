@@ -86,7 +86,7 @@ test('brand prices carry a source or are flagged as development values', () => {
 });
 
 test('running and trail, and each audience, are represented', () => {
-  assert.ok(products.filter((p) => ['running', 'trail'].includes(p.style)).length >= 6);
+  assert.ok(products.filter((p) => ['running', 'trail'].includes(p.style)).length >= 5);
   for (const gender of ['men', 'women', 'unisex']) assert.ok(products.some((p) => p.gender === gender), gender);
   for (const brand of BRAND_ORDER) assert.ok(products.some((p) => p.brand === brand), brand);
 });

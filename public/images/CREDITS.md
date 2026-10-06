@@ -48,8 +48,6 @@ All photographs are from [Unsplash](https://unsplash.com) and used under the [Un
 | `products/new-balance-327-orange-1.webp` | Thanin Chaiyawan ([@abitofeverything](https://unsplash.com/@abitofeverything)) | https://unsplash.com/photos/dxH3pvXEX9Y |
 | `products/new-balance-fresh-foam-x-more-v4-navy-1.webp` | Archer Allstars ([@archerallstars](https://unsplash.com/@archerallstars)) | https://unsplash.com/photos/eCc3MEQBY0k |
 | `products/new-balance-fresh-foam-x-more-v4-navy-2.webp` | Archer Allstars ([@archerallstars](https://unsplash.com/@archerallstars)) | https://unsplash.com/photos/j7QwiaW7p_I |
-| `products/new-balance-fresh-foam-garoe-midcut-black-1.webp` | Archer Allstars ([@archerallstars](https://unsplash.com/@archerallstars)) | https://unsplash.com/photos/QUuW-OPJr-0 |
-| `products/new-balance-fresh-foam-garoe-midcut-black-2.webp` | Archer Allstars ([@archerallstars](https://unsplash.com/@archerallstars)) | https://unsplash.com/photos/NwqL4DJLEAY |
 | `products/canvas-tote-black-1.webp` | He's Her Lobster ([@hesherlobsteruk](https://unsplash.com/@hesherlobsteruk)) | https://unsplash.com/photos/9b6UhV4nLZs |
 | `products/canvas-tote-black-2.webp` | He's Her Lobster ([@hesherlobsteruk](https://unsplash.com/@hesherlobsteruk)) | https://unsplash.com/photos/nKK32qJheBY |
 | `products/six-panel-cap-black-1.webp` | Cord Allman ([@cordallman](https://unsplash.com/@cordallman)) | https://unsplash.com/photos/xRVSrfNG6fA |

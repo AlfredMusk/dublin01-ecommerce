@@ -21,7 +21,6 @@ be confirmed before launch.
 | New Balance | 997H | Grey | 110.00 | https://www.newbalance.ie/en/pd/997h/CM997HV1-25848.html | 2026-10-04 | official Irish storefront |
 | Salomon | XA PRO 3D GORE-TEX | Black | 150.00 | — | — | development value, not verified |
 | New Balance | Fresh Foam X More v4 | Navy | 160.00 | — | — | development value, not verified |
-| New Balance | Fresh Foam Garoé Midcut | Black | 130.00 | — | — | development value, not verified |
 | adidas | Handball Spezial | Core Navy / Gum | 110.00 | https://www.adidas.ie/handball-spezial-shoes/BD7633.html | 2026-10-04 | official Irish storefront |
 | Nike | Air Max 90 | Iron Grey | 149.99 | https://www.nike.com/ie/t/air-max-90-mens-shoes-exykZV6r/CN8490-100 | 2026-10-04 | official Irish storefront |
 | New Balance | 327 | Orange / White | 130.00 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 2026-10-04 | official Irish storefront |
@@ -34,7 +33,7 @@ Notes:
 
 - adidas Samba OG in Cloud White / Green is no longer listed on adidas.ie; the price is the current Samba OG price.
 - New Balance 997H is being phased out by the brand; 110 is its last regular price.
-- Nike Pegasus Trail 5 GORE-TEX, New Balance Fresh Foam X More v4, New Balance Fresh Foam Garoé Midcut and Salomon XA PRO 3D GORE-TEX were chosen because licence-free photographs of exactly these models exist. Their prices are development values.
+- Nike Pegasus Trail 5 GORE-TEX, New Balance Fresh Foam X More v4 and Salomon XA PRO 3D GORE-TEX were chosen because licence-free photographs of exactly these models exist. Their prices are development values.
 - Removed from the catalogue because no licence-free photograph showed the exact model: Nike Air Max 1, Nike Pegasus 41, adidas Ultraboost 1.0, ASICS GEL-1130, Salomon XT-6.
 
 ## Unsourced prices: second pass (2026-10-05)
@@ -51,7 +50,6 @@ the four models below stay, with their status stated plainly:
 | Nike Pegasus Trail 5 GORE-TEX | 169.99 | No longer sold in adult sizes on nike.com/ie (replaced by ACG Pegasus Trail, 149.99; GORE-TEX 169.99). Previous-season model; development value aligned on the current GORE-TEX price. |
 | Salomon XA PRO 3D GORE-TEX | 150.00 | Official price of the current XA Pro 3D V9 is 150 (classic "sneaker" version 140). The photographed pair is an earlier GORE-TEX generation; development value. |
 | New Balance Fresh Foam X More v4 | 160.00 | No official Irish price recorded. Development value. |
-| New Balance Fresh Foam Garoé Midcut | 130.00 | No official Irish price recorded. Development value. |
 
 Before launch, either confirm these four with the supplier's price list or
 replace them with sourced models once real product photography is available
@@ -73,9 +71,9 @@ The Sale page shows an empty state until then.
 
 Own-label prices are set by the business. Working prices, reviewed on 2026-10-05
 against comparable independent labels: Heavyweight Hoodie 95, Boxy Tee 45, Coach
-Jacket 129, Rain Shell 195, Half-Zip Fleece 115, Wide Cargo Trouser 120, Loopback
+Jacket 129, Rain Shell 195, Half-Zip Fleece 100, Wide Cargo Trouser 120, Loopback
 Sweatpant 85, Merino Beanie 35, Crossbody Bag 65, Crew Socks 3-pack 25, Canvas
-Tote 35, Six-Panel Cap 39, Overshirt 135, Running Tee 55, Running Short 60.
+Tote 45, Six-Panel Cap 39, Overshirt 125, Running Tee 50, Running Short 55.
 
 Update of 6 October 2026 (owner's partial approval, see `01-final-decision-table.md`):
 Canvas Tote 45, Running Tee 50, Running Short 55.
@@ -128,3 +126,5 @@ Supplied by the price research of 2026-10-04.
 | New Balance | 1080v15 | 180 | https://www.newbalance.ie/en/pd/1080v15-mens/M1080V15_RU-FTW-802829.html | 180 | yes | high |
 | New Balance | 574 Core | 120 | https://www.newbalance.ie/en/pd/574-core/ML574EVG-2E-04.html | 120 | yes | high |
 | New Balance | 327 | 130 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 130 | yes | medium |
+
+The New Balance Fresh Foam Garoé Midcut was removed from the catalogue on 2026-10-06: no official Irish price could be established for it.

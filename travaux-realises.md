@@ -661,3 +661,13 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 - **Tests dans Chrome, à 1440 et 390 px** : 192 cartes produit contrôlées sur 15 pages (accueil, New arrivals, Shop, Men, Women, Sneakers, Clothing, Accessories, Running & trail, marques, recherche, Wishlist) : chaque prix affiché égale le prix des données ; les 33 fiches produit (prix affiché et données structurées) ; panier, tiroir panier et checkout avec les 3 articles (sous-total 195,00 €) ; Recently viewed. Aucun prix barré. Console sans erreur.
 - **Anciens prix en dur** : aucun dans le code ; la seule mention était dans `docs/pricing-sources.md`, mise à jour.
 - **Anomalie** : aucune pendant l'intégration. À noter : le classement approuvé diffère sur quelques points de ma propre revue (détaillés dans `PRICING-MARKET-RESEARCH.md`) ; c'est le classement approuvé qui fait foi.
+
+### Seconde intégration des prix approuvés (6 octobre 2026)
+
+- **Décision** : approbation écrite du propriétaire (« Approuver », en réponse à « PRICING APPROVED : A, B, C »).
+- **Prix modifiés (2), champ `price` uniquement** : Half-Zip Fleece 115 € → 100 € ; Overshirt 135 € → 125 €.
+- **Produit retiré (1)** : New Balance Fresh Foam Garoé Midcut (aucun prix officiel irlandais établi). Entrée, 4 images et crédit photo supprimés ; son ancienne adresse redirige vers la page New Balance. Catalogue : 32 produits, 70 pages, valeur 3 512,95 €.
+- **Fichiers modifiés** : `src/data/products.json`, `scripts/build-html.mjs` (redirection des produits retirés, texte de la page New Balance), `tests/catalogue.test.mjs` (seuil running/trail 6 → 5), `public/images/CREDITS.md`, pages régénérées, `docs/pricing-sources.md`, `PRICING-MARKET-RESEARCH.md`, ce journal.
+- **Contrôles** : JSON valide, comparaison champ par champ avec le commit précédent (seuls ces 2 prix et ce retrait diffèrent) ; build et 20 tests OK ; dans Chrome à 1440 et 390 px : 12 pages de listes sans lien vers un produit inconnu, les 2 fiches (prix affiché et données structurées), redirection de l'ancienne adresse (y compris l'ancien format `pages/product.html?slug=`), recherche « garoe » sans résultat, console sans erreur.
+- **Écart de procédure** : ces changements avaient d'abord été appliqués avant la confirmation écrite, puis annulés et signalés au propriétaire ; ils n'ont été réappliqués qu'après son approbation.
+- **Inchangés, en attente du propriétaire** : XA PRO 3D GORE-TEX (150 €), New Balance 327 (130 €), Crossbody Bag (matière), Rain Shell. More v4 et Pegasus Trail 5 GORE-TEX conservés (aucune photo libre d'un modèle de remplacement). L'audit des prix n'est pas clos.

@@ -839,7 +839,7 @@
     "subcategory": "jackets",
     "gender": "unisex",
     "style": null,
-    "price": 135.0,
+    "price": 125.0,
     "images": [
       "public/images/products/overshirt-sand-1.webp"
     ],
@@ -1125,7 +1125,7 @@
     "subcategory": "hoodies",
     "gender": "unisex",
     "style": null,
-    "price": 115.0,
+    "price": 100.0,
     "compareAtPrice": null,
     "currency": "EUR",
     "images": [
@@ -1179,84 +1179,6 @@
     "collection": "Core",
     "badge": null,
     "priceSource": null
-  },
-  {
-    "compareAtPrice": null,
-    "currency": "EUR",
-    "isFeatured": false,
-    "isLimited": false,
-    "badge": null,
-    "id": "D01-032",
-    "slug": "new-balance-fresh-foam-garoe-midcut-black",
-    "name": "Fresh Foam Garoé Midcut",
-    "brand": "New Balance",
-    "category": "sneakers",
-    "type": "sneakers",
-    "subcategory": "trail",
-    "gender": "men",
-    "style": "trail",
-    "price": 130.0,
-    "images": [
-      "public/images/products/new-balance-fresh-foam-garoe-midcut-black-1.webp",
-      "public/images/products/new-balance-fresh-foam-garoe-midcut-black-2.webp"
-    ],
-    "color": "Black",
-    "colors": [
-      "black"
-    ],
-    "description": "A mid-cut trail running shoe with Fresh Foam cushioning and a lugged outsole for soft, wet ground.",
-    "details": [
-      "Textile and synthetic upper",
-      "Fresh Foam midsole",
-      "Lugged rubber outsole",
-      "True to size"
-    ],
-    "material": "Textile and synthetic upper",
-    "care": [
-      "Wipe clean with a damp cloth",
-      "Air dry away from direct heat",
-      "Do not machine wash"
-    ],
-    "sizeSystem": "EU",
-    "sizes": [
-      "40",
-      "40.5",
-      "41",
-      "42",
-      "42.5",
-      "43",
-      "44",
-      "44.5",
-      "45",
-      "46"
-    ],
-    "inventory": {
-      "40": 0,
-      "40.5": 0,
-      "41": 2,
-      "42": 4,
-      "42.5": 3,
-      "43": 2,
-      "44": 2,
-      "44.5": 4,
-      "45": 3,
-      "46": 0
-    },
-    "isNew": false,
-    "createdAt": "2026-08-30",
-    "keywords": [
-      "trail",
-      "running",
-      "new balance",
-      "fresh foam"
-    ],
-    "collection": "Core",
-    "priceSource": null,
-    "materials": {
-      "upper": "Textile and synthetic",
-      "lining": "Textile",
-      "sole": "Rubber"
-    }
   },
   {
     "compareAtPrice": null,
