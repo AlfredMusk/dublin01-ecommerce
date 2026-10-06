@@ -77,6 +77,9 @@ Jacket 129, Rain Shell 195, Half-Zip Fleece 115, Wide Cargo Trouser 120, Loopbac
 Sweatpant 85, Merino Beanie 35, Crossbody Bag 65, Crew Socks 3-pack 25, Canvas
 Tote 35, Six-Panel Cap 39, Overshirt 135, Running Tee 55, Running Short 60.
 
+Update of 6 October 2026 (owner's partial approval, see `01-final-decision-table.md`):
+Canvas Tote 45, Running Tee 50, Running Short 55.
+
 ## Salomon (checked 2026-10-05, Salomon EU, cross-checked with Irish retailers)
 
 XT-6 180 · Speedcross 6 150 · XA Pro 3D V9 150 · XT-Whisper 150. The catalogue's

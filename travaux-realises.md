@@ -651,3 +651,13 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 - Classement final des 33 produits : 23 prêts à valider, 9 à revoir manuellement, 1 sans données suffisantes. Tableau de décision, historique des décisions et contrôle de cohérence ajoutés à `PRICING-MARKET-RESEARCH.md`, à la suite de la première étude (conservée).
 - Incohérences de données relevées, non corrigées : Rain Shell (trois couches ou non), Crossbody Bag (cuir ou polyamide), Gazelle (genre), Dunk Low (promesse de newsletter).
 - Aucun prix modifié : `products.json` et le frontend restent inchangés jusqu'à « PRICING APPROVED ».
+
+### Intégration partielle des prix approuvés (6 octobre 2026)
+
+- **Décision** : approbation partielle par le propriétaire. 23 produits READY FOR APPROVAL validés ; 9 produits REQUIRES MANUAL REVIEW et 1 produit INSUFFICIENT DATA conservés à leur prix actuel. L'audit des prix n'est pas clos.
+- **Prix modifiés (3), champ `price` uniquement** : Canvas Tote 35 € → 45 € ; Running Tee 55 € → 50 € ; Running Short 60 € → 55 €. Effet net sur la valeur du catalogue : 0 € (3 667,95 € avant et après).
+- **Fichiers modifiés** : `src/data/products.json` (3 lignes), les 3 pages produit régénérées (`products/canvas-tote-black.html`, `running-tee-black.html`, `running-short-black.html`, prix des données structurées), `docs/pricing-sources.md`, `PRICING-MARKET-RESEARCH.md` (décision approuvée ajoutée, études précédentes conservées), `01-final-decision-table.md` (nouveau), ce journal.
+- **Contrôles** : JSON valide, 33 produits, comparaison champ par champ avec le commit précédent (seuls les 3 prix diffèrent), fichier à 52 Ko ; build et 20 tests automatisés OK.
+- **Tests dans Chrome, à 1440 et 390 px** : 192 cartes produit contrôlées sur 15 pages (accueil, New arrivals, Shop, Men, Women, Sneakers, Clothing, Accessories, Running & trail, marques, recherche, Wishlist) : chaque prix affiché égale le prix des données ; les 33 fiches produit (prix affiché et données structurées) ; panier, tiroir panier et checkout avec les 3 articles (sous-total 195,00 €) ; Recently viewed. Aucun prix barré. Console sans erreur.
+- **Anciens prix en dur** : aucun dans le code ; la seule mention était dans `docs/pricing-sources.md`, mise à jour.
+- **Anomalie** : aucune pendant l'intégration. À noter : le classement approuvé diffère sur quelques points de ma propre revue (détaillés dans `PRICING-MARKET-RESEARCH.md`) ; c'est le classement approuvé qui fait foi.

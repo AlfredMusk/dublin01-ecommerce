@@ -167,7 +167,7 @@
     "subcategory": "accessories",
     "gender": "unisex",
     "style": null,
-    "price": 35.0,
+    "price": 45.0,
     "images": [
       "public/images/products/canvas-tote-black-1.webp",
       "public/images/products/canvas-tote-black-2.webp"
@@ -1363,7 +1363,7 @@
     "subcategory": "t-shirts",
     "gender": "unisex",
     "style": "running",
-    "price": 55.0,
+    "price": 50.0,
     "images": [
       "public/images/products/running-tee-black-1.webp"
     ],
@@ -1427,7 +1427,7 @@
     "subcategory": "trousers",
     "gender": "unisex",
     "style": "running",
-    "price": 60.0,
+    "price": 55.0,
     "images": [
       "public/images/products/running-short-black-1.webp"
     ],

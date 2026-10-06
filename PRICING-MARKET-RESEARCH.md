@@ -565,3 +565,28 @@ All 33 products have a name, a brand from the six stocked, a description, a pric
 
 - Official prices of adidas.ie, asics.com/ie, newbalance.ie and salomon.com are relayed from the earlier research, not re-read: these sites refuse automated access. An estimate or a relayed price is never presented here as verified by this study.
 - No reduced price is proposed.
+
+
+---
+
+## APPROVED DECISION — 6 October 2026 (partial approval, applied)
+
+The owner approved a final classification that **supersedes the proposals above wherever they differ**. It is recorded in full in `01-final-decision-table.md`.
+
+**Applied to `src/data/products.json` (price field only):**
+
+| Product | Before | After |
+|---|---|---|
+| DUBLIN/01 Canvas Tote | €35.00 | €45.00 |
+| DUBLIN/01 Running Tee | €55.00 | €50.00 |
+| DUBLIN/01 Running Short | €60.00 | €55.00 |
+
+**Differences from this study's own final review, for the record:**
+
+- Canvas Tote: this study proposed keeping 35 (benchmark 30–55); the approved price is 45, inside that benchmark range.
+- Merino Beanie (proposed 39) and Crew Socks 3-pack (proposed 19): **not approved**; they stay at 35 and 25.
+- Nike Cortez Leather and New Balance 997H: classified READY FOR APPROVAL at their current price (this study had them in manual review).
+- Coach Jacket and Overshirt: classified REQUIRES MANUAL REVIEW (this study had them ready).
+- New Balance 327, Salomon XA PRO 3D GORE-TEX: this study's proposals (120, 160) are **not applied**; they stay at 130 and 150 in manual review.
+
+**Still open:** 9 products in REQUIRES MANUAL REVIEW and 1 in INSUFFICIENT DATA keep their current price. The pricing audit is not closed.
