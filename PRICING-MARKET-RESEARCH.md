@@ -463,3 +463,105 @@ These are not market prices of DUBLIN/01 products: none exists. Each price is po
 - **Recommended DUBLIN/01 price:** €55.00 (current €60.00)
 - **Confidence:** LOW
 - **Notes:** One source only. A lined short with a zip pocket matches the Stride at 54.99.
+
+---
+
+## FINAL REVIEW — 6 October 2026 (second pass)
+
+Nothing below has been applied: `products.json` and the frontend are unchanged. Waiting for "PRICING APPROVED".
+
+### What was re-checked
+
+- All LOW and NEEDS REVIEW products, and every product where this study and the project's earlier research (4–5 October) diverge.
+- New sources read on 6 October 2026: JD Sports IE running tees and shorts; Sneakersnstuff EU (New Balance 327, Salomon XA PRO 3D: not stocked); further searches for the Garoé Midcut, the 997H and half-zip fleeces.
+- The 33 product records were re-read for name, brand, description, currency and composition.
+
+### Decision history
+
+| Product | First proposal (6 Oct, first pass) | Final review | Why it changed |
+|---|---|---|---|
+| DUBLIN/01 Running Tee | 45 (LOW, one source) | 50 (MEDIUM) | Second source: premium running tees (On) are 50–65 at JD Sports IE |
+| DUBLIN/01 Running Short | 55 (LOW, one source) | 55 (MEDIUM) | Confirmed by a second source |
+| DUBLIN/01 Crossbody Bag | 49 | no change proposed | Description says leather, composition says polyamide: the nylon benchmark may not apply |
+| DUBLIN/01 Rain Shell | 195 (ready) | 195, manual review | Description (three-layer) and composition disagree |
+| DUBLIN/01 Half-Zip Fleece | NEEDS REVIEW | manual review, no change proposed | References found, but too scattered |
+| New Balance Fresh Foam Garoé Midcut | NEEDS REVIEW | INSUFFICIENT DATA | Only US and second-hand prices exist |
+| New Balance 327, Salomon XA PRO 3D GORE-TEX | recommended | recommended, manual review | The two studies diverge; variant to confirm |
+
+
+### 1. READY FOR APPROVAL — 23 products
+
+| PRODUCT | CURRENT PRICE | RECOMMENDED PRICE | DIFFERENCE | CONFIDENCE | DECISION | SOURCE |
+|---|---|---|---|---|---|---|
+| ASICS GEL-Kayano 14 (Pure Silver) | €170.00 | €170.00 | 0.00 | HIGH | Keep | Footshop IE, JD Sports IE, Sneakersnstuff EU: 170; asics.com/ie relayed |
+| ASICS GEL-Kayano 14 (White / Midnight) | €170.00 | €170.00 | 0.00 | HIGH | Keep | Same model: Footshop IE, JD Sports IE, Sneakersnstuff EU: 170 |
+| adidas Samba OG (Cloud White / Green) | €120.00 | €120.00 | 0.00 | HIGH | Keep | Footshop IE, JD Sports IE, Sneakersnstuff EU: 120; adidas.ie relayed |
+| adidas Samba OG (Clay Strata) | €120.00 | €120.00 | 0.00 | MEDIUM | Keep. Standard women’s Samba OG price; colourway article not located | JD Sports IE 115–120, Footshop IE 120–130, Sneakersnstuff EU 120 |
+| New Balance Made in USA 990v6 (Grey / Silver) | €250.00 | €250.00 | 0.00 | HIGH | Keep | Footshop IE and Sneakersnstuff EU: 250 regular; newbalance.ie relayed |
+| adidas Handball Spezial (Core Navy / Gum) | €110.00 | €110.00 | 0.00 | HIGH | Keep | Footshop IE (Core Navy/Gum), JD Sports IE, Sneakersnstuff EU: 110 |
+| Nike Air Max 90 (Iron Grey) | €149.99 | €149.99 | 0.00 | HIGH | Keep | nike.com/ie 149.99; Footshop IE 149.99; JD Sports IE 150 |
+| adidas Gazelle (Core Black / White) | €110.00 | €110.00 | 0.00 | HIGH | Keep | JD Sports IE and Footshop IE: 110; adidas.ie relayed |
+| Nike Air Force 1 '07 (White / White) | €119.99 | €119.99 | 0.00 | HIGH | Keep | nike.com/ie 119.99 (read directly); JD Sports IE 120–130 |
+| Nike Dunk Low Retro (White / Black) | €119.99 | €119.99 | 0.00 | HIGH | Keep | nike.com/ie 119.99; Footshop IE 119.99; JD Sports IE 120 |
+| DUBLIN/01 Heavyweight Hoodie (Black) | €95.00 | €95.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: Carhartt WIP hoodies 89–129, Footshop IE |
+| DUBLIN/01 Boxy Tee (Black) | €45.00 | €45.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: Carhartt WIP plain tees 39–45, Footshop IE |
+| DUBLIN/01 Boxy Tee (Optic White) | €45.00 | €45.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: Carhartt WIP plain tees 39–45, Footshop IE |
+| DUBLIN/01 Coach Jacket (Black) | €129.00 | €129.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 95–150, Footshop IE and JD Sports IE |
+| DUBLIN/01 Wide Cargo Trouser (Olive) | €120.00 | €120.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 85–169, Footshop IE |
+| DUBLIN/01 Loopback Sweatpant (Heather Grey) | €85.00 | €85.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 70–100, Footshop IE |
+| DUBLIN/01 Merino Beanie (Black) | €35.00 | €39.00 | +4.00 | MEDIUM | Raise by 4 (benchmark-based): merino sits above basic wool | Benchmark: wool 32–35, merino 55–60; Footshop IE, JD Sports IE, Sneakersnstuff EU |
+| DUBLIN/01 Crew Socks, 3-Pack (White) | €25.00 | €19.00 | -6.00 | MEDIUM | Lower by 6 (benchmark-based): 25 is above the whole range | Benchmark: 13–20, JD Sports IE and Sneakersnstuff EU |
+| DUBLIN/01 Canvas Tote (Black) | €35.00 | €35.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 30–55, Sneakersnstuff EU and Footshop IE |
+| DUBLIN/01 Six-Panel Cap (Black) | €39.00 | €39.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 28–50, Footshop IE, Sneakersnstuff EU, JD Sports IE |
+| DUBLIN/01 Overshirt (Sand) | €135.00 | €135.00 | 0.00 | MEDIUM | Keep (benchmark-based) | Benchmark: 120–150, JD Sports IE and Sneakersnstuff EU |
+| DUBLIN/01 Running Tee (Black) | €55.00 | €50.00 | -5.00 | MEDIUM | Lower by 5 (benchmark-based). Second source added; first proposal of 45 revised to 50 | Benchmark: Nike 35–48, On 50–65, ASICS 28–55; nike.com/ie and JD Sports IE |
+| DUBLIN/01 Running Short (Black) | €60.00 | €55.00 | -5.00 | MEDIUM | Lower by 5 (benchmark-based). Second source added | Benchmark: Nike Stride 54.99, adidas 50, On 60–65; nike.com/ie and JD Sports IE |
+
+### 2. REQUIRES MANUAL REVIEW — 9 products
+
+| PRODUCT | CURRENT PRICE | RECOMMENDED PRICE | DIFFERENCE | CONFIDENCE | DECISION | SOURCE |
+|---|---|---|---|---|---|---|
+| Nike Cortez Leather (White / Black / Tan) | €99.99 | €99.99 | 0.00 | MEDIUM | Hold at 99.99 until the style code is confirmed: 89.99 or 99.99 depending on the article | nike.com/ie: Cortez 99.99, Cortez Leather 89.99; Footshop IE: W Cortez Leather 99.99 |
+| Nike Pegasus Trail 5 GORE-TEX (White / Bright Crimson) | €169.99 | €169.99 | 0.00 | MEDIUM | Owner decision: keep at former RRP, or replace. Model no longer sold on nike.com/ie | nike.com/ie (successor 169.99); Footpatrol IE was 170, now 130; Asphaltgold 159 |
+| New Balance 997H (Grey) | €110.00 | €110.00 | 0.00 | LOW | Owner decision: keep at last RRP, or replace. End-of-line model, only clearance listings | Care of Carl EU: 110 regular, now 77; newbalance.ie relayed 110, sold out |
+| Salomon XA PRO 3D GORE-TEX (Black) | €150.00 | €160.00 | +10.00 | MEDIUM | Raise by 10 once the generation of the pair is confirmed. Studies diverge: 150 is the non-GTX V9 price, the pair shown is GORE-TEX | Footshop IE: Xa Pro 3D GTX 160 regular; Zalando IE: V9 GTX 170 regular |
+| New Balance Fresh Foam X More v4 (Navy) | €160.00 | €160.00 | 0.00 | MEDIUM | Owner decision: keep at RRP, or replace. Superseded model sold at 82–120 | i-Run EU: RRP 160, now 82–120 |
+| New Balance 327 (Orange / White) | €130.00 | €120.00 | -10.00 | MEDIUM | Lower by 10 once the colourway is confirmed. Studies diverge: 120 at an Irish retailer and for core colourways, 130 for current colourways | Footshop IE 120 regular; newbalance.ie relayed 120–130 |
+| DUBLIN/01 Rain Shell (Black) | €195.00 | €195.00 | 0.00 | MEDIUM | Data conflict to settle first: the description says three-layer with taped seams, the composition describes a lined shell. 195 fits a 2.5-layer shell; three-layer shells start at 225 | Benchmark: 160–225, Footshop IE and Sneakersnstuff EU |
+| DUBLIN/01 Crossbody Bag (Black) | €65.00 | none | — | LOW | Data conflict to settle first: the description says leather, the composition says polyamide. 49 fits a nylon bag; a leather bag needs its own benchmark. No change proposed until then | Benchmark (nylon only): 30–55, JD Sports IE and Sneakersnstuff EU |
+| DUBLIN/01 Half-Zip Fleece (Ecru) | €115.00 | none | — | LOW | No change proposed. New references found are too far apart (40 to 180) and come from search results only | Columbia Hike II half-zip 40 (Landers IE); Patagonia Better Sweater 1/4 zip ~107 (EU); Butter Goods 159, thisisneverthat 180 (Sneakersnstuff EU) |
+
+### 3. INSUFFICIENT DATA — 1 products
+
+| PRODUCT | CURRENT PRICE | RECOMMENDED PRICE | DIFFERENCE | CONFIDENCE | DECISION | SOURCE |
+|---|---|---|---|---|---|---|
+| New Balance Fresh Foam Garoé Midcut (Black) | €130.00 | none | — | NEEDS REVIEW | No recommendation. Only US prices (MSRP 119.99 USD, GORE-TEX 130 USD) and outlet or second-hand listings: a conversion is not an Irish retail price | No EUR retail source found |
+
+### Totals (checked)
+
+| Category | Products | Current value | Value if recommendations are applied |
+|---|---|---|---|
+| READY FOR APPROVAL | 23 | €2342.97 | €2330.97 |
+| REQUIRES MANUAL REVIEW | 9 | €1194.98 | €1194.98 |
+| INSUFFICIENT DATA | 1 | €130.00 | €130.00 |
+| **Total** | **33** | **€3667.95** | **€3655.95** |
+
+Products without a recommendation are counted at their current price. Net change if everything recommended is applied: -12.00 €.
+
+Confidence: HIGH 9 · MEDIUM 20 · LOW 3 · NEEDS REVIEW 1.
+
+### Data consistency (33 products)
+
+All 33 products have a name, a brand from the six stocked, a description, a price in EUR, a recommended price or an explicit absence of one, a confidence level and an identified source or benchmark. Points that are **not** consistent and need a decision (none has been changed):
+
+1. **Rain Shell** — the description says "three-layer shell with taped seams"; the composition (shell plus lining) describes a different construction. The price depends on which is true.
+2. **Crossbody Bag** — the description says "leather"; the composition says "100% polyamide".
+3. **adidas Gazelle** — listed as women's; the brand sells this article as unisex.
+4. **Nike Dunk Low Retro** — the description promises that restocks are announced in the newsletter, which does not exist yet.
+5. **Colour names taken from the photograph or its author, not from the brand's article name:** GEL-Kayano 14 "Pure Silver" and "White / Midnight", Cortez "White / Black / Tan", Pegasus Trail 5 "White / Bright Crimson", Air Max 90 "Iron Grey", 327 "Orange / White", Samba OG "Clay Strata". Prices do not depend on them except where noted.
+6. **Footwear lining and sole materials** ("Textile", "Rubber") and own-label compositions are catalogue data, not supplier data.
+
+### Still true
+
+- Official prices of adidas.ie, asics.com/ie, newbalance.ie and salomon.com are relayed from the earlier research, not re-read: these sites refuse automated access. An estimate or a relayed price is never presented here as verified by this study.
+- No reduced price is proposed.

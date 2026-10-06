@@ -644,3 +644,10 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 
 - Étude produit par produit des 33 articles du catalogue, sur le marché irlandais puis européen : `PRICING-MARKET-RESEARCH.md` (sources, prix observés, RRP, fourchette, prix recommandé, niveau de confiance, justification).
 - Aucun prix modifié : `products.json` et le frontend sont inchangés, en attente de la validation « PRICING APPROVED ».
+
+### Étude de prix — revue finale (6 octobre 2026)
+
+- Seconde passe sur les produits en confiance basse, à revoir, ou sur lesquels les deux études divergent ; nouvelles sources lues (JD Sports IE, Sneakersnstuff EU).
+- Classement final des 33 produits : 23 prêts à valider, 9 à revoir manuellement, 1 sans données suffisantes. Tableau de décision, historique des décisions et contrôle de cohérence ajoutés à `PRICING-MARKET-RESEARCH.md`, à la suite de la première étude (conservée).
+- Incohérences de données relevées, non corrigées : Rain Shell (trois couches ou non), Crossbody Bag (cuir ou polyamide), Gazelle (genre), Dunk Low (promesse de newsletter).
+- Aucun prix modifié : `products.json` et le frontend restent inchangés jusqu'à « PRICING APPROVED ».
