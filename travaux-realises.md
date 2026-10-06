@@ -671,3 +671,21 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 - **Contrôles** : JSON valide, comparaison champ par champ avec le commit précédent (seuls ces 2 prix et ce retrait diffèrent) ; build et 20 tests OK ; dans Chrome à 1440 et 390 px : 12 pages de listes sans lien vers un produit inconnu, les 2 fiches (prix affiché et données structurées), redirection de l'ancienne adresse (y compris l'ancien format `pages/product.html?slug=`), recherche « garoe » sans résultat, console sans erreur.
 - **Écart de procédure** : ces changements avaient d'abord été appliqués avant la confirmation écrite, puis annulés et signalés au propriétaire ; ils n'ont été réappliqués qu'après son approbation.
 - **Inchangés, en attente du propriétaire** : XA PRO 3D GORE-TEX (150 €), New Balance 327 (130 €), Crossbody Bag (matière), Rain Shell. More v4 et Pegasus Trail 5 GORE-TEX conservés (aucune photo libre d'un modèle de remplacement). L'audit des prix n'est pas clos.
+
+### PHASE FINAL FRONT-END POLISH (6 octobre 2026)
+
+Passe de finition avant le backend. Pas de refonte : identité, structure et composants conservés ; aucune dépendance ajoutée ; aucun prix ni donnée produit modifié.
+
+- **Audit** : la plupart des comportements demandés existaient déjà et ont été vérifiés sans réécriture (recherche sur le catalogue, wishlist et panier persistés en localStorage, tiroir panier, Quick add, Recently viewed, bandeau cookies, image secondaire au survol des cartes).
+- **Héros** : hauteur = `100svh` moins la barre d'annonce et la navigation (plafond 72rem), au lieu d'une hauteur qui laissait 48 à 64 px de blanc sous le héros. Concept, photos et absence de contrôles inchangés.
+- **Espacements** : `--spacing-section` passe de 64–160 px à 48–104 px (49 px à 375, 66 px à 768, 97 px à 1440, 104 px à 1728) ; `--spacing-section-sm` de 48–96 à 40–72 px. Titres de section rapprochés de leur contenu (40 → 24/32 px). Footer : marges hautes et basses réduites.
+- **Navigation** : interlettrage 0,085em, soulignement plus proche et plus rapide (220 ms), chevrons atténués qui s'affirment au survol, icônes qui réagissent à la pression. Structure et DUBLIN/01 centré inchangés.
+- **Rain is the dress code / After the last tram** : il n'y avait pas de calque noir ; les photos elles-mêmes étaient denses. Ombres relevées par une courbe (hautes lumières préservées) et fichiers ré-encodés : `rain-campaign-tall`, `-tall-lg`, `-wide`, `dublin-tram-tall`. Textes et composition inchangés.
+- **Révélation éditoriale** : `[data-reveal]` (Rain et Last tram) : la photo apparaît, le texte monte ligne par ligne, une seule fois, via IntersectionObserver ; rien n'est masqué sans JavaScript ni avec `prefers-reduced-motion`.
+- **Cartes produit** : nom souligné au survol de la carte, cœur qui se pose à l'enregistrement, pastille du cœur qui réagit au survol.
+- **Catégories** : photo légèrement rapprochée et assombrie au survol, flèche qui avance. **Marques** : flèche ajoutée sur chaque ligne ; au survol le nom avance, le nombre de styles et la flèche passent en noir.
+- **Footer / newsletter** : liens soulignés au survol ; états du formulaire (`valid`, `invalid`, `done`) visibles sur fond sombre (l'ancien état d'erreur était noir sur noir). Le message de succès dit toujours que l'adresse n'est pas enregistrée.
+- **Fichiers modifiés** : `src/css/theme.css`, `src/css/commerce.css`, `src/css/header.css`, `src/pages/index.html`, `src/partials/footer.html`, `src/js/pages/home.js`, `src/js/modules/newsletter.js`, 4 images éditoriales, pages régénérées.
+- **Contrôles (une passe)** : build et 20 tests OK ; 70 pages × 7 largeurs (375, 430, 768, 1024, 1280, 1440, 1728) : 497 chargements, 0 lien mort, 0 erreur console, 0 débordement horizontal, 0 image cassée ; héros = hauteur d'écran exacte aux 7 largeurs ; 5 parcours client OK ; wishlist, Recently viewed, newsletter, survols marques/catégories, méga-menu, ordre de tabulation et `prefers-reduced-motion` vérifiés sur l'accueil à 1440.
+- **Non vérifié** : Safari et Firefox, appareils réels, lecteur d'écran, mesure Lighthouse.
+- **Laissé au backend** : comptes et authentification, paiement et commande, stock et prix serveur, envoi réel de la newsletter et du formulaire de contact, wishlist/panier/historique liés au compte, recherche serveur.

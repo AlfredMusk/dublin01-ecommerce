@@ -3,7 +3,7 @@
  * [data-products="new|featured|recent"] containers, [data-brand-count="<slug>"].
  */
 
-import { qs, qsa } from '../utils/dom.js';
+import { qsa } from '../utils/dom.js';
 import { loadProducts, brandSlug } from '../data/catalog.js';
 import { productCard, skeletonCards } from '../modules/product-card.js';
 import { getRecentlyViewed } from '../modules/recently-viewed.js';
@@ -38,23 +38,27 @@ async function init() {
   document.dispatchEvent(new CustomEvent('catalog:rendered'));
 }
 
-/** Rain campaign: the copy rises once, the first time the section is seen. */
-function initRainReveal() {
-  const section = qs('[data-rain]');
-  if (!section || !('IntersectionObserver' in window)) return;
+/** Campaign blocks ([data-reveal]) enter once, the first time each is seen. */
+function initReveal() {
+  const sections = qsa('[data-reveal]');
+  if (!sections.length || !('IntersectionObserver' in window)) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  section.setAttribute('data-reveal', '');
   const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting) return;
-      section.setAttribute('data-inview', '');
-      observer.disconnect();
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.setAttribute('data-inview', '');
+        observer.unobserve(entry.target);
+      });
     },
-    { threshold: 0.3 },
+    { threshold: 0.25 },
   );
-  observer.observe(section);
+  sections.forEach((section) => {
+    section.setAttribute('data-reveal-ready', '');
+    observer.observe(section);
+  });
 }
 
 initCarousel();
-initRainReveal();
+initReveal();
 init();

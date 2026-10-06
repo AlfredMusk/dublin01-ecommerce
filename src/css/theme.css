@@ -75,8 +75,9 @@
   --spacing: 0.25rem;
   --spacing-margin: var(--page-margin);
   --spacing-gap: var(--grid-gap);
-  --spacing-section-sm: clamp(3rem, 6vw, 6rem);
-  --spacing-section: clamp(4rem, 10vw, 10rem);
+  /* Between major sections: about 48px on phones, 66px on tablets, 97px at 1440, 104px at most. */
+  --spacing-section-sm: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
+  --spacing-section: clamp(3rem, 2rem + 4.5vw, 6.5rem);
   --spacing-editorial: clamp(6rem, 14vw, 14rem);
   --spacing-touch: 2.75rem; /* 44px minimum target */
 

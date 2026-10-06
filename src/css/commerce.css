@@ -42,14 +42,14 @@
 
   /* ---------- Hero: editorial carousel ---------- */
 
-  /* Fills most of the first screen but stops short of it, so the next
-     section is hinted at below. Slides are stacked; only opacity and
+  /* Fills the first screen exactly: the small viewport height minus the
+     announcement bar and the navigation, so the next section starts at the
+     fold. Capped on very tall screens. Slides are stacked; only opacity and
      transform change, so nothing shifts while they cross-fade. */
   .hero {
-    --hero-peek: 3rem;
     position: relative;
     display: grid;
-    --hero-h: clamp(30rem, calc(100svh - var(--announcement-h) - var(--nav-h) - var(--hero-peek)), 54rem);
+    --hero-h: clamp(30rem, calc(100svh - var(--announcement-h) - var(--nav-h)), 72rem);
     /* Room taken by everything in a slide except its title. */
     --hero-chrome: 17rem;
     height: var(--hero-h);
@@ -62,7 +62,6 @@
 
   @media (width >= 64rem) {
     .hero {
-      --hero-peek: 4rem;
       --hero-chrome: 21rem;
     }
   }
@@ -457,6 +456,27 @@
     transform: scale(0.92);
   }
 
+  .product-card-wish::before {
+    transition: background-color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .product-card-wish:hover::before {
+      background-color: var(--color-bone);
+    }
+  }
+
+  /* Saving a product: the heart settles in once. */
+  .product-card-wish[aria-pressed="true"] .icon {
+    animation: wish-in var(--duration-base) var(--ease-premium);
+  }
+
+  @keyframes wish-in {
+    from {
+      transform: scale(0.7);
+    }
+  }
+
   /* ---------- Quick add ---------- */
 
   /* Touch and small screens: a small "+" button on the photo opens the sheet. */
@@ -600,6 +620,21 @@
 
   .product-card-link:focus-visible {
     outline: none;
+  }
+
+  /* The name underlines while the card is hovered: the whole card is the link. */
+  .product-card-link {
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
+    text-decoration-color: transparent;
+    transition: text-decoration-color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .product-card:hover .product-card-link {
+      text-decoration-color: currentColor;
+    }
   }
 
   .product-card:has(.product-card-link:focus-visible) {
@@ -792,8 +827,18 @@
     }
   }
 
-  /* The copy rises once when the section scrolls into view (set by home.js). */
-  .rain[data-reveal] .rain-content > * {
+  /* ---------- Editorial reveal ---------- */
+
+  /* Campaign blocks ([data-reveal]) enter once when they scroll into view:
+     the photograph fades in, the copy rises line by line. home.js adds
+     data-reveal-ready only when motion is allowed, so without JavaScript or
+     with reduced motion everything is simply visible. */
+  [data-reveal-ready] .reveal-media {
+    opacity: 0;
+    transition: opacity var(--duration-slow) var(--ease-premium);
+  }
+
+  [data-reveal-ready] .reveal-copy > * {
     opacity: 0;
     transform: translateY(0.75rem);
     transition:
@@ -801,21 +846,37 @@
       transform var(--duration-slow) var(--ease-premium);
   }
 
-  .rain[data-reveal][data-inview] .rain-content > * {
+  [data-reveal-ready][data-inview] .reveal-media,
+  [data-reveal-ready][data-inview] .reveal-copy > * {
     opacity: 1;
     transform: none;
   }
 
-  .rain[data-inview] .rain-content > :nth-child(2) {
+  [data-inview] .reveal-copy > :nth-child(2) {
     transition-delay: 80ms;
   }
 
-  .rain[data-inview] .rain-content > :nth-child(3) {
+  [data-inview] .reveal-copy > :nth-child(3) {
     transition-delay: 160ms;
   }
 
-  .rain[data-inview] .rain-content > :nth-child(4) {
+  [data-inview] .reveal-copy > :nth-child(4) {
     transition-delay: 240ms;
+  }
+
+  .night-figure {
+    overflow: clip;
+    background-color: var(--color-neutral-800);
+  }
+
+  .night-figure img {
+    transition: transform 1600ms var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .night-figure:hover img {
+      transform: scale(1.02);
+    }
   }
 
   /* ---------- Category tiles & brands ---------- */
@@ -829,16 +890,20 @@
     aspect-ratio: 4 / 5;
     object-fit: cover;
     background-color: var(--color-bone);
-    transition: transform var(--duration-slow) var(--ease-premium);
+    transition:
+      transform var(--duration-slow) var(--ease-premium),
+      filter var(--duration-base) var(--ease-premium);
   }
 
   .category-tile {
     overflow: hidden;
   }
 
+  /* Hover: the photograph comes slightly closer and dims a touch, the arrow moves on. */
   @media (hover: hover) {
     .category-tile:hover img {
       transform: scale(1.03);
+      filter: brightness(0.93);
     }
   }
 
@@ -884,12 +949,41 @@
     font-weight: 500;
     letter-spacing: var(--text-h2--letter-spacing);
     line-height: 1.1;
-    transition: color var(--duration-fast) var(--ease-premium);
   }
 
+  .brand-list a > span:first-child {
+    transition: transform var(--duration-base) var(--ease-premium);
+  }
+
+  .brand-meta {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .brand-meta .icon {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    color: var(--color-neutral-400);
+    transition:
+      transform var(--duration-base) var(--ease-premium),
+      color var(--duration-fast) var(--ease-premium);
+  }
+
+  /* Hover: the name steps in, the count and the arrow turn ink. */
   @media (hover: hover) {
-    .brand-list a:hover {
-      color: var(--color-neutral-600);
+    .brand-list a:hover > span:first-child {
+      transform: translateX(0.5rem);
+    }
+
+    .brand-list a:hover .brand-count,
+    .brand-list a:hover .brand-meta .icon {
+      color: var(--color-ink);
+    }
+
+    .brand-list a:hover .brand-meta .icon {
+      transform: translateX(0.25rem);
     }
   }
 
@@ -909,6 +1003,7 @@
     font-size: var(--text-label);
     letter-spacing: var(--text-label--letter-spacing);
     text-transform: uppercase;
+    transition: color var(--duration-fast) var(--ease-premium);
   }
 
   /* ---------- Service grid ---------- */
@@ -1508,6 +1603,32 @@
     color: var(--color-neutral-400);
   }
 
+  .input-inverse {
+    transition: border-color var(--duration-fast) var(--ease-premium);
+  }
+
+  @media (hover: hover) {
+    .input-inverse:hover {
+      border-color: var(--color-neutral-200);
+    }
+  }
+
+  /* Newsletter states (set by newsletter.js): a valid address firms up the
+     border, an invalid one gets a second line, on the dark footer. */
+  [data-newsletter][data-state="valid"] .input-inverse {
+    border-color: var(--color-white);
+  }
+
+  .input-inverse[aria-invalid="true"] {
+    border-color: var(--color-white);
+    box-shadow: inset 0 0 0 1px var(--color-white);
+  }
+
+  [data-newsletter][data-state="invalid"] [data-newsletter-status],
+  [data-newsletter][data-state="done"] [data-newsletter-status] {
+    color: var(--color-white);
+  }
+
   .form-error {
     display: flex;
     gap: 0.5rem;
@@ -1858,18 +1979,24 @@
     min-height: 2.75rem;
     color: var(--color-neutral-200);
     font-size: var(--text-body-sm);
-    transition: color var(--duration-fast) var(--ease-premium);
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: transparent;
+    transition:
+      color var(--duration-fast) var(--ease-premium),
+      text-decoration-color var(--duration-fast) var(--ease-premium);
   }
 
   @media (hover: hover) {
     .footer-link:hover {
       color: var(--color-white);
+      text-decoration-color: var(--color-neutral-400);
     }
   }
 
   .footer-link[aria-current="page"] {
     color: var(--color-white);
-    text-decoration: underline;
-    text-underline-offset: 0.3em;
+    text-decoration-color: currentColor;
   }
 }
