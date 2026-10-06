@@ -639,3 +639,8 @@ Dans `src/js/config.js` : nom légal, adresse du siège, numéro CRO, numéro de
 - Décision : aucun produit remplacé, car le catalogue n'affiche jamais la photo d'un autre modèle. Les quatre modèles concernés restent avec un prix marqué « valeur de développement » : Pegasus Trail 5 GORE-TEX (169,99 €, modèle de la saison précédente), XA PRO 3D GORE-TEX (150 €), Fresh Foam X More v4 (160 €), Fresh Foam Garoé Midcut (130 €).
 - `docs/pricing-sources.md` détaille le statut de chacun, les modèles de remplacement sourcés et la réserve sur les photos de la 990v6.
 - À faire avant ouverture : confirmer ces quatre prix sur le tarif fournisseur, ou les remplacer quand de vraies photos produit existeront.
+
+### Étude de prix du marché (6 octobre 2026)
+
+- Étude produit par produit des 33 articles du catalogue, sur le marché irlandais puis européen : `PRICING-MARKET-RESEARCH.md` (sources, prix observés, RRP, fourchette, prix recommandé, niveau de confiance, justification).
+- Aucun prix modifié : `products.json` et le frontend sont inchangés, en attente de la validation « PRICING APPROVED ».
