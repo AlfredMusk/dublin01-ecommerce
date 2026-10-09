@@ -743,3 +743,11 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Accueil** : cohérence mesurée à 390, 768 et 1440 px (ratio 4:5 de toutes les cartes et tuiles, une seule taille de titre de section, boutons de 48 px, un seul espacement de section, alignement gauche unique). Aucun écart, donc aucune modification.
 - **Point à trancher** : le texte dit « livraison gratuite au-dessus de 100 € » alors que le calcul l'accorde dès 100 € pile. Visible maintenant qu'un produit coûte 100 €. Non modifié : règle commerciale à confirmer.
 - **Contrôles finaux** : lint, build, 27 tests sur 27 ; parcours client de 13 étapes passé ; 91 fichiers HTML à 8 largeurs (320 à 1728 px), 728 chargements, sans débordement, image cassée ni erreur console. Pas de TypeScript ni d'ESLint dans ce projet : non exécutés. Non testé : Safari, Firefox, appareils réels, lecteur d'écran.
+
+### FINAL FRONT-END ACCEPTANCE (9 octobre 2026)
+
+- **Rapport** : `DUBLIN01_FRONTEND_FINAL_REPORT.md` (10 sections). **Statut : CONDITIONAL PASS.**
+- **Exécuté** : lint, build, 27 tests ; 20 tests fonctionnels dans Chrome ; 32 fiches produit contrôlées une par une ; transition automatique du héros ; clavier (méga-menu, recherche, tiroir panier) ; persistance panier et wishlist ; états vides et d'erreur ; compteurs de marque ; Lighthouse 13.5 refait sur 4 pages.
+- **Corrigé** : description de Running & trail (citait adidas sans produit dans la collection) ; textes de la page Clothing (« technical shells », « rain shells »).
+- **Non modifié, à confirmer par le propriétaire** : seuil de livraison gratuite (textes « over €100 », calcul dès 100 € inclus) ; « Based in Dublin » ; frais, retours et TVA (valeurs de développement) ; prix et données en attente.
+- **Aucun prix modifié.** Non testé : Safari, Firefox, appareils réels, lecteur d'écran. Pas de TypeScript ni d'ESLint dans le projet.
