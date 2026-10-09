@@ -19,11 +19,11 @@ be confirmed before launch.
 | adidas | Samba OG | Clay Strata | 120.00 | https://www.adidas.ie/samba-og-shoes/HP3941.html | 2026-10-04 | official Irish storefront |
 | Nike | Pegasus Trail 5 GORE-TEX | White / Bright Crimson | 169.99 | — | — | development value, not verified |
 | New Balance | 997H | Grey | 110.00 | https://www.newbalance.ie/en/pd/997h/CM997HV1-25848.html | 2026-10-04 | official Irish storefront |
-| Salomon | XA PRO 3D GORE-TEX | Black | 160.00 | https://www.footshop.ie/en/search?search_query=salomon+xa+pro+3d | 2026-10-06 | Irish retailer regular price for the GORE-TEX version; approved by the owner on 2026-10-09 |
+| Salomon | XA PRO 3D GORE-TEX | Black | 150.00 | — | — | development value, not verified |
 | New Balance | Fresh Foam X More v4 | Navy | 160.00 | — | — | development value, not verified |
 | adidas | Handball Spezial | Core Navy / Gum | 110.00 | https://www.adidas.ie/handball-spezial-shoes/BD7633.html | 2026-10-04 | official Irish storefront |
 | Nike | Air Max 90 | Iron Grey | 149.99 | https://www.nike.com/ie/t/air-max-90-mens-shoes-exykZV6r/CN8490-100 | 2026-10-04 | official Irish storefront |
-| New Balance | 327 | Orange / White | 130.00 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 2026-10-04 | official Irish storefront; kept at 130 by the owner on 2026-10-09 (120 applies to some other colourways only) |
+| New Balance | 327 | Orange / White | 130.00 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 2026-10-04 | official Irish storefront |
 | ASICS | GEL-Kayano 14 | White / Midnight | 170.00 | https://www.asics.com/ie/en-ie/gel-kayano-14/p/1203A537-200.html | 2026-10-04 | official Irish storefront |
 | adidas | Gazelle | Core Black / White | 110.00 | https://www.adidas.ie/gazelle-shoes/BB5476.html | 2026-10-04 | official Irish storefront |
 | Nike | Air Force 1 '07 | White / White | 119.99 | https://www.nike.com/ie/t/air-force-1-07-mens-shoes-jBrhbr/CW2288-111 | 2026-10-04 | official Irish storefront |
@@ -48,7 +48,7 @@ the four models below stay, with their status stated plainly:
 | Model | Price in catalogue | Status |
 |---|---|---|
 | Nike Pegasus Trail 5 GORE-TEX | 169.99 | No longer sold in adult sizes on nike.com/ie (replaced by ACG Pegasus Trail, 149.99; GORE-TEX 169.99). Previous-season model; development value aligned on the current GORE-TEX price. |
-| Salomon XA PRO 3D GORE-TEX | 160.00 | Official price of the current XA Pro 3D V9 is 150 (classic "sneaker" version 140). The photographed pair is an earlier GORE-TEX generation; development value.  Raised to 160 on 2026-10-09 (owner approval): regular price of the GORE-TEX version at Footshop IE. |
+| Salomon XA PRO 3D GORE-TEX | 150.00 | Official price of the current XA Pro 3D V9 is 150 (classic "sneaker" version 140). The photographed pair is an earlier GORE-TEX generation; development value. |
 | New Balance Fresh Foam X More v4 | 160.00 | No official Irish price recorded. Development value. |
 
 Before launch, either confirm these four with the supplier's price list or
@@ -81,7 +81,7 @@ Canvas Tote 45, Running Tee 50, Running Short 55.
 ## Salomon (checked 2026-10-05, Salomon EU, cross-checked with Irish retailers)
 
 XT-6 180 · Speedcross 6 150 · XA Pro 3D V9 150 · XT-Whisper 150. The catalogue's
-XA PRO 3D GORE-TEX was priced at 150 on that basis and is 160 since 2026-10-09 (GORE-TEX version, Footshop IE); the photographed pair is an
+XA PRO 3D GORE-TEX is priced at 150 on that basis; the photographed pair is an
 earlier generation, so the price stays flagged as a development value. Full
 research file: `research/dublin01/salomon-and-house-pricing.md` in the project's
 shared folder.

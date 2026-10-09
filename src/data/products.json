@@ -962,7 +962,7 @@
     "subcategory": "trail",
     "gender": "unisex",
     "style": "trail",
-    "price": 160.0,
+    "price": 150.0,
     "compareAtPrice": null,
     "currency": "EUR",
     "images": [
@@ -1029,10 +1029,7 @@
     ],
     "collection": "Core",
     "badge": null,
-    "priceSource": {
-      "url": "https://www.footshop.ie/en/search?search_query=salomon+xa+pro+3d",
-      "checked": "2026-10-06"
-    },
+    "priceSource": null,
     "materials": {
       "upper": "Synthetic and textile with GORE-TEX membrane",
       "lining": "Textile",

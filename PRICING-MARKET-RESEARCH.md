@@ -625,3 +625,9 @@ No other price changed. Catalogue: 32 products, total 3,512.95 (the two changes 
 The owner's detailed message, received after the integration above, keeps the **New Balance 327 at 130**: 120 applies to some other colourways only, and orange / white is no longer listed on newbalance.ie. The 327 is therefore back at 130 with its original source. The **XA PRO 3D GORE-TEX stays at 160**: the photograph shows the classic XA PRO 3D silhouette with the "3D Chassis" mark and a GORE-TEX tag, not the V9 (assessment from the photograph, not from a product reference).
 
 Catalogue total: 3,522.95.
+
+### Restoration of 9 October 2026
+
+The "PRICING APPROVED" message of 9 October named no choice, so it did not authorise a price change. Both prices are back to the approved state: **Salomon XA PRO 3D GORE-TEX 150**, **New Balance 327 130**. The two sections above are kept as a record of what was applied and then undone. Catalogue: 32 products, total 3,512.95.
+
+**Open, waiting for a named decision:** XA PRO 3D GORE-TEX (160 if the pair is the sportstyle GTX model, 170 if it is the V9 GTX; the photograph shows the classic XA PRO 3D silhouette with the "3D Chassis" mark and a GORE-TEX tag), Crossbody Bag material, Gazelle lining, Rain Shell construction.
