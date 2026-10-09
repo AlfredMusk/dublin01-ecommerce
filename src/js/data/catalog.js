@@ -127,7 +127,9 @@ export function searchProducts(products, query) {
       ];
       let score = 0;
       for (const term of terms) {
-        const hit = fields.reduce((best, [text, weight]) => (text.includes(term) ? Math.max(best, weight) : best), 0);
+        // A single character must be a whole word ("a b c" would otherwise match every product).
+        const matches = (text) => (term.length === 1 ? text.split(' ').includes(term) : text.includes(term));
+        const hit = fields.reduce((best, [text, weight]) => (matches(text) ? Math.max(best, weight) : best), 0);
         if (!hit) return null; // every term must match somewhere
         score += hit;
       }

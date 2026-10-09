@@ -108,3 +108,9 @@ test('prices are formatted as euro for Ireland', () => {
   assert.equal(formatPrice(119.99), '€119.99');
   assert.equal(formatPrice(1234.5), '€1,234.50');
 });
+
+test('search does not match stray single letters inside words', () => {
+  assert.equal(searchProducts(products, "a'b\"c").length, 0);
+  assert.ok(searchProducts(products, 'samba').length >= 2);
+});
+

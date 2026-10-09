@@ -1,6 +1,6 @@
 {
   "announcement": {
-    "delivery": "Free delivery in Ireland over €100",
+    "delivery": "Free delivery in Ireland from {{commerce.freeDeliveryThreshold}}",
     "returns": "30-day returns"
   },
   "nav": {

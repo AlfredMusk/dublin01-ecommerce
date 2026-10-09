@@ -76,7 +76,7 @@ ${columns}
     </div>
     <div class="mega-foot">
       <a class="link-action" href="{{base}}${item.href}">${esc(item.allLabel ?? item.label)} ${ARROW}</a>
-      <p class="type-micro text-neutral-600">Free delivery in Ireland over €100 · 30-day returns</p>
+      <p class="type-micro text-neutral-600">Free delivery in Ireland from {{commerce.freeDeliveryThreshold}} · 30-day returns</p>
     </div>
   </div>
 </div>`;
@@ -261,7 +261,7 @@ const BRAND_BLURBS = {
   'New Balance': 'The 990v6 and 997H in grey, the 327, and Fresh Foam for the road.',
   ASICS: 'The GEL-Kayano 14, in two colourways.',
   Salomon: 'Trail shoes that work as well in the city.',
-  'DUBLIN/01': 'Our own label: hoodies, tees, outerwear and accessories designed in Dublin.',
+  'DUBLIN/01': 'Our own label: hoodies, tees, outerwear and accessories inspired by Dublin.',
 };
 const brandSlug = (brand) => brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 

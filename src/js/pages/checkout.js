@@ -64,7 +64,7 @@ const SUMMARIES = {
     [`${value('firstName')} ${value('lastName')}`, value('address1'), value('address2'), value('city'), `Co. ${value('county')}`, value('eircode').toUpperCase(), 'Ireland']
       .filter(Boolean)
       .join(', '),
-  payment: () => 'Card payment is not available yet',
+  payment: () => 'Card payment is unavailable in this demo',
 };
 
 function open(step, { focus = true } = {}) {

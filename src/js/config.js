@@ -26,9 +26,10 @@ export const commerce = {
   country: 'Ireland',
   countryCode: 'IE',
   pricesIncludeVat: true,
-  freeDeliveryThreshold: 100, // development value
-  standardDelivery: 4.95, // development value
-  expressDelivery: 9.95, // development value
+  // Illustrative portfolio data, not a verified shipping service or tax position.
+  freeDeliveryThreshold: 100, // free standard delivery from this subtotal, inclusive
+  standardDelivery: 4.95, // illustrative
+  expressDelivery: 9.95, // illustrative
   returnsDays: 30, // voluntary returns policy, on top of the statutory 14-day right to cancel
   statutoryCancellationDays: 14,
   maxLineQuantity: 10,

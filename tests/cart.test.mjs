@@ -76,3 +76,14 @@ test('wishlist toggles, persists and removes', () => {
   assert.deepEqual(getWishlist(), []);
   assert.equal(JSON.parse(window.localStorage.getItem('dublin01:wishlist')).length, 0);
 });
+
+test('free delivery starts at the threshold itself (inclusive)', () => {
+  resetStorage();
+  const at = { slug: 'at', name: 'At', price: FREE_DELIVERY_THRESHOLD, sizes: ['One size'], inventory: { 'One size': 5 }, availableSizes: ['One size'] };
+  addToCart(at, 'One size', 1);
+  assert.equal(cartDetails([at]).delivery, 0);
+  resetStorage();
+  const under = { ...at, slug: 'under', price: FREE_DELIVERY_THRESHOLD - 0.01 };
+  addToCart(under, 'One size', 1);
+  assert.equal(cartDetails([under]).delivery, STANDARD_DELIVERY);
+});

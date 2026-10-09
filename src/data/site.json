@@ -3,7 +3,7 @@
     "messages": [
       {
         "id": "delivery",
-        "text": "Free delivery in Ireland over €100",
+        "text": "Free delivery in Ireland from {{commerce.freeDeliveryThreshold}}",
         "href": "delivery.html"
       }
     ],

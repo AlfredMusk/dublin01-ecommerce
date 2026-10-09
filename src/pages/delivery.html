@@ -1,6 +1,6 @@
 <!--
 title: Delivery — DUBLIN/01
-description: Delivery options and charges for DUBLIN/01 orders in Ireland. Free standard delivery on orders over €100.
+description: Delivery options and charges for DUBLIN/01 orders in Ireland. Free standard delivery on orders of {{commerce.freeDeliveryThreshold}} or more.
 breadcrumb: Delivery
 -->
 <section class="container-site pb-section pt-6 lg:pt-8">
@@ -10,7 +10,7 @@ breadcrumb: Delivery
       <caption class="sr-only">Delivery options</caption>
       <thead><tr><th scope="col">Option</th><th scope="col">Service</th><th scope="col">Cost</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Standard</th><td>Tracked delivery</td><td>{{commerce.standardDelivery}}, free on orders over {{commerce.freeDeliveryThreshold}}</td></tr>
+        <tr><th scope="row">Standard</th><td>Tracked delivery</td><td>{{commerce.standardDelivery}}, free on orders of {{commerce.freeDeliveryThreshold}} or more</td></tr>
         <tr><th scope="row">Express</th><td>Priority tracked delivery</td><td>{{commerce.expressDelivery}}</td></tr>
       </tbody>
     </table>

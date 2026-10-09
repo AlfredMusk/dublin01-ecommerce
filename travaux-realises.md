@@ -751,3 +751,14 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Corrigé** : description de Running & trail (citait adidas sans produit dans la collection) ; textes de la page Clothing (« technical shells », « rain shells »).
 - **Non modifié, à confirmer par le propriétaire** : seuil de livraison gratuite (textes « over €100 », calcul dès 100 € inclus) ; « Based in Dublin » ; frais, retours et TVA (valeurs de développement) ; prix et données en attente.
 - **Aucun prix modifié.** Non testé : Safari, Firefox, appareils réels, lecteur d'écran. Pas de TypeScript ni d'ESLint dans le projet.
+
+### FINAL FRONT-END RELEASE (9 octobre 2026)
+
+- **Cadrage du propriétaire** : DUBLIN/01 est un projet portfolio front-end, pas un commerce réel.
+- **Corrections** : livraison gratuite « à partir de 100 € » (texte et calcul alignés, seuil lu dans `config.js`, test ajouté) ; « Inspired by Dublin » à la place de « Based in Dublin » (accueil, About, Terms, Privacy, FAQ, footer) ; mentions de démo (ligne de footer, encadré sur chaque page d'information, checkout, comptes, newsletter, stock) ; recherche (les lettres isolées ne correspondent plus à l'intérieur des mots, test ajouté).
+- **Documentation** : `README.md` réécrit en anglais avec 4 captures réelles (`docs/screenshots`) ; `DUBLIN01_FRONTEND_FINAL_REPORT.md` en 13 sections, verdict CONDITIONAL PASS.
+- **Contrôles réels** : lint, build, 29 tests sur 29 ; 24 parcours dans Chrome ; 32 fiches ; 91 fichiers HTML à 9 largeurs (320 à 1920 px), 819 chargements sans débordement, image cassée ni erreur ; Lighthouse 13.5 mobile : accueil 88, catalogue 98, fiche 97, panier 99, accessibilité 100.
+- **Incident de test** : le serveur de dev s'est arrêté (« too many open files ») quand plusieurs séries de tests tournaient en même temps ; relancé, tests refaits l'un après l'autre.
+- **Non fait** : tests Firefox et WebKit (moteurs non installés pour l'outil de test), appareils réels, lecteur d'écran.
+- **GitHub** : dépôt public créé par le propriétaire (`AlfredMusk/dublin01-ecommerce`). Rien poussé : les commits portent l'email personnel du propriétaire ; en attente de son choix avant publication.
+- **Aucun prix modifié.**

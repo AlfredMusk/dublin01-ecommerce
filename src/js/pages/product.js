@@ -24,9 +24,10 @@ const heart =
 const CATEGORY_PAGE = { sneakers: ['sneakers', 'Sneakers'], clothing: ['clothing', 'Clothing'], accessories: ['accessories', 'Accessories'] };
 
 function stockMessage(p) {
-  if (isSoldOut(p)) return 'Sold out in all sizes.';
-  if (p.stock === 'low_stock') return 'Low stock: only a few left.';
-  return 'In stock.';
+  // Stock comes from the demo catalogue, not from a live inventory: say so.
+  if (isSoldOut(p)) return 'Sold out in all sizes (demo stock).';
+  if (p.stock === 'low_stock') return 'Low stock (demo stock).';
+  return 'In stock (demo stock).';
 }
 
 function galleryHtml(p) {
@@ -159,7 +160,7 @@ async function init() {
         </form>
 
         <ul class="type-body-sm mt-8 space-y-2 text-neutral-600" role="list">
-          <li>Free delivery in Ireland on orders over ${formatPrice(commerce.freeDeliveryThreshold)}</li>
+          <li>Free delivery in Ireland on orders of ${formatPrice(commerce.freeDeliveryThreshold)} or more</li>
           <li>${commerce.returnsDays}-day returns</li>
         </ul>
 
@@ -186,7 +187,7 @@ async function init() {
           </details>
           <details class="accordion">
             <summary class="accordion-summary">Delivery</summary>
-            <div class="accordion-body"><p>Standard delivery across Ireland: ${formatPrice(commerce.standardDelivery)}, free on orders over ${formatPrice(commerce.freeDeliveryThreshold)}. Express delivery: ${formatPrice(commerce.expressDelivery)}. The delivery charge is shown before you pay.</p>
+            <div class="accordion-body"><p>Standard delivery across Ireland: ${formatPrice(commerce.standardDelivery)}, free on orders of ${formatPrice(commerce.freeDeliveryThreshold)} or more. Express delivery: ${formatPrice(commerce.expressDelivery)}. The delivery charge is shown before you pay.</p>
               <a class="link-editorial mt-2 inline-block" href="${pageUrl('delivery')}">Delivery information</a></div>
           </details>
           <details class="accordion">

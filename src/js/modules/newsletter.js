@@ -31,7 +31,7 @@ export function initNewsletter() {
         return;
       }
       form.reset();
-      setState('done', 'Thanks. The newsletter is not open yet, so your address was not saved. Please try again soon.');
+      setState('done', 'Thanks. This is a demo: the newsletter is not connected, so your address was not saved or sent anywhere.');
     });
 
     input.addEventListener('input', () => setState(EMAIL.test(input.value.trim()) ? 'valid' : ''));
