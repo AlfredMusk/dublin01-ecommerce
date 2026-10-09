@@ -23,7 +23,7 @@ be confirmed before launch.
 | New Balance | Fresh Foam X More v4 | Navy | 160.00 | — | — | development value, not verified |
 | adidas | Handball Spezial | Core Navy / Gum | 110.00 | https://www.adidas.ie/handball-spezial-shoes/BD7633.html | 2026-10-04 | official Irish storefront |
 | Nike | Air Max 90 | Iron Grey | 149.99 | https://www.nike.com/ie/t/air-max-90-mens-shoes-exykZV6r/CN8490-100 | 2026-10-04 | official Irish storefront |
-| New Balance | 327 | Orange / White | 120.00 | https://www.footshop.ie/en/search?search_query=new+balance+327 | 2026-10-06 | Irish retailer regular price; newbalance.ie lists 120–130 by colourway; approved by the owner on 2026-10-09 |
+| New Balance | 327 | Orange / White | 130.00 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 2026-10-04 | official Irish storefront; kept at 130 by the owner on 2026-10-09 (120 applies to some other colourways only) |
 | ASICS | GEL-Kayano 14 | White / Midnight | 170.00 | https://www.asics.com/ie/en-ie/gel-kayano-14/p/1203A537-200.html | 2026-10-04 | official Irish storefront |
 | adidas | Gazelle | Core Black / White | 110.00 | https://www.adidas.ie/gazelle-shoes/BB5476.html | 2026-10-04 | official Irish storefront |
 | Nike | Air Force 1 '07 | White / White | 119.99 | https://www.nike.com/ie/t/air-force-1-07-mens-shoes-jBrhbr/CW2288-111 | 2026-10-04 | official Irish storefront |
@@ -125,6 +125,6 @@ Supplied by the price research of 2026-10-04.
 | New Balance | 2002R | 150 | https://www.newbalance.ie/en/pd/2002r/M2002RV1-42829-PMG-EMEA.html | 150 | yes | high |
 | New Balance | 1080v15 | 180 | https://www.newbalance.ie/en/pd/1080v15-mens/M1080V15_RU-FTW-802829.html | 180 | yes | high |
 | New Balance | 574 Core | 120 | https://www.newbalance.ie/en/pd/574-core/ML574EVG-2E-04.html | 120 | yes | high |
-| New Balance | 327 | 130 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 130 | yes | medium | Catalogue price 120 since 2026-10-09 (owner approval). |
+| New Balance | 327 | 130 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 130 | yes | medium |
 
 The New Balance Fresh Foam Garoé Midcut was removed from the catalogue on 2026-10-06: no official Irish price could be established for it.

@@ -619,3 +619,9 @@ Approved in writing by the owner ("PRICING APPROVED", in answer to the list of o
 No other price changed. Catalogue: 32 products, total 3,512.95 (the two changes cancel out).
 
 **Still open (product data, not prices):** Crossbody Bag material (description says leather, material says polyamide), Gazelle lining (leather in the details, textile in the materials), Rain Shell construction. The approval named no choice for these, so they are unchanged.
+
+### Correction of 9 October 2026 (same day)
+
+The owner's detailed message, received after the integration above, keeps the **New Balance 327 at 130**: 120 applies to some other colourways only, and orange / white is no longer listed on newbalance.ie. The 327 is therefore back at 130 with its original source. The **XA PRO 3D GORE-TEX stays at 160**: the photograph shows the classic XA PRO 3D silhouette with the "3D Chassis" mark and a GORE-TEX tag, not the V9 (assessment from the photograph, not from a product reference).
+
+Catalogue total: 3,522.95.
