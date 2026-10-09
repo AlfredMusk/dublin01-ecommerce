@@ -177,8 +177,10 @@ async function init() {
             <summary class="accordion-summary">Materials and care</summary>
             <div class="accordion-body">${
               p.materials
-                ? `<dl class="space-y-1"><div><dt class="inline text-neutral-600">Upper: </dt><dd class="inline">${escapeHtml(p.materials.upper)}</dd></div><div><dt class="inline text-neutral-600">Lining: </dt><dd class="inline">${escapeHtml(p.materials.lining)}</dd></div><div><dt class="inline text-neutral-600">Sole: </dt><dd class="inline">${escapeHtml(p.materials.sole)}</dd></div></dl>`
-                : `<p>Composition: ${escapeHtml(p.material)}.</p>`
+                ? `<dl class="space-y-1"><div><dt class="inline text-neutral-600">Upper: </dt><dd class="inline">${escapeHtml(p.materials.upper)}</dd></div>${p.materials.lining ? `<div><dt class="inline text-neutral-600">Lining: </dt><dd class="inline">${escapeHtml(p.materials.lining)}</dd></div>` : ''}<div><dt class="inline text-neutral-600">Sole: </dt><dd class="inline">${escapeHtml(p.materials.sole)}</dd></div></dl>`
+                : p.material
+                  ? `<p>Composition: ${escapeHtml(p.material)}.</p>`
+                  : '<p>Composition and care details are not published for this product yet.</p>'
             }
               ${p.care?.length ? `<ul class="mt-3 list-disc space-y-1 pl-5">${p.care.map((line) => `<li>${escapeHtml(line)}</li>`).join('')}</ul>` : ''}</div>
           </details>

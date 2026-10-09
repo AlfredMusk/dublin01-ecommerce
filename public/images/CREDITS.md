@@ -29,13 +29,11 @@ All photographs are from [Unsplash](https://unsplash.com) and used under the [Un
 | `products/half-zip-fleece-ecru-1.webp` | kamal alkhatib ([@pringles_2002](https://unsplash.com/@pringles_2002)) | https://unsplash.com/photos/n7mTIkd26h4 |
 | `products/half-zip-fleece-ecru-2.webp` | Sébastien Mouilleau ([@sebastien_mgb_photography](https://unsplash.com/@sebastien_mgb_photography)) | https://unsplash.com/photos/T096kjLSWxo |
 | `products/rain-shell-black-1.webp` | Wildan Ramdani Akbar ([@wildannr_a](https://unsplash.com/@wildannr_a)) | https://unsplash.com/photos/bQpLRVoz1NA |
-| `products/rain-shell-black-2.webp` | twentyonekoalas ([@twentyonekoalas](https://unsplash.com/@twentyonekoalas)) | https://unsplash.com/photos/pWI7Il9qxfM |
 | `products/loopback-sweatpant-grey-1.webp` | engin akyurt ([@enginakyurt](https://unsplash.com/@enginakyurt)) | https://unsplash.com/photos/D0eeGzigQ2k |
 | `products/loopback-sweatpant-grey-2.webp` | engin akyurt ([@enginakyurt](https://unsplash.com/@enginakyurt)) | https://unsplash.com/photos/q7HfJHayc18 |
 | `products/wool-beanie-black-1.webp` | Spencer Quast ([@sqencer](https://unsplash.com/@sqencer)) | https://unsplash.com/photos/b46qhdnHnrM |
 | `products/wool-beanie-black-2.webp` | Brock Wegner ([@isthatbrock](https://unsplash.com/@isthatbrock)) | https://unsplash.com/photos/weia3bEeYKU |
 | `products/crossbody-bag-black-1.webp` | Maryam Nemati ([@maryamnemati](https://unsplash.com/@maryamnemati)) | https://unsplash.com/photos/hWs4qKwJkD4 |
-| `products/crossbody-bag-black-2.webp` | engin akyurt ([@enginakyurt](https://unsplash.com/@enginakyurt)) | https://unsplash.com/photos/iz1Y0EtTN1c |
 | `products/crew-socks-3-pack-white-1.webp` | Noah Buscher ([@noahbuscher](https://unsplash.com/@noahbuscher)) | https://unsplash.com/photos/EqWp1_pJQBo |
 | `products/crew-socks-3-pack-white-2.webp` | Noah Buscher ([@noahbuscher](https://unsplash.com/@noahbuscher)) | https://unsplash.com/photos/I45NPxRDLfU |
 | `products/nike-cortez-leather-white-black-1.webp` | Brian Hall ([@bfhall121](https://unsplash.com/@bfhall121)) | https://unsplash.com/photos/OShz0kboddc |

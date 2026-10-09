@@ -716,3 +716,13 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Ce qui s'est passé** : j'ai appliqué deux changements de prix (XA PRO 3D GORE-TEX 150 → 160 €, New Balance 327 130 → 120 €, commit `5fb5383`) sur un message « PRICING APPROVED » qui ne nommait aucun choix. La règle du projet exige un accord écrit qui nomme le prix.
 - **Restauration** : New Balance 327 revenue à 130 € (commit `6cd6b12`), XA PRO 3D GORE-TEX revenue à 150 € (commit suivant), sources d'origine rétablies, sans réécrire l'historique. Catalogue : 32 produits, 3 512,95 €.
 - **Règle retenue** : une approbation sans prix nommé ne déclenche aucune modification ; je demande le choix exact avant d'agir.
+
+### Décision sur les quatre points ouverts (9 octobre 2026)
+
+- **Autorisation** : le propriétaire a délégué le choix par écrit (« Choisi toi même le plus concret »). Option la plus prudente retenue partout : aucune variante ni matière devinée.
+- **XA PRO 3D GORE-TEX** : aucun changement, reste à 150 € (variante de la paire non confirmée par une référence produit).
+- **Crossbody Bag** : 65 € inchangé ; photo 2 retirée (autre sac) ; description et détails réécrits d'après la photo 1 ; plus aucune matière annoncée (`material` et `care` à `null`, la fiche indique que la composition n'est pas encore publiée).
+- **Gazelle** : mention de la doublure retirée des détails et des matières.
+- **Rain Shell** : fiche réécrite en coupe-vent déperlant léger à enfiler, tel que photographié ; photo 2 retirée (autre veste, logo d'une autre marque visible) ; 195 € → 95 €, prix estimé par comparaison, confiance faible, à valider.
+- **Code** : `product.js` n'affiche la doublure et la composition que si elles existent ; type `Product` mis à jour dans `catalog.js`.
+- **Catalogue** : 32 produits, total 3 412,95 €.

@@ -9,23 +9,22 @@
     "subcategory": "jackets",
     "gender": "unisex",
     "style": null,
-    "price": 195.0,
+    "price": 95.0,
     "compareAtPrice": null,
     "currency": "EUR",
     "images": [
-      "public/images/products/rain-shell-black-1.webp",
-      "public/images/products/rain-shell-black-2.webp"
+      "public/images/products/rain-shell-black-1.webp"
     ],
     "color": "Black",
     "colors": [
       "black"
     ],
-    "description": "A waterproof three-layer shell with taped seams and a peaked hood. Built for Dublin weather, which is to say most weather.",
+    "description": "A light, water-repellent pullover shell in crinkled nylon, with a hood and a front pocket. Made for showers and wind between two doorways, not for a day on the hill: it is not a seam-sealed waterproof.",
     "details": [
-      "Waterproof 3-layer fabric, taped seams",
-      "Adjustable peaked hood",
-      "Two-way front zip",
-      "Packs into its own pocket"
+      "Water-repellent crinkled nylon",
+      "Half-zip pullover with drawcord hood",
+      "Front kangaroo pocket",
+      "Not seam-sealed: for showers, not downpours"
     ],
     "material": "100% polyamide shell, 100% polyester lining",
     "care": [
@@ -57,7 +56,9 @@
     "keywords": [
       "rain",
       "jacket",
-      "waterproof",
+      "water-repellent",
+      "windbreaker",
+      "anorak",
       "shell",
       "black"
     ],
@@ -1839,25 +1840,21 @@
     "compareAtPrice": null,
     "currency": "EUR",
     "images": [
-      "public/images/products/crossbody-bag-black-1.webp",
-      "public/images/products/crossbody-bag-black-2.webp"
+      "public/images/products/crossbody-bag-black-1.webp"
     ],
     "color": "Black",
     "colors": [
       "black"
     ],
-    "description": "A compact leather crossbody for keys, phone and a Leap card. Adjustable strap, two zip compartments.",
+    "description": "A compact crossbody with a smooth finish for keys, phone and a Leap card. Adjustable strap, zip top and a zipped front pocket.",
     "details": [
-      "Full-grain leather",
-      "Two zip compartments",
-      "Adjustable webbing strap",
+      "Smooth black finish",
+      "Zip top and zipped front pocket",
+      "Adjustable strap with buckle",
       "24 × 16 × 6 cm"
     ],
-    "material": "100% polyamide",
-    "care": [
-      "Hand wash cold",
-      "Dry flat"
-    ],
+    "material": null,
+    "care": null,
     "sizeSystem": null,
     "sizes": [
       "One size"
@@ -1872,7 +1869,6 @@
     "keywords": [
       "bag",
       "crossbody",
-      "leather",
       "black"
     ],
     "collection": "Core",
@@ -1904,7 +1900,6 @@
     "description": "Soft suede, contrast stripes and a slim profile. A 1960s trainer that still looks right with everything.",
     "details": [
       "Suede upper",
-      "Leather lining",
       "Rubber outsole",
       "True to size"
     ],
@@ -1956,7 +1951,6 @@
     },
     "materials": {
       "upper": "Suede",
-      "lining": "Textile",
       "sole": "Rubber"
     }
   },

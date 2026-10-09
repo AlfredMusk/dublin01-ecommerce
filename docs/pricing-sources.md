@@ -71,7 +71,7 @@ The Sale page shows an empty state until then.
 
 Own-label prices are set by the business. Working prices, reviewed on 2026-10-05
 against comparable independent labels: Heavyweight Hoodie 95, Boxy Tee 45, Coach
-Jacket 129, Rain Shell 195, Half-Zip Fleece 100, Wide Cargo Trouser 120, Loopback
+Jacket 129, Rain Shell 95 (estimate, see below), Half-Zip Fleece 100, Wide Cargo Trouser 120, Loopback
 Sweatpant 85, Merino Beanie 35, Crossbody Bag 65, Crew Socks 3-pack 25, Canvas
 Tote 45, Six-Panel Cap 39, Overshirt 125, Running Tee 50, Running Short 55.
 
@@ -128,3 +128,14 @@ Supplied by the price research of 2026-10-04.
 | New Balance | 327 | 130 | https://www.newbalance.ie/en/pd/327/MS327V1-40892.html | 130 | yes | medium |
 
 The New Balance Fresh Foam Garoé Midcut was removed from the catalogue on 2026-10-06: no official Irish price could be established for it.
+
+## Rain Shell, 95 (set on 2026-10-09)
+
+**BENCHMARK-BASED PRICE, confidence LOW. An estimate to validate, not a market price.**
+The product page was rewritten to match its photograph: a light, water-repellent
+pullover shell, not a seam-sealed three-layer jacket, so 195 no longer applied.
+Comparables relayed from the project research file (`part-b-house-benchmarks`,
+not re-read during this change): Rains Long Jacket 99.90 (single-layer PU);
+Patagonia Torrentshell 3L 200 as an upper bound that is not comparable.
+The owner delegated this choice in writing on 2026-10-09 and should confirm the figure.
+

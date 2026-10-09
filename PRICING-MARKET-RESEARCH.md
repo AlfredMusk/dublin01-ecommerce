@@ -631,3 +631,20 @@ Catalogue total: 3,522.95.
 The "PRICING APPROVED" message of 9 October named no choice, so it did not authorise a price change. Both prices are back to the approved state: **Salomon XA PRO 3D GORE-TEX 150**, **New Balance 327 130**. The two sections above are kept as a record of what was applied and then undone. Catalogue: 32 products, total 3,512.95.
 
 **Open, waiting for a named decision:** XA PRO 3D GORE-TEX (160 if the pair is the sportstyle GTX model, 170 if it is the V9 GTX; the photograph shows the classic XA PRO 3D silhouette with the "3D Chassis" mark and a GORE-TEX tag), Crossbody Bag material, Gazelle lining, Rain Shell construction.
+
+## Decision of 9 October 2026 on the four open points
+
+The owner delegated the choice in writing ("Choisi toi même le plus concret"). The most conservative option was applied to each: nothing guessed about a variant or a material.
+
+| Point | Decision | Fields changed |
+|---|---|---|
+| Salomon XA PRO 3D GORE-TEX | **No change, stays at 150.** The exact variant of the photographed pair is not confirmed by a product reference | none |
+| Crossbody Bag | Stays at 65. Second photograph removed (it showed a different bag). No material is claimed any more | images, description, details, material (null), care (null), keywords |
+| adidas Gazelle | Every statement about the lining removed | details, materials.lining |
+| Rain Shell | Rewritten as a light water-repellent pullover shell, as photographed. Second photograph removed (a different jacket carrying another brand's logo). **195 → 95, BENCHMARK-BASED PRICE, confidence LOW: an estimate to validate, not a market price** | price, images, description, details, keywords |
+
+Comparables for the Rain Shell, relayed from the research file `part-b-house-benchmarks` and not re-read here: Rains Long Jacket 99.90 (single-layer PU); Patagonia Torrentshell 3L 200 (upper bound, not comparable).
+
+Catalogue: 32 products, total 3,412.95.
+
+**To confirm by the owner:** the Rain Shell price; the XA PRO variant (160 for the sportstyle GTX, 170 for the V9 GTX) if a product reference becomes available; the real material of the Crossbody Bag and the Gazelle lining when supplier data exists.
