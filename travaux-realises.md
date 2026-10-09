@@ -689,3 +689,14 @@ Passe de finition avant le backend. Pas de refonte : identité, structure et com
 - **Contrôles (une passe)** : build et 20 tests OK ; 70 pages × 7 largeurs (375, 430, 768, 1024, 1280, 1440, 1728) : 497 chargements, 0 lien mort, 0 erreur console, 0 débordement horizontal, 0 image cassée ; héros = hauteur d'écran exacte aux 7 largeurs ; 5 parcours client OK ; wishlist, Recently viewed, newsletter, survols marques/catégories, méga-menu, ordre de tabulation et `prefers-reduced-motion` vérifiés sur l'accueil à 1440.
 - **Non vérifié** : Safari et Firefox, appareils réels, lecteur d'écran, mesure Lighthouse.
 - **Laissé au backend** : comptes et authentification, paiement et commande, stock et prix serveur, envoi réel de la newsletter et du formulaire de contact, wishlist/panier/historique liés au compte, recherche serveur.
+
+### FINAL FRONT-END DEVELOPMENT & PRODUCTION READINESS (9 octobre 2026)
+
+Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit modifié ; aucune dépendance ajoutée au projet ; pas de migration (le projet reste HTML généré + Tailwind 4 + modules ES).
+
+- **Audit** : Lighthouse 13.5 (accueil, catalogue, fiche produit, panier ; mobile et desktop), cohérence des 32 produits en lecture seule, intégrité des pages générées.
+- **Défauts trouvés et corrigés** : décalage de mise en page sur catalogue (CLS 0,30–0,34 → 0) et fiche produit mobile (0,14 → 0) ; première image de fiche produit non préchargée ; images de catégories trop lourdes sur mobile (variantes 480 px, 623 → 194 Ko) ; variantes légères pour les photos Rain et tram ; campagnes suivantes du héros en priorité basse ; ordre des titres sur catalogue, recherche et wishlist ; libellé du tri absent sur mobile ; `robots.txt` manquant.
+- **Outillage** : `npm run lint` (syntaxe), `tests/site.test.mjs` (7 tests d'intégrité du site généré), `npm run check` = lint + build + tests.
+- **Résultats** : 27 tests sur 27 ; Lighthouse mobile après corrections : accueil 90, catalogue 98, fiche produit 97, panier 99 ; accessibilité et bonnes pratiques à 100 partout ; parcours client de 13 étapes passé dans Chrome ; 728 chargements de page (8 largeurs, 320 à 1728 px) sans débordement, image cassée ni erreur console.
+- **Signalé, non corrigé** : matière du Crossbody Bag, doublure de la Gazelle, construction du Rain Shell ; prix XA PRO 3D et New Balance 327 en attente ; « Shop rain shells » mène à l'unique produit de ce type.
+- **Non testé** : Safari, Firefox, appareils réels, lecteur d'écran.

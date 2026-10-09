@@ -1078,6 +1078,14 @@
 
   /* ---------- Catalogue ---------- */
 
+  /* Catalogue and product pages are filled in by JavaScript. Until then they
+     hold at least one screen, so the footer never jumps into view and back. */
+  [data-catalog],
+  [data-pdp] {
+    min-height: 100svh;
+  }
+
+
   /* Mobile: Filter and Sort side by side, count below. Desktop: one row. */
   .catalog-toolbar {
     display: grid;

@@ -25,7 +25,7 @@ script: home
     <picture>
       <source media="(min-width: 48rem) and (max-width: 63.999rem)" srcset="{{base}}public/images/editorial/rain-campaign-wide.webp" width="1920" height="1080" />
       <img class="rain-media" src="{{base}}public/images/editorial/rain-campaign-tall.webp"
-        srcset="{{base}}public/images/editorial/rain-campaign-tall.webp 1080w, {{base}}public/images/editorial/rain-campaign-tall-lg.webp 1600w"
+        srcset="{{base}}public/images/editorial/rain-campaign-tall-sm.webp 720w, {{base}}public/images/editorial/rain-campaign-tall.webp 1080w, {{base}}public/images/editorial/rain-campaign-tall-lg.webp 1600w"
         sizes="(min-width: 64rem) 58vw, 100vw" width="1080" height="1350" loading="lazy" decoding="async"
         alt="A person in a hooded jacket walks along a rain-soaked Dublin pavement, past tram stops and people sheltering under umbrellas." />
     </picture>
@@ -50,25 +50,29 @@ script: home
     <ul class="mt-6 grid grid-cols-2 md:mt-8 gap-x-gap gap-y-10 lg:grid-cols-4" role="list">
       <li>
         <a class="category-tile" href="{{base}}sneakers.html">
-          <img src="{{base}}public/images/editorial/cat-sneakers.webp" width="800" height="1000" loading="lazy" alt="" />
+          <img src="{{base}}public/images/editorial/cat-sneakers-sm.webp" srcset="{{base}}public/images/editorial/cat-sneakers-sm.webp 480w, {{base}}public/images/editorial/cat-sneakers.webp 800w"
+            sizes="(min-width: 64rem) 25vw, 50vw" width="480" height="600" loading="lazy" decoding="async" alt="" />
           <span class="category-tile-label">Sneakers <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
         <a class="category-tile" href="{{base}}running-trail.html">
-          <img src="{{base}}public/images/editorial/cat-running.webp" width="800" height="1000" loading="lazy" alt="" />
+          <img src="{{base}}public/images/editorial/cat-running-sm.webp" srcset="{{base}}public/images/editorial/cat-running-sm.webp 480w, {{base}}public/images/editorial/cat-running.webp 800w"
+            sizes="(min-width: 64rem) 25vw, 50vw" width="480" height="600" loading="lazy" decoding="async" alt="" />
           <span class="category-tile-label">Running & trail <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
         <a class="category-tile" href="{{base}}clothing.html">
-          <img src="{{base}}public/images/editorial/cat-clothing.webp" width="800" height="1000" loading="lazy" alt="" />
+          <img src="{{base}}public/images/editorial/cat-clothing-sm.webp" srcset="{{base}}public/images/editorial/cat-clothing-sm.webp 480w, {{base}}public/images/editorial/cat-clothing.webp 800w"
+            sizes="(min-width: 64rem) 25vw, 50vw" width="480" height="600" loading="lazy" decoding="async" alt="" />
           <span class="category-tile-label">Clothing <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
       <li>
         <a class="category-tile" href="{{base}}accessories.html">
-          <img src="{{base}}public/images/editorial/cat-accessories.webp" width="800" height="1000" loading="lazy" alt="" />
+          <img src="{{base}}public/images/editorial/cat-accessories-sm.webp" srcset="{{base}}public/images/editorial/cat-accessories-sm.webp 480w, {{base}}public/images/editorial/cat-accessories.webp 800w"
+            sizes="(min-width: 64rem) 25vw, 50vw" width="480" height="600" loading="lazy" decoding="async" alt="" />
           <span class="category-tile-label">Accessories <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
         </a>
       </li>
@@ -119,7 +123,9 @@ script: home
       <a class="btn btn-inverse mt-10" href="{{base}}running-trail.html">Shop running & trail</a>
     </div>
     <figure class="night-figure reveal-media col-span-full md:col-span-4 lg:col-span-6 lg:col-start-7">
-      <img class="aspect-[4/5] w-full object-cover" src="{{base}}public/images/editorial/dublin-tram-tall.webp" width="960" height="1200" loading="lazy" decoding="async"
+      <img class="aspect-[4/5] w-full object-cover" src="{{base}}public/images/editorial/dublin-tram-tall.webp"
+        srcset="{{base}}public/images/editorial/dublin-tram-tall-sm.webp 640w, {{base}}public/images/editorial/dublin-tram-tall.webp 960w"
+        sizes="(min-width: 64rem) 46vw, (min-width: 48rem) 50vw, 100vw" width="960" height="1200" loading="lazy" decoding="async"
         alt="A tram passes along wet tracks at night, its lights reflected on the street." />
     </figure>
   </div>

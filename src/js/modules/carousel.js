@@ -45,6 +45,8 @@ export function initCarousel(root = qs('[data-carousel]')) {
       el.removeAttribute('data-srcset');
     });
     qsa('[data-src]', slide).forEach((el) => {
+      // Later campaigns must not compete with the first screen for bandwidth.
+      el.fetchPriority = 'low';
       el.src = el.dataset.src;
       el.removeAttribute('data-src');
     });

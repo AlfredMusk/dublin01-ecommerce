@@ -350,7 +350,7 @@ function build() {
     .replace('{{navMobile}}', () => mobileNavHtml(site));
 
   /** Renders one page. `vars` fills {{name}} placeholders of a template; `ld` adds structured data. */
-  const render = (source, path, { vars = {}, ld = [], ogImage } = {}) => {
+  const render = (source, path, { vars = {}, ld = [], ogImage, preload = '' } = {}) => {
     for (const [key, value] of Object.entries(vars)) source = source.replaceAll(`{{${key}}}`, value);
     const parsed = parsePage(source);
     const { meta } = parsed;
@@ -381,6 +381,7 @@ function build() {
       .replaceAll('{{canonical}}', publicUrl(out.path, out.base))
       .replaceAll('{{ogImage}}', siteUrl ? `${siteUrl}/${image}` : `${out.base}${image}`)
       .replace('{{robots}}', robots)
+      .replace('{{preload}}', preload)
       .replace('{{structuredData}}', structured.map(jsonLd).join('\n    '))
       .replace('{{pageScript}}', script)
       .replaceAll('{{page}}', path.replace(/\.html$/, '').replace(/\//g, '-'))
@@ -427,6 +428,9 @@ function build() {
       },
       ld: [productLd(p, out), breadcrumbLd([categoryLabel, productTitle(p)], out, { [categoryLabel]: categoryPath })],
       ogImage: p.images[0],
+      // The gallery is rendered by product.js; preloading its first image lets
+      // the browser fetch it with the page. Same candidates and sizes as the <img>.
+      preload: `<link rel="preload" as="image" fetchpriority="high" href="{{base}}${p.images[0]}" imagesrcset="{{base}}${p.images[0].replace(/\.webp$/, '-sm.webp')} 480w, {{base}}${p.images[0]} 800w" imagesizes="(min-width: 1024px) ${p.images.length % 2 === 1 ? '58vw' : '29vw'}, 100vw" />`,
     });
   }
 
@@ -449,6 +453,9 @@ function build() {
     const urls = written.filter((path) => !noindex.has(path)).map((path) => `  <url><loc>${publicUrl(path, '')}</loc></url>`);
     writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`);
   }
+  // Crawlers may read everything; private pages carry their own noindex. The
+  // sitemap line is added once a production origin is set.
+  writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n${siteUrl ? `\nSitemap: ${siteUrl}/sitemap.xml\n` : ''}`);
   console.log(`[html] built ${written.length} pages (${products.length} products)`);
 }
 

@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#0a0a0a" />
     <link rel="icon" type="image/svg+xml" href="../public/icons/favicon.svg" />
     <link rel="preload" href="../public/fonts/geist-latin-wght.woff2" as="font" type="font/woff2" crossorigin />
+    
     <link rel="stylesheet" href="../dist/css/main.css" />
     <script type="module" src="../src/js/main.js"></script>
     <script type="module" src="../src/js/pages/catalog.js"></script>
@@ -393,7 +394,7 @@
     </button>
     <p class="type-body-sm text-neutral-600" aria-live="polite"><span data-count>Loading products</span></p>
     <div class="flex items-center gap-3 lg:ml-auto">
-      <label class="type-label hidden text-neutral-600 sm:block" for="sort">Sort</label>
+      <label class="type-label sr-only text-neutral-600 sm:not-sr-only" for="sort">Sort</label>
       <select class="select" id="sort" data-sort>
         <option value="featured">Featured</option>
         <option value="newest">Newest</option>
@@ -409,6 +410,7 @@
       <form class="filters-sticky" data-filters="desktop" onsubmit="return false"></form>
     </aside>
     <div class="col-span-full lg:col-span-9">
+      <h2 class="sr-only">Products</h2>
       <div class="product-grid" data-results aria-live="polite"></div>
     </div>
   </div>
