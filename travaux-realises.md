@@ -726,3 +726,10 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Rain Shell** : fiche réécrite en coupe-vent déperlant léger à enfiler, tel que photographié ; photo 2 retirée (autre veste, logo d'une autre marque visible) ; 195 € → 95 €, prix estimé par comparaison, confiance faible, à valider.
 - **Code** : `product.js` n'affiche la doublure et la composition que si elles existent ; type `Product` mis à jour dans `catalog.js`.
 - **Catalogue** : 32 produits, total 3 412,95 €.
+
+### Rain Shell : prix remis à 195 € (9 octobre 2026)
+
+- Les choix du commit `6ad4abb` ont été faits sous la délégation écrite du propriétaire de 03:55 (« Choisi toi même le plus concret »).
+- Le passage du Rain Shell de 195 € à 95 € n'était appuyé par aucun comparable sourcé (la méthode du projet demande deux ou trois prix avec URL et date). Il est annulé par un nouveau commit : le Rain Shell revient à 195 €, marqué NEEDS REVIEW. Aucun prix de remplacement n'est retenu.
+- Conservés : la fiche réécrite en coupe-vent déperlant léger et le retrait de la photo 2 ; Crossbody Bag neutre (matière non vérifiée, 65 €) ; Gazelle sans mention de doublure ; XA PRO à 150 €.
+- Catalogue : 32 produits, total 3 512,95 €. Aucun prix ne diffère du commit `7e0c9a3`.

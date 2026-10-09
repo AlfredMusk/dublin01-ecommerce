@@ -60,7 +60,7 @@ Lecture : le SEO à 92 vient de l'URL canonique relative (pas de domaine de prod
 ## 5. Problèmes restants
 
 - **Prix** : XA PRO 3D GORE-TEX reste à 150 € en attente d'une décision nommée (160 € si la paire est le modèle sportstyle GTX, 170 € si c'est la V9 GTX) ; New Balance 327 maintenue à 130 €. Aucun prix modifié par cette mission.
-- **Données produit corrigées le 9 octobre 2026, après cette mission** : Crossbody Bag sans matière annoncée, Gazelle sans mention de doublure, Rain Shell réécrit en coupe-vent déperlant léger à 95 € (prix estimé, à valider). Les matières réelles restent à fournir.
+- **Données produit corrigées le 9 octobre 2026, après cette mission** : Crossbody Bag sans matière annoncée, Gazelle sans mention de doublure, Rain Shell réécrit en coupe-vent déperlant léger ; son prix reste à 195 €, à réévaluer sur de vrais comparables. Les matières réelles restent à fournir.
 - **Shop rain shells** mène à la fiche du seul rain shell du catalogue, pas à une collection : il n'y a qu'un produit de ce type.
 - **15 produits n'ont qu'une photo** : pas d'image secondaire au survol pour eux (aucune photo exacte du modèle disponible).
 - **19 prix sur 32** n'ont pas de source officielle enregistrée (marque propre et valeurs de travail).

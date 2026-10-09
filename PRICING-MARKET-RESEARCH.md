@@ -648,3 +648,9 @@ Comparables for the Rain Shell, relayed from the research file `part-b-house-ben
 Catalogue: 32 products, total 3,412.95.
 
 **To confirm by the owner:** the Rain Shell price; the XA PRO variant (160 for the sportstyle GTX, 170 for the V9 GTX) if a product reference becomes available; the real material of the Crossbody Bag and the Gazelle lining when supplier data exists.
+
+### Correction of 9 October 2026: Rain Shell price restored
+
+The Rain Shell is back at **195 — NEEDS REVIEW**. The figure of 95 written in the section above was not backed by sourced comparables (two or three prices with URL and date) and is **not retained**. Reason for the review: 195 was based on a three-layer jacket; the product shown is a light windbreaker; the price must be re-benchmarked on real comparables before any change. The rewritten product page and the removal of the second photograph stay.
+
+Catalogue: 32 products, total 3,512.95.
