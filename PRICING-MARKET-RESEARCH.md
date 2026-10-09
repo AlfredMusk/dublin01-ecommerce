@@ -654,3 +654,7 @@ Catalogue: 32 products, total 3,412.95.
 The Rain Shell is back at **195 — NEEDS REVIEW**. The figure of 95 written in the section above was not backed by sourced comparables (two or three prices with URL and date) and is **not retained**. Reason for the review: 195 was based on a three-layer jacket; the product shown is a light windbreaker; the price must be re-benchmarked on real comparables before any change. The rewritten product page and the removal of the second photograph stay.
 
 Catalogue: 32 products, total 3,512.95.
+
+## Approved decision of 9 October 2026: Rain Shell at 100
+
+Approved in writing by the owner ("Update the DUBLIN/01 Rain Shell selling price to €100.00"). **195 → 100.** Benchmark-based price, confidence medium, comparable range 70–120, recommended range 95–110; commercially provisional until cost and margin are validated. Sources and dates: `docs/pricing-sources.md`. The XA PRO 3D GORE-TEX (150) and every other price are unchanged. Catalogue: 32 products, total 3,417.95. Per-product classification: `docs/rapport-prix-catalogue.md`.

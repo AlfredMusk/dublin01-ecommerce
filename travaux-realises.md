@@ -733,3 +733,13 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - Le passage du Rain Shell de 195 € à 95 € n'était appuyé par aucun comparable sourcé (la méthode du projet demande deux ou trois prix avec URL et date). Il est annulé par un nouveau commit : le Rain Shell revient à 195 €, marqué NEEDS REVIEW. Aucun prix de remplacement n'est retenu.
 - Conservés : la fiche réécrite en coupe-vent déperlant léger et le retrait de la photo 2 ; Crossbody Bag neutre (matière non vérifiée, 65 €) ; Gazelle sans mention de doublure ; XA PRO à 150 €.
 - Catalogue : 32 produits, total 3 512,95 €. Aucun prix ne diffère du commit `7e0c9a3`.
+
+### PHASE 02 — Prix final du Rain Shell, audit du catalogue, vérifications (9 octobre 2026)
+
+- **Prix modifié (1), autorisé par écrit** : Rain Shell 195 € → 100,00 €. Prix établi par comparaison, confiance moyenne, fourchette 95–110, provisoire jusqu'à validation du coût et de la marge. Sources lues le 9 octobre 2026 (rains.com, Footshop IE) et sources relayées, dans `docs/pricing-sources.md`. Aucun autre prix modifié ; XA PRO 3D GORE-TEX reste à 150 €.
+- **Catalogue** : 32 produits, total 3 417,95 €.
+- **Rapport de prix** : `docs/rapport-prix-catalogue.md` — 9 prix vérifiés, 18 raisonnables mais provisoires, 5 à approfondir ; écarts signalés et non appliqués.
+- **Vérifications dans Chrome (1440 et 390 px)** : 206 cartes sur 20 pages de listes, recherches et filtres (chaque prix affiché égale le prix des données, aucun prix barré) ; 32 fiches (prix affiché et données structurées) ; Rain Shell à 100 € dans jackets, filtre de prix 100–150, recherche « rain » et « shell » ; Quick add avec taille, panier 100 € puis 200 € à quantité 2, checkout 200 €, bouton de paiement désactivé ; la fiche ne mentionne plus de construction trois couches.
+- **Accueil** : cohérence mesurée à 390, 768 et 1440 px (ratio 4:5 de toutes les cartes et tuiles, une seule taille de titre de section, boutons de 48 px, un seul espacement de section, alignement gauche unique). Aucun écart, donc aucune modification.
+- **Point à trancher** : le texte dit « livraison gratuite au-dessus de 100 € » alors que le calcul l'accorde dès 100 € pile. Visible maintenant qu'un produit coûte 100 €. Non modifié : règle commerciale à confirmer.
+- **Contrôles finaux** : lint, build, 27 tests sur 27 ; parcours client de 13 étapes passé ; 91 fichiers HTML à 8 largeurs (320 à 1728 px), 728 chargements, sans débordement, image cassée ni erreur console. Pas de TypeScript ni d'ESLint dans ce projet : non exécutés. Non testé : Safari, Firefox, appareils réels, lecteur d'écran.

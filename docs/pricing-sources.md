@@ -71,7 +71,7 @@ The Sale page shows an empty state until then.
 
 Own-label prices are set by the business. Working prices, reviewed on 2026-10-05
 against comparable independent labels: Heavyweight Hoodie 95, Boxy Tee 45, Coach
-Jacket 129, Rain Shell 195 (NEEDS REVIEW, see below), Half-Zip Fleece 100, Wide Cargo Trouser 120, Loopback
+Jacket 129, Rain Shell 100 (provisional, see below), Half-Zip Fleece 100, Wide Cargo Trouser 120, Loopback
 Sweatpant 85, Merino Beanie 35, Crossbody Bag 65, Crew Socks 3-pack 25, Canvas
 Tote 45, Six-Panel Cap 39, Overshirt 125, Running Tee 50, Running Short 55.
 
@@ -129,10 +129,13 @@ Supplied by the price research of 2026-10-04.
 
 The New Balance Fresh Foam Garoé Midcut was removed from the catalogue on 2026-10-06: no official Irish price could be established for it.
 
-## Rain Shell, 195 — NEEDS REVIEW (2026-10-09)
+## Rain Shell, 100 (approved by the owner on 2026-10-09)
 
-The price of 195 was set for a seam-sealed three-layer jacket. The product page
-now describes what the photograph shows: a light, water-repellent pullover shell.
-The price is unchanged and must be re-benchmarked against real comparables
-(two or three sourced prices with URL and date) before any change. No
-replacement price has been retained.
+**BENCHMARK-BASED PRICE, confidence MEDIUM, range 95–110. Commercially provisional until cost and margin are validated.**
+The product is a light, water-repellent pullover shell; 195 had been set for a three-layer jacket.
+
+Read on 2026-10-09:
+- Rains Jacket 89.90, Rains Storm Breaker 99.90 — https://www.rains.com/collections/jackets
+- Columbia Challenger Windbreaker Anorak 70 regular; adidas Terrex Xploric Clima365 Wind Anorak 120 regular — https://www.footshop.ie/en/search?search_query=anorak
+
+Relayed from the project's shared research (`research/dublin01/pricing-audit/03-rain-shell-windbreaker-benchmark.md`, not re-read here): Patagonia Houdini 120; Nike Windrunner Lightweight Half-Zip 94.99; Columbia Riptide 99.90; The North Face Higher Run Wind 104.90; Carhartt WIP Nimbus Anorak 149.95 (fleece-lined, upper bound).
