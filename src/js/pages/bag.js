@@ -31,7 +31,8 @@ async function render() {
   const remaining = Math.max(0, FREE_DELIVERY_THRESHOLD - subtotal);
   const progress = Math.min(1, subtotal / FREE_DELIVERY_THRESHOLD);
   root.innerHTML = `<div class="grid-site gap-y-10">
-    <section class="col-span-full lg:col-span-7" aria-label="Items">
+    <section class="col-span-full lg:col-span-7" aria-labelledby="bag-items-title">
+      <h2 class="sr-only" id="bag-items-title">Items in your bag</h2>
       <ul class="divide-y divide-neutral-200 border-y border-neutral-200" role="list">${lines.map(lineHtml).join('')}</ul>
     </section>
     <aside class="col-span-full lg:col-span-4 lg:col-start-9" aria-label="Order summary">

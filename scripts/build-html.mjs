@@ -121,16 +121,19 @@ ${item.groups.map((group) => `<div><p class="mega-heading">${esc(group.title)}</
 
 /* ---------- Home hero: campaigns ---------- */
 
+const PLACEHOLDER_IMAGE = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==';
+
 function heroHtml(campaigns) {
   const total = campaigns.length;
   const slides = campaigns
     .map((c, i) => {
       const first = i === 0;
       // Only the first campaign loads with the page; the others ship as data-src
-      // and are hydrated by src/js/modules/carousel.js.
+      // (behind a 1px transparent placeholder, so the markup stays valid) and are
+      // hydrated by src/js/modules/carousel.js.
       const srcset = first ? 'srcset' : 'data-srcset';
-      const src = first ? 'src' : 'data-src';
-      return `    <article class="hero-slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${total}" data-slide data-campaign="${esc(c.id)}"${first ? ' data-active' : ' inert'}>
+      const src = first ? 'src' : `src="${PLACEHOLDER_IMAGE}" data-src`;
+      return `    <div class="hero-slide" role="group" aria-roledescription="slide" aria-label="${i + 1} of ${total}" data-slide data-campaign="${esc(c.id)}"${first ? ' data-active' : ' inert'}>
       <picture style="--hero-pos-tall: ${esc(c.objectPosition.tall)}; --hero-pos-wide: ${esc(c.objectPosition.wide)}">
         <source media="(min-width: 64rem), (orientation: landscape)" ${srcset}="{{base}}${c.image.wide}" width="1920" height="1080" />
         <img class="hero-media" ${src}="{{base}}${c.image.tall}" width="1080" height="1350"
@@ -144,7 +147,7 @@ function heroHtml(campaigns) {
           <a class="btn btn-inverse hero-cta" href="{{base}}${c.ctaHref}">${esc(c.ctaLabel)}<span class="sr-only">: ${esc(c.title)}</span></a>
         </div>
       </div>
-    </article>`;
+    </div>`;
     })
     .join('\n');
   // The page's <h1> stays outside the slides (inactive slides are inert), and

@@ -38,31 +38,36 @@ export function initCarousel(root = qs('[data-carousel]')) {
   let userPaused = reducedMotion.matches;
   let started = false; // autoplay waits for the first image
 
-  /** Slides after the first ship with data-src so they load after the page. */
+  /**
+   * Slides after the first ship with data-src (behind a placeholder) so they
+   * load after the page. Returns true when it has just started a real image.
+   */
   const hydrate = (slide) => {
     qsa('[data-srcset]', slide).forEach((el) => {
       el.srcset = el.dataset.srcset;
       el.removeAttribute('data-srcset');
     });
-    qsa('[data-src]', slide).forEach((el) => {
+    const pending = qsa('[data-src]', slide);
+    pending.forEach((el) => {
       // Later campaigns must not compete with the first screen for bandwidth.
       el.fetchPriority = 'low';
       el.src = el.dataset.src;
       el.removeAttribute('data-src');
     });
+    return pending.length > 0;
   };
 
   const imageOf = (slide) => qs('img', slide);
-  const isLoaded = (img) => !img || (img.complete && img.naturalWidth > 0);
 
   /**
    * Runs `done(true)` once the slide's image has loaded or failed, or
    * `done(false)` if it is still loading after `wait` ms.
    */
   const whenReady = (slide, done, wait = Infinity) => {
-    hydrate(slide);
+    const swapped = hydrate(slide);
     const img = imageOf(slide);
-    if (!img || img.complete) return done(true);
+    // Right after a swap `complete` still describes the placeholder: wait for load or error instead.
+    if (!img || (!swapped && img.complete)) return done(true);
     let settled = false;
     let timer;
     const finish = (ready) => {

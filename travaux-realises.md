@@ -769,3 +769,13 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Fait** : sauvegarde locale de l'historique d'origine (branche `backup/local-before-publish` et bundle dans le dossier parent, non publiés) ; email d'auteur et de committer remplacé dans les 36 commits ; arbre final identique ; `git push -u origin main` sans force vers `https://github.com/AlfredMusk/dublin01-ecommerce` ; tête distante vérifiée égale à la tête locale.
 - **Navigateurs** : Firefox 157 et WebKit 27.2 installés pour l'outil de test (hors projet) ; 70 pages × 3 largeurs et les parcours principaux passent sur les deux.
 - **Verdict final** : PASS — FRONT-END PORTFOLIO COMPLETE, avec les limites documentées (pas de test sur Safari lui-même, appareils réels ni lecteur d'écran ; pas de backend).
+
+### FINAL FRONT-END QA, CLEANUP & GITHUB DELIVERY (9 octobre 2026)
+
+- **Validation HTML** (html-validate, 91 fichiers) : 1 vrai défaut corrigé (3 images différées du héros sans attribut `src`) ; les autres signalements sont des choix volontaires, documentés dans le rapport.
+- **Accessibilité** (axe-core, 44 analyses) : 2 défauts corrigés (rôle ARIA non permis sur les diapositives du héros, niveau de titre sauté sur la page panier), puis 0 violation.
+- **Nettoyage** : `filters.js` et `i18n.js` supprimés (fichiers vides, importés nulle part) ; fonction inutilisée retirée du carrousel ; message console de développement retiré.
+- **Carrousel** : après l'ajout de l'image de remplacement, il attend l'image réelle ; cycle complet des 4 campagnes vérifié à 1440 et 390 px dans Chrome, Firefox et WebKit.
+- **Contrôles réels** : lint, build, 29 tests ; 24 parcours ; 206 cartes et 32 fiches au prix du catalogue ; 819 chargements à 9 largeurs sans défaut ; Firefox 157 et WebKit 27.2 sans défaut ; Lighthouse mobile 88 / 98 / 97 / 99, accessibilité 100.
+- **Documents** : `DUBLIN01_FRONTEND_FINAL_REPORT.md` en 15 sections (verdict PASS pour un projet portfolio front-end), `docs/learning-roadmap.md` (feuille de route d'apprentissage, leçons non commencées).
+- **Aucun prix modifié.** Non testé : application Safari, appareils réels, lecteur d'écran.

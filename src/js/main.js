@@ -23,5 +23,3 @@ initNewsletter();
 initQuickAdd();
 initBagDrawer();
 initConsent();
-
-console.info('DUBLIN/01 — environment ready.');
