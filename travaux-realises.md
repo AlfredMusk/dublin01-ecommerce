@@ -762,3 +762,10 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Non fait** : tests Firefox et WebKit (moteurs non installés pour l'outil de test), appareils réels, lecteur d'écran.
 - **GitHub** : dépôt public créé par le propriétaire (`AlfredMusk/dublin01-ecommerce`). Rien poussé : les commits portent l'email personnel du propriétaire ; en attente de son choix avant publication.
 - **Aucun prix modifié.**
+
+### Publication GitHub (9 octobre 2026)
+
+- **Décision du propriétaire** : choix délégué par écrit (« Choisis toi-même l'option le plus correct. Et fais le commit sur GitHub. »). Option retenue : historique complet avec l'adresse anonyme GitHub.
+- **Fait** : sauvegarde locale de l'historique d'origine (branche `backup/local-before-publish` et bundle dans le dossier parent, non publiés) ; email d'auteur et de committer remplacé dans les 36 commits ; arbre final identique ; `git push -u origin main` sans force vers `https://github.com/AlfredMusk/dublin01-ecommerce` ; tête distante vérifiée égale à la tête locale.
+- **Navigateurs** : Firefox 157 et WebKit 27.2 installés pour l'outil de test (hors projet) ; 70 pages × 3 largeurs et les parcours principaux passent sur les deux.
+- **Verdict final** : PASS — FRONT-END PORTFOLIO COMPLETE, avec les limites documentées (pas de test sur Safari lui-même, appareils réels ni lecteur d'écran ; pas de backend).

@@ -2,7 +2,7 @@
 
 9 October 2026. Everything below was executed or measured on the local repository after the final corrections. What was not done is stated as such.
 
-**Verdict: CONDITIONAL PASS** (section 13). Front-end portfolio completion is not commercial production readiness.
+**Verdict: PASS — FRONT-END PORTFOLIO COMPLETE** (section 13). Front-end portfolio completion is not commercial production readiness.
 
 ## 1. Project summary
 
@@ -58,7 +58,15 @@ Widths: 320, 375, 390, 430, 768, 1024, 1280, 1440, 1920 px. 91 HTML files × 9 w
 
 Hero height equals the screen under the header at each width; cards and category tiles keep a 4:5 ratio; mobile menu, mobile filters and the Quick add sheet verified at 390 px.
 
-Browser engines: Chromium only (Google Chrome). Firefox and WebKit are not installed for the test tooling on this machine and were **not tested**. No physical device was used.
+Browser engines, through Playwright:
+
+| Engine | Pages × widths | Result | Journeys |
+|---|---|---|---|
+| Chromium (Google Chrome) | 91 files × 9 widths | 0 issue | 24 of 24 |
+| Firefox 157 | 70 pages × 3 widths (375, 1024, 1440) = 210 loads | 0 overflow, 0 broken image, 0 script error | home, search, filter and sort, product, bag, wishlist, mobile menu: pass |
+| WebKit 27.2 | 70 pages × 3 widths = 210 loads | 0 overflow, 0 broken image, 0 script error | same set: pass |
+
+WebKit here is the Playwright build of the engine, not the Safari application. No physical device was used.
 
 ## 7. Accessibility results
 
@@ -106,7 +114,7 @@ SEO at 92 comes from the relative canonical URL (no production domain); the bag 
 
 **Open data decisions for the owner**: items listed in section 4.
 
-**Not verified**: Firefox, Safari/WebKit, physical devices, screen readers; performance on real hosting.
+**Not verified**: the Safari application itself, physical devices, screen readers; performance on real hosting.
 
 **Minor**: "Shop rain shells" opens a single product; product listings are rendered in the browser; no type checking or style linter.
 
@@ -114,13 +122,16 @@ SEO at 92 comes from the relative canonical URL (no production domain); the bag 
 
 ## 12. GitHub delivery information
 
-- Repository: https://github.com/AlfredMusk/dublin01-ecommerce (public, created by the owner, empty when checked).
-- Local branch: `main`. The final work is committed locally.
-- **Push status: not pushed.** Every local commit carries the owner's personal email address as author. Publishing would make it public, which the owner asked to avoid; the push waits for the owner's choice (replace the address with a GitHub no-reply address across the history, publish a single clean commit, or push as is).
-- Pre-publication review of tracked files: no credential, API key, token, `.env` file, local absolute path or private configuration file; `.gitignore` covers `node_modules/`, `dist/`, logs and `.env*`.
+- Repository: https://github.com/AlfredMusk/dublin01-ecommerce (public, created by the owner).
+- Branch: `main`, pushed without force and verified with `git ls-remote`.
+- First publication: 36 commits, head `0a2b3d6`. This report was updated in a following commit.
+- Before publication the author and committer email of every local commit was replaced by the owner's GitHub no-reply address (owner's decision); names, dates, messages and file contents are unchanged, and the final tree is identical. The unmodified local history is kept in a local backup branch and bundle that are not published.
+- Pre-publication review of tracked files and history: no credential, API key, token, `.env` file, personal email, local absolute path or private configuration file. `.gitignore` covers `node_modules/`, `dist/`, logs and `.env*`.
 
 ## 13. Final acceptance verdict
 
-**CONDITIONAL PASS.**
+**PASS — FRONT-END PORTFOLIO COMPLETE.**
 
-Every check that could be executed passes and no blocking front-end defect remains. The verdict is not "PASS — FRONT-END PORTFOLIO COMPLETE" because two required items are not done: testing on Firefox and WebKit, and publication to GitHub (section 12).
+Every required check was executed and passes: build, lint, 29 automated tests, 24 customer journeys, 32 product pages, 9 widths, three browser engines, accessibility at 100 in Lighthouse, and the repository is published.
+
+This is a verdict on a front-end portfolio project. It is not a statement of commercial readiness: there is no back end, the commerce data is illustrative, and the limits in section 11 stand (no test on the Safari application, on physical devices or with a screen reader; open product-data decisions).

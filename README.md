@@ -108,7 +108,7 @@ runs the syntax check, the build and the automated tests:
 - **Search and cart logic**: ranking, quantity limits per size, totals, inclusive free-delivery threshold.
 - **Generated site**: every internal link, image, script and stylesheet resolves; every page has a language, unique title, description and a single `h1`; images have alternative text and dimensions; controls have accessible names; no page is orphaned.
 
-Browser-level checks (customer journeys, responsive widths, Lighthouse) were run with Chrome during development and are recorded, with their limits, in [`DUBLIN01_FRONTEND_FINAL_REPORT.md`](DUBLIN01_FRONTEND_FINAL_REPORT.md). There is no TypeScript type check and no ESLint configuration in this project.
+Browser-level checks (customer journeys, responsive widths, three browser engines, Lighthouse) were run during development and are recorded, with their limits, in [`DUBLIN01_FRONTEND_FINAL_REPORT.md`](DUBLIN01_FRONTEND_FINAL_REPORT.md). There is no TypeScript type check and no ESLint configuration in this project.
 
 ## Architecture
 
@@ -125,7 +125,7 @@ Browser-level checks (customer journeys, responsive widths, Lighthouse) were run
 - **Illustrative commerce data.** Prices, stock, the free-delivery threshold (€100 or more), delivery charges, the 30-day returns policy and VAT-inclusive pricing are demo assumptions, not verified business terms. Policy pages are summaries written for the interface, not legal advice.
 - **Third-party brands.** Nike, adidas, New Balance, ASICS and Salomon are referenced for demonstration only. There is no affiliation, partnership or endorsement.
 - **Photography.** Images come from Unsplash and are credited in [`public/images/CREDITS.md`](public/images/CREDITS.md). They are demonstration visuals; commercial usage rights for a real shop have not been established.
-- **Testing scope.** Verified in Chrome (Chromium). Firefox, Safari and physical devices have not been tested, and no screen-reader audit has been carried out.
+- **Testing scope.** Verified in Chrome, Firefox and the WebKit engine through Playwright. The Safari application and physical devices have not been tested, and no screen-reader audit has been carried out.
 - **Client-rendered listings.** Product grids are rendered in the browser from the JSON file.
 
 ## Future Improvements
@@ -134,7 +134,7 @@ Browser-level checks (customer journeys, responsive widths, Lighthouse) were run
 - Payment through a provider's hosted fields.
 - Server-side or build-time rendering of product listings.
 - French interface (locale files are in place, switching is not implemented).
-- Cross-browser and assistive-technology testing, automated browser tests in CI.
+- Assistive-technology and real-device testing, automated browser tests in CI.
 
 ## Author
 
