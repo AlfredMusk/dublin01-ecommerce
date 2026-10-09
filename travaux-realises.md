@@ -700,3 +700,10 @@ Rapport complet : `docs/rapport-final-frontend.md`. Aucun prix, aucun produit mo
 - **Résultats** : 27 tests sur 27 ; Lighthouse mobile après corrections : accueil 90, catalogue 98, fiche produit 97, panier 99 ; accessibilité et bonnes pratiques à 100 partout ; parcours client de 13 étapes passé dans Chrome ; 728 chargements de page (8 largeurs, 320 à 1728 px) sans débordement, image cassée ni erreur console.
 - **Signalé, non corrigé** : matière du Crossbody Bag, doublure de la Gazelle, construction du Rain Shell ; prix XA PRO 3D et New Balance 327 en attente ; « Shop rain shells » mène à l'unique produit de ce type.
 - **Non testé** : Safari, Firefox, appareils réels, lecteur d'écran.
+
+### Troisième intégration des prix approuvés (9 octobre 2026)
+
+- **Décision** : « PRICING APPROVED » écrit par le propriétaire, en réponse à la liste des points ouverts et de mes propositions.
+- **Prix modifiés (2)** : Salomon XA PRO 3D GORE-TEX 150 € → 160 € ; New Balance 327 130 € → 120 €. `priceSource` mis à jour vers la source réellement lue (Footshop IE, 6 octobre 2026). Valeur du catalogue inchangée : 3 512,95 €.
+- **Non modifié** : matière du Crossbody Bag, doublure de la Gazelle, construction du Rain Shell. L'approbation ne nommait aucun choix pour ces trois données ; elles attendent une réponse précise.
+- **Réserve** : la génération exacte de la paire XA PRO photographiée et la référence du coloris de la 327 restent non confirmées.

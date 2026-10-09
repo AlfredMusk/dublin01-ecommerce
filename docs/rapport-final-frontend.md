@@ -59,7 +59,7 @@ Lecture : le SEO à 92 vient de l'URL canonique relative (pas de domaine de prod
 
 ## 5. Problèmes restants
 
-- **Prix en attente de ta décision** : XA PRO 3D GORE-TEX (150 €), New Balance 327 (130 €). Aucun prix modifié dans cette mission.
+- **Prix** : les deux derniers prix en attente ont été approuvés et intégrés le 9 octobre 2026, après cette mission (XA PRO 3D GORE-TEX 160 €, New Balance 327 120 €). La génération exacte de la paire XA PRO photographiée et la référence du coloris de la 327 restent à confirmer.
 - **Incohérences de données à trancher** (non corrigées) : Crossbody Bag — description « leather », matière « 100% polyamide » saisie sans source ; Gazelle — détail « Leather lining », matière doublure « Textile » ; Rain Shell — construction (trois couches ou non) à confirmer.
 - **Shop rain shells** mène à la fiche du seul rain shell du catalogue, pas à une collection : il n'y a qu'un produit de ce type.
 - **13 produits n'ont qu'une photo** : pas d'image secondaire au survol pour eux (aucune photo exacte du modèle disponible).

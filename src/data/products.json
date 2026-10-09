@@ -962,7 +962,7 @@
     "subcategory": "trail",
     "gender": "unisex",
     "style": "trail",
-    "price": 150.0,
+    "price": 160.0,
     "compareAtPrice": null,
     "currency": "EUR",
     "images": [
@@ -1029,7 +1029,10 @@
     ],
     "collection": "Core",
     "badge": null,
-    "priceSource": null,
+    "priceSource": {
+      "url": "https://www.footshop.ie/en/search?search_query=salomon+xa+pro+3d",
+      "checked": "2026-10-06"
+    },
     "materials": {
       "upper": "Synthetic and textile with GORE-TEX membrane",
       "lining": "Textile",
@@ -1555,7 +1558,7 @@
     "subcategory": "lifestyle",
     "gender": "unisex",
     "style": "lifestyle",
-    "price": 130.0,
+    "price": 120.0,
     "images": [
       "public/images/products/new-balance-327-orange-1.webp"
     ],
@@ -1619,8 +1622,8 @@
     ],
     "collection": "Core",
     "priceSource": {
-      "url": "https://www.newbalance.ie/en/pd/327/MS327V1-40892.html",
-      "checked": "2026-10-04"
+      "url": "https://www.footshop.ie/en/search?search_query=new+balance+327",
+      "checked": "2026-10-06"
     },
     "materials": {
       "upper": "Suede and nylon",

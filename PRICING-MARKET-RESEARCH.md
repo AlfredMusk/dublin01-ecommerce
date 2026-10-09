@@ -606,3 +606,16 @@ Approved in writing by the owner ("Approuver", in answer to "PRICING APPROVED : 
 - New Balance Fresh Foam X More v4 and Nike Pegasus Trail 5 GORE-TEX stay: no licence-free photograph of a current replacement model (More v6, ACG Pegasus Trail GORE-TEX) was found.
 
 **Still open:** Salomon XA PRO 3D GORE-TEX (150), New Balance 327 (130), Crossbody Bag (material: leather or nylon) and Rain Shell (construction) are unchanged and wait for the owner. The pricing audit is not closed.
+
+## Approved decision of 9 October 2026 (third integration)
+
+Approved in writing by the owner ("PRICING APPROVED", in answer to the list of open points and proposals).
+
+| Product | Before | After | Basis |
+|---|---|---|---|
+| Salomon XA PRO 3D GORE-TEX (Black) | 150 | 160 | Footshop IE: Xa Pro 3D GTX 160 regular. The generation of the photographed pair is still unconfirmed |
+| New Balance 327 (Orange / White) | 130 | 120 | Footshop IE: 120 regular; newbalance.ie 120–130 depending on the colourway. The exact colourway SKU is still unconfirmed |
+
+No other price changed. Catalogue: 32 products, total 3,512.95 (the two changes cancel out).
+
+**Still open (product data, not prices):** Crossbody Bag material (description says leather, material says polyamide), Gazelle lining (leather in the details, textile in the materials), Rain Shell construction. The approval named no choice for these, so they are unchanged.
